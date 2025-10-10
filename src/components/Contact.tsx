@@ -1,12 +1,14 @@
 import { useState } from "react";
+import { MapPin, Linkedin, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Linkedin, MapPin, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,7 +16,7 @@ const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Basic validation
@@ -27,15 +29,31 @@ const Contact = () => {
       return;
     }
 
-    // In a real implementation, this would send to a backend
-    console.log("Form submitted:", formData);
-    
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    });
+    setIsSubmitting(true);
 
-    setFormData({ name: "", email: "", organization: "", message: "" });
+    try {
+      const { error } = await supabase.functions.invoke('send-contact-email', {
+        body: formData,
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out. I'll get back to you soon.",
+      });
+
+      setFormData({ name: "", email: "", organization: "", message: "" });
+    } catch (error) {
+      console.error("Error sending message:", error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again or contact directly via LinkedIn.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -131,8 +149,8 @@ const Contact = () => {
                   />
                 </div>
 
-                <Button type="submit" size="lg" variant="swiss" className="w-full group">
-                  Send Message
+                <Button type="submit" size="lg" variant="swiss" className="w-full group" disabled={isSubmitting}>
+                  {isSubmitting ? "Sending..." : "Send Message"}
                   <Send className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </form>
@@ -144,19 +162,6 @@ const Contact = () => {
               <div className="bg-secondary/30 p-8 border-2 border-border">
                 <h3 className="text-2xl font-bold mb-6">Direct Contact</h3>
                 <div className="space-y-6">
-                  <a 
-                    href="mailto:j.miseikis@gmail.com"
-                    className="flex items-start gap-4 group hover:text-primary transition-colors"
-                  >
-                    <Mail className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                    <div>
-                      <div className="font-medium mb-1">Email</div>
-                      <div className="text-muted-foreground group-hover:text-primary transition-colors">
-                        j.miseikis@gmail.com
-                      </div>
-                    </div>
-                  </a>
-
                   <a 
                     href="https://www.linkedin.com/in/justinasmiseikis/"
                     target="_blank"

@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 const Speaking = () => {
   const topics = [
     {
-      title: "AI Commercialization",
-      description: "From research lab to market leadership: strategies for turning AI breakthroughs into business value",
+      title: "AI Commercialization & Ethics",
+      description: "From research lab to market leadership: strategies for turning AI breakthroughs into business value while addressing ethical considerations",
       audiences: ["Tech Conferences", "Corporate Events", "Startup Forums"],
     },
     {
@@ -26,12 +26,9 @@ const Speaking = () => {
   ];
 
   const pastEvents = [
-    "Swiss Robotics Day",
-    "Startup Days Bern",
-    "EPFL Innovation Forum",
-    "Sony AI Research Forum",
-    "ETH Zürich Tech Talks",
-    "Baltic AI Summit",
+    "LOGIN Conference (biggest tech event in Baltics)",
+    "Innovation Roundtable",
+    "ETH Zürich & ETH Entrepreneurship Club",
   ];
 
   const scrollToContact = () => {
@@ -92,7 +89,7 @@ const Speaking = () => {
           </div>
 
           {/* Past Events */}
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
+          <div className="mb-16">
             <div className="bg-card p-8 border-2 border-border">
               <h3 className="text-xl font-bold mb-6 flex items-center gap-3">
                 <Video className="w-6 h-6 text-primary" />
@@ -105,27 +102,6 @@ const Speaking = () => {
                     <span>{event}</span>
                   </div>
                 ))}
-              </div>
-            </div>
-
-            <div className="bg-card p-8 border-2 border-border">
-              <h3 className="text-xl font-bold mb-6 flex items-center gap-3">
-                <Download className="w-6 h-6 text-primary" />
-                Speaker Materials
-              </h3>
-              <div className="space-y-4">
-                <Button variant="outline" className="w-full justify-between group">
-                  <span>Speaker One-Pager</span>
-                  <Download className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
-                </Button>
-                <Button variant="outline" className="w-full justify-between group">
-                  <span>High-Res Photos</span>
-                  <Download className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
-                </Button>
-                <Button variant="outline" className="w-full justify-between group">
-                  <span>Previous Talk Recordings</span>
-                  <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Button>
               </div>
             </div>
           </div>

@@ -1,1 +1,8 @@
 project_id = "uwdastthzqjbiyrxucci"
+
+[auth]
+site_url = "http://localhost:5173"
+enabled = true
+
+[functions.send-contact-email]
+verify_jwt = false
