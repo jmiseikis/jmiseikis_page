@@ -68,16 +68,8 @@ const Hero = () => {
                 onClick={() => scrollToSection('contact')}
                 className="group"
               >
-                Book a Consultation
-                <Calendar className="ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                onClick={() => scrollToSection('speaking')}
-              >
-                Speaking Inquiries
-                <Mail className="ml-2" />
+                Let's talk
+                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>
 

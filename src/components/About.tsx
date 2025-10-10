@@ -51,7 +51,7 @@ const About = () => {
 
   const locations = [
     { city: "Zurich", country: "Switzerland", primary: true },
-    { city: "Munich", country: "Germany", primary: false },
+    { city: "DACH", country: "Germany, Austria, Switzerland", primary: false },
     { city: "Vilnius", country: "Lithuania", primary: false },
   ];
 
