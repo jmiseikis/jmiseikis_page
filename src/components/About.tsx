@@ -8,6 +8,14 @@ import hpLogo from "@/assets/logos/hp.png";
 import emtLogo from "@/assets/logos/emt.png";
 import melgaLogo from "@/assets/logos/melga.png";
 import yourehabLogo from "@/assets/logos/yourehab.png";
+import ethZurichLogo from "@/assets/logos/eth-zurich.png";
+import uioOsloLogo from "@/assets/logos/uio-oslo.png";
+import fpRoboticsLogo from "@/assets/logos/fp-robotics.png";
+import hocomaLogo from "@/assets/logos/hocoma.png";
+import veltruLogo from "@/assets/logos/veltru.png";
+import sonyLogo from "@/assets/logos/sony.png";
+import sonyAiLogo from "@/assets/logos/sony-ai.png";
+import sonyResearchLogo from "@/assets/logos/sony-research.png";
 
 const About = () => {
   const timeline = [
@@ -71,21 +79,21 @@ const About = () => {
 
   const organizations = [
     { name: "University of Reading", logo: null },
-    { name: "ETH Zurich", logo: null },
+    { name: "ETH Zurich", logo: ethZurichLogo },
     { name: "TU Graz", logo: tuGrazLogo },
-    { name: "University of Oslo", logo: osloUniLogo },
+    { name: "University of Oslo", logo: uioOsloLogo },
     { name: "CSIRO", logo: csiroLogo },
     { name: "Hewlett-Packard", logo: hpLogo },
     { name: "EMT", logo: emtLogo },
     { name: "Melga", logo: melgaLogo },
-    { name: "Hocoma", logo: null },
+    { name: "Hocoma", logo: hocomaLogo },
     { name: "YouRehab", logo: yourehabLogo },
-    { name: "VELTRU AG", logo: null },
+    { name: "VELTRU AG", logo: veltruLogo },
     { name: "Pixevia", logo: null },
-    { name: "F&P Robotics", logo: null },
-    { name: "Sony", logo: null },
-    { name: "Sony AI", logo: null },
-    { name: "Sony Research", logo: null },
+    { name: "F&P Robotics", logo: fpRoboticsLogo },
+    { name: "Sony", logo: sonyLogo },
+    { name: "Sony AI", logo: sonyAiLogo },
+    { name: "Sony Research", logo: sonyResearchLogo },
   ];
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
