@@ -6,7 +6,7 @@ const About = () => {
       period: "2024 - Present",
       role: "Strategy and Partnerships Manager",
       company: "Sony AI",
-      description: "Leading research commercialization strategy for 50+ researchers across US/EU/JP. Defining project direction, securing budgets, and managing external partnerships.",
+      description: "Leading research commercialization strategy. Responsible for 4 amazing R&D teams. Defining project direction, securing budgets, and managing external partnerships.",
     },
     {
       period: "2021 - 2024",
@@ -37,9 +37,9 @@ const About = () => {
     },
     { 
       icon: Building2, 
-      title: "Sony AI Leadership",
+      title: "Sony AI",
       institution: "Strategy & Partnerships",
-      detail: "Managing 50+ researchers globally"
+      detail: "Responsible for 4 amazing R&D teams"
     },
     { 
       icon: Award, 
@@ -49,10 +49,34 @@ const About = () => {
     },
   ];
 
-  const locations = [
-    { city: "Zurich", country: "Switzerland", primary: true },
-    { city: "DACH", country: "Germany, Austria, Switzerland", primary: false },
-    { city: "Vilnius", country: "Lithuania", primary: false },
+  const countries = [
+    { name: "Lithuania", flag: "🇱🇹" },
+    { name: "United Kingdom", flag: "🇬🇧" },
+    { name: "Switzerland", flag: "🇨🇭" },
+    { name: "Australia", flag: "🇦🇺" },
+    { name: "Norway", flag: "🇳🇴" },
+    { name: "Austria", flag: "🇦🇹" },
+    { name: "Spain", flag: "🇪🇸" },
+    { name: "Germany", flag: "🇩🇪" },
+  ];
+
+  const organizations = [
+    "University of Reading",
+    "ETH Zurich",
+    "TU Graz",
+    "University of Oslo",
+    "CSIRO",
+    "Hewlett-Packard",
+    "EMT",
+    "Melga",
+    "Hocoma",
+    "YouRehab",
+    "VELTRU AG",
+    "Pixevia",
+    "F&P Robotics",
+    "Sony",
+    "Sony AI",
+    "Sony Research",
   ];
 
   return (
@@ -110,33 +134,44 @@ const About = () => {
             </div>
           </div>
 
-          {/* Global Presence */}
-          <div className="bg-card p-8 md:p-12 border-2 border-border">
+          {/* Global Experience */}
+          <div className="bg-card p-8 md:p-12 border-2 border-border mb-12">
             <div className="flex items-center gap-3 mb-8">
               <Globe2 className="w-8 h-8 text-primary" />
-              <h3 className="text-2xl font-bold">Global Presence</h3>
+              <h3 className="text-2xl font-bold">Global Experience</h3>
             </div>
-            <div className="grid md:grid-cols-3 gap-6">
-              {locations.map((loc, index) => (
+            <p className="text-muted-foreground mb-6 text-center">
+              Lived, studied, and worked across 8 countries
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              {countries.map((country, index) => (
                 <div 
                   key={index}
-                  className={`p-6 border-2 ${
-                    loc.primary 
-                      ? 'border-primary bg-primary/5' 
-                      : 'border-border'
-                  }`}
+                  className="flex items-center gap-2 px-4 py-3 border-2 border-border hover:border-primary transition-all"
                 >
-                  <div className="text-2xl font-bold mb-1">{loc.city}</div>
-                  <div className="text-muted-foreground">{loc.country}</div>
-                  {loc.primary && (
-                    <div className="mt-3 text-sm text-primary font-medium">Primary Base</div>
-                  )}
+                  <span className="text-3xl">{country.flag}</span>
+                  <span className="font-medium">{country.name}</span>
                 </div>
               ))}
             </div>
-            <p className="text-muted-foreground mt-8 text-center">
-              Available for consulting, advisory work, and speaking engagements across DACH region and Baltic states
+          </div>
+
+          {/* Organizations */}
+          <div className="bg-card p-8 md:p-12 border-2 border-border">
+            <h3 className="text-2xl font-bold mb-8 text-center">Professional Journey</h3>
+            <p className="text-muted-foreground mb-8 text-center">
+              Research, Innovation & Leadership Roles
             </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">
+              {organizations.map((org, index) => (
+                <div 
+                  key={index}
+                  className="flex items-center justify-center p-6 border-2 border-border hover:border-primary transition-all min-h-[100px]"
+                >
+                  <span className="text-center font-medium text-sm">{org}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

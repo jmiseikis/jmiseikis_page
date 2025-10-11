@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar, Mail } from "lucide-react";
 import heroBackground from "@/assets/hero-bg.jpg";
-import profileImage from "@/assets/profile-placeholder.jpg";
+import profileImage from "@/assets/profile.jpg";
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -41,7 +41,7 @@ const Hero = () => {
             </div>
 
             {/* Key Facts */}
-            <div className="grid grid-cols-2 gap-6 py-6 border-y border-border">
+            <div className="grid grid-cols-3 gap-6 py-6 border-y border-border">
               <div>
                 <div className="text-3xl font-bold text-primary">PhD</div>
                 <div className="text-sm text-muted-foreground">Robotics & CV</div>
@@ -49,10 +49,6 @@ const Hero = () => {
               <div>
                 <div className="text-3xl font-bold text-primary">EMBA</div>
                 <div className="text-sm text-muted-foreground">Business Strategy</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-primary">50+</div>
-                <div className="text-sm text-muted-foreground">Researchers Led</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-primary">Sony AI</div>

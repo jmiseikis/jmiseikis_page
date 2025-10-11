@@ -85,13 +85,13 @@ const Publications = () => {
               <div className="space-y-4">
                 <Button variant="outline" className="w-full justify-between group" asChild>
                   <a href="https://scholar.google.com/citations?user=KeZ1-AwAAAAJ" target="_blank" rel="noopener noreferrer">
-                    <span>View on Google Scholar</span>
+                    <span>Full Publication List</span>
                     <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </a>
                 </Button>
                 <Button variant="outline" className="w-full justify-between group" asChild>
-                  <a href="https://scholar.google.com/citations?user=KeZ1-AwAAAAJ" target="_blank" rel="noopener noreferrer">
-                    <span>Full Publication List</span>
+                  <a href="https://patents.google.com/?inventor=justinas+miseikis,justinas+mi%C5%A1eikis" target="_blank" rel="noopener noreferrer">
+                    <span>Full Published Patent List</span>
                     <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </a>
                 </Button>
