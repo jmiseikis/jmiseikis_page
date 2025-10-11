@@ -1,4 +1,13 @@
 import { GraduationCap, Building2, Globe2, Award } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
+import { useEffect } from "react";
+import tuGrazLogo from "@/assets/logos/tu-graz.png";
+import osloUniLogo from "@/assets/logos/oslo-uni.png";
+import csiroLogo from "@/assets/logos/csiro.png";
+import hpLogo from "@/assets/logos/hp.png";
+import emtLogo from "@/assets/logos/emt.png";
+import melgaLogo from "@/assets/logos/melga.png";
+import yourehabLogo from "@/assets/logos/yourehab.png";
 
 const About = () => {
   const timeline = [
@@ -61,23 +70,39 @@ const About = () => {
   ];
 
   const organizations = [
-    "University of Reading",
-    "ETH Zurich",
-    "TU Graz",
-    "University of Oslo",
-    "CSIRO",
-    "Hewlett-Packard",
-    "EMT",
-    "Melga",
-    "Hocoma",
-    "YouRehab",
-    "VELTRU AG",
-    "Pixevia",
-    "F&P Robotics",
-    "Sony",
-    "Sony AI",
-    "Sony Research",
+    { name: "University of Reading", logo: null },
+    { name: "ETH Zurich", logo: null },
+    { name: "TU Graz", logo: tuGrazLogo },
+    { name: "University of Oslo", logo: osloUniLogo },
+    { name: "CSIRO", logo: csiroLogo },
+    { name: "Hewlett-Packard", logo: hpLogo },
+    { name: "EMT", logo: emtLogo },
+    { name: "Melga", logo: melgaLogo },
+    { name: "Hocoma", logo: null },
+    { name: "YouRehab", logo: yourehabLogo },
+    { name: "VELTRU AG", logo: null },
+    { name: "Pixevia", logo: null },
+    { name: "F&P Robotics", logo: null },
+    { name: "Sony", logo: null },
+    { name: "Sony AI", logo: null },
+    { name: "Sony Research", logo: null },
   ];
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: "start",
+    dragFree: true,
+  });
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    const autoScroll = setInterval(() => {
+      emblaApi.scrollNext();
+    }, 3000);
+
+    return () => clearInterval(autoScroll);
+  }, [emblaApi]);
 
   return (
     <section id="about" className="section-padding bg-secondary/30">
@@ -162,15 +187,25 @@ const About = () => {
             <p className="text-muted-foreground mb-8 text-center">
               Research, Innovation & Leadership Roles
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">
-              {organizations.map((org, index) => (
-                <div 
-                  key={index}
-                  className="flex items-center justify-center p-6 border-2 border-border hover:border-primary transition-all min-h-[100px]"
-                >
-                  <span className="text-center font-medium text-sm">{org}</span>
-                </div>
-              ))}
+            <div className="overflow-hidden" ref={emblaRef}>
+              <div className="flex gap-8">
+                {[...organizations, ...organizations].map((org, index) => (
+                  <div 
+                    key={index}
+                    className="flex-[0_0_300px] flex items-center justify-center p-6 border-2 border-border hover:border-primary transition-all min-h-[120px]"
+                  >
+                    {org.logo ? (
+                      <img 
+                        src={org.logo} 
+                        alt={org.name}
+                        className="max-w-full max-h-[80px] object-contain"
+                      />
+                    ) : (
+                      <span className="text-center font-medium text-sm">{org.name}</span>
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
