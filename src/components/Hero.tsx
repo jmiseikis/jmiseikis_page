@@ -37,6 +37,7 @@ const Hero = () => {
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-xl">
                 Strategy executive bridging advanced AI research and commercial strategy. 
                 From startups to Sony AI, turning breakthrough technology into measurable business impact.
+                Advisor and due diligence expert for investors and VCs in deep tech.
               </p>
             </div>
 

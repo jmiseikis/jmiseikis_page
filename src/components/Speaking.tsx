@@ -14,6 +14,11 @@ const Speaking = () => {
       audiences: ["Industry Events", "Academic Conferences", "Innovation Summits"],
     },
     {
+      title: "Investment & Due Diligence in Deep Tech",
+      description: "Evaluating AI and robotics ventures: what investors need to know beyond the hype",
+      audiences: ["VC Forums", "Investment Conferences", "Corporate Investors"],
+    },
+    {
       title: "Building Deep Tech Teams",
       description: "Attracting, retaining, and leading world-class researchers and engineers in competitive markets",
       audiences: ["Leadership Forums", "Tech Companies", "Academic Institutions"],

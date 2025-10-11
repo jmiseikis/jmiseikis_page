@@ -23,19 +23,19 @@ const Advisory = () => {
     },
     {
       icon: Cog,
-      title: "Technology Due Diligence",
-      description: "Expert assessment of AI/robotics capabilities for investors and acquirers. Technical depth meets business insight.",
-      industries: ["Investment", "M&A", "Partnership"],
+      title: "Due Diligence for Investors & VCs",
+      description: "Expert technical and strategic assessment of AI/robotics companies for investors, VCs, and acquirers. Deep tech evaluation with business acumen.",
+      industries: ["Venture Capital", "Investment", "M&A"],
     },
   ];
 
   const engagements = [
     "Strategic advisory for AI commercialization",
+    "Technical due diligence for VCs and investors",
     "Product strategy and roadmap development",
     "Technology stack assessment and optimization",
     "Go-to-market planning for deep tech",
-    "Stakeholder management and board advisory",
-    "Team building and talent strategy",
+    "Board advisory and stakeholder management",
   ];
 
   const scrollToContact = () => {
@@ -58,7 +58,7 @@ const Advisory = () => {
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl">
               I help organizations navigate the complex journey from cutting-edge research to commercial success. 
-              Whether you're a startup scaling AI products or an enterprise adopting emerging technology, 
+              Whether you're a startup scaling AI products, an enterprise adopting emerging technology, or an investor evaluating deep tech opportunities,
               I bring battle-tested strategy from Sony AI and beyond.
             </p>
           </div>
