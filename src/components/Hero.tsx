@@ -93,7 +93,7 @@ const Hero = () => {
                 <img 
                   src={profileImage} 
                   alt="Dr. Justinas Mišeikis"
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                  className="w-full h-full object-cover object-top grayscale hover:grayscale-0 transition-all duration-500"
                 />
               </div>
             </div>
