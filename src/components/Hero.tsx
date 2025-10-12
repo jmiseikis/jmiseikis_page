@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar, Mail } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import heroBackground from "@/assets/hero-bg.jpg";
 import profileImage from "@/assets/profile.jpg";
 

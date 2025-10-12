@@ -16,6 +16,8 @@ import veltruLogo from "@/assets/logos/veltru.png";
 import sonyLogo from "@/assets/logos/sony.png";
 import sonyAiLogo from "@/assets/logos/sony-ai.png";
 import sonyResearchLogo from "@/assets/logos/sony-research.png";
+import universityReadingLogo from "@/assets/logos/university-reading.png";
+import pixeviaLogo from "@/assets/logos/pixevia.png";
 
 const About = () => {
   const timeline = [
@@ -78,7 +80,7 @@ const About = () => {
   ];
 
   const organizations = [
-    { name: "University of Reading", logo: null },
+    { name: "University of Reading", logo: universityReadingLogo },
     { name: "ETH Zurich", logo: ethZurichLogo },
     { name: "TU Graz", logo: tuGrazLogo },
     { name: "University of Oslo", logo: uioOsloLogo },
@@ -89,7 +91,7 @@ const About = () => {
     { name: "Hocoma", logo: hocomaLogo },
     { name: "YouRehab", logo: yourehabLogo },
     { name: "VELTRU AG", logo: veltruLogo },
-    { name: "Pixevia", logo: null },
+    { name: "Pixevia", logo: pixeviaLogo },
     { name: "F&P Robotics", logo: fpRoboticsLogo },
     { name: "Sony", logo: sonyLogo },
     { name: "Sony AI", logo: sonyAiLogo },

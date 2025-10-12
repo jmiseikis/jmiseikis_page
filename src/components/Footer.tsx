@@ -1,4 +1,4 @@
-import { Linkedin, Mail, ExternalLink } from "lucide-react";
+import { Linkedin, ExternalLink } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -19,7 +19,6 @@ const Footer = () => {
         links: [
           { label: "Google Scholar", href: "#", external: true },
           { label: "Patents", href: "#", external: true },
-          { label: "Speaker Materials", href: "#", external: true },
         ],
       },
     ],
@@ -44,13 +43,6 @@ const Footer = () => {
               robotics, and corporate strategy. Based in Zurich, active across DACH and Baltics.
             </p>
             <div className="flex gap-4">
-              <a
-                href="mailto:j.miseikis@gmail.com"
-                className="p-3 bg-background/10 hover:bg-primary transition-colors group"
-                aria-label="Email"
-              >
-                <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              </a>
               <a
                 href="https://www.linkedin.com/in/justinasmiseikis/"
                 target="_blank"
