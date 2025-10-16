@@ -15,7 +15,6 @@ import hocomaLogo from "@/assets/logos/hocoma.png";
 import veltruLogo from "@/assets/logos/veltru.png";
 import sonyLogo from "@/assets/logos/sony.png";
 import sonyAiLogo from "@/assets/logos/sony-ai.png";
-import sonyResearchLogo from "@/assets/logos/sony-research.png";
 import universityReadingLogo from "@/assets/logos/university-reading.png";
 import pixeviaLogo from "@/assets/logos/pixevia.png";
 
@@ -95,7 +94,6 @@ const About = () => {
     { name: "F&P Robotics", logo: fpRoboticsLogo },
     { name: "Sony", logo: sonyLogo },
     { name: "Sony AI", logo: sonyAiLogo },
-    { name: "Sony Research", logo: sonyResearchLogo },
   ];
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
