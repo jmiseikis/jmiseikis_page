@@ -65,6 +65,8 @@ const Footer = () => {
                     {link.external ? (
                       <a
                         href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="text-background/70 hover:text-primary transition-colors inline-flex items-center gap-2 group"
                       >
                         {link.label}
