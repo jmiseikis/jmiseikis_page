@@ -175,17 +175,13 @@ const About = () => {
               <Globe2 className="w-8 h-8 text-primary" />
               <h3 className="text-2xl font-bold">Global Experience</h3>
             </div>
-            <p className="text-muted-foreground mb-6 text-center">
-              Lived, studied, and worked across 8 countries
-            </p>
             <div className="flex flex-wrap justify-center gap-4">
               {countries.map((country, index) => (
                 <div 
                   key={index}
-                  className="flex items-center gap-2 px-4 py-3 border-2 border-border hover:border-primary transition-all"
+                  className="px-4 py-3 border-2 border-border hover:border-primary transition-all"
                 >
                   <span className="text-3xl">{country.flag}</span>
-                  <span className="font-medium">{country.name}</span>
                 </div>
               ))}
             </div>

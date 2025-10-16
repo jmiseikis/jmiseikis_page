@@ -55,14 +55,12 @@ const Speaking = () => {
               Insights That <span className="text-primary">Inspire Action</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl">
-              Drawing from hands-on experience at Sony AI, F&P Robotics, and academic research, 
-              I deliver keynotes and panel discussions that bridge technical depth with strategic clarity.
+              Shared insights in consulting, advisory services and gave public speeches and keynotes on the following topics
             </p>
           </div>
 
           {/* Speaking Topics */}
           <div className="mb-16">
-            <h3 className="text-2xl font-bold mb-8">Keynote Topics</h3>
             <div className="grid md:grid-cols-2 gap-6">
               {topics.map((topic, index) => (
                 <div 
@@ -125,7 +123,7 @@ const Speaking = () => {
               onClick={scrollToContact}
               className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
             >
-              Check Availability
+              Contact Me
             </Button>
           </div>
         </div>

@@ -109,7 +109,7 @@ const Advisory = () => {
               Let's discuss how strategic guidance can help you bridge research and commercialization
             </p>
             <Button size="lg" variant="swiss" onClick={scrollToContact}>
-              Schedule a Consultation
+              Contact Me
             </Button>
           </div>
         </div>

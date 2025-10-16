@@ -17,8 +17,8 @@ const Footer = () => {
       {
         title: "Resources",
         links: [
-          { label: "Google Scholar", href: "#", external: true },
-          { label: "Patents", href: "#", external: true },
+          { label: "Google Scholar", href: "https://scholar.google.com/citations?user=KeZ1-AwAAAAJ", external: true },
+          { label: "Patents", href: "https://patents.google.com/?inventor=justinas+miseikis,justinas+mi%C5%A1eikis", external: true },
         ],
       },
     ],
