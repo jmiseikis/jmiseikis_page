@@ -34,6 +34,8 @@ const Speaking = () => {
     "LOGIN Conference (biggest tech event in Baltics)",
     "Innovation Roundtable",
     "ETH Zürich & ETH Entrepreneurship Club",
+    "Sony AI Conference",
+    "VentureLab Engineering Ecosystem Event",
   ];
 
   const scrollToContact = () => {
