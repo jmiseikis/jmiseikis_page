@@ -5,6 +5,14 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { z } from "zod";
+
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  organization: z.string().max(100, "Organization must be less than 100 characters").optional(),
+  message: z.string().trim().min(10, "Message must be at least 10 characters").max(2000, "Message must be less than 2000 characters")
+});
 
 const Contact = () => {
   const { toast } = useToast();
@@ -19,11 +27,14 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Basic validation
-    if (!formData.name || !formData.email || !formData.message) {
+    // Validate form data with Zod
+    const result = contactSchema.safeParse(formData);
+    
+    if (!result.success) {
+      const firstError = result.error.errors[0];
       toast({
-        title: "Missing Information",
-        description: "Please fill in all required fields",
+        title: "Validation Error",
+        description: firstError.message,
         variant: "destructive",
       });
       return;
@@ -33,7 +44,7 @@ const Contact = () => {
 
     try {
       const { error } = await supabase.functions.invoke('send-contact-email', {
-        body: formData,
+        body: result.data,
       });
 
       if (error) throw error;
