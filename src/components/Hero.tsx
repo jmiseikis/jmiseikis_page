@@ -26,7 +26,7 @@ const Hero = () => {
             <div className="space-y-4">
               <div className="inline-block">
                 <span className="text-primary font-medium tracking-wider uppercase text-sm">
-                  Technology Expert • Innovation Advisor
+                  Technology Expert • Innovation Advisor • Keynote Speaker
                 </span>
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
