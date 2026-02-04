@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import CalendarDropdown from "@/components/tech-events/CalendarDropdown";
+import DateRangeFilter from "@/components/tech-events/DateRangeFilter";
 
 interface TechEvent {
   name: string;
@@ -52,6 +53,20 @@ const TechEvents = () => {
   const [locationFilter, setLocationFilter] = useState<string>("all");
   const [scopeFilter, setScopeFilter] = useState<string>("all");
   const [priceFilter, setPriceFilter] = useState<string>("all");
+  const [startDateFilter, setStartDateFilter] = useState<Date | undefined>(undefined);
+  const [endDateFilter, setEndDateFilter] = useState<Date | undefined>(undefined);
+
+  // Helper to parse Google Sheets date format
+  const parseSheetDate = (dateStr: string): Date | null => {
+    if (!dateStr) return null;
+    const dateMatch = dateStr.match(/Date\((\d+),(\d+),(\d+)\)/);
+    if (dateMatch) {
+      const [, year, month, day] = dateMatch;
+      return new Date(parseInt(year), parseInt(month), parseInt(day));
+    }
+    const date = new Date(dateStr);
+    return isNaN(date.getTime()) ? null : date;
+  };
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -149,10 +164,22 @@ const TechEvents = () => {
         if (priceFilter === "paid" && (price.includes("free") || price.includes("invite"))) return false;
         if (priceFilter === "invite" && !price.includes("invite")) return false;
       }
+
+      // Date range filter
+      if (startDateFilter || endDateFilter) {
+        const eventStartDate = parseSheetDate(event.startDate);
+        const eventEndDate = parseSheetDate(event.finishDate);
+        
+        if (!eventStartDate || !eventEndDate) return false;
+        
+        // Check if event overlaps with the filter range
+        if (startDateFilter && eventEndDate < startDateFilter) return false;
+        if (endDateFilter && eventStartDate > endDateFilter) return false;
+      }
       
       return true;
     });
-  }, [events, searchQuery, categoryFilter, sizeFilter, locationFilter, scopeFilter, priceFilter]);
+  }, [events, searchQuery, categoryFilter, sizeFilter, locationFilter, scopeFilter, priceFilter, startDateFilter, endDateFilter]);
 
   const formatDate = (dateStr: string) => {
     if (!dateStr) return "";
@@ -187,10 +214,13 @@ const TechEvents = () => {
     setLocationFilter("all");
     setScopeFilter("all");
     setPriceFilter("all");
+    setStartDateFilter(undefined);
+    setEndDateFilter(undefined);
   };
 
   const hasActiveFilters = searchQuery || categoryFilter !== "all" || sizeFilter !== "all" || 
-    locationFilter !== "all" || scopeFilter !== "all" || priceFilter !== "all";
+    locationFilter !== "all" || scopeFilter !== "all" || priceFilter !== "all" ||
+    startDateFilter !== undefined || endDateFilter !== undefined;
 
   return (
     <div className="min-h-screen bg-background">
@@ -323,6 +353,13 @@ const TechEvents = () => {
                   <SelectItem value="invite">Invite Only</SelectItem>
                 </SelectContent>
               </Select>
+
+              <DateRangeFilter
+                startDate={startDateFilter}
+                endDate={endDateFilter}
+                onStartDateChange={setStartDateFilter}
+                onEndDateChange={setEndDateFilter}
+              />
 
               {hasActiveFilters && (
                 <Button variant="ghost" size="sm" onClick={clearFilters} className="h-9">
