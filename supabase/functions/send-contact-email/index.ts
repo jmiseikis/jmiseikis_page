@@ -12,7 +12,8 @@ const contactSchema = z.object({
   name: z.string().trim().min(1).max(100),
   email: z.string().trim().email().max(255),
   organization: z.string().max(100).optional(),
-  message: z.string().trim().min(10).max(2000)
+  message: z.string().trim().min(10).max(2000),
+  captchaToken: z.string().min(1, "CAPTCHA verification required")
 });
 
 // Simple in-memory rate limiter
@@ -47,6 +48,29 @@ function sanitizeHtml(text: string): string {
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#x27;")
     .replace(/\//g, "&#x2F;");
+}
+
+// Verify hCaptcha token
+async function verifyCaptcha(token: string): Promise<boolean> {
+  const secret = Deno.env.get("HCAPTCHA_SECRET_KEY");
+  if (!secret) {
+    console.error("HCAPTCHA_SECRET_KEY is not configured");
+    return false;
+  }
+
+  try {
+    const response = await fetch("https://api.hcaptcha.com/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `response=${encodeURIComponent(token)}&secret=${encodeURIComponent(secret)}`,
+    });
+
+    const data = await response.json();
+    return data.success === true;
+  } catch (error) {
+    console.error("CAPTCHA verification failed:", error);
+    return false;
+  }
 }
 
 const handler = async (req: Request): Promise<Response> => {
@@ -92,14 +116,34 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    const { name, email, organization, message } = validationResult.data;
+    const { name, email, organization, message, captchaToken } = validationResult.data;
+
+    // Verify CAPTCHA
+    const captchaValid = await verifyCaptcha(captchaToken);
+    if (!captchaValid) {
+      console.log("CAPTCHA verification failed for IP:", ip);
+      return new Response(
+        JSON.stringify({ error: "CAPTCHA verification failed. Please try again." }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
 
     console.log("Processing contact form submission");
 
     const resendApiKey = Deno.env.get("RESEND_API_KEY");
     
     if (!resendApiKey) {
-      throw new Error("RESEND_API_KEY is not configured");
+      console.error("RESEND_API_KEY is not configured");
+      return new Response(
+        JSON.stringify({ error: "Unable to process request. Please try again later." }),
+        {
+          status: 500,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
     }
 
     // Sanitize all user inputs for HTML email
@@ -134,13 +178,19 @@ const handler = async (req: Request): Promise<Response> => {
     if (!emailResponse.ok) {
       const errorText = await emailResponse.text();
       console.error("Resend API error:", errorText);
-      throw new Error(`Failed to send email: ${errorText}`);
+      return new Response(
+        JSON.stringify({ error: "Unable to send message. Please try again later." }),
+        {
+          status: 500,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
     }
 
     const result = await emailResponse.json();
     console.log("Email sent successfully");
 
-    return new Response(JSON.stringify(result), {
+    return new Response(JSON.stringify({ success: true }), {
       status: 200,
       headers: {
         "Content-Type": "application/json",
@@ -150,7 +200,7 @@ const handler = async (req: Request): Promise<Response> => {
   } catch (error: any) {
     console.error("Error in send-contact-email function:", error);
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ error: "Unable to process request. Please try again later." }),
       {
         status: 500,
         headers: { "Content-Type": "application/json", ...corsHeaders },
