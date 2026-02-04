@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { MapPin, Linkedin, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,6 +6,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { z } from "zod";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
+
+const HCAPTCHA_SITE_KEY = "10000000-ffff-ffff-ffff-000000000001"; // Test key - replace with production key
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
@@ -17,6 +20,8 @@ const contactSchema = z.object({
 const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const captchaRef = useRef<HCaptcha>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -40,11 +45,21 @@ const Contact = () => {
       return;
     }
 
+    // Check CAPTCHA
+    if (!captchaToken) {
+      toast({
+        title: "Verification Required",
+        description: "Please complete the CAPTCHA verification.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
       const { error } = await supabase.functions.invoke('send-contact-email', {
-        body: result.data,
+        body: { ...result.data, captchaToken },
       });
 
       if (error) throw error;
@@ -55,6 +70,8 @@ const Contact = () => {
       });
 
       setFormData({ name: "", email: "", organization: "", message: "" });
+      setCaptchaToken(null);
+      captchaRef.current?.resetCaptcha();
     } catch (error) {
       console.error("Error sending message:", error);
       toast({
@@ -62,6 +79,9 @@ const Contact = () => {
         description: "Failed to send message. Please try again or contact directly via LinkedIn.",
         variant: "destructive",
       });
+      // Reset captcha on error
+      setCaptchaToken(null);
+      captchaRef.current?.resetCaptcha();
     } finally {
       setIsSubmitting(false);
     }
@@ -72,6 +92,14 @@ const Contact = () => {
       ...prev,
       [e.target.name]: e.target.value
     }));
+  };
+
+  const handleCaptchaVerify = (token: string) => {
+    setCaptchaToken(token);
+  };
+
+  const handleCaptchaExpire = () => {
+    setCaptchaToken(null);
   };
 
   return (
@@ -157,6 +185,15 @@ const Contact = () => {
                     required
                     rows={6}
                     className="w-full resize-none"
+                  />
+                </div>
+
+                <div className="flex justify-center">
+                  <HCaptcha
+                    ref={captchaRef}
+                    sitekey={HCAPTCHA_SITE_KEY}
+                    onVerify={handleCaptchaVerify}
+                    onExpire={handleCaptchaExpire}
                   />
                 </div>
 
