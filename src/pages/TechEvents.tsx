@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import CalendarDropdown from "@/components/tech-events/CalendarDropdown";
 
 interface TechEvent {
   name: string;
@@ -410,17 +411,29 @@ const TechEvents = () => {
                       {event.ticketPrice}
                     </span>
                   </div>
-                  {event.officialUrl && event.officialUrl !== "[URL]" && (
-                    <a
-                      href={event.officialUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-4 inline-flex items-center gap-2 text-sm text-primary hover:underline"
-                    >
-                      <span>Visit website</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </a>
-                  )}
+                  <div className="flex items-center justify-between mt-4 pt-3 border-t border-border">
+                    {event.officialUrl && event.officialUrl !== "[URL]" && (
+                      <a
+                        href={event.officialUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
+                      >
+                        <span>Visit website</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                    <CalendarDropdown
+                      event={{
+                        name: event.name,
+                        startDate: event.startDate,
+                        finishDate: event.finishDate,
+                        location: event.location,
+                        description: event.description,
+                        officialUrl: event.officialUrl,
+                      }}
+                    />
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -474,21 +487,34 @@ const TechEvents = () => {
                     </p>
                   </div>
                   
-                  <div className="flex flex-col items-end gap-2 min-w-[120px]">
+                  <div className="flex flex-col items-end gap-3 min-w-[140px]">
                     <span className="text-lg font-bold text-primary">
                       {event.ticketPrice}
                     </span>
-                    {event.officialUrl && event.officialUrl !== "[URL]" && (
-                      <a
-                        href={event.officialUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
-                      >
-                        <span>Website</span>
-                        <ExternalLink className="w-3.5 h-3.5" />
-                      </a>
-                    )}
+                    <div className="flex items-center gap-2">
+                      <CalendarDropdown
+                        event={{
+                          name: event.name,
+                          startDate: event.startDate,
+                          finishDate: event.finishDate,
+                          location: event.location,
+                          description: event.description,
+                          officialUrl: event.officialUrl,
+                        }}
+                        variant="text"
+                      />
+                      {event.officialUrl && event.officialUrl !== "[URL]" && (
+                        <a
+                          href={event.officialUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
+                        >
+                          <span>Website</span>
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
