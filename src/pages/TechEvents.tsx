@@ -1,13 +1,15 @@
 import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Calendar, MapPin, Users, ExternalLink, Filter, List, LayoutGrid, Loader2, AlertCircle } from "lucide-react";
+import { ArrowLeft, Calendar, MapPin, Users, ExternalLink, Filter, List, LayoutGrid, Loader2, AlertCircle, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import CalendarDropdown from "@/components/tech-events/CalendarDropdown";
 import DateRangeFilter from "@/components/tech-events/DateRangeFilter";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface TechEvent {
   name: string;
@@ -45,6 +47,8 @@ const TechEvents = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const isMobile = useIsMobile();
   
   // Filters
   const [searchQuery, setSearchQuery] = useState("");
@@ -269,6 +273,25 @@ const TechEvents = () => {
               </div>
               
               <div className="flex items-center gap-2">
+                {/* Mobile filter toggle */}
+                {isMobile && (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setFiltersOpen(!filtersOpen)}
+                    className="h-9 gap-2"
+                  >
+                    <Filter className="w-4 h-4" />
+                    Filters
+                    {hasActiveFilters && (
+                      <Badge variant="secondary" className="h-5 w-5 p-0 flex items-center justify-center text-xs">
+                        !
+                      </Badge>
+                    )}
+                    <ChevronDown className={`w-4 h-4 transition-transform ${filtersOpen ? 'rotate-180' : ''}`} />
+                  </Button>
+                )}
+                
                 <div className="flex border border-border">
                   <Button
                     variant={viewMode === "grid" ? "default" : "ghost"}
@@ -290,83 +313,166 @@ const TechEvents = () => {
               </div>
             </div>
 
-            {/* Filter Row */}
-            <div className="flex flex-wrap gap-3 items-center">
-              <Filter className="w-4 h-4 text-muted-foreground" />
-              
-              <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-                <SelectTrigger className="w-[130px] h-9">
-                  <SelectValue placeholder="Category" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Categories</SelectItem>
-                  {filterOptions.categories.map(cat => (
-                    <SelectItem key={cat} value={cat}>{cat}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+            {/* Filter Row - Collapsible on mobile, always visible on desktop */}
+            {isMobile ? (
+              <Collapsible open={filtersOpen} onOpenChange={setFiltersOpen}>
+                <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+                  <div className="flex flex-wrap gap-3 items-center pt-2">
+                    <Filter className="w-4 h-4 text-muted-foreground" />
+                    
+                    <Select value={categoryFilter} onValueChange={setCategoryFilter}>
+                      <SelectTrigger className="w-[130px] h-9">
+                        <SelectValue placeholder="Category" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">All Categories</SelectItem>
+                        {filterOptions.categories.map(cat => (
+                          <SelectItem key={cat} value={cat}>{cat}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
 
-              <Select value={sizeFilter} onValueChange={setSizeFilter}>
-                <SelectTrigger className="w-[110px] h-9">
-                  <SelectValue placeholder="Size" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Sizes</SelectItem>
-                  {filterOptions.sizes.map(size => (
-                    <SelectItem key={size} value={size}>{size}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+                    <Select value={sizeFilter} onValueChange={setSizeFilter}>
+                      <SelectTrigger className="w-[110px] h-9">
+                        <SelectValue placeholder="Size" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">All Sizes</SelectItem>
+                        {filterOptions.sizes.map(size => (
+                          <SelectItem key={size} value={size}>{size}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
 
-              <Select value={locationFilter} onValueChange={setLocationFilter}>
-                <SelectTrigger className="w-[110px] h-9">
-                  <SelectValue placeholder="Canton" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Cantons</SelectItem>
-                  {filterOptions.locations.map(loc => (
-                    <SelectItem key={loc} value={loc}>{loc}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+                    <Select value={locationFilter} onValueChange={setLocationFilter}>
+                      <SelectTrigger className="w-[110px] h-9">
+                        <SelectValue placeholder="Canton" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">All Cantons</SelectItem>
+                        {filterOptions.locations.map(loc => (
+                          <SelectItem key={loc} value={loc}>{loc}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
 
-              <Select value={scopeFilter} onValueChange={setScopeFilter}>
-                <SelectTrigger className="w-[140px] h-9">
-                  <SelectValue placeholder="Scope" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Scopes</SelectItem>
-                  {filterOptions.scopes.map(scope => (
-                    <SelectItem key={scope} value={scope}>{scope}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+                    <Select value={scopeFilter} onValueChange={setScopeFilter}>
+                      <SelectTrigger className="w-[140px] h-9">
+                        <SelectValue placeholder="Scope" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">All Scopes</SelectItem>
+                        {filterOptions.scopes.map(scope => (
+                          <SelectItem key={scope} value={scope}>{scope}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
 
-              <Select value={priceFilter} onValueChange={setPriceFilter}>
-                <SelectTrigger className="w-[120px] h-9">
-                  <SelectValue placeholder="Price" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Prices</SelectItem>
-                  <SelectItem value="free">Free</SelectItem>
-                  <SelectItem value="paid">Paid</SelectItem>
-                  <SelectItem value="invite">Invite Only</SelectItem>
-                </SelectContent>
-              </Select>
+                    <Select value={priceFilter} onValueChange={setPriceFilter}>
+                      <SelectTrigger className="w-[120px] h-9">
+                        <SelectValue placeholder="Price" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">All Prices</SelectItem>
+                        <SelectItem value="free">Free</SelectItem>
+                        <SelectItem value="paid">Paid</SelectItem>
+                        <SelectItem value="invite">Invite Only</SelectItem>
+                      </SelectContent>
+                    </Select>
 
-              <DateRangeFilter
-                startDate={startDateFilter}
-                endDate={endDateFilter}
-                onStartDateChange={setStartDateFilter}
-                onEndDateChange={setEndDateFilter}
-              />
+                    <DateRangeFilter
+                      startDate={startDateFilter}
+                      endDate={endDateFilter}
+                      onStartDateChange={setStartDateFilter}
+                      onEndDateChange={setEndDateFilter}
+                    />
 
-              {hasActiveFilters && (
-                <Button variant="ghost" size="sm" onClick={clearFilters} className="h-9">
-                  Clear all
-                </Button>
-              )}
-            </div>
+                    {hasActiveFilters && (
+                      <Button variant="ghost" size="sm" onClick={clearFilters} className="h-9">
+                        Clear all
+                      </Button>
+                    )}
+                  </div>
+                </CollapsibleContent>
+              </Collapsible>
+            ) : (
+              <div className="flex flex-wrap gap-3 items-center">
+                <Filter className="w-4 h-4 text-muted-foreground" />
+                
+                <Select value={categoryFilter} onValueChange={setCategoryFilter}>
+                  <SelectTrigger className="w-[130px] h-9">
+                    <SelectValue placeholder="Category" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Categories</SelectItem>
+                    {filterOptions.categories.map(cat => (
+                      <SelectItem key={cat} value={cat}>{cat}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+
+                <Select value={sizeFilter} onValueChange={setSizeFilter}>
+                  <SelectTrigger className="w-[110px] h-9">
+                    <SelectValue placeholder="Size" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Sizes</SelectItem>
+                    {filterOptions.sizes.map(size => (
+                      <SelectItem key={size} value={size}>{size}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+
+                <Select value={locationFilter} onValueChange={setLocationFilter}>
+                  <SelectTrigger className="w-[110px] h-9">
+                    <SelectValue placeholder="Canton" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Cantons</SelectItem>
+                    {filterOptions.locations.map(loc => (
+                      <SelectItem key={loc} value={loc}>{loc}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+
+                <Select value={scopeFilter} onValueChange={setScopeFilter}>
+                  <SelectTrigger className="w-[140px] h-9">
+                    <SelectValue placeholder="Scope" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Scopes</SelectItem>
+                    {filterOptions.scopes.map(scope => (
+                      <SelectItem key={scope} value={scope}>{scope}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+
+                <Select value={priceFilter} onValueChange={setPriceFilter}>
+                  <SelectTrigger className="w-[120px] h-9">
+                    <SelectValue placeholder="Price" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Prices</SelectItem>
+                    <SelectItem value="free">Free</SelectItem>
+                    <SelectItem value="paid">Paid</SelectItem>
+                    <SelectItem value="invite">Invite Only</SelectItem>
+                  </SelectContent>
+                </Select>
+
+                <DateRangeFilter
+                  startDate={startDateFilter}
+                  endDate={endDateFilter}
+                  onStartDateChange={setStartDateFilter}
+                  onEndDateChange={setEndDateFilter}
+                />
+
+                {hasActiveFilters && (
+                  <Button variant="ghost" size="sm" onClick={clearFilters} className="h-9">
+                    Clear all
+                  </Button>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </section>

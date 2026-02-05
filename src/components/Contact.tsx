@@ -8,7 +8,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { z } from "zod";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 
-const HCAPTCHA_SITE_KEY = "10000000-ffff-ffff-ffff-000000000001"; // Test key - replace with production key
+const HCAPTCHA_SITE_KEY = import.meta.env.VITE_HCAPTCHA_SITE_KEY || "10000000-ffff-ffff-ffff-000000000001";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
