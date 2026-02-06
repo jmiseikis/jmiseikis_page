@@ -9,7 +9,8 @@ import { z } from "zod";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 // hCaptcha site key - this is a PUBLIC key, safe to include in code
-// Get your production key from https://dashboard.hcaptcha.com
+// IMPORTANT: Make sure your domain is added in hCaptcha dashboard settings
+// For production, add: *.lovable.app and your custom domain
 const HCAPTCHA_SITE_KEY = "c3d2c0f6-09b9-41db-9a46-b8ce29827fe7";
 
 const contactSchema = z.object({
