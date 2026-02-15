@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ExternalLink, Filter, List, LayoutGrid, Loader2, AlertCircle, ChevronDown, Globe, Mail, Building2, Target, DollarSign, Users, Search } from "lucide-react";
+import { ArrowLeft, ExternalLink, Filter, List, LayoutGrid, Loader2, AlertCircle, ChevronDown, Globe, Linkedin, Building2, Target, DollarSign, Users, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
@@ -18,7 +18,7 @@ interface VC {
   officialUrl: string;
   crunchbaseUrl: string;
   pitchbookUrl: string;
-  contactEmail: string;
+  linkedinUrl: string;
   description: string;
 }
 
@@ -89,7 +89,7 @@ const SwissVCs = () => {
             officialUrl: cells[5]?.v || "",
             crunchbaseUrl: cells[6]?.v || "",
             pitchbookUrl: cells[7]?.v || "",
-            contactEmail: cells[8]?.v || "",
+            linkedinUrl: cells[8]?.v || "",
             description: cells[9]?.v || "",
           };
         }).filter((vc: VC) => vc.name);
@@ -240,11 +240,11 @@ const SwissVCs = () => {
           <span>Pitchbook</span>
         </a>
       )}
-      {vc.contactEmail && vc.contactEmail !== "N/A" && (
-        <a href={`mailto:${vc.contactEmail}`}
+      {isValidUrl(vc.linkedinUrl) && (
+        <a href={vc.linkedinUrl} target="_blank" rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary hover:underline">
-          <Mail className="w-3.5 h-3.5" />
-          <span>Email</span>
+          <Linkedin className="w-3.5 h-3.5" />
+          <span>LinkedIn</span>
         </a>
       )}
     </div>
