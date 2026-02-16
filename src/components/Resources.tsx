@@ -74,7 +74,7 @@ const Resources = () => {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold group-hover:text-primary transition-colors">
-                    Swiss Venture Capital and Funds
+                    Swiss VCs and Funds
                   </h3>
                   <p className="text-muted-foreground">Directory of Swiss VCs</p>
                 </div>
