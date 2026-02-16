@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ExternalLink, Filter, List, LayoutGrid, Loader2, AlertCircle, ChevronDown, Globe, Linkedin, Building2, Target, DollarSign, Users, Search } from "lucide-react";
+import { ArrowLeft, ExternalLink, Filter, List, LayoutGrid, Loader2, AlertCircle, ChevronDown, Globe, Linkedin, Building2, Target, DollarSign, Users, Search, Banknote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
@@ -19,6 +19,7 @@ interface VC {
   crunchbaseUrl: string;
   pitchbookUrl: string;
   linkedinUrl: string;
+  estimatedFundSize: string;
   description: string;
 }
 
@@ -90,7 +91,8 @@ const SwissVCs = () => {
             crunchbaseUrl: cells[6]?.v || "",
             pitchbookUrl: cells[7]?.v || "",
             linkedinUrl: cells[8]?.v || "",
-            description: cells[9]?.v || "",
+            estimatedFundSize: cells[9]?.v || "",
+            description: cells[10]?.v || "",
           };
         }).filter((vc: VC) => vc.name);
 
@@ -386,6 +388,12 @@ const SwissVCs = () => {
                       <Target className="w-3.5 h-3.5" />
                       {vc.targetGeography}
                     </span>
+                    {vc.estimatedFundSize && vc.estimatedFundSize !== "N/A" && (
+                      <span className="flex items-center gap-1.5">
+                        <Banknote className="w-3.5 h-3.5" />
+                        {vc.estimatedFundSize}
+                      </span>
+                    )}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="flex-1 flex flex-col">
@@ -433,6 +441,12 @@ const SwissVCs = () => {
                         <Target className="w-4 h-4" />
                         {vc.targetGeography}
                       </span>
+                      {vc.estimatedFundSize && vc.estimatedFundSize !== "N/A" && (
+                        <span className="flex items-center gap-1.5">
+                          <Banknote className="w-4 h-4" />
+                          {vc.estimatedFundSize}
+                        </span>
+                      )}
                     </div>
 
                     <p className="text-muted-foreground line-clamp-2">{vc.description}</p>

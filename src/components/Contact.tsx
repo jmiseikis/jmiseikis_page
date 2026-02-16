@@ -6,12 +6,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { z } from "zod";
-import HCaptcha from "@hcaptcha/react-hcaptcha";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 
-// hCaptcha site key - this is a PUBLIC key, safe to include in code
-// IMPORTANT: Make sure your domain is added in hCaptcha dashboard settings
-// For production, add: *.lovable.app and your custom domain
-const HCAPTCHA_SITE_KEY = "c3d2c0f6-09b9-41db-9a46-b8ce29827fe7";
+// Cloudflare Turnstile site key - this is a PUBLIC key, safe to include in code
+const TURNSTILE_SITE_KEY = "0x4AAAAAACdRLN4Eb1C9KeHc";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
@@ -24,7 +22,7 @@ const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
-  const captchaRef = useRef<HCaptcha>(null);
+  const turnstileRef = useRef<TurnstileInstance>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -74,7 +72,7 @@ const Contact = () => {
 
       setFormData({ name: "", email: "", organization: "", message: "" });
       setCaptchaToken(null);
-      captchaRef.current?.resetCaptcha();
+      turnstileRef.current?.reset();
     } catch (error) {
       console.error("Error sending message:", error);
       toast({
@@ -84,7 +82,7 @@ const Contact = () => {
       });
       // Reset captcha on error
       setCaptchaToken(null);
-      captchaRef.current?.resetCaptcha();
+      turnstileRef.current?.reset();
     } finally {
       setIsSubmitting(false);
     }
@@ -97,11 +95,11 @@ const Contact = () => {
     }));
   };
 
-  const handleCaptchaVerify = (token: string) => {
+  const handleTurnstileSuccess = (token: string) => {
     setCaptchaToken(token);
   };
 
-  const handleCaptchaExpire = () => {
+  const handleTurnstileExpire = () => {
     setCaptchaToken(null);
   };
 
@@ -192,11 +190,11 @@ const Contact = () => {
                 </div>
 
                 <div className="flex justify-center">
-                  <HCaptcha
-                    ref={captchaRef}
-                    sitekey={HCAPTCHA_SITE_KEY}
-                    onVerify={handleCaptchaVerify}
-                    onExpire={handleCaptchaExpire}
+                  <Turnstile
+                    ref={turnstileRef}
+                    siteKey={TURNSTILE_SITE_KEY}
+                    onSuccess={handleTurnstileSuccess}
+                    onExpire={handleTurnstileExpire}
                   />
                 </div>
 
