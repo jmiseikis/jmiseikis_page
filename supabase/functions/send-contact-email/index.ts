@@ -50,25 +50,25 @@ function sanitizeHtml(text: string): string {
     .replace(/\//g, "&#x2F;");
 }
 
-// Verify hCaptcha token
+// Verify Cloudflare Turnstile token
 async function verifyCaptcha(token: string): Promise<boolean> {
-  const secret = Deno.env.get("HCAPTCHA_SECRET_KEY");
+  const secret = Deno.env.get("TURNSTILE_SECRET_KEY");
   if (!secret) {
-    console.error("HCAPTCHA_SECRET_KEY is not configured");
+    console.error("TURNSTILE_SECRET_KEY is not configured");
     return false;
   }
 
   try {
-    const response = await fetch("https://api.hcaptcha.com/siteverify", {
+    const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
       method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `response=${encodeURIComponent(token)}&secret=${encodeURIComponent(secret)}`,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ secret, response: token }),
     });
 
     const data = await response.json();
     return data.success === true;
   } catch (error) {
-    console.error("CAPTCHA verification failed:", error);
+    console.error("Turnstile verification failed:", error);
     return false;
   }
 }
