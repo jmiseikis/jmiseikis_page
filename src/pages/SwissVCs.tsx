@@ -87,11 +87,11 @@ const SwissVCs = () => {
             investmentRounds: cells[2]?.v || "",
             targetGeography: cells[3]?.v || "",
             targetAudience: cells[4]?.v || "",
-            officialUrl: cells[5]?.v || "",
-            crunchbaseUrl: cells[6]?.v || "",
-            pitchbookUrl: cells[7]?.v || "",
-            linkedinUrl: cells[8]?.v || "",
-            estimatedFundSize: cells[9]?.v || "",
+            estimatedFundSize: cells[5]?.v || "",
+            officialUrl: cells[6]?.v || "",
+            crunchbaseUrl: cells[7]?.v || "",
+            pitchbookUrl: cells[8]?.v || "",
+            linkedinUrl: cells[9]?.v || "",
             description: cells[10]?.v || "",
           };
         }).filter((vc: VC) => vc.name);
