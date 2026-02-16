@@ -269,7 +269,7 @@ const SwissVCs = () => {
               </span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Swiss <span className="text-primary">Venture Capital</span>
+              Swiss <span className="text-primary">Venture Capital and Funds</span>
             </h1>
             <p className="text-xl text-background/70 max-w-2xl">
               A comprehensive directory of venture capital firms investing in Swiss startups.
