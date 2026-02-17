@@ -78,8 +78,8 @@ const SwissVCs = () => {
         const data = JSON.parse(jsonMatch[1]);
         const rows = data.table.rows;
 
-        // Row 0 is empty, row 1 is headers, data starts at row 2
-        const parsed: VC[] = rows.slice(2).map((row: { c: Array<{ v: string | null } | null> }) => {
+        // Row 0 is headers, data starts at row 1
+        const parsed: VC[] = rows.slice(1).map((row: { c: Array<{ v: string | null } | null> }) => {
           const cells = row.c;
           return {
             name: cells[0]?.v || "",
