@@ -273,7 +273,6 @@ const SwissVCs = () => {
             </h1>
             <p className="text-xl text-background/70 max-w-2xl">
               A comprehensive directory of venture capital firms investing in Swiss startups.
-              From deep tech and biotech to fintech and climate — find the right investor for your stage and sector.
             </p>
           </div>
         </div>
