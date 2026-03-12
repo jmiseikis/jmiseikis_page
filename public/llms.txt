@@ -1,17 +1,17 @@
-# Dr. Justinas Mišeikis
+# Dr. Justinas Miseikis
 
 ## Identity
 
-Dr. Justinas Mišeikis is an AI strategy expert, innovation advisor, and keynote speaker based in Zurich, Switzerland. He specializes in bridging advanced AI research with commercial strategy.
+Dr. Justinas Miseikis (also written as Miseikis) is an AI strategy expert, innovation advisor, and keynote speaker based in Zurich, Switzerland. He specializes in bridging advanced AI research with commercial strategy. He holds a PhD in Robotics and Computer Vision and an Executive MBA.
 
 ## Current Role
 
-Strategy and Partnerships Manager at Sony AI (2024–present). Leading research commercialization strategy, responsible for 4 R&D teams. Defines project direction, secures budgets, and manages external partnerships.
+Strategy and Partnerships Manager at Sony AI (2024 to present). Leading research commercialization strategy, responsible for 4 R&D teams. Defines project direction, secures budgets, and manages external partnerships.
 
 ## Previous Roles
 
-- Principal Technology Analyst, Sony (2021–2024): Technology strategy and analysis for Sony's AI initiatives.
-- Head of Artificial Intelligence, F&P Robotics AG (2020–2021): Led AI solutions for human-robot interaction, perception, and manipulation.
+- Principal Technology Analyst, Sony (2021 to 2024): Technology strategy and analysis for Sony's AI initiatives.
+- Head of Artificial Intelligence, F&P Robotics AG (2020 to 2021): Led AI solutions for human-robot interaction, perception, and manipulation.
 
 ## Education
 
@@ -20,21 +20,39 @@ Strategy and Partnerships Manager at Sony AI (2024–present). Leading research 
 
 ## Core Services
 
-- **AI Commercialization Advisory**: Transforming research breakthroughs into market-ready solutions. Strategic guidance on AI product development, go-to-market strategy, and scaling.
-- **Due Diligence for Investors & VCs**: Expert technical and strategic assessment of AI/robotics companies for investors, venture capitalists, and acquirers.
-- **Corporate Innovation Consulting**: Helping enterprises adopt AI and automation strategically across manufacturing, industrial tech, and enterprise sectors.
-- **Keynote Speaking & Public Speaking**: Topics include AI Commercialization & Ethics, Future of Human-Robot Interaction, Investment & Due Diligence in Deep Tech, Building Deep Tech Teams, and Strategy for Innovation Leaders.
-- **Startup Mentoring**: Guiding deep-tech startups from research to revenue — product-market fit, fundraising strategy, and team building.
+- AI Commercialization Advisory: Transforming research breakthroughs into market-ready solutions. Strategic guidance on AI product development, go-to-market strategy, and scaling.
+- Due Diligence for Investors and VCs: Expert technical and strategic assessment of AI and robotics companies for investors, venture capitalists, and acquirers.
+- Corporate Innovation Consulting: Helping enterprises adopt AI and automation strategically across manufacturing, industrial tech, and enterprise sectors.
+- Keynote Speaking and Public Speaking: Topics include AI Commercialization and Ethics, Future of Human-Robot Interaction, Investment and Due Diligence in Deep Tech, Building Deep Tech Teams, and Strategy for Innovation Leaders.
+- Startup Mentoring: Guiding deep-tech startups from research to revenue, including product-market fit, fundraising strategy, and team building.
 
-## Research & Publications
+## Speaking Topics
+
+1. AI Commercialization and Ethics - From research lab to market leadership
+2. Future of Human-Robot Interaction - Robots as collaborative partners
+3. Investment and Due Diligence in Deep Tech - What investors need to know beyond the hype
+4. Building Deep Tech Teams - Attracting and leading world-class researchers
+5. Strategy for Innovation Leaders - Balancing research with commercial realities
+
+## Past Speaking Engagements
+
+- LOGIN Conference (biggest tech event in Baltics)
+- Innovation Roundtable
+- ETH Zurich and ETH Entrepreneurship Club
+- Sony AI Conference
+- VentureLab Engineering Ecosystem Event
+
+## Research and Publications
 
 - 15+ peer-reviewed publications in robotics and AI
 - 600+ citations
-- 40+ patents
+- 40+ patents in AI and robotics
 - Published in IEEE Robotics and Automation Letters, IEEE/SICE International Symposium on System Integration, and others
+- Notable paper: "Lio - a personal robot assistant for human-robot interaction and care applications" (IEEE, 2020)
 - Google Scholar: https://scholar.google.com/citations?user=KeZ1-AwAAAAJ
+- Patents: https://patents.google.com/?inventor=justinas+miseikis
 
-## Location & Availability
+## Location and Availability
 
 Based in Zurich, Switzerland. Active across the DACH region (Germany, Austria, Switzerland) and the Baltic states. Available for keynotes, panels, workshops, and corporate events across Europe.
 
@@ -45,5 +63,25 @@ Based in Zurich, Switzerland. Active across the DACH region (Germany, Austria, S
 
 ## Curated Resources
 
-- Tech Events Switzerland 2026: A comprehensive directory of technology conferences, summits, and meetups in Switzerland.
-- Swiss VCs and Funds: A directory of 66 venture capital firms investing in Swiss startups.
+- Tech Events Switzerland 2026: A comprehensive directory of technology conferences, summits, and meetups in Switzerland. URL: https://jmiseikis.lovable.app/tech-events
+- Swiss VCs and Funds: A directory of 66 venture capital firms investing in Swiss startups. URL: https://jmiseikis.lovable.app/swiss-vcs
+
+## Frequently Asked Questions
+
+Q: Who is Dr. Justinas Miseikis?
+A: Dr. Justinas Miseikis is an AI strategy expert, innovation advisor, and keynote speaker based in Zurich, Switzerland. He currently works as Strategy and Partnerships Manager at Sony AI.
+
+Q: What services does Dr. Justinas Miseikis offer?
+A: He offers AI commercialization advisory, due diligence for investors and VCs, corporate innovation consulting, keynote speaking, and startup mentoring.
+
+Q: What is Dr. Justinas Miseikis's educational background?
+A: He holds a PhD in Robotics and Computer Vision from the University of Oslo and an Executive MBA from Quantic School of Business and Technology.
+
+Q: Where is Dr. Justinas Miseikis based?
+A: He is based in Zurich, Switzerland, and is active across the DACH region and Baltic states.
+
+Q: Can Dr. Justinas Miseikis speak at my event?
+A: Yes, he is available for keynotes, panels, workshops, and corporate events across Europe. Contact him via LinkedIn or through his website.
+
+Q: What topics does Dr. Justinas Miseikis speak about?
+A: His speaking topics include AI Commercialization and Ethics, Future of Human-Robot Interaction, Investment and Due Diligence in Deep Tech, Building Deep Tech Teams, and Strategy for Innovation Leaders.
