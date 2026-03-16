@@ -1,4 +1,4 @@
-import { ArrowRight, Calendar, MapPin, DollarSign, Building2, Target } from "lucide-react";
+import { ArrowRight, Calendar, MapPin, DollarSign, Building2, Target, Bot, Calculator } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -23,7 +23,7 @@ const Resources = () => {
           </div>
 
           {/* Resource Cards */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Tech Events Card */}
             <Link
               to="/tech-events"
@@ -98,6 +98,45 @@ const Resources = () => {
 
               <Button variant="swiss" className="group-hover:bg-primary/90">
                 <span>Explore VCs</span>
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+
+            {/* RaaS ROI Calculator Card */}
+            <Link
+              to="/raas-calculator"
+              className="group bg-background p-8 border-2 border-border hover:border-primary transition-all duration-300"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-3 bg-primary/10">
+                  <Calculator className="w-8 h-8 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold group-hover:text-primary transition-colors">
+                    RaaS ROI Calculator
+                  </h3>
+                  <p className="text-muted-foreground">Robot-as-a-Service financial model</p>
+                </div>
+              </div>
+              
+              <p className="text-muted-foreground mb-6 leading-relaxed">
+                Model the financial impact of deploying robots on a subscription model versus manual labour.
+                Adjust sliders to see real-time ROI, break-even, and cumulative savings projections.
+              </p>
+
+              <div className="flex items-center gap-6 mb-6 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <Bot className="w-4 h-4 text-primary" />
+                  <span>Interactive Tool</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Calculator className="w-4 h-4 text-primary" />
+                  <span>Real-time Results</span>
+                </div>
+              </div>
+
+              <Button variant="swiss" className="group-hover:bg-primary/90">
+                <span>Try Calculator</span>
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>

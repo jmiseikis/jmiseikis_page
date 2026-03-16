@@ -6,6 +6,7 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import TechEvents from "./pages/TechEvents";
 import SwissVCs from "./pages/SwissVCs";
+import RaasCalculator from "./pages/RaasCalculator";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -20,6 +21,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/tech-events" element={<TechEvents />} />
           <Route path="/swiss-vcs" element={<SwissVCs />} />
+          <Route path="/raas-calculator" element={<RaasCalculator />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
