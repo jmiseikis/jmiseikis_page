@@ -6,6 +6,7 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import TechEvents from "./pages/TechEvents";
 import SwissVCs from "./pages/SwissVCs";
+import RaasCalculator from "./pages/RaasCalculator";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
