@@ -23,7 +23,7 @@ const Resources = () => {
           </div>
 
           {/* Resource Cards */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Tech Events Card */}
             <Link
               to="/tech-events"
