@@ -1,4 +1,4 @@
-import { ArrowRight, Calendar, MapPin, DollarSign, Building2, Target } from "lucide-react";
+import { ArrowRight, Calendar, MapPin, DollarSign, Building2, Target, Bot, Calculator } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
