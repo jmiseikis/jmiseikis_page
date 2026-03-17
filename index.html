@@ -166,6 +166,16 @@
         <p>LinkedIn: <a href="https://www.linkedin.com/in/justinasmiseikis/">linkedin.com/in/justinasmiseikis</a></p>
       </article>
     </noscript>
+    <!-- GitHub Pages SPA redirect handler -->
+    <script>
+      (function() {
+        var params = new URLSearchParams(window.location.search);
+        var redirect = params.get('p');
+        if (redirect) {
+          window.history.replaceState(null, '', redirect);
+        }
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
