@@ -392,18 +392,26 @@ const RaasCalculator = () => {
   };
 
   return (
-    <div className="raas-page">
+    <article className="raas-page" itemScope itemType="https://schema.org/SoftwareApplication">
+      <meta itemProp="name" content="RaaS ROI Calculator" />
+      <meta itemProp="applicationCategory" content="BusinessApplication" />
+      <meta itemProp="operatingSystem" content="Web" />
+
       {/* Back nav */}
-      <Link to="/" className="inline-flex items-center gap-2 text-sm text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--primary))] mb-6 transition-colors">
-        <ArrowLeft className="w-4 h-4" /> Back to Home
-      </Link>
+      <nav aria-label="Breadcrumb">
+        <Link to="/" className="inline-flex items-center gap-2 text-sm text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--primary))] mb-6 transition-colors">
+          <ArrowLeft className="w-4 h-4" /> Back to Home
+        </Link>
+      </nav>
 
       {/* Header */}
-      <div className="raas-eyebrow"><span className="raas-eyebrow-dot" /> Robot as a Service &middot; Interactive Tool</div>
-      <h1 className="raas-h1">RaaS <span>ROI</span> Calculator</h1>
-      <p className="raas-subtitle">
-        Model the financial impact of deploying robots on a subscription model versus maintaining manual labour. Adjust every slider — all numbers update in real time.
-      </p>
+      <header>
+        <div className="raas-eyebrow"><span className="raas-eyebrow-dot" /> Robot as a Service &middot; Interactive Tool</div>
+        <h1 className="raas-h1">RaaS <span>ROI</span> Calculator</h1>
+        <p className="raas-subtitle" itemProp="description">
+          Free interactive Robot-as-a-Service ROI calculator. Model the financial impact of deploying robots on a subscription model versus maintaining manual labour for warehousing, manufacturing, and logistics. Adjust every slider -- all numbers update in real time.
+        </p>
+      </header>
 
       {/* KPIs */}
       <div className="raas-sh">Live Results</div>
