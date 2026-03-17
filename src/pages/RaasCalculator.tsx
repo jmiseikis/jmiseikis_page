@@ -190,6 +190,46 @@ const RaasCalculator = () => {
   const [incidents, setIncidents] = useState(1000);
   const [incReduce, setIncReduce] = useState(60);
 
+  // SEO: set page title, meta description, canonical, and inject JSON-LD
+  useEffect(() => {
+    const prevTitle = document.title;
+    document.title = PAGE_TITLE;
+
+    const setMeta = (name: string, content: string, attr = "name") => {
+      let el = document.querySelector(`meta[${attr}="${name}"]`) as HTMLMetaElement | null;
+      if (!el) { el = document.createElement("meta"); el.setAttribute(attr, name); document.head.appendChild(el); }
+      el.setAttribute("content", content);
+    };
+
+    setMeta("description", PAGE_DESC);
+    setMeta("keywords", "RaaS ROI calculator, Robot as a Service, robotic automation ROI, warehouse automation cost, manufacturing robot cost analysis, cobot ROI, automation break-even, labour cost reduction robots, RaaS pricing, robotics startup tools, automation business case, OpEx robotics");
+    setMeta("og:title", PAGE_TITLE, "property");
+    setMeta("og:description", PAGE_DESC, "property");
+    setMeta("og:url", "https://jmiseikis.lovable.app/raas-calculator", "property");
+    setMeta("og:type", "website", "property");
+    setMeta("twitter:title", "RaaS ROI Calculator - Free Robot-as-a-Service Cost Analysis");
+    setMeta("twitter:description", PAGE_DESC);
+
+    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (!canonical) { canonical = document.createElement("link"); canonical.rel = "canonical"; document.head.appendChild(canonical); }
+    canonical.href = "https://jmiseikis.lovable.app/raas-calculator";
+
+    // Inject JSON-LD
+    const scripts: HTMLScriptElement[] = [];
+    [RAAS_JSONLD, RAAS_FAQ_JSONLD].forEach((data) => {
+      const s = document.createElement("script");
+      s.type = "application/ld+json";
+      s.textContent = JSON.stringify(data);
+      document.head.appendChild(s);
+      scripts.push(s);
+    });
+
+    return () => {
+      document.title = prevTitle;
+      scripts.forEach((s) => s.remove());
+    };
+  }, []);
+
   const calc = useMemo(() => {
     const overheadPc = overhead / 100;
     const turnoverPc = turnover / 100;
