@@ -113,6 +113,65 @@ const KpiCard = ({ label, value, sub, color, accent }: {
 );
 
 /* ── Main Calculator ─────────────────────────────── */
+const PAGE_TITLE = "RaaS ROI Calculator - Robot-as-a-Service Cost Analysis | Dr. Justinas Miseikis";
+const PAGE_DESC = "Free interactive Robot-as-a-Service (RaaS) ROI calculator. Model labour savings, break-even timelines, and total cost of ownership for robotic automation deployments in warehousing, manufacturing, and logistics.";
+
+const RAAS_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "RaaS ROI Calculator",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "url": "https://jmiseikis.lovable.app/raas-calculator",
+  "description": PAGE_DESC,
+  "author": {
+    "@type": "Person",
+    "name": "Dr. Justinas Miseikis",
+    "url": "https://jmiseikis.lovable.app"
+  },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "keywords": "RaaS, Robot as a Service, ROI calculator, robotic automation, warehouse automation, manufacturing robots, cobot ROI, automation cost analysis, labour cost reduction, break-even analysis"
+};
+
+const RAAS_FAQ_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Robot-as-a-Service (RaaS)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Robot-as-a-Service (RaaS) is a subscription-based model where businesses lease robots instead of purchasing them outright. Monthly fees typically include the hardware, maintenance, software updates, and support - converting large CapEx into predictable OpEx. Industry pricing ranges from $1,500 to $8,000 per robot per month."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you calculate ROI for robotic automation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ROI for robotic automation is calculated by comparing total current costs (labour, benefits, turnover, error/rework, safety incidents) against RaaS costs (subscription fees plus one-time setup). Key factors include robot uptime (90-98%), productivity gains over manual labour (typically 30-50%), error reduction (50-90%), and break-even timeline (industry benchmark: 9-18 months)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a typical break-even period for RaaS deployments?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The industry benchmark for RaaS break-even is 9 to 18 months. Factors that shorten break-even include higher labour costs, multi-shift operations, high staff turnover, and significant quality/safety cost reductions. A break-even under 6 months is considered excellent; 18+ months may require renegotiating subscription terms."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who built this RaaS ROI Calculator?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This calculator was built by Dr. Justinas Miseikis, an AI strategy expert and robotics PhD based in Zurich, Switzerland. He works as Strategy and Partnerships Manager at Sony AI and advises robotics startups, VCs, and enterprises on automation strategy and due diligence."
+      }
+    }
+  ]
+};
+
 const RaasCalculator = () => {
   const [workers, setWorkers] = useState(3);
   const [wage, setWage] = useState(25);
