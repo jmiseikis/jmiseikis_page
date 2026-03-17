@@ -113,6 +113,65 @@ const KpiCard = ({ label, value, sub, color, accent }: {
 );
 
 /* ── Main Calculator ─────────────────────────────── */
+const PAGE_TITLE = "RaaS ROI Calculator - Robot-as-a-Service Cost Analysis | Dr. Justinas Miseikis";
+const PAGE_DESC = "Free interactive Robot-as-a-Service (RaaS) ROI calculator. Model labour savings, break-even timelines, and total cost of ownership for robotic automation deployments in warehousing, manufacturing, and logistics.";
+
+const RAAS_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "RaaS ROI Calculator",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "url": "https://jmiseikis.lovable.app/raas-calculator",
+  "description": PAGE_DESC,
+  "author": {
+    "@type": "Person",
+    "name": "Dr. Justinas Miseikis",
+    "url": "https://jmiseikis.lovable.app"
+  },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "keywords": "RaaS, Robot as a Service, ROI calculator, robotic automation, warehouse automation, manufacturing robots, cobot ROI, automation cost analysis, labour cost reduction, break-even analysis"
+};
+
+const RAAS_FAQ_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Robot-as-a-Service (RaaS)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Robot-as-a-Service (RaaS) is a subscription-based model where businesses lease robots instead of purchasing them outright. Monthly fees typically include the hardware, maintenance, software updates, and support - converting large CapEx into predictable OpEx. Industry pricing ranges from $1,500 to $8,000 per robot per month."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you calculate ROI for robotic automation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ROI for robotic automation is calculated by comparing total current costs (labour, benefits, turnover, error/rework, safety incidents) against RaaS costs (subscription fees plus one-time setup). Key factors include robot uptime (90-98%), productivity gains over manual labour (typically 30-50%), error reduction (50-90%), and break-even timeline (industry benchmark: 9-18 months)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a typical break-even period for RaaS deployments?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The industry benchmark for RaaS break-even is 9 to 18 months. Factors that shorten break-even include higher labour costs, multi-shift operations, high staff turnover, and significant quality/safety cost reductions. A break-even under 6 months is considered excellent; 18+ months may require renegotiating subscription terms."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who built this RaaS ROI Calculator?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This calculator was built by Dr. Justinas Miseikis, an AI strategy expert and robotics PhD based in Zurich, Switzerland. He works as Strategy and Partnerships Manager at Sony AI and advises robotics startups, VCs, and enterprises on automation strategy and due diligence."
+      }
+    }
+  ]
+};
+
 const RaasCalculator = () => {
   const [workers, setWorkers] = useState(3);
   const [wage, setWage] = useState(25);
@@ -130,6 +189,46 @@ const RaasCalculator = () => {
   const [errReduce, setErrReduce] = useState(75);
   const [incidents, setIncidents] = useState(1000);
   const [incReduce, setIncReduce] = useState(60);
+
+  // SEO: set page title, meta description, canonical, and inject JSON-LD
+  useEffect(() => {
+    const prevTitle = document.title;
+    document.title = PAGE_TITLE;
+
+    const setMeta = (name: string, content: string, attr = "name") => {
+      let el = document.querySelector(`meta[${attr}="${name}"]`) as HTMLMetaElement | null;
+      if (!el) { el = document.createElement("meta"); el.setAttribute(attr, name); document.head.appendChild(el); }
+      el.setAttribute("content", content);
+    };
+
+    setMeta("description", PAGE_DESC);
+    setMeta("keywords", "RaaS ROI calculator, Robot as a Service, robotic automation ROI, warehouse automation cost, manufacturing robot cost analysis, cobot ROI, automation break-even, labour cost reduction robots, RaaS pricing, robotics startup tools, automation business case, OpEx robotics");
+    setMeta("og:title", PAGE_TITLE, "property");
+    setMeta("og:description", PAGE_DESC, "property");
+    setMeta("og:url", "https://jmiseikis.lovable.app/raas-calculator", "property");
+    setMeta("og:type", "website", "property");
+    setMeta("twitter:title", "RaaS ROI Calculator - Free Robot-as-a-Service Cost Analysis");
+    setMeta("twitter:description", PAGE_DESC);
+
+    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (!canonical) { canonical = document.createElement("link"); canonical.rel = "canonical"; document.head.appendChild(canonical); }
+    canonical.href = "https://jmiseikis.lovable.app/raas-calculator";
+
+    // Inject JSON-LD
+    const scripts: HTMLScriptElement[] = [];
+    [RAAS_JSONLD, RAAS_FAQ_JSONLD].forEach((data) => {
+      const s = document.createElement("script");
+      s.type = "application/ld+json";
+      s.textContent = JSON.stringify(data);
+      document.head.appendChild(s);
+      scripts.push(s);
+    });
+
+    return () => {
+      document.title = prevTitle;
+      scripts.forEach((s) => s.remove());
+    };
+  }, []);
 
   const calc = useMemo(() => {
     const overheadPc = overhead / 100;
@@ -293,18 +392,26 @@ const RaasCalculator = () => {
   };
 
   return (
-    <div className="raas-page">
+    <article className="raas-page" itemScope itemType="https://schema.org/SoftwareApplication">
+      <meta itemProp="name" content="RaaS ROI Calculator" />
+      <meta itemProp="applicationCategory" content="BusinessApplication" />
+      <meta itemProp="operatingSystem" content="Web" />
+
       {/* Back nav */}
-      <Link to="/" className="inline-flex items-center gap-2 text-sm text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--primary))] mb-6 transition-colors">
-        <ArrowLeft className="w-4 h-4" /> Back to Home
-      </Link>
+      <nav aria-label="Breadcrumb">
+        <Link to="/" className="inline-flex items-center gap-2 text-sm text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--primary))] mb-6 transition-colors">
+          <ArrowLeft className="w-4 h-4" /> Back to Home
+        </Link>
+      </nav>
 
       {/* Header */}
-      <div className="raas-eyebrow"><span className="raas-eyebrow-dot" /> Robot as a Service &middot; Interactive Tool</div>
-      <h1 className="raas-h1">RaaS <span>ROI</span> Calculator</h1>
-      <p className="raas-subtitle">
-        Model the financial impact of deploying robots on a subscription model versus maintaining manual labour. Adjust every slider — all numbers update in real time.
-      </p>
+      <header>
+        <div className="raas-eyebrow"><span className="raas-eyebrow-dot" /> Robot as a Service &middot; Interactive Tool</div>
+        <h1 className="raas-h1">RaaS <span>ROI</span> Calculator</h1>
+        <p className="raas-subtitle" itemProp="description">
+          Free interactive Robot-as-a-Service ROI calculator. Model the financial impact of deploying robots on a subscription model versus maintaining manual labour for warehousing, manufacturing, and logistics. Adjust every slider -- all numbers update in real time.
+        </p>
+      </header>
 
       {/* KPIs */}
       <div className="raas-sh">Live Results</div>
@@ -433,10 +540,10 @@ const RaasCalculator = () => {
       </div>
 
       {/* Footer */}
-      <div className="raas-footer">
-        Built by <Link to="/" className="raas-footer-link">Dr. Justinas Miseikis</Link> · AI Strategy & Robotics Expert · Benchmarks: BLS, Rapyuta, Automate.org, Formic
-      </div>
-    </div>
+      <footer className="raas-footer" itemProp="author" itemScope itemType="https://schema.org/Person">
+        Built by <Link to="/" className="raas-footer-link" itemProp="url"><span itemProp="name">Dr. Justinas Miseikis</span></Link> · <span itemProp="jobTitle">AI Strategy & Robotics Expert</span> · Benchmarks: BLS, Rapyuta, Automate.org, Formic
+      </footer>
+    </article>
   );
 };
 
