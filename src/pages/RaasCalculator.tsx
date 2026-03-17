@@ -540,10 +540,10 @@ const RaasCalculator = () => {
       </div>
 
       {/* Footer */}
-      <div className="raas-footer">
-        Built by <Link to="/" className="raas-footer-link">Dr. Justinas Miseikis</Link> · AI Strategy & Robotics Expert · Benchmarks: BLS, Rapyuta, Automate.org, Formic
-      </div>
-    </div>
+      <footer className="raas-footer" itemProp="author" itemScope itemType="https://schema.org/Person">
+        Built by <Link to="/" className="raas-footer-link" itemProp="url"><span itemProp="name">Dr. Justinas Miseikis</span></Link> · <span itemProp="jobTitle">AI Strategy & Robotics Expert</span> · Benchmarks: BLS, Rapyuta, Automate.org, Formic
+      </footer>
+    </article>
   );
 };
 
