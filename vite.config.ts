@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => {
   const repoName = process.env.GITHUB_REPOSITORY?.split("/")[1];
   const isGitHubPages = !!repoName;
   return {
-    base: mode === "production" ? (isGitHubPages ? `/${repoName}/` : "./") : "/",
+    base: mode === "production" ? (isGitHubPages ? `/${repoName}/` : "/") : "/",
     server: {
       host: "::",
       port: 8080,
