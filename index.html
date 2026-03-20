@@ -169,6 +169,12 @@
     <!-- GitHub Pages SPA redirect handler -->
     <script>
       (function() {
+        // Redirect old hash-based URLs (e.g. /#/tech-events) to clean URLs
+        if (window.location.hash && window.location.hash.startsWith('#/')) {
+          var cleanPath = window.location.hash.substring(1);
+          window.history.replaceState(null, '', cleanPath);
+        }
+        // Handle SPA redirect from 404.html
         var params = new URLSearchParams(window.location.search);
         var redirect = params.get('p');
         if (redirect) {
