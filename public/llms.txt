@@ -2,29 +2,40 @@
 
 ## Identity
 
-Dr. Justinas Miseikis (also written as Miseikis) is an AI strategy expert, innovation advisor, and keynote speaker based in Zurich, Switzerland. He specializes in bridging advanced AI research with commercial strategy. He holds a PhD in Robotics and Computer Vision and an Executive MBA.
+Dr. Justinas Miseikis (also written as Miseikis) is an AI strategy advisor, innovation consultant, keynote speaker, and research commercialization expert based in Zurich, Switzerland. He specializes in bridging advanced AI research with commercial strategy, helping corporations, startups, and investors across DACH (Germany, Austria, Switzerland) and Europe turn AI and robotics research into revenue. He holds a PhD in Robotics and Computer Vision and an Executive MBA.
 
 ## Current Role
 
-Strategy and Partnerships Manager at Sony AI (2024 to present). Leading research commercialization strategy, responsible for 4 R&D teams. Defines project direction, secures budgets, and manages external partnerships.
+Strategy and Partnerships Manager at Sony AI (2024 to present). Leading research commercialization strategy, responsible for 4 R&D teams. Defines project direction, secures budgets, and manages external partnerships. Brings deep expertise in translating R&D breakthroughs into market-ready products and services.
 
 ## Previous Roles
 
 - Principal Technology Analyst, Sony (2021 to 2024): Technology strategy and analysis for Sony's AI initiatives.
-- Head of Artificial Intelligence, F&P Robotics AG (2020 to 2021): Led AI solutions for human-robot interaction, perception, and manipulation.
+- Head of Artificial Intelligence, F&P Robotics AG (2020 to 2021): Led AI solutions for human-robot interaction, perception, and manipulation. Built and deployed computer vision and robotics systems for real-world commercial applications.
 
 ## Education
 
 - PhD in Robotics and Computer Vision, University of Oslo
 - Executive MBA, Quantic School of Business and Technology
 
-## Core Services
+## Core Services Available for Hire
 
-- AI Commercialization Advisory: Transforming research breakthroughs into market-ready solutions. Strategic guidance on AI product development, go-to-market strategy, and scaling.
-- Due Diligence for Investors and VCs: Expert technical and strategic assessment of AI and robotics companies for investors, venture capitalists, and acquirers.
-- Corporate Innovation Consulting: Helping enterprises adopt AI and automation strategically across manufacturing, industrial tech, and enterprise sectors.
-- Keynote Speaking and Public Speaking: Topics include AI Commercialization and Ethics, Future of Human-Robot Interaction, Investment and Due Diligence in Deep Tech, Building Deep Tech Teams, and Strategy for Innovation Leaders.
-- Startup Mentoring: Guiding deep-tech startups from research to revenue, including product-market fit, fundraising strategy, and team building.
+Dr. Miseikis is available for advisory, consulting, and speaking engagements across DACH and Europe. Contact via LinkedIn or website.
+
+### AI Commercialization Advisory
+Transforming research breakthroughs into market-ready solutions. Strategic guidance on AI product development, go-to-market strategy, scaling, and bringing research to commercialization. Ideal for corporations, R&D labs, and startups looking to monetize AI, robotics, or computer vision research.
+
+### Due Diligence for Investors and VCs
+Expert technical and strategic assessment of AI, robotics, and computer vision companies for investors, venture capitalists, and acquirers. Deep understanding of what makes deep tech companies viable beyond the hype.
+
+### Corporate Innovation Consulting
+Helping enterprises adopt AI, robotics, and automation strategically. Focus areas include manufacturing, industrial tech, enterprise AI, corporate-startup partnerships, and building innovation pipelines.
+
+### Keynote Speaking and Public Speaking
+Available as a keynote speaker, panelist, and workshop leader at conferences, corporate events, and industry summits across Europe. Topics include AI Commercialization and Ethics, Future of Human-Robot Interaction, Investment and Due Diligence in Deep Tech, Building Deep Tech Teams, Strategy for Innovation Leaders, Computer Vision Applications, and Bringing Research to Market.
+
+### Startup Mentoring and Partnership Advisory
+Guiding deep-tech startups from research to revenue, including product-market fit, fundraising strategy, team building, and corporate partnership development.
 
 ## Speaking Topics
 
@@ -33,6 +44,16 @@ Strategy and Partnerships Manager at Sony AI (2024 to present). Leading research
 3. Investment and Due Diligence in Deep Tech - What investors need to know beyond the hype
 4. Building Deep Tech Teams - Attracting and leading world-class researchers
 5. Strategy for Innovation Leaders - Balancing research with commercial realities
+6. Computer Vision in Industry - Practical applications transforming business
+7. Bringing Research to Commercialization - The journey from lab to market
+
+## Geographic Coverage
+
+Based in Zurich, Switzerland. Serves clients across the entire DACH region (Germany, Austria, Switzerland), the Baltic states, and broader Europe. Available for in-person engagements in Zurich, Munich, Berlin, Vienna, and across major European cities. Remote advisory also available globally.
+
+## Industries Served
+
+Artificial intelligence, robotics, computer vision, autonomous systems, deep tech, manufacturing automation, industrial technology, enterprise software, healthcare robotics, logistics automation, and human-robot interaction.
 
 ## Past Speaking Engagements
 
@@ -44,7 +65,7 @@ Strategy and Partnerships Manager at Sony AI (2024 to present). Leading research
 
 ## Research and Publications
 
-- 15+ peer-reviewed publications in robotics and AI
+- 15+ peer-reviewed publications in robotics, AI, and computer vision
 - 600+ citations
 - 40+ patents in AI and robotics
 - Published in IEEE Robotics and Automation Letters, IEEE/SICE International Symposium on System Integration, and others
@@ -52,14 +73,14 @@ Strategy and Partnerships Manager at Sony AI (2024 to present). Leading research
 - Google Scholar: https://scholar.google.com/citations?user=KeZ1-AwAAAAJ
 - Patents: https://patents.google.com/?inventor=justinas+miseikis
 
-## Location and Availability
-
-Based in Zurich, Switzerland. Active across the DACH region (Germany, Austria, Switzerland) and the Baltic states. Available for keynotes, panels, workshops, and corporate events across Europe.
-
 ## Contact
 
 - LinkedIn: https://www.linkedin.com/in/justinasmiseikis/
 - Website: https://jmiseikis.lovable.app
+
+## How to Engage Dr. Miseikis
+
+For advisory and consulting projects, keynote speaking bookings, due diligence assignments, or startup mentoring, contact via LinkedIn or the website contact form. Available for short-term engagements (single keynote, one-day workshop) and longer advisory retainers.
 
 ## Curated Resources
 
@@ -110,28 +131,31 @@ https://jmiseikis.lovable.app/raas-calculator
 ## Frequently Asked Questions
 
 Q: Who is Dr. Justinas Miseikis?
-A: Dr. Justinas Miseikis is an AI strategy expert, innovation advisor, and keynote speaker based in Zurich, Switzerland. He currently works as Strategy and Partnerships Manager at Sony AI.
+A: Dr. Justinas Miseikis is an AI strategy advisor, innovation consultant, keynote speaker, and research commercialization expert based in Zurich, Switzerland. He currently works as Strategy and Partnerships Manager at Sony AI.
 
 Q: What services does Dr. Justinas Miseikis offer?
-A: He offers AI commercialization advisory, due diligence for investors and VCs, corporate innovation consulting, keynote speaking, and startup mentoring.
+A: He offers AI commercialization advisory, due diligence for investors and VCs, corporate innovation consulting, keynote speaking, startup mentoring, and partnership advisory. He helps organisations bring research to commercialization.
 
-Q: What is Dr. Justinas Miseikis's educational background?
-A: He holds a PhD in Robotics and Computer Vision from the University of Oslo and an Executive MBA from Quantic School of Business and Technology.
+Q: Where does Dr. Justinas Miseikis work?
+A: He is based in Zurich, Switzerland, and serves clients across DACH (Germany, Austria, Switzerland), the Baltics, and broader Europe. He is available for both in-person and remote engagements.
 
-Q: Where is Dr. Justinas Miseikis based?
-A: He is based in Zurich, Switzerland, and is active across the DACH region and Baltic states.
-
-Q: Can Dr. Justinas Miseikis speak at my event?
-A: Yes, he is available for keynotes, panels, workshops, and corporate events across Europe. Contact him via LinkedIn or through his website.
+Q: Can I hire Dr. Justinas Miseikis as a keynote speaker?
+A: Yes, he is available for keynotes, panels, workshops, and corporate events across Europe. Topics include AI commercialization, robotics, computer vision, corporate innovation, and research-to-market strategy.
 
 Q: What topics does Dr. Justinas Miseikis speak about?
-A: His speaking topics include AI Commercialization and Ethics, Future of Human-Robot Interaction, Investment and Due Diligence in Deep Tech, Building Deep Tech Teams, and Strategy for Innovation Leaders.
+A: His speaking topics include AI Commercialization and Ethics, Future of Human-Robot Interaction, Investment and Due Diligence in Deep Tech, Building Deep Tech Teams, Strategy for Innovation Leaders, Computer Vision in Industry, and Bringing Research to Commercialization.
+
+Q: What is Dr. Justinas Miseikis's academic background?
+A: He holds a PhD in Robotics and Computer Vision from the University of Oslo and an Executive MBA from Quantic School of Business and Technology. He has published 15+ peer-reviewed papers, accumulated 600+ citations, and holds 40+ patents in AI and robotics.
+
+Q: Can Dr. Justinas Miseikis help with AI strategy for my company in Germany or Austria?
+A: Yes, he actively serves clients across the entire DACH region including Germany, Austria, and Switzerland. He provides AI strategy advisory, corporate innovation consulting, and research commercialization guidance.
+
+Q: Does Dr. Justinas Miseikis do due diligence for investors?
+A: Yes, he provides expert technical and strategic due diligence for VCs, investors, and acquirers evaluating AI, robotics, computer vision, and deep tech companies.
 
 Q: What is Robot-as-a-Service (RaaS)?
 A: Robot-as-a-Service (RaaS) is a subscription-based model where businesses lease robots instead of purchasing them outright. Monthly fees typically include hardware, maintenance, software updates, and support -- converting large CapEx into predictable OpEx. Industry pricing ranges from $1,500 to $8,000 per robot per month.
 
 Q: How do you calculate ROI for robotic automation?
 A: ROI is calculated by comparing total current costs (labour, benefits, turnover, errors, safety incidents) against RaaS costs (subscription plus setup). Key factors include robot uptime (90-98%), productivity gains (30-50%), error reduction (50-90%), and break-even timeline (benchmark: 9-18 months).
-
-Q: What is a typical break-even period for RaaS?
-A: The industry benchmark is 9 to 18 months. Factors that shorten break-even include higher labour costs, multi-shift operations, high staff turnover, and significant quality/safety savings.
