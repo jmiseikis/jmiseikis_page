@@ -207,6 +207,7 @@ const RaasCalculator = () => {
     setMeta("og:description", PAGE_DESC, "property");
     setMeta("og:url", "https://jmiseikis.lovable.app/raas-calculator", "property");
     setMeta("og:type", "website", "property");
+    setMeta("og:image", "https://jmiseikis.lovable.app/og-raas-calculator.png", "property");
     setMeta("twitter:title", "RaaS ROI Calculator - Free Robot-as-a-Service Cost Analysis");
     setMeta("twitter:description", PAGE_DESC);
 
