@@ -66,6 +66,22 @@ const SwissVCs = () => {
   const [audienceFilter, setAudienceFilter] = useState<string>("all");
 
   useEffect(() => {
+    document.title = "Swiss VCs and Funds – Venture Capital Directory for Swiss Startups";
+    const setMeta = (name: string, content: string, attr = "name") => {
+      let el = document.querySelector(`meta[${attr}="${name}"]`) as HTMLMetaElement | null;
+      if (!el) { el = document.createElement("meta"); el.setAttribute(attr, name); document.head.appendChild(el); }
+      el.setAttribute("content", content);
+    };
+    setMeta("description", "Comprehensive directory of venture capital firms investing in Swiss startups. Filter by sector, stage, and geography.");
+    setMeta("og:title", "Swiss VCs and Funds – Venture Capital Directory", "property");
+    setMeta("og:description", "Find the right VC for your Swiss startup. Filter by sector, stage, and geography.", "property");
+    setMeta("og:image", "https://jmiseikis.lovable.app/og-swiss-vcs.png", "property");
+    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (!canonical) { canonical = document.createElement("link"); canonical.rel = "canonical"; document.head.appendChild(canonical); }
+    canonical.href = "https://jmiseikis.lovable.app/swiss-vcs";
+  }, []);
+
+  useEffect(() => {
     const fetchVCs = async () => {
       try {
         setLoading(true);
