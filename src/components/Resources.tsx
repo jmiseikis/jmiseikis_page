@@ -1,6 +1,7 @@
-import { ArrowRight, Calendar, MapPin, DollarSign, Building2, Target, Bot, Calculator } from "lucide-react";
+import { ArrowRight, Calendar, MapPin, DollarSign, Building2, Target, Bot, Calculator, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import swisscomVenturesLogo from "@/assets/swisscom-ventures.png";
 
 const Resources = () => {
   return (
@@ -140,6 +141,50 @@ const Resources = () => {
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
+
+            {/* Swiss Robotics Startups Card */}
+            <a
+              href="https://www.swissroboticsstartups.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group bg-background p-8 border-2 border-border hover:border-primary transition-all duration-300"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-3 bg-primary/10">
+                  <Bot className="w-8 h-8 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold group-hover:text-primary transition-colors">
+                    Swiss Robotics Startups
+                  </h3>
+                  <div className="flex items-center gap-2 text-muted-foreground">
+                    <span>Curated by</span>
+                    <img src={swisscomVenturesLogo} alt="Swisscom Ventures" className="h-5 inline-block" />
+                  </div>
+                </div>
+              </div>
+              
+              <p className="text-muted-foreground mb-6 leading-relaxed">
+                Discover the vibrant ecosystem of robotics innovators shaping the future of Switzerland. 
+                A comprehensive directory of 100+ robotics startups across automation, AI, and advanced manufacturing.
+              </p>
+
+              <div className="flex items-center gap-6 mb-6 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <Bot className="w-4 h-4 text-primary" />
+                  <span>100+ Startups</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4 text-primary" />
+                  <span>Switzerland</span>
+                </div>
+              </div>
+
+              <Button variant="swiss" className="group-hover:bg-primary/90">
+                <span>Explore Startups</span>
+                <ExternalLink className="w-4 h-4 ml-2" />
+              </Button>
+            </a>
           </div>
         </div>
       </div>
