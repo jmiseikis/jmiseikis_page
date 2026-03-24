@@ -1,6 +1,7 @@
-import { ArrowRight, Calendar, MapPin, DollarSign, Building2, Target, Bot, Calculator } from "lucide-react";
+import { ArrowRight, Calendar, MapPin, DollarSign, Building2, Target, Bot, Calculator, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import swisscomVenturesLogo from "@/assets/swisscom-ventures.png";
 
 const Resources = () => {
   return (
