@@ -1,7 +1,8 @@
-import { ArrowRight, Calendar, MapPin, DollarSign, Building2, Target, Bot, Calculator, ExternalLink } from "lucide-react";
+import { ArrowRight, Calendar, MapPin, DollarSign, Building2, Target, Bot, Calculator, ExternalLink, Cpu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import swisscomVenturesLogo from "@/assets/swisscom-ventures.png";
+import gzaLogo from "@/assets/gza-logo.png";
 
 const Resources = () => {
   return (
@@ -185,6 +186,48 @@ const Resources = () => {
                 <ExternalLink className="w-4 h-4 ml-2" />
               </Button>
             </a>
+
+            {/* GZA Robotics Card */}
+            <Link
+              to="/gza-robotics"
+              className="group bg-background p-8 border-2 border-border hover:border-primary transition-all duration-300"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-3 bg-primary/10">
+                  <Cpu className="w-8 h-8 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold group-hover:text-primary transition-colors">
+                    Robotics in the Greater Zurich Area
+                  </h3>
+                  <div className="flex items-center gap-2 text-muted-foreground">
+                    <span>Curated by</span>
+                    <img src={gzaLogo} alt="Greater Zurich Area" className="h-5 inline-block" />
+                  </div>
+                </div>
+              </div>
+              
+              <p className="text-muted-foreground mb-6 leading-relaxed">
+                Discover 140+ robotics companies, research labs, and autonomous systems innovators 
+                in one of the world's most dynamic innovation ecosystems.
+              </p>
+
+              <div className="flex items-center gap-6 mb-6 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <Building2 className="w-4 h-4 text-primary" />
+                  <span>140+ Companies</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4 text-primary" />
+                  <span>Greater Zurich Area</span>
+                </div>
+              </div>
+
+              <Button variant="swiss" className="group-hover:bg-primary/90">
+                <span>Explore Directory</span>
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

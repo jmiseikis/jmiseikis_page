@@ -59,6 +59,7 @@ const TechEvents = () => {
   const [priceFilter, setPriceFilter] = useState<string>("all");
   const [startDateFilter, setStartDateFilter] = useState<Date | undefined>(undefined);
   const [endDateFilter, setEndDateFilter] = useState<Date | undefined>(undefined);
+  const [showPastEvents, setShowPastEvents] = useState(false);
 
   // Helper to parse Google Sheets date format
   const parseSheetDate = (dateStr: string): Date | null => {
@@ -135,7 +136,16 @@ const TechEvents = () => {
 
   // Apply filters
   const filteredEvents = useMemo(() => {
+    const now = new Date();
+    now.setHours(0, 0, 0, 0);
+
     return events.filter(event => {
+      // Hide past events unless toggled
+      if (!showPastEvents) {
+        const eventEndDate = parseSheetDate(event.finishDate) || parseSheetDate(event.startDate);
+        if (eventEndDate && eventEndDate < now) return false;
+      }
+
       // Search filter
       if (searchQuery) {
         const query = searchQuery.toLowerCase();
@@ -183,7 +193,7 @@ const TechEvents = () => {
       
       return true;
     });
-  }, [events, searchQuery, categoryFilter, sizeFilter, locationFilter, scopeFilter, priceFilter, startDateFilter, endDateFilter]);
+  }, [events, searchQuery, categoryFilter, sizeFilter, locationFilter, scopeFilter, priceFilter, startDateFilter, endDateFilter, showPastEvents]);
 
   const formatDate = (dateStr: string) => {
     if (!dateStr) return "";
@@ -479,10 +489,21 @@ const TechEvents = () => {
 
       {/* Results Summary */}
       <section className="container px-4 py-6">
-        <p className="text-muted-foreground">
-          Showing <span className="font-semibold text-foreground">{filteredEvents.length}</span> of{" "}
-          <span className="font-semibold text-foreground">{events.length}</span> events
-        </p>
+        <div className="flex items-center justify-between flex-wrap gap-4">
+          <p className="text-muted-foreground">
+            Showing <span className="font-semibold text-foreground">{filteredEvents.length}</span> of{" "}
+            <span className="font-semibold text-foreground">{events.length}</span> events
+          </p>
+          <Button
+            variant={showPastEvents ? "default" : "outline"}
+            size="sm"
+            onClick={() => setShowPastEvents(!showPastEvents)}
+            className="gap-2"
+          >
+            <Calendar className="w-4 h-4" />
+            {showPastEvents ? "Hide past events" : "Show past events"}
+          </Button>
+        </div>
       </section>
 
       {/* Events Content */}
