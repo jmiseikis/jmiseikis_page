@@ -59,6 +59,7 @@ const TechEvents = () => {
   const [priceFilter, setPriceFilter] = useState<string>("all");
   const [startDateFilter, setStartDateFilter] = useState<Date | undefined>(undefined);
   const [endDateFilter, setEndDateFilter] = useState<Date | undefined>(undefined);
+  const [showPastEvents, setShowPastEvents] = useState(false);
 
   // Helper to parse Google Sheets date format
   const parseSheetDate = (dateStr: string): Date | null => {
