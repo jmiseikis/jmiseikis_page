@@ -158,10 +158,21 @@ const GZARobotics = () => {
       {/* Embedded PDF */}
       <section className="container px-4 py-8">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6">Robotics &amp; Autonomous Systems Map</h2>
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold">Robotics &amp; Autonomous Systems Map</h2>
+            <a
+              href="https://www.greaterzuricharea.com/sites/default/files/2026-04/Robotics%20Autonomous%20Systems%20in%20the%20Greater%20Zurich%20Area%20Map%20Overview%20Map.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
+            >
+              <ExternalLink className="w-4 h-4" />
+              <span>Open PDF</span>
+            </a>
+          </div>
           <div className="w-full border border-border rounded-lg overflow-hidden" style={{ height: "80vh", minHeight: "600px" }}>
             <iframe
-              src="https://www.greaterzuricharea.com/sites/default/files/2026-04/Robotics%20Autonomous%20Systems%20in%20the%20Greater%20Zurich%20Area%20Map%20Overview%20Map.pdf"
+              src={`https://docs.google.com/gview?url=${encodeURIComponent("https://www.greaterzuricharea.com/sites/default/files/2026-04/Robotics%20Autonomous%20Systems%20in%20the%20Greater%20Zurich%20Area%20Map%20Overview%20Map.pdf")}&embedded=true`}
               title="Robotics & Autonomous Systems in the Greater Zurich Area"
               className="w-full h-full"
               style={{ border: "none" }}
