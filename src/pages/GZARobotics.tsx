@@ -155,6 +155,21 @@ const GZARobotics = () => {
         </div>
       </section>
 
+      {/* Embedded PDF */}
+      <section className="container px-4 py-8">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl font-bold mb-6">Robotics &amp; Autonomous Systems Map</h2>
+          <div className="w-full border border-border rounded-lg overflow-hidden" style={{ height: "80vh", minHeight: "600px" }}>
+            <iframe
+              src="https://www.greaterzuricharea.com/sites/default/files/2026-04/Robotics%20Autonomous%20Systems%20in%20the%20Greater%20Zurich%20Area%20Map%20Overview%20Map.pdf"
+              title="Robotics & Autonomous Systems in the Greater Zurich Area"
+              className="w-full h-full"
+              style={{ border: "none" }}
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Filters */}
       <section className="border-b border-border bg-card sticky top-0 z-40">
         <div className="container px-4 py-4">
