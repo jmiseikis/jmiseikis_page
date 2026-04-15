@@ -1,28 +1,34 @@
 import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ExternalLink, Filter, List, LayoutGrid, Loader2, AlertCircle, ChevronDown, Building2, Search } from "lucide-react";
+import { ArrowLeft, ExternalLink, Filter, List, LayoutGrid, Loader2, AlertCircle, ChevronDown, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Separator } from "@/components/ui/separator";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Helmet } from "react-helmet-async";
 import gzaLogo from "@/assets/gza-logo.png";
 
 interface Company {
   name: string;
-  officialUrl: string;
+  type: string;
   category: string;
+  website: string;
+  headquarters: string;
+  founded: string;
+  teamSize: string;
   description: string;
+  achievements: string;
 }
 
-const SHEET_ID = "1Cq5A7EpMKbHlQWBoped7iFY0Bqn35y9MLQIuh6xeZgw";
+const SHEET_ID = "1CL3fGiT1QvDAWQ_Itn1ixw-lvJc07ABUr3cjJHnvIRs";
 const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
 
 const categoryColors: Record<string, string> = {
-  "Robotics": "bg-blue-500/10 text-blue-600 border-blue-200",
+  "Robotics & Autonomous Systems": "bg-blue-500/10 text-blue-600 border-blue-200",
   "Software & Components": "bg-green-500/10 text-green-600 border-green-200",
   "Universities & Academic Research": "bg-purple-500/10 text-purple-600 border-purple-200",
   "Autonomous Flying & Diving": "bg-sky-500/10 text-sky-600 border-sky-200",
@@ -30,6 +36,16 @@ const categoryColors: Record<string, string> = {
   "Medtech Robotics": "bg-rose-500/10 text-rose-600 border-rose-200",
   "Autonomous Driving": "bg-amber-500/10 text-amber-600 border-amber-200",
   "Computer Vision for Robotics": "bg-indigo-500/10 text-indigo-600 border-indigo-200",
+};
+
+const typeColors: Record<string, string> = {
+  "Large Corp": "bg-slate-500/10 text-slate-600 border-slate-200",
+  "Scale-up": "bg-emerald-500/10 text-emerald-600 border-emerald-200",
+  "Startup": "bg-cyan-500/10 text-cyan-600 border-cyan-200",
+  "Corporate R&D": "bg-violet-500/10 text-violet-600 border-violet-200",
+  "University": "bg-fuchsia-500/10 text-fuchsia-600 border-fuchsia-200",
+  "Network": "bg-yellow-500/10 text-yellow-600 border-yellow-200",
+  "Government": "bg-red-500/10 text-red-600 border-red-200",
 };
 
 const GZARobotics = () => {
@@ -42,6 +58,7 @@ const GZARobotics = () => {
 
   const [searchQuery, setSearchQuery] = useState("");
   const [categoryFilter, setCategoryFilter] = useState<string>("all");
+  const [typeFilter, setTypeFilter] = useState<string>("all");
 
   useEffect(() => {
     const fetchCompanies = async () => {
@@ -56,13 +73,18 @@ const GZARobotics = () => {
         const data = JSON.parse(jsonMatch[1]);
         const rows = data.table.rows;
 
-        const parsed: Company[] = rows.slice(1).map((row: { c: Array<{ v: string | null }> }) => {
-          const cells = row.c;
+        const parsed: Company[] = rows.slice(1).map((row: { c: Array<{ v: string | null } | null> }) => {
+          const cell = (i: number) => row.c[i]?.v || "";
           return {
-            name: cells[0]?.v || "",
-            officialUrl: cells[1]?.v || "",
-            category: cells[2]?.v || "",
-            description: cells[3]?.v || "",
+            name: cell(0),
+            type: cell(1),
+            category: cell(2),
+            website: cell(3),
+            headquarters: cell(4),
+            founded: cell(5),
+            teamSize: cell(6),
+            description: cell(7),
+            achievements: cell(8),
           };
         }).filter((c: Company) => c.name);
 
@@ -81,54 +103,179 @@ const GZARobotics = () => {
 
   const filterOptions = useMemo(() => {
     const categories = [...new Set(companies.map(c => c.category).filter(Boolean))].sort();
-    return { categories };
+    const types = [...new Set(companies.map(c => c.type).filter(Boolean))].sort();
+    return { categories, types };
   }, [companies]);
 
   const filteredCompanies = useMemo(() => {
     return companies.filter(company => {
       if (searchQuery) {
-        const query = searchQuery.toLowerCase();
-        if (!company.name.toLowerCase().includes(query) &&
-            !company.description.toLowerCase().includes(query)) {
+        const q = searchQuery.toLowerCase();
+        if (!company.name.toLowerCase().includes(q) &&
+            !company.description.toLowerCase().includes(q) &&
+            !company.achievements.toLowerCase().includes(q)) {
           return false;
         }
       }
       if (categoryFilter !== "all" && company.category !== categoryFilter) return false;
+      if (typeFilter !== "all" && company.type !== typeFilter) return false;
       return true;
     });
-  }, [companies, searchQuery, categoryFilter]);
+  }, [companies, searchQuery, categoryFilter, typeFilter]);
+
+  // Group by category for separator display
+  const groupedCompanies = useMemo(() => {
+    const groups: { category: string; companies: Company[] }[] = [];
+    let currentCategory = "";
+    for (const company of filteredCompanies) {
+      if (company.category !== currentCategory) {
+        currentCategory = company.category;
+        groups.push({ category: currentCategory, companies: [] });
+      }
+      groups[groups.length - 1].companies.push(company);
+    }
+    return groups;
+  }, [filteredCompanies]);
 
   const clearFilters = () => {
     setSearchQuery("");
     setCategoryFilter("all");
+    setTypeFilter("all");
   };
 
-  const hasActiveFilters = searchQuery || categoryFilter !== "all";
+  const hasActiveFilters = searchQuery || categoryFilter !== "all" || typeFilter !== "all";
 
   const formatUrl = (url: string) => {
-    if (!url || url === "N/A") return null;
-    if (url.startsWith("https://www.google.com/search")) return null;
+    if (!url || url === "N/A" || url === "—") return null;
     return url.startsWith("http") ? url : `https://${url}`;
   };
+
+  const renderCompanyCard = (company: Company, index: number) => (
+    <Card key={index} className="group hover:border-primary transition-all duration-300 flex flex-col">
+      <CardHeader className="pb-3">
+        <div className="flex flex-wrap items-start gap-2 mb-2">
+          <Badge variant="outline" className={categoryColors[company.category] || ""}>
+            {company.category}
+          </Badge>
+          <Badge variant="outline" className={typeColors[company.type] || ""}>
+            {company.type}
+          </Badge>
+        </div>
+        <CardTitle className="text-lg group-hover:text-primary transition-colors">
+          {company.name}
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="flex-1 flex flex-col gap-3">
+        <p className="text-sm text-muted-foreground line-clamp-3">{company.description}</p>
+        {company.achievements && (
+          <div className="text-xs text-muted-foreground bg-muted/50 p-3 rounded-md">
+            <span className="font-semibold text-foreground">Key achievements:</span>{" "}
+            <span className="line-clamp-3">{company.achievements}</span>
+          </div>
+        )}
+        <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground mt-auto pt-2">
+          {company.headquarters && <span>📍 {company.headquarters}</span>}
+          {company.founded && company.founded !== "—" && <span>🗓 {company.founded}</span>}
+          {company.teamSize && company.teamSize !== "—" && <span>👥 {company.teamSize}</span>}
+        </div>
+        {formatUrl(company.website) && (
+          <div className="pt-3 border-t border-border">
+            <a href={formatUrl(company.website)!} target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
+              <span>Visit website</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  );
+
+  const renderCompanyListItem = (company: Company, index: number) => (
+    <div key={index} className="group bg-card p-6 border-2 border-border hover:border-primary transition-all duration-300">
+      <div className="flex flex-col md:flex-row md:items-start gap-4">
+        <div className="flex-1">
+          <div className="flex flex-wrap items-center gap-2 mb-2">
+            <Badge variant="outline" className={categoryColors[company.category] || ""}>
+              {company.category}
+            </Badge>
+            <Badge variant="outline" className={typeColors[company.type] || ""}>
+              {company.type}
+            </Badge>
+          </div>
+          <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+            {company.name}
+          </h3>
+          <p className="text-muted-foreground mb-2">{company.description}</p>
+          {company.achievements && (
+            <p className="text-sm text-muted-foreground italic">
+              <span className="font-semibold not-italic text-foreground">Key achievements:</span> {company.achievements}
+            </p>
+          )}
+          <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground mt-3">
+            {company.headquarters && <span>📍 {company.headquarters}</span>}
+            {company.founded && company.founded !== "—" && <span>🗓 {company.founded}</span>}
+            {company.teamSize && company.teamSize !== "—" && <span>👥 {company.teamSize}</span>}
+          </div>
+        </div>
+        <div className="flex flex-col items-end gap-3 min-w-[140px]">
+          {formatUrl(company.website) && (
+            <a href={formatUrl(company.website)!} target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
+              <span>Website</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+
+  const FilterControls = () => (
+    <div className="flex flex-wrap gap-3 items-center">
+      <Filter className="w-4 h-4 text-muted-foreground" />
+      <Select value={categoryFilter} onValueChange={setCategoryFilter}>
+        <SelectTrigger className="w-[240px] h-9">
+          <SelectValue placeholder="Category" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="all">All Categories</SelectItem>
+          {filterOptions.categories.map(cat => (
+            <SelectItem key={cat} value={cat}>{cat}</SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+      <Select value={typeFilter} onValueChange={setTypeFilter}>
+        <SelectTrigger className="w-[180px] h-9">
+          <SelectValue placeholder="Type" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="all">All Types</SelectItem>
+          {filterOptions.types.map(t => (
+            <SelectItem key={t} value={t}>{t}</SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+      {hasActiveFilters && (
+        <Button variant="ghost" size="sm" onClick={clearFilters} className="h-9">Clear all</Button>
+      )}
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
         <title>Robotics in the Greater Zurich Area | Dr. Justinas Mišeikis</title>
-        <meta name="description" content="Discover 140+ robotics companies, research labs, and autonomous systems innovators in the Greater Zurich Area — curated by Greater Zurich Area." />
+        <meta name="description" content="Discover 150+ robotics companies, research labs, and autonomous systems innovators in the Greater Zurich Area — curated by Greater Zurich Area." />
       </Helmet>
 
       {/* Header */}
       <header className="bg-foreground text-background py-16 md:py-24">
         <div className="container px-4">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-background/70 hover:text-primary transition-colors mb-8"
-          >
+          <Link to="/" className="inline-flex items-center gap-2 text-background/70 hover:text-primary transition-colors mb-8">
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Home</span>
           </Link>
-
           <div className="max-w-4xl">
             <div className="flex items-center gap-4 mb-6">
               <img src={gzaLogo} alt="Greater Zurich Area" className="h-16 md:h-20" />
@@ -136,14 +283,12 @@ const GZARobotics = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Robotics in the <span className="text-primary">Greater Zurich Area</span>
             </h1>
-            <p className="text-xl text-background/70 max-w-2xl">
-              Curated by Greater Zurich Area
-            </p>
+            <p className="text-xl text-background/70 max-w-2xl">Curated by Greater Zurich Area</p>
           </div>
         </div>
       </header>
 
-      {/* Intro Section */}
+      {/* Intro */}
       <section className="container px-4 py-12 md:py-16">
         <div className="max-w-4xl mx-auto">
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
@@ -162,8 +307,7 @@ const GZARobotics = () => {
             <h2 className="text-2xl font-bold">Robotics &amp; Autonomous Systems Map</h2>
             <a
               href="https://www.greaterzuricharea.com/sites/default/files/2026-04/Robotics%20Autonomous%20Systems%20in%20the%20Greater%20Zurich%20Area%20Map%20Overview%20Map.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+              target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
             >
               <ExternalLink className="w-4 h-4" />
@@ -187,23 +331,12 @@ const GZARobotics = () => {
           <div className="flex flex-col gap-4">
             <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
               <div className="relative flex-1 max-w-md w-full">
-                <Input
-                  type="search"
-                  placeholder="Search companies..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-4 pr-4 h-10"
-                />
+                <Input type="search" placeholder="Search companies..." value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)} className="pl-4 pr-4 h-10" />
               </div>
-
               <div className="flex items-center gap-2">
                 {isMobile && (
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setFiltersOpen(!filtersOpen)}
-                    className="h-9 gap-2"
-                  >
+                  <Button variant="outline" size="sm" onClick={() => setFiltersOpen(!filtersOpen)} className="h-9 gap-2">
                     <Filter className="w-4 h-4" />
                     Filters
                     {hasActiveFilters && (
@@ -212,7 +345,6 @@ const GZARobotics = () => {
                     <ChevronDown className={`w-4 h-4 transition-transform ${filtersOpen ? 'rotate-180' : ''}`} />
                   </Button>
                 )}
-
                 <div className="flex border border-border">
                   <Button variant={viewMode === "grid" ? "default" : "ghost"} size="sm" onClick={() => setViewMode("grid")} className="rounded-none">
                     <LayoutGrid className="w-4 h-4" />
@@ -227,43 +359,11 @@ const GZARobotics = () => {
             {isMobile ? (
               <Collapsible open={filtersOpen} onOpenChange={setFiltersOpen}>
                 <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
-                  <div className="flex flex-wrap gap-3 items-center pt-2">
-                    <Filter className="w-4 h-4 text-muted-foreground" />
-                    <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-                      <SelectTrigger className="w-[200px] h-9">
-                        <SelectValue placeholder="Category" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="all">All Categories</SelectItem>
-                        {filterOptions.categories.map(cat => (
-                          <SelectItem key={cat} value={cat}>{cat}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    {hasActiveFilters && (
-                      <Button variant="ghost" size="sm" onClick={clearFilters} className="h-9">Clear all</Button>
-                    )}
-                  </div>
+                  <div className="pt-2"><FilterControls /></div>
                 </CollapsibleContent>
               </Collapsible>
             ) : (
-              <div className="flex flex-wrap gap-3 items-center">
-                <Filter className="w-4 h-4 text-muted-foreground" />
-                <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-                  <SelectTrigger className="w-[240px] h-9">
-                    <SelectValue placeholder="Category" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Categories</SelectItem>
-                    {filterOptions.categories.map(cat => (
-                      <SelectItem key={cat} value={cat}>{cat}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                {hasActiveFilters && (
-                  <Button variant="ghost" size="sm" onClick={clearFilters} className="h-9">Clear all</Button>
-                )}
-              </div>
+              <FilterControls />
             )}
           </div>
         </div>
@@ -296,71 +396,30 @@ const GZARobotics = () => {
             <p className="text-muted-foreground mb-2">No companies match your filters</p>
             <Button variant="outline" onClick={clearFilters}>Clear Filters</Button>
           </div>
-        ) : viewMode === "grid" ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredCompanies.map((company, index) => (
-              <Card key={index} className="group hover:border-primary transition-all duration-300 flex flex-col">
-                <CardHeader className="pb-3">
-                  <div className="flex items-start justify-between gap-2 mb-2">
-                    <Badge variant="outline" className={categoryColors[company.category] || ""}>
-                      {company.category}
-                    </Badge>
-                  </div>
-                  <CardTitle className="text-lg group-hover:text-primary transition-colors">
-                    {company.name}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="flex-1 flex flex-col">
-                  <p className="text-sm text-muted-foreground line-clamp-3 mb-4 flex-1">
-                    {company.description}
-                  </p>
-                  {formatUrl(company.officialUrl) && (
-                    <div className="pt-3 border-t border-border">
-                      <a
-                        href={formatUrl(company.officialUrl)!}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
-                      >
-                        <span>Visit website</span>
-                        <ExternalLink className="w-3.5 h-3.5" />
-                      </a>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            ))}
-          </div>
         ) : (
-          <div className="space-y-4">
-            {filteredCompanies.map((company, index) => (
-              <div key={index} className="group bg-card p-6 border-2 border-border hover:border-primary transition-all duration-300">
-                <div className="flex flex-col md:flex-row md:items-start gap-4">
-                  <div className="flex-1">
-                    <div className="flex flex-wrap items-center gap-2 mb-2">
-                      <Badge variant="outline" className={categoryColors[company.category] || ""}>
-                        {company.category}
-                      </Badge>
-                    </div>
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                      {company.name}
-                    </h3>
-                    <p className="text-muted-foreground line-clamp-2">{company.description}</p>
-                  </div>
-                  <div className="flex flex-col items-end gap-3 min-w-[140px]">
-                    {formatUrl(company.officialUrl) && (
-                      <a
-                        href={formatUrl(company.officialUrl)!}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
-                      >
-                        <span>Website</span>
-                        <ExternalLink className="w-3.5 h-3.5" />
-                      </a>
-                    )}
-                  </div>
+          <div className="space-y-10">
+            {groupedCompanies.map((group, gi) => (
+              <div key={group.category}>
+                {gi > 0 && <Separator className="mb-8" />}
+                <div className="mb-6">
+                  <h2 className="text-2xl font-bold flex items-center gap-3">
+                    <Badge variant="outline" className={`text-sm px-3 py-1 ${categoryColors[group.category] || ""}`}>
+                      {group.category}
+                    </Badge>
+                    <span className="text-muted-foreground text-base font-normal">
+                      ({group.companies.length})
+                    </span>
+                  </h2>
                 </div>
+                {viewMode === "grid" ? (
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {group.companies.map((company, i) => renderCompanyCard(company, i))}
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    {group.companies.map((company, i) => renderCompanyListItem(company, i))}
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -371,12 +430,8 @@ const GZARobotics = () => {
       <footer className="bg-foreground text-background py-8">
         <div className="container px-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-background/70 text-sm">
-              Data curated by Greater Zurich Area. Updates automatically.
-            </p>
-            <Link to="/" className="text-primary hover:underline text-sm">
-              Back to Dr. Justinas Mišeikis
-            </Link>
+            <p className="text-background/70 text-sm">Data curated by Greater Zurich Area. Updates automatically.</p>
+            <Link to="/" className="text-primary hover:underline text-sm">Back to Dr. Justinas Mišeikis</Link>
           </div>
         </div>
       </footer>
