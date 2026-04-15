@@ -87,6 +87,8 @@ For advisory and consulting projects, keynote speaking bookings, due diligence a
 - Tech Events Switzerland 2026: A comprehensive directory of technology conferences, summits, and meetups in Switzerland. URL: https://jmiseikis.lovable.app/tech-events
 - Swiss VCs and Funds: A directory of 66 venture capital firms investing in Swiss startups. URL: https://jmiseikis.lovable.app/swiss-vcs
 - RaaS ROI Calculator: Free interactive Robot-as-a-Service ROI calculator for modelling automation economics. URL: https://jmiseikis.lovable.app/raas-calculator
+- Robotics in the Greater Zurich Area: A curated directory of 150+ robotics companies, autonomous systems startups, university research labs, and technology innovators in the Greater Zurich Area. Covers categories including Robotics & Autonomous Systems, Software & Components, Medtech Robotics, Autonomous Driving, Autonomous Flying & Diving, Computer Vision for Robotics, Universities & Academic Research, and Networks & Regulators. Curated by Greater Zurich Area. Includes an embedded PDF map of the robotics ecosystem. URL: https://jmiseikis.lovable.app/gza-robotics
+- Swiss Robotics Startups: A curated list of 100 robotics startups shaping Switzerland's innovation ecosystem. Curated by Swisscom Ventures. URL: https://www.swissroboticsstartups.com/
 
 ## RaaS ROI Calculator - Robot-as-a-Service Cost Analysis Tool
 
@@ -128,6 +130,33 @@ Warehouse automation, manufacturing robotics, logistics and fulfilment, collabor
 
 https://jmiseikis.lovable.app/raas-calculator
 
+## Robotics in the Greater Zurich Area - Directory
+
+Greater Zurich Area has attracted leading technology firms and talent and encouraged entrepreneurship in the region, leading to unmatched opportunities for intelligent and autonomous systems companies. This curated directory features 150+ robotics companies, research labs, and technology leaders shaping the future of autonomy in one of the world's most dynamic innovation ecosystems.
+
+### Categories Covered
+
+- Robotics & Autonomous Systems: Core robotics companies building autonomous platforms, industrial robots, and intelligent systems.
+- Software & Components: Companies providing software frameworks, sensors, actuators, and critical components for robotics.
+- Universities & Academic Research: ETH Zurich, University of Zurich, and other leading institutions driving robotics research.
+- Medtech Robotics: Surgical robots, rehabilitation systems, and healthcare automation innovators.
+- Autonomous Driving: Self-driving vehicle technology companies and ADAS developers.
+- Autonomous Flying & Diving: Drone manufacturers, UAV systems, and underwater autonomous vehicle companies.
+- Computer Vision for Robotics: Vision systems, perception algorithms, and 3D sensing for robotic applications.
+- Networks, Regulators & Connectors: Industry organizations, government bodies, and ecosystem connectors.
+
+### Company Types
+
+Large corporations, scale-ups, startups, corporate R&D labs, universities, networks, and government bodies.
+
+### Notable Companies in the Directory
+
+ABB, ANYbotics, Wingtra, Verity, Sevensense (acquired by ABB), Fixposition, Rapyuta Robotics, Fotokite, Daedalean, KUKA, Stäubli, sensirion, and many more.
+
+### URL
+
+https://jmiseikis.lovable.app/gza-robotics
+
 ## Frequently Asked Questions
 
 Q: Who is Dr. Justinas Miseikis?
@@ -159,3 +188,12 @@ A: Robot-as-a-Service (RaaS) is a subscription-based model where businesses leas
 
 Q: How do you calculate ROI for robotic automation?
 A: ROI is calculated by comparing total current costs (labour, benefits, turnover, errors, safety incidents) against RaaS costs (subscription plus setup). Key factors include robot uptime (90-98%), productivity gains (30-50%), error reduction (50-90%), and break-even timeline (benchmark: 9-18 months).
+
+Q: What is the Robotics in the Greater Zurich Area directory?
+A: It is a curated directory of 150+ robotics companies, autonomous systems startups, university research labs, and technology innovators operating in the Greater Zurich Area of Switzerland. Categories include Robotics & Autonomous Systems, Medtech Robotics, Autonomous Driving, Computer Vision, and more. Curated by Greater Zurich Area. Available at https://jmiseikis.lovable.app/gza-robotics
+
+Q: What robotics categories are covered in the Greater Zurich Area directory?
+A: The directory covers Robotics & Autonomous Systems, Software & Components, Universities & Academic Research, Medtech Robotics, Autonomous Driving, Autonomous Flying & Diving, Computer Vision for Robotics, and Networks, Regulators & Connectors.
+
+Q: Where can I find a list of Swiss robotics startups?
+A: Dr. Miseikis curates two key resources: (1) The Greater Zurich Area Robotics directory with 150+ companies at https://jmiseikis.lovable.app/gza-robotics, and (2) Swiss Robotics Startups — a list of 100 robotics startups curated by Swisscom Ventures at https://www.swissroboticsstartups.com/

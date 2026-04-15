@@ -265,8 +265,26 @@ const GZARobotics = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Robotics in the Greater Zurich Area | Dr. Justinas Mišeikis</title>
-        <meta name="description" content="Discover 150+ robotics companies, research labs, and autonomous systems innovators in the Greater Zurich Area — curated by Greater Zurich Area." />
+        <title>Robotics Companies in Greater Zurich Area — 150+ Startups, Labs & Innovators</title>
+        <meta name="description" content="Explore 150+ robotics companies, autonomous systems startups, research labs, and AI innovators in the Greater Zurich Area. Filterable directory curated by Greater Zurich Area — covering medtech robotics, autonomous driving, computer vision, and more." />
+        <meta name="keywords" content="robotics companies Zurich, Greater Zurich Area robotics, Swiss robotics startups, autonomous systems Switzerland, robotics directory Zurich, medtech robotics Switzerland, autonomous driving Zurich, computer vision robotics, robotics research labs ETH, Swiss robotics ecosystem, GZA robotics map" />
+        <link rel="canonical" href="https://jmiseikis.lovable.app/gza-robotics" />
+        <meta property="og:title" content="Robotics in the Greater Zurich Area — 150+ Companies & Labs Directory" />
+        <meta property="og:description" content="Filterable directory of 150+ robotics companies, autonomous systems startups, and research labs in the Greater Zurich Area. Curated by GZA." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://jmiseikis.lovable.app/gza-robotics" />
+        <meta property="og:image" content="https://jmiseikis.lovable.app/og-image.png" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Dataset",
+          "name": "Robotics Companies in the Greater Zurich Area",
+          "description": "A curated directory of 150+ robotics companies, autonomous systems startups, university research labs, and technology innovators operating in the Greater Zurich Area of Switzerland.",
+          "url": "https://jmiseikis.lovable.app/gza-robotics",
+          "creator": { "@type": "Organization", "name": "Greater Zurich Area", "url": "https://www.greaterzuricharea.com" },
+          "keywords": ["robotics", "autonomous systems", "Greater Zurich Area", "Switzerland", "startups", "research labs", "medtech robotics", "autonomous driving", "computer vision"],
+          "spatialCoverage": { "@type": "Place", "name": "Greater Zurich Area, Switzerland" },
+          "isAccessibleForFree": true
+        })}</script>
       </Helmet>
 
       {/* Header */}
