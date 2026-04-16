@@ -59,6 +59,7 @@ const GZARobotics = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [categoryFilter, setCategoryFilter] = useState<string>("all");
   const [typeFilter, setTypeFilter] = useState<string>("all");
+  const [sizeFilter, setSizeFilter] = useState<string>("all");
 
   useEffect(() => {
     const fetchCompanies = async () => {
@@ -107,6 +108,15 @@ const GZARobotics = () => {
     return { categories, types };
   }, [companies]);
 
+  const getCompanySize = (teamSize: string): string => {
+    if (!teamSize || teamSize === "—" || teamSize === "N/A") return "unknown";
+    const num = parseInt(teamSize.replace(/[^0-9]/g, ''));
+    if (isNaN(num)) return "unknown";
+    if (num <= 50) return "small";
+    if (num <= 250) return "medium";
+    return "large";
+  };
+
   const filteredCompanies = useMemo(() => {
     return companies.filter(company => {
       if (searchQuery) {
@@ -119,9 +129,10 @@ const GZARobotics = () => {
       }
       if (categoryFilter !== "all" && company.category !== categoryFilter) return false;
       if (typeFilter !== "all" && company.type !== typeFilter) return false;
+      if (sizeFilter !== "all" && getCompanySize(company.teamSize) !== sizeFilter) return false;
       return true;
     });
-  }, [companies, searchQuery, categoryFilter, typeFilter]);
+  }, [companies, searchQuery, categoryFilter, typeFilter, sizeFilter]);
 
   // Group by category for separator display
   const groupedCompanies = useMemo(() => {
@@ -141,9 +152,10 @@ const GZARobotics = () => {
     setSearchQuery("");
     setCategoryFilter("all");
     setTypeFilter("all");
+    setSizeFilter("all");
   };
 
-  const hasActiveFilters = searchQuery || categoryFilter !== "all" || typeFilter !== "all";
+  const hasActiveFilters = searchQuery || categoryFilter !== "all" || typeFilter !== "all" || sizeFilter !== "all";
 
   const formatUrl = (url: string) => {
     if (!url || url === "N/A" || url === "—") return null;
@@ -256,6 +268,17 @@ const GZARobotics = () => {
           ))}
         </SelectContent>
       </Select>
+      <Select value={sizeFilter} onValueChange={setSizeFilter}>
+        <SelectTrigger className="w-[180px] h-9">
+          <SelectValue placeholder="Size" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="all">All Sizes</SelectItem>
+          <SelectItem value="small">Small (≤50)</SelectItem>
+          <SelectItem value="medium">Medium (51–250)</SelectItem>
+          <SelectItem value="large">Large (250+)</SelectItem>
+        </SelectContent>
+      </Select>
       {hasActiveFilters && (
         <Button variant="ghost" size="sm" onClick={clearFilters} className="h-9">Clear all</Button>
       )}
@@ -295,13 +318,15 @@ const GZARobotics = () => {
             <span>Back to Home</span>
           </Link>
           <div className="max-w-4xl">
-            <div className="flex items-center gap-4 mb-6">
-              <img src={gzaLogo} alt="Greater Zurich Area" className="h-16 md:h-20" />
+            <div className="flex items-center justify-between gap-6">
+              <div>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                  Robotics in the <span className="text-primary">Greater Zurich Area</span>
+                </h1>
+                <p className="text-xl text-background/70 max-w-2xl">Curated by Greater Zurich Area</p>
+              </div>
+              <img src={gzaLogo} alt="Greater Zurich Area" className="h-16 md:h-24 shrink-0 hidden sm:block" />
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Robotics in the <span className="text-primary">Greater Zurich Area</span>
-            </h1>
-            <p className="text-xl text-background/70 max-w-2xl">Curated by Greater Zurich Area</p>
           </div>
         </div>
       </header>
@@ -309,12 +334,15 @@ const GZARobotics = () => {
       {/* Intro */}
       <section className="container px-4 py-12 md:py-16">
         <div className="max-w-4xl mx-auto">
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6">
             Greater Zurich Area has attracted leading technology firms and talent and encouraged entrepreneurship
             in the region, leading to unmatched opportunities for intelligent &amp; autonomous systems companies.
             Explore the comprehensive directory of robotics innovators, research labs, and technology leaders
             shaping the future of autonomy in one of the world's most dynamic innovation ecosystems.
           </p>
+          <a href="#company-list" className="inline-flex items-center gap-2 text-primary hover:underline font-medium">
+            ↓ Jump to the company list
+          </a>
         </div>
       </section>
 
