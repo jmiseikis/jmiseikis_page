@@ -62,6 +62,10 @@ const GZARobotics = () => {
   const [sizeFilter, setSizeFilter] = useState<string>("all");
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     const fetchCompanies = async () => {
       try {
         setLoading(true);
