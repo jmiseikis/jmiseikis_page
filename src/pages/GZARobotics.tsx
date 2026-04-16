@@ -416,7 +416,7 @@ const GZARobotics = () => {
       </section>
 
       {/* Results Summary */}
-      <section className="container px-4 py-6">
+      <section id="company-list" className="container px-4 py-6">
         <p className="text-muted-foreground">
           Showing <span className="font-semibold text-foreground">{filteredCompanies.length}</span> of{" "}
           <span className="font-semibold text-foreground">{companies.length}</span> companies & institutions
