@@ -19,8 +19,8 @@ const Navigation = () => {
     { label: "About", href: "#about" },
     { label: "Advisory", href: "#advisory" },
     { label: "Speaking", href: "#speaking" },
-    { label: "Publications", href: "#publications" },
     { label: "Resources", href: "#resources" },
+    { label: "Publications", href: "#publications" },
     { label: "Contact", href: "#contact" },
   ];
 
