@@ -274,9 +274,9 @@ const GZARobotics = () => {
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="all">All Sizes</SelectItem>
-          <SelectItem value="small">Small (≤50)</SelectItem>
-          <SelectItem value="medium">Medium (51–250)</SelectItem>
-          <SelectItem value="large">Large (250+)</SelectItem>
+          <SelectItem value="small">Small</SelectItem>
+          <SelectItem value="medium">Medium</SelectItem>
+          <SelectItem value="large">Large</SelectItem>
         </SelectContent>
       </Select>
       {hasActiveFilters && (
