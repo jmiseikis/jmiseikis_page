@@ -10,7 +10,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { Separator } from "@/components/ui/separator";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Helmet } from "react-helmet-async";
-import gzaLogo from "@/assets/gza-logo.png";
+
 
 interface Company {
   name: string;
@@ -110,11 +110,11 @@ const GZARobotics = () => {
 
   const getCompanySize = (teamSize: string): string => {
     if (!teamSize || teamSize === "—" || teamSize === "N/A") return "unknown";
-    const num = parseInt(teamSize.replace(/[^0-9]/g, ''));
-    if (isNaN(num)) return "unknown";
-    if (num <= 50) return "small";
-    if (num <= 250) return "medium";
-    return "large";
+    const lower = teamSize.toLowerCase().trim();
+    if (lower === "small") return "small";
+    if (lower === "medium") return "medium";
+    if (lower === "large") return "large";
+    return "unknown";
   };
 
   const filteredCompanies = useMemo(() => {
@@ -318,15 +318,10 @@ const GZARobotics = () => {
             <span>Back to Home</span>
           </Link>
           <div className="max-w-4xl">
-            <div className="flex items-center justify-between gap-6">
-              <div>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                  Robotics in the <span className="text-primary">Greater Zurich Area</span>
-                </h1>
-                <p className="text-xl text-background/70 max-w-2xl">Curated by Greater Zurich Area</p>
-              </div>
-              <img src={gzaLogo} alt="Greater Zurich Area" className="h-16 md:h-24 shrink-0 hidden sm:block" />
-            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+              Robotics in the <a href="https://www.greaterzuricharea.com/en" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Greater Zurich Area</a>
+            </h1>
+            <p className="text-xl text-background/70 max-w-2xl">Curated by <a href="https://www.greaterzuricharea.com/en" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Greater Zurich Area</a></p>
           </div>
         </div>
       </header>
