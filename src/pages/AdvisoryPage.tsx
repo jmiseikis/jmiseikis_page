@@ -1,9 +1,12 @@
+import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Lightbulb, TrendingUp, Users, Cog } from "lucide-react";
 
 const AdvisoryPage = () => {
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+
   const services = [
     {
       icon: Lightbulb,

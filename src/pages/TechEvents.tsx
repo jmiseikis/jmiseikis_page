@@ -74,6 +74,10 @@ const TechEvents = () => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     const fetchEvents = async () => {
       try {
         setLoading(true);

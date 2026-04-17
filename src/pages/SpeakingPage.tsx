@@ -1,9 +1,12 @@
+import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Mic, Video } from "lucide-react";
 
 const SpeakingPage = () => {
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+
   const topics = [
     {
       title: "AI Commercialization & Ethics",
