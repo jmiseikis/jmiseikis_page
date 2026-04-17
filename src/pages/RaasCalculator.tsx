@@ -190,6 +190,11 @@ const RaasCalculator = () => {
   const [incidents, setIncidents] = useState(1000);
   const [incReduce, setIncReduce] = useState(60);
 
+  // Always start at top of page on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // SEO: set page title, meta description, canonical, and inject JSON-LD
   useEffect(() => {
     const prevTitle = document.title;

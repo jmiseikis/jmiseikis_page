@@ -1,9 +1,12 @@
+import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Shield, Search, BarChart3, CheckCircle } from "lucide-react";
 
 const DueDiligencePage = () => {
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+
   const areas = [
     {
       icon: Search,

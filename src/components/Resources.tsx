@@ -90,7 +90,7 @@ const Resources = () => {
               <div className="flex items-center gap-6 mb-6 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <Building2 className="w-4 h-4 text-primary" />
-                  <span>30+ VC Firms</span>
+                  <span>66+ VC Firms</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Target className="w-4 h-4 text-primary" />
@@ -166,8 +166,8 @@ const Resources = () => {
               </div>
               
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                Discover the vibrant ecosystem of robotics innovators shaping the future of Switzerland. 
-                A comprehensive directory of 100+ robotics startups across automation, AI, and advanced manufacturing.
+                Discover the vibrant ecosystem of robotics innovators shaping the future of Switzerland.
+                A comprehensive directory of 100+ robotics startups across automation, AI, and advanced manufacturing — curated in partnership with Swisscom Ventures.
               </p>
 
               <div className="flex items-center gap-6 mb-6 text-sm text-muted-foreground">
@@ -208,14 +208,14 @@ const Resources = () => {
               </div>
               
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                Discover 140+ robotics companies, research labs, and autonomous systems innovators 
-                in one of the world's most dynamic innovation ecosystems.
+                Discover 150+ robotics companies, research labs, and autonomous systems innovators 
+                in one of the world's most dynamic innovation ecosystems — curated in partnership with Greater Zurich Area.
               </p>
 
               <div className="flex items-center gap-6 mb-6 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <Building2 className="w-4 h-4 text-primary" />
-                  <span>140+ Companies</span>
+                  <span>150+ Companies</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-primary" />

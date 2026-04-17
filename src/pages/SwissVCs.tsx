@@ -66,6 +66,10 @@ const SwissVCs = () => {
   const [audienceFilter, setAudienceFilter] = useState<string>("all");
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     document.title = "Swiss VCs and Funds – Venture Capital Directory for Swiss Startups";
     const setMeta = (name: string, content: string, attr = "name") => {
       let el = document.querySelector(`meta[${attr}="${name}"]`) as HTMLMetaElement | null;

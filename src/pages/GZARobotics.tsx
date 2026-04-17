@@ -292,12 +292,12 @@ const GZARobotics = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Robotics Companies in Greater Zurich Area — 150+ Startups, Labs & Innovators</title>
-        <meta name="description" content="Explore 150+ robotics companies, autonomous systems startups, research labs, and AI innovators in the Greater Zurich Area. Filterable directory curated by Greater Zurich Area — covering medtech robotics, autonomous driving, computer vision, and more." />
-        <meta name="keywords" content="robotics companies Zurich, Greater Zurich Area robotics, Swiss robotics startups, autonomous systems Switzerland, robotics directory Zurich, medtech robotics Switzerland, autonomous driving Zurich, computer vision robotics, robotics research labs ETH, Swiss robotics ecosystem, GZA robotics map" />
+        <title>Robotics in the Greater Zurich Area — 150+ Companies & Labs | Curated with GZA</title>
+        <meta name="description" content="Explore 150+ robotics companies, autonomous systems startups, research labs, and AI innovators in the Greater Zurich Area. Filterable directory curated in partnership with Greater Zurich Area (GZA) — covering medtech robotics, autonomous driving, computer vision, autonomous flying & diving, and university research at ETH Zurich and University of Zurich. Maintained by Dr. Justinas Mišeikis." />
+        <meta name="keywords" content="robotics companies Zurich, Greater Zurich Area robotics, GZA robotics partner, Swiss robotics startups, autonomous systems Switzerland, robotics directory Zurich, medtech robotics Switzerland, autonomous driving Zurich, computer vision robotics, robotics research labs ETH, Swiss robotics ecosystem, GZA robotics map, Swisscom Ventures robotics, Greater Zurich Area partnership" />
         <link rel="canonical" href="https://jmiseikis.lovable.app/gza-robotics" />
-        <meta property="og:title" content="Robotics in the Greater Zurich Area — 150+ Companies & Labs Directory" />
-        <meta property="og:description" content="Filterable directory of 150+ robotics companies, autonomous systems startups, and research labs in the Greater Zurich Area. Curated by GZA." />
+        <meta property="og:title" content="Robotics in the Greater Zurich Area — 150+ Companies & Labs | Curated with GZA" />
+        <meta property="og:description" content="Filterable directory of 150+ robotics companies, autonomous systems startups, and research labs in the Greater Zurich Area. Curated in partnership with Greater Zurich Area (GZA)." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://jmiseikis.lovable.app/gza-robotics" />
         <meta property="og:image" content="https://jmiseikis.lovable.app/og-image.png" />
@@ -305,10 +305,11 @@ const GZARobotics = () => {
           "@context": "https://schema.org",
           "@type": "Dataset",
           "name": "Robotics Companies in the Greater Zurich Area",
-          "description": "A curated directory of 150+ robotics companies, autonomous systems startups, university research labs, and technology innovators operating in the Greater Zurich Area of Switzerland.",
+          "description": "A curated directory of 150+ robotics companies, autonomous systems startups, university research labs, and technology innovators operating in the Greater Zurich Area of Switzerland. Curated in partnership with Greater Zurich Area (GZA).",
           "url": "https://jmiseikis.lovable.app/gza-robotics",
-          "creator": { "@type": "Organization", "name": "Greater Zurich Area", "url": "https://www.greaterzuricharea.com" },
-          "keywords": ["robotics", "autonomous systems", "Greater Zurich Area", "Switzerland", "startups", "research labs", "medtech robotics", "autonomous driving", "computer vision"],
+          "creator": { "@type": "Organization", "name": "Greater Zurich Area", "url": "https://www.greaterzuricharea.com/en" },
+          "publisher": { "@type": "Person", "name": "Dr. Justinas Miseikis", "url": "https://jmiseikis.lovable.app" },
+          "keywords": ["robotics", "autonomous systems", "Greater Zurich Area", "GZA", "Switzerland", "startups", "research labs", "medtech robotics", "autonomous driving", "computer vision", "ETH Zurich"],
           "spatialCoverage": { "@type": "Place", "name": "Greater Zurich Area, Switzerland" },
           "isAccessibleForFree": true
         })}</script>
@@ -336,8 +337,9 @@ const GZARobotics = () => {
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6">
             Greater Zurich Area has attracted leading technology firms and talent and encouraged entrepreneurship
             in the region, leading to unmatched opportunities for intelligent &amp; autonomous systems companies.
-            Explore the comprehensive directory of robotics innovators, research labs, and technology leaders
-            shaping the future of autonomy in one of the world's most dynamic innovation ecosystems.
+            Explore this comprehensive directory of robotics innovators, research labs, and technology leaders
+            shaping the future of autonomy in one of the world's most dynamic innovation ecosystems —
+            curated in partnership with <a href="https://www.greaterzuricharea.com/en" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Greater Zurich Area</a>.
           </p>
           <a href="#company-list" className="inline-flex items-center gap-2 text-primary hover:underline font-medium">
             ↓ Jump to the company list
