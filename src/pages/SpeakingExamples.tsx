@@ -20,6 +20,11 @@ interface Video {
 
 const CHANNEL_URL = "https://www.youtube.com/@JustinasMiseikis";
 
+const openExternal = (url: string) => (e: React.MouseEvent) => {
+  e.preventDefault();
+  window.open(url, "_blank", "noopener,noreferrer");
+};
+
 const formatDate = (iso: string) =>
   new Date(iso).toLocaleDateString("en-GB", {
     year: "numeric",
@@ -105,7 +110,7 @@ const SpeakingExamples = () => {
               the YouTube channel.
             </p>
             <Button asChild variant="outline">
-              <a href={CHANNEL_URL} target="_blank" rel="noopener noreferrer">
+              <a href={CHANNEL_URL} target="_blank" rel="noopener noreferrer" onClick={openExternal(CHANNEL_URL)}>
                 <Youtube className="w-4 h-4" />
                 Visit YouTube Channel
                 <ExternalLink className="w-4 h-4" />
@@ -135,7 +140,7 @@ const SpeakingExamples = () => {
                 Couldn't load the latest videos. You can still browse them directly on YouTube.
               </p>
               <Button asChild variant="outline">
-                <a href={CHANNEL_URL} target="_blank" rel="noopener noreferrer">
+                <a href={CHANNEL_URL} target="_blank" rel="noopener noreferrer" onClick={openExternal(CHANNEL_URL)}>
                   <Youtube className="w-4 h-4" />
                   Open YouTube Channel
                 </a>
@@ -178,7 +183,7 @@ const SpeakingExamples = () => {
             <div className="border-2 border-border bg-card p-8 text-center">
               <p className="text-muted-foreground mb-4">No videos available right now.</p>
               <Button asChild variant="outline">
-                <a href={CHANNEL_URL} target="_blank" rel="noopener noreferrer">
+                <a href={CHANNEL_URL} target="_blank" rel="noopener noreferrer" onClick={openExternal(CHANNEL_URL)}>
                   <Youtube className="w-4 h-4" />
                   Open YouTube Channel
                 </a>
@@ -198,6 +203,7 @@ const VideoCard = ({ video, aspect }: { video: Video; aspect: string }) => (
     href={video.url}
     target="_blank"
     rel="noopener noreferrer"
+    onClick={openExternal(video.url)}
     className="group border-2 border-border bg-card hover:border-primary transition-all duration-300 flex flex-col"
   >
     <div className={`relative ${aspect} overflow-hidden bg-muted`}>
