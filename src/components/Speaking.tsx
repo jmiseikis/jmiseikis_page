@@ -1,18 +1,38 @@
-import { Mic, Video, Download, ExternalLink } from "lucide-react";
+import { Mic, Video, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const Speaking = () => {
   const topics = [
     {
+      title: "Startup and Corporation Collaboration",
+      description: "What are the pitfalls, and how to avoid them? Practical lessons on partnerships, pilots, and joint value creation",
+      audiences: ["Corporate Innovation", "Startup Forums", "Open Innovation"],
+    },
+    {
       title: "AI Commercialization & Ethics",
       description: "From research lab to market leadership: strategies for turning AI breakthroughs into business value while addressing ethical considerations",
       audiences: ["Tech Conferences", "Corporate Events", "Startup Forums"],
     },
     {
-      title: "Future of Human-Robot Interaction",
-      description: "How robots are becoming collaborative partners across industries, from healthcare to manufacturing",
-      audiences: ["Industry Events", "Academic Conferences", "Innovation Summits"],
+      title: "Scaling AI from Pilots to Real Business Impact",
+      description: "How to move beyond proof-of-concepts and embed AI into core operations to deliver measurable ROI",
+      audiences: ["Enterprise Leadership", "Digital Transformation", "C-Suite Forums"],
+    },
+    {
+      title: "Physical AI and Robotics",
+      description: "The next wave of innovation: how embodied AI and robotics are reshaping industries from manufacturing to healthcare",
+      audiences: ["Industry Events", "Robotics Summits", "Innovation Forums"],
+    },
+    {
+      title: "Strategic Use of AI for Sustainable Value Creation",
+      description: "Long-term AI strategy that aligns business goals with sustainability, governance, and stakeholder value",
+      audiences: ["Executive Events", "ESG Forums", "Strategy Conferences"],
+    },
+    {
+      title: "Bringing Research to Commercialization",
+      description: "Balancing cutting-edge research with commercial realities: lessons from Sony AI and beyond",
+      audiences: ["Executive Events", "MBA Programs", "Corporate Strategy"],
     },
     {
       title: "Investment & Due Diligence in Deep Tech",
@@ -20,14 +40,9 @@ const Speaking = () => {
       audiences: ["VC Forums", "Investment Conferences", "Corporate Investors"],
     },
     {
-      title: "Building Deep Tech Teams",
-      description: "Attracting, retaining, and leading world-class researchers and engineers in competitive markets",
-      audiences: ["Leadership Forums", "Tech Companies", "Academic Institutions"],
-    },
-    {
-      title: "Strategy for Innovation Leaders",
-      description: "Balancing cutting-edge research with commercial realities: lessons from Sony AI and beyond",
-      audiences: ["Executive Events", "MBA Programs", "Corporate Strategy"],
+      title: "Future of Human-Robot Interaction",
+      description: "How robots are becoming collaborative partners across industries, from healthcare to manufacturing",
+      audiences: ["Industry Events", "Academic Conferences", "Innovation Summits"],
     },
   ];
 
@@ -103,7 +118,7 @@ const Speaking = () => {
                   Past Speaking Engagements
                 </h3>
                 <Button asChild variant="outline" size="sm">
-                  <Link to="/speaking-examples">
+                  <Link to="/speaking">
                     Watch Speaking Examples
                     <ExternalLink className="w-4 h-4" />
                   </Link>

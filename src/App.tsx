@@ -11,7 +11,6 @@ import RaasCalculator from "./pages/RaasCalculator";
 import De from "./pages/De";
 import AdvisoryPage from "./pages/AdvisoryPage";
 import SpeakingPage from "./pages/SpeakingPage";
-import SpeakingExamples from "./pages/SpeakingExamples";
 import DueDiligencePage from "./pages/DueDiligencePage";
 import GZARobotics from "./pages/GZARobotics";
 import NotFound from "./pages/NotFound";
@@ -30,7 +29,7 @@ const App = () => (
             <Route path="/de" element={<De />} />
             <Route path="/advisory" element={<AdvisoryPage />} />
             <Route path="/speaking" element={<SpeakingPage />} />
-            <Route path="/speaking-examples" element={<SpeakingExamples />} />
+            <Route path="/speaking-examples" element={<Navigate to="/speaking" replace />} />
             <Route path="/due-diligence" element={<DueDiligencePage />} />
             <Route path="/tech-events" element={<TechEvents />} />
             <Route path="/swiss-vcs" element={<SwissVCs />} />
