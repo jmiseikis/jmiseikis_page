@@ -110,7 +110,7 @@ const SpeakingExamples = () => {
               the YouTube channel.
             </p>
             <Button asChild variant="outline">
-              <a href={CHANNEL_URL} target="_blank" rel="noopener noreferrer">
+              <a href={CHANNEL_URL} target="_blank" rel="noopener noreferrer" onClick={openExternal(CHANNEL_URL)}>
                 <Youtube className="w-4 h-4" />
                 Visit YouTube Channel
                 <ExternalLink className="w-4 h-4" />
@@ -140,7 +140,7 @@ const SpeakingExamples = () => {
                 Couldn't load the latest videos. You can still browse them directly on YouTube.
               </p>
               <Button asChild variant="outline">
-                <a href={CHANNEL_URL} target="_blank" rel="noopener noreferrer">
+                <a href={CHANNEL_URL} target="_blank" rel="noopener noreferrer" onClick={openExternal(CHANNEL_URL)}>
                   <Youtube className="w-4 h-4" />
                   Open YouTube Channel
                 </a>
@@ -183,7 +183,7 @@ const SpeakingExamples = () => {
             <div className="border-2 border-border bg-card p-8 text-center">
               <p className="text-muted-foreground mb-4">No videos available right now.</p>
               <Button asChild variant="outline">
-                <a href={CHANNEL_URL} target="_blank" rel="noopener noreferrer">
+                <a href={CHANNEL_URL} target="_blank" rel="noopener noreferrer" onClick={openExternal(CHANNEL_URL)}>
                   <Youtube className="w-4 h-4" />
                   Open YouTube Channel
                 </a>
