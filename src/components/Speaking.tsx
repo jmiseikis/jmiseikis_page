@@ -1,5 +1,6 @@
 import { Mic, Video, Download, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Speaking = () => {
   const topics = [
@@ -96,10 +97,18 @@ const Speaking = () => {
           {/* Past Events */}
           <div className="mb-16">
             <div className="bg-card p-8 border-2 border-border">
-              <h3 className="text-xl font-bold mb-6 flex items-center gap-3">
-                <Video className="w-6 h-6 text-primary" />
-                Past Speaking Engagements
-              </h3>
+              <div className="flex items-center justify-between gap-4 mb-6 flex-wrap">
+                <h3 className="text-xl font-bold flex items-center gap-3">
+                  <Video className="w-6 h-6 text-primary" />
+                  Past Speaking Engagements
+                </h3>
+                <Button asChild variant="outline" size="sm">
+                  <Link to="/speaking-examples">
+                    Watch Speaking Examples
+                    <ExternalLink className="w-4 h-4" />
+                  </Link>
+                </Button>
+              </div>
               <div className="space-y-3">
                 {pastEvents.map((event, index) => (
                   <div key={index} className="flex items-center gap-3 text-muted-foreground">
