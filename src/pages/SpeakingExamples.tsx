@@ -203,6 +203,7 @@ const VideoCard = ({ video, aspect }: { video: Video; aspect: string }) => (
     href={video.url}
     target="_blank"
     rel="noopener noreferrer"
+    onClick={openExternal(video.url)}
     className="group border-2 border-border bg-card hover:border-primary transition-all duration-300 flex flex-col"
   >
     <div className={`relative ${aspect} overflow-hidden bg-muted`}>
