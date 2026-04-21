@@ -20,6 +20,11 @@ interface Video {
 
 const CHANNEL_URL = "https://www.youtube.com/@JustinasMiseikis";
 
+const openExternal = (url: string) => (e: React.MouseEvent) => {
+  e.preventDefault();
+  window.open(url, "_blank", "noopener,noreferrer");
+};
+
 const formatDate = (iso: string) =>
   new Date(iso).toLocaleDateString("en-GB", {
     year: "numeric",
