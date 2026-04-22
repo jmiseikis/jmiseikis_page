@@ -47,6 +47,8 @@ const Speaking = () => {
   ];
 
   const pastEvents = [
+    "Wisdom House @ Davos 2026 (during WEF)",
+    "GenAI Zürich",
     "LOGIN Conference (biggest tech event in Baltics)",
     "Innovation Roundtable",
     "ETH Zürich & ETH Entrepreneurship Club",
