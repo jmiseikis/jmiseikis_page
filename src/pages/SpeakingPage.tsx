@@ -244,6 +244,54 @@ const SpeakingPage = () => {
             </section>
           )}
 
+          {/* Featured Collaborations (cross-channel features) */}
+          {collaborations.length > 0 && (
+            <section className="mb-16">
+              <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3">
+                <span className="w-1 h-7 bg-primary" />
+                Featured Collaborations
+              </h2>
+              <p className="text-muted-foreground mb-6 max-w-3xl">
+                Selected appearances on other channels — fireside chats, podcasts, and panel discussions.
+              </p>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {collaborations.map((c) => (
+                  <a
+                    key={c.id}
+                    href={c.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={openExternal(c.url)}
+                    className="group border-2 border-border bg-card hover:border-primary transition-all duration-300 flex flex-col"
+                  >
+                    <div className="relative aspect-video overflow-hidden bg-muted">
+                      <img
+                        src={c.thumbnail}
+                        alt={c.title}
+                        loading="lazy"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/30 transition-colors flex items-center justify-center">
+                        <div className="w-14 h-14 bg-primary/95 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                          <Play className="w-6 h-6 text-primary-foreground fill-primary-foreground ml-1" />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="p-4 flex-1 flex flex-col">
+                      <h3 className="font-semibold leading-snug mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                        {c.title}
+                      </h3>
+                      <div className="mt-auto flex items-center justify-between text-xs text-muted-foreground pt-2">
+                        <span>{c.channel}</span>
+                        <ExternalLink className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </section>
+          )}
+
           {/* Speaking Topics */}
           <section className="mb-16">
             <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3">
