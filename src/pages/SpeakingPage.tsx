@@ -252,7 +252,14 @@ const SpeakingPage = () => {
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
               {topics.map((topic, index) => (
-                <div key={index} className="bg-card p-6 border-2 border-border hover:border-primary transition-all duration-300 group">
+                <div
+                  key={index}
+                  className={`bg-card p-6 border-2 border-border hover:border-primary transition-all duration-300 group ${
+                    index === topics.length - 1 && topics.length % 2 === 1
+                      ? "md:col-span-2 md:max-w-xl md:mx-auto md:w-full"
+                      : ""
+                  }`}
+                >
                   <div className="flex items-start gap-4 mb-4">
                     <Mic className="w-6 h-6 text-primary flex-shrink-0 mt-1 group-hover:scale-110 transition-transform" />
                     <div>
