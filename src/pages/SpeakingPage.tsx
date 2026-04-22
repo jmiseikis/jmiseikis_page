@@ -130,13 +130,34 @@ const SpeakingPage = () => {
     <div className="min-h-screen">
       <Helmet>
         <title>AI Keynote Speaker & Talks | Dr. Justinas Mišeikis – Zurich, Europe</title>
-        <meta name="description" content="Watch keynotes by Dr. Justinas Mišeikis on AI, robotics, and innovation, and book him for your next conference. Available across DACH and Europe — partnerships with Greater Zurich Area and Swisscom Ventures." />
-        <meta name="keywords" content="AI keynote speaker, robotics speaker Europe, AI conference speaker Zurich, technology keynote DACH, innovation speaker, computer vision speaker, deep tech speaker, Greater Zurich Area, Swisscom Ventures" />
+        <meta name="description" content="Book Dr. Justinas Mišeikis — AI & robotics keynote speaker featured at Wisdom House @ Davos 2026 (during WEF), GenAI Zürich, LOGIN Conference, ETH Zürich and Sony AI. Watch talks and shorts on AI strategy, commercialization, ethics, and physical AI. Available across DACH and Europe — partnerships with Greater Zurich Area and Swisscom Ventures." />
+        <meta name="keywords" content="AI keynote speaker, robotics speaker Europe, AI conference speaker Zurich, Davos 2026 speaker, WEF speaker, Wisdom House Davos, GenAI Zürich speaker, technology keynote DACH, innovation speaker, computer vision speaker, deep tech speaker, AI ethics speaker, physical AI speaker, Greater Zurich Area, Swisscom Ventures, Premium Speakers Agency" />
         <link rel="canonical" href="https://jmiseikis.lovable.app/speaking" />
-        <meta property="og:title" content="AI Keynote Speaker | Dr. Justinas Mišeikis" />
-        <meta property="og:description" content="Watch keynote talks and book a speaker on AI, robotics, and innovation for your conference or corporate event." />
+        <meta property="og:title" content="AI Keynote Speaker | Dr. Justinas Mišeikis – Davos 2026, GenAI Zürich, ETH" />
+        <meta property="og:description" content="Watch keynote talks and book a speaker on AI, robotics, and innovation. Featured at Wisdom House @ Davos 2026 (WEF) and GenAI Zürich." />
         <meta property="og:image" content="https://jmiseikis.lovable.app/og-image.png" />
         <meta property="og:type" content="video.other" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Dr. Justinas Mišeikis",
+            "jobTitle": "AI Keynote Speaker & Strategy Advisor",
+            "url": "https://jmiseikis.lovable.app/speaking",
+            "sameAs": [
+              "https://www.youtube.com/@JustinasMiseikis",
+              "https://premium-speakers.com/en/speaker-presenter/justinas-miseikis/"
+            ],
+            "knowsAbout": ["Artificial Intelligence", "Robotics", "Computer Vision", "AI Commercialization", "AI Ethics", "Physical AI", "Deep Tech Investment"],
+            "performerIn": [
+              { "@type": "Event", "name": "Wisdom House @ Davos 2026", "location": "Davos, Switzerland", "superEvent": { "@type": "Event", "name": "World Economic Forum (WEF) 2026" } },
+              { "@type": "Event", "name": "GenAI Zürich", "location": "Zurich, Switzerland" },
+              { "@type": "Event", "name": "LOGIN Conference", "location": "Vilnius, Lithuania" },
+              { "@type": "Event", "name": "ETH Zürich & ETH Entrepreneurship Club", "location": "Zurich, Switzerland" },
+              { "@type": "Event", "name": "Sony AI Conference" }
+            ]
+          })}
+        </script>
       </Helmet>
 
       <Navigation />
