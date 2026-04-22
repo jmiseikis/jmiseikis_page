@@ -77,11 +77,27 @@ const topics = [
 ];
 
 const pastEvents = [
+  "Wisdom House @ Davos 2026 (during WEF)",
+  "GenAI Zürich",
   "LOGIN Conference (biggest tech event in Baltics)",
   "Innovation Roundtable",
   "ETH Zürich & ETH Entrepreneurship Club",
   "Sony AI Conference",
   "VentureLab Engineering Ecosystem Event",
+];
+
+// Manually curated collaborations — videos hosted on other channels where Justinas appears.
+// The YouTube RSS feed only exposes uploads from his own channel, so cross-channel features
+// (e.g. fireside chats, podcasts) are added here.
+const collaborations: { id: string; title: string; channel: string; url: string; thumbnail: string; publishedAt: string }[] = [
+  {
+    id: "8Vnh4vA--d0",
+    title: "Keeping AIs debiased: a conversation with Dr. Justinas Mišeikis",
+    channel: "Deep Tech Experts and Justinas",
+    url: "https://www.youtube.com/watch?v=8Vnh4vA--d0",
+    thumbnail: "https://i.ytimg.com/vi/8Vnh4vA--d0/hqdefault.jpg",
+    publishedAt: "2026-01-22",
+  },
 ];
 
 const SpeakingPage = () => {
