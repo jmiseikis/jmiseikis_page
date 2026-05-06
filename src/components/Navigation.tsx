@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,11 +27,15 @@ const Navigation = () => {
     { label: "Contact", href: "#contact" },
   ];
 
-  const scrollToSection = (href: string) => {
+  const scrollToSection = useCallback((href: string) => {
+    if (location.pathname !== "/") {
+      navigate("/" + href);
+      return;
+    }
     const element = document.querySelector(href);
     element?.scrollIntoView({ behavior: "smooth" });
     setIsMobileMenuOpen(false);
-  };
+  }, [location.pathname, navigate]);
 
   return (
     <nav
