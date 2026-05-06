@@ -18,6 +18,18 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // After navigating to homepage with a hash, scroll to the section
+  useEffect(() => {
+    if (location.pathname === "/" && location.hash) {
+      // Small delay to let the page render
+      const timer = setTimeout(() => {
+        const element = document.querySelector(location.hash);
+        element?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [location.pathname, location.hash]);
+
   const navLinks = [
     { label: "About", href: "#about" },
     { label: "Advisory", href: "#advisory" },
@@ -29,12 +41,20 @@ const Navigation = () => {
 
   const scrollToSection = useCallback((href: string) => {
     if (location.pathname !== "/") {
-      navigate("/" + href);
+      navigate("/" + href, { replace: false });
       return;
     }
     const element = document.querySelector(href);
     element?.scrollIntoView({ behavior: "smooth" });
     setIsMobileMenuOpen(false);
+  }, [location.pathname, navigate]);
+
+  const handleLogoClick = useCallback(() => {
+    if (location.pathname !== "/") {
+      navigate("/");
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   }, [location.pathname, navigate]);
 
   return (
@@ -49,7 +69,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onClick={handleLogoClick}
             className="text-xl font-bold tracking-tight hover:text-primary transition-colors"
           >
             <span>Dr. Justinas Mišeikis</span>
