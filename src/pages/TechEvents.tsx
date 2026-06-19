@@ -580,7 +580,7 @@ const TechEvents = () => {
                     </span>
                   </div>
                   <div className="flex items-center justify-between mt-4 pt-3 border-t border-border">
-                    {event.officialUrl && event.officialUrl !== "[URL]" && (
+                     {isSafeUrl(event.officialUrl) && (
                       <a
                         href={event.officialUrl}
                         target="_blank"
@@ -671,7 +671,7 @@ const TechEvents = () => {
                         }}
                         variant="text"
                       />
-                      {event.officialUrl && event.officialUrl !== "[URL]" && (
+                       {isSafeUrl(event.officialUrl) && (
                         <a
                           href={event.officialUrl}
                           target="_blank"
