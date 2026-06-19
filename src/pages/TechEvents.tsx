@@ -81,6 +81,51 @@ const TechEvents = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  // SEO: title, description, canonical, OG/Twitter tags, JSON-LD
+  useEffect(() => {
+    const TITLE = "Tech Events Switzerland 2026 — AI, Robotics, Startup & VC Conferences | Curated by Dr. Justinas Mišeikis";
+    const DESC = "Curated calendar of 2026 tech, AI, robotics, deep-tech, startup and VC events in Switzerland — Zurich, Geneva, Lausanne, Basel and beyond. Filter by category, size, location and price. Add to Google, Outlook or Apple Calendar.";
+    const URL = "https://jmiseikis.lovable.app/tech-events";
+    const prev = document.title;
+    document.title = TITLE;
+
+    const setMeta = (name: string, content: string, attr = "name") => {
+      let el = document.querySelector(`meta[${attr}="${name}"]`) as HTMLMetaElement | null;
+      if (!el) { el = document.createElement("meta"); el.setAttribute(attr, name); document.head.appendChild(el); }
+      el.setAttribute("content", content);
+    };
+    setMeta("description", DESC);
+    setMeta("keywords", "tech events Switzerland 2026, AI conferences Switzerland, robotics events Zurich, startup events Switzerland, VC events Zurich, deep tech conferences Europe, tech calendar Switzerland, GenAI Zürich, Web Summit Europe, Davos WEF 2026, tech meetups Zurich Geneva Lausanne Basel");
+    setMeta("og:title", TITLE, "property");
+    setMeta("og:description", DESC, "property");
+    setMeta("og:url", URL, "property");
+    setMeta("og:type", "website", "property");
+    setMeta("twitter:card", "summary_large_image");
+    setMeta("twitter:title", "Tech Events Switzerland 2026 — AI, Robotics & VC");
+    setMeta("twitter:description", DESC);
+
+    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (!canonical) { canonical = document.createElement("link"); canonical.rel = "canonical"; document.head.appendChild(canonical); }
+    canonical.href = URL;
+
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Tech Events Switzerland 2026",
+      "url": URL,
+      "description": DESC,
+      "isPartOf": { "@type": "WebSite", "name": "Dr. Justinas Mišeikis", "url": "https://jmiseikis.lovable.app" },
+      "about": ["AI conferences", "Robotics events", "Startup events", "Venture capital events", "Deep tech"],
+      "inLanguage": "en"
+    };
+    const s = document.createElement("script");
+    s.type = "application/ld+json";
+    s.textContent = JSON.stringify(jsonLd);
+    document.head.appendChild(s);
+
+    return () => { document.title = prev; s.remove(); };
+  }, []);
+
   useEffect(() => {
     const fetchEvents = async () => {
       try {

@@ -57,7 +57,9 @@ Artificial intelligence, robotics, computer vision, autonomous systems, deep tec
 
 ## Past Speaking Engagements
 
-- LOGIN Conference (biggest tech event in Baltics)
+- Wisdom House @ Davos 2026 (during World Economic Forum / WEF)
+- GenAI Zürich
+- LOGIN Conference (biggest tech event in the Baltics)
 - Innovation Roundtable
 - ETH Zurich and ETH Entrepreneurship Club
 - Sony AI Conference

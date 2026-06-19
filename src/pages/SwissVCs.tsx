@@ -70,16 +70,22 @@ const SwissVCs = () => {
   }, []);
 
   useEffect(() => {
-    document.title = "Swiss VCs and Funds – Venture Capital Directory for Swiss Startups";
+    document.title = "Swiss VCs & Funds Directory 2026 — 66+ Venture Capital Firms Investing in Switzerland | Dr. Justinas Mišeikis";
     const setMeta = (name: string, content: string, attr = "name") => {
       let el = document.querySelector(`meta[${attr}="${name}"]`) as HTMLMetaElement | null;
       if (!el) { el = document.createElement("meta"); el.setAttribute(attr, name); document.head.appendChild(el); }
       el.setAttribute("content", content);
     };
-    setMeta("description", "Comprehensive directory of venture capital firms investing in Swiss startups. Filter by sector, stage, and geography.");
-    setMeta("og:title", "Swiss VCs and Funds – Venture Capital Directory", "property");
-    setMeta("og:description", "Find the right VC for your Swiss startup. Filter by sector, stage, and geography.", "property");
+    setMeta("description", "Curated directory of 66+ venture capital firms and funds investing in Swiss startups across deep tech, AI, robotics, fintech, biotech and climate. Filter by sector, stage (pre-seed → growth), and geography. Maintained by Dr. Justinas Mišeikis, Zurich.");
+    setMeta("keywords", "Swiss VCs, venture capital Switzerland, Swiss venture capital directory, VC firms Zurich, Swiss deep tech investors, AI investors Switzerland, robotics VC Europe, Series A Switzerland, pre-seed Swiss startups, fundraising Switzerland, Swiss startup ecosystem, DACH venture capital");
+    setMeta("og:title", "Swiss VCs & Funds Directory — 66+ Venture Capital Firms Investing in Switzerland", "property");
+    setMeta("og:description", "Find the right VC for your Swiss startup. 66+ firms filterable by sector, stage and geography. Curated by Dr. Justinas Mišeikis.", "property");
+    setMeta("og:url", "https://jmiseikis.lovable.app/swiss-vcs", "property");
+    setMeta("og:type", "website", "property");
     setMeta("og:image", "https://jmiseikis.lovable.app/og-swiss-vcs.png", "property");
+    setMeta("twitter:card", "summary_large_image");
+    setMeta("twitter:title", "Swiss VCs & Funds Directory 2026");
+    setMeta("twitter:description", "66+ venture capital firms investing in Swiss startups. Filter by sector, stage and geography.");
     let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
     if (!canonical) { canonical = document.createElement("link"); canonical.rel = "canonical"; document.head.appendChild(canonical); }
     canonical.href = "https://jmiseikis.lovable.app/swiss-vcs";
