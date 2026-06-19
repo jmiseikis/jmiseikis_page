@@ -104,6 +104,14 @@ export const generateICSContent = (event: CalendarEvent): string | null => {
   
   // Escape special characters for ICS
   const escapeICS = (str: string) => str.replace(/[,;\\]/g, '\\$&').replace(/\n/g, '\\n');
+
+  // Only emit a URL: line for safe http(s) links, and strip CR/LF to prevent ICS header injection.
+  const safeUrl =
+    event.officialUrl &&
+    event.officialUrl !== '[URL]' &&
+    /^https?:\/\//i.test(event.officialUrl)
+      ? event.officialUrl.replace(/[\r\n]+/g, '')
+      : '';
   
   const icsContent = [
     'BEGIN:VCALENDAR',
@@ -118,8 +126,8 @@ export const generateICSContent = (event: CalendarEvent): string | null => {
     `DTEND;VALUE=DATE:${formatDateForICS(endDateExclusive)}`,
     `SUMMARY:${escapeICS(event.name)}`,
     `LOCATION:${escapeICS(event.location)}`,
-    `DESCRIPTION:${escapeICS(event.description + '\\n\\nMore info: ' + event.officialUrl)}`,
-    event.officialUrl && event.officialUrl !== '[URL]' ? `URL:${event.officialUrl}` : '',
+    `DESCRIPTION:${escapeICS(event.description + '\\n\\nMore info: ' + (safeUrl || ''))}`,
+    safeUrl ? `URL:${safeUrl}` : '',
     'END:VEVENT',
     'END:VCALENDAR',
   ].filter(Boolean).join('\r\n');

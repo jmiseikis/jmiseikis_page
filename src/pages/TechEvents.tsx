@@ -29,6 +29,10 @@ interface TechEvent {
 const SHEET_ID = "1k4vfFfSX9Pmi5tNVuijUmubuTPSoFvBnIxC1kH_25x4";
 const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
 
+// Only allow http(s) links so a compromised sheet can't inject `javascript:` URLs.
+const isSafeUrl = (url: string | undefined | null): url is string =>
+  !!url && url !== "[URL]" && /^https?:\/\//i.test(url);
+
 const categoryColors: Record<string, string> = {
   "Industry": "bg-blue-500/10 text-blue-600 border-blue-200",
   "Startup": "bg-green-500/10 text-green-600 border-green-200",
@@ -580,7 +584,7 @@ const TechEvents = () => {
                     </span>
                   </div>
                   <div className="flex items-center justify-between mt-4 pt-3 border-t border-border">
-                    {event.officialUrl && event.officialUrl !== "[URL]" && (
+                     {isSafeUrl(event.officialUrl) && (
                       <a
                         href={event.officialUrl}
                         target="_blank"
@@ -671,7 +675,7 @@ const TechEvents = () => {
                         }}
                         variant="text"
                       />
-                      {event.officialUrl && event.officialUrl !== "[URL]" && (
+                       {isSafeUrl(event.officialUrl) && (
                         <a
                           href={event.officialUrl}
                           target="_blank"
