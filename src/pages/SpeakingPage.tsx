@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ExternalLink, Play, Youtube, Mic, Video, Mail, Award } from "lucide-react";
+import { ArrowLeft, ExternalLink, Play, Youtube, Mic, Video, Mail, Award, Podcast } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -20,6 +20,7 @@ interface VideoItem {
 
 const CHANNEL_URL = "https://www.youtube.com/@JustinasMiseikis";
 const PREMIUM_SPEAKERS_URL = "https://premium-speakers.com/en/speaker-presenter/justinas-miseikis/";
+const TECHDRIVE_URL = "https://techdrivezurich.lovable.app/";
 
 const openExternal = (url: string) => (e: React.MouseEvent) => {
   e.preventDefault();
@@ -129,12 +130,13 @@ const SpeakingPage = () => {
   return (
     <div className="min-h-screen">
       <Helmet>
-        <title>AI Keynote Speaker & Talks | Dr. Justinas Mišeikis – Zurich, Europe</title>
-        <meta name="description" content="Book Dr. Justinas Mišeikis - AI & robotics keynote speaker featured at Wisdom House @ Davos 2026 (during WEF), GenAI Zürich, LOGIN Conference, ETH Zürich and Sony AI. Watch talks and shorts on AI strategy, commercialization, ethics, and physical AI. Available across DACH and Europe - partnerships with Greater Zurich Area and Swisscom Ventures." />
-        <meta name="keywords" content="AI keynote speaker, robotics speaker Europe, AI conference speaker Zurich, Davos 2026 speaker, WEF speaker, Wisdom House Davos, GenAI Zürich speaker, technology keynote DACH, innovation speaker, computer vision speaker, deep tech speaker, AI ethics speaker, physical AI speaker, Greater Zurich Area, Swisscom Ventures, Premium Speakers Agency" />
+        <title>AI Keynote Speaker & TechDrive Zürich Host | Dr. Justinas Mišeikis</title>
+        <meta name="description" content="Dr. Justinas Mišeikis: AI & robotics keynote speaker and host of TechDrive Zürich, the interview and podcast series on Switzerland's AI, robotics and deep tech scene. Featured at Wisdom House @ Davos 2026 (WEF), GenAI Zürich, LOGIN Conference, ETH Zürich and Sony AI. Available across DACH and Europe." />
+        <meta name="keywords" content="AI keynote speaker, TechDrive Zürich, TechDrive Zurich podcast, Swiss AI podcast, robotics podcast Switzerland, deep tech interview series Zurich, robotics speaker Europe, AI conference speaker Zurich, Davos 2026 speaker, WEF speaker, Wisdom House Davos, GenAI Zürich speaker, technology keynote DACH, innovation speaker, computer vision speaker, deep tech speaker, AI ethics speaker, physical AI speaker, Greater Zurich Area, Swisscom Ventures, Premium Speakers Agency" />
         <link rel="canonical" href="https://jmiseikis.lovable.app/speaking" />
-        <meta property="og:title" content="AI Keynote Speaker | Dr. Justinas Mišeikis – Davos 2026, GenAI Zürich, ETH" />
-        <meta property="og:description" content="Watch keynote talks and book a speaker on AI, robotics, and innovation. Featured at Wisdom House @ Davos 2026 (WEF) and GenAI Zürich." />
+        <meta property="og:title" content="AI Keynote Speaker & TechDrive Zürich Host | Dr. Justinas Mišeikis" />
+        <meta property="og:description" content="Keynote speaker on AI and robotics, and host of TechDrive Zürich - the interview series on Switzerland's deep tech ecosystem. Featured at Wisdom House @ Davos 2026 (WEF), GenAI Zürich, ETH Zürich and Sony AI." />
+        <meta property="og:url" content="https://jmiseikis.lovable.app/speaking" />
         <meta property="og:image" content="https://jmiseikis.lovable.app/og-image.png" />
         <meta property="og:type" content="video.other" />
         <script type="application/ld+json">
@@ -142,11 +144,12 @@ const SpeakingPage = () => {
             "@context": "https://schema.org",
             "@type": "Person",
             "name": "Dr. Justinas Mišeikis",
-            "jobTitle": "AI Keynote Speaker & Strategy Advisor",
+            "jobTitle": "AI Keynote Speaker, Strategy Advisor & Host of TechDrive Zürich",
             "url": "https://jmiseikis.lovable.app/speaking",
             "sameAs": [
               "https://www.youtube.com/@JustinasMiseikis",
-              "https://premium-speakers.com/en/speaker-presenter/justinas-miseikis/"
+              "https://premium-speakers.com/en/speaker-presenter/justinas-miseikis/",
+              "https://techdrivezurich.lovable.app/"
             ],
             "knowsAbout": ["Artificial Intelligence", "Robotics", "Computer Vision", "AI Commercialization", "AI Ethics", "Physical AI", "Deep Tech Investment"],
             "performerIn": [
@@ -156,6 +159,19 @@ const SpeakingPage = () => {
               { "@type": "Event", "name": "ETH Zürich & ETH Entrepreneurship Club", "location": "Zurich, Switzerland" },
               { "@type": "Event", "name": "Sony AI Conference" }
             ]
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "PodcastSeries",
+            "name": "TechDrive Zürich",
+            "url": "https://techdrivezurich.lovable.app/",
+            "description": "Interview and podcast series hosted by Dr. Justinas Mišeikis, spotlighting founders, researchers and operators shaping Switzerland's AI, robotics and deep tech ecosystem, recorded in and around Zürich.",
+            "inLanguage": "en",
+            "author": { "@type": "Person", "name": "Dr. Justinas Mišeikis", "url": "https://jmiseikis.lovable.app/" },
+            "host": { "@type": "Person", "name": "Dr. Justinas Mišeikis", "url": "https://jmiseikis.lovable.app/" },
+            "about": ["Artificial Intelligence", "Robotics", "Deep Tech", "Swiss Startups", "Greater Zurich Area"]
           })}
         </script>
       </Helmet>
