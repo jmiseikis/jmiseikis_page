@@ -79,6 +79,37 @@ const Speaking = () => {
             </p>
           </div>
 
+          {/* TechDrive Zürich - Host highlight (top of section) */}
+          <div className="mb-16">
+            <div className="bg-card p-8 border-2 border-primary">
+              <div className="flex items-start gap-4 mb-4">
+                <Podcast className="w-7 h-7 text-primary flex-shrink-0 mt-1" />
+                <div className="flex-1">
+                  <div className="text-primary font-medium tracking-wider uppercase text-xs mb-2">
+                    Host · Interview & Podcast Series
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3">TechDrive Zürich</h3>
+                  <p className="text-muted-foreground leading-relaxed mb-6">
+                    I host <strong>TechDrive Zürich</strong>, an interview and podcast series
+                    spotlighting the founders, researchers and operators shaping
+                    Switzerland's AI, robotics and deep tech ecosystem, recorded in and around
+                    Zürich with leaders from across the Greater Zurich Area.
+                  </p>
+                  <Button asChild variant="outline" size="sm">
+                    <a
+                      href="https://techdrivezurich.lovable.app/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Visit TechDrive Zürich
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Speaking Topics */}
           <div className="mb-16">
             <div className="grid md:grid-cols-2 gap-6">
@@ -133,37 +164,6 @@ const Speaking = () => {
                     <span>{event}</span>
                   </div>
                 ))}
-              </div>
-            </div>
-          </div>
-
-          {/* TechDrive Zürich */}
-          <div className="mb-16">
-            <div className="bg-card p-8 border-2 border-border">
-              <div className="flex items-start gap-4 mb-4">
-                <Podcast className="w-7 h-7 text-primary flex-shrink-0 mt-1" />
-                <div className="flex-1">
-                  <div className="text-primary font-medium tracking-wider uppercase text-xs mb-2">
-                    Host · Interview & Podcast Series
-                  </div>
-                  <h3 className="text-2xl font-bold mb-3">TechDrive Zürich</h3>
-                  <p className="text-muted-foreground leading-relaxed mb-6">
-                    I host <strong>TechDrive Zürich</strong>, an interview and podcast series
-                    spotlighting the founders, researchers and operators shaping
-                    Switzerland's AI, robotics and deep tech ecosystem - recorded in and around
-                    Zürich with leaders from across the Greater Zurich Area.
-                  </p>
-                  <Button asChild variant="outline" size="sm">
-                    <a
-                      href="https://techdrivezurich.lovable.app/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Visit TechDrive Zürich
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  </Button>
-                </div>
               </div>
             </div>
           </div>
