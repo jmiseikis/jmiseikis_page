@@ -70,7 +70,7 @@ const SwissVCs = () => {
   }, []);
 
   useEffect(() => {
-    document.title = "Swiss VCs & Funds Directory 2026 — 66+ Venture Capital Firms Investing in Switzerland | Dr. Justinas Mišeikis";
+    document.title = "Swiss VCs & Funds Directory 2026 - 66+ Venture Capital Firms Investing in Switzerland | Dr. Justinas Mišeikis";
     const setMeta = (name: string, content: string, attr = "name") => {
       let el = document.querySelector(`meta[${attr}="${name}"]`) as HTMLMetaElement | null;
       if (!el) { el = document.createElement("meta"); el.setAttribute(attr, name); document.head.appendChild(el); }
@@ -78,7 +78,7 @@ const SwissVCs = () => {
     };
     setMeta("description", "Curated directory of 66+ venture capital firms and funds investing in Swiss startups across deep tech, AI, robotics, fintech, biotech and climate. Filter by sector, stage (pre-seed → growth), and geography. Maintained by Dr. Justinas Mišeikis, Zurich.");
     setMeta("keywords", "Swiss VCs, venture capital Switzerland, Swiss venture capital directory, VC firms Zurich, Swiss deep tech investors, AI investors Switzerland, robotics VC Europe, Series A Switzerland, pre-seed Swiss startups, fundraising Switzerland, Swiss startup ecosystem, DACH venture capital");
-    setMeta("og:title", "Swiss VCs & Funds Directory — 66+ Venture Capital Firms Investing in Switzerland", "property");
+    setMeta("og:title", "Swiss VCs & Funds Directory - 66+ Venture Capital Firms Investing in Switzerland", "property");
     setMeta("og:description", "Find the right VC for your Swiss startup. 66+ firms filterable by sector, stage and geography. Curated by Dr. Justinas Mišeikis.", "property");
     setMeta("og:url", "https://jmiseikis.lovable.app/swiss-vcs", "property");
     setMeta("og:type", "website", "property");

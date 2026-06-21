@@ -84,7 +84,7 @@ const Resources = () => {
               
               <p className="text-muted-foreground mb-6 leading-relaxed">
                 A comprehensive directory of venture capital firms investing in Swiss startups.
-                From deep tech and biotech to fintech and climate — find the right investor for your stage and sector.
+                From deep tech and biotech to fintech and climate - find the right investor for your stage and sector.
               </p>
 
               <div className="flex items-center gap-6 mb-6 text-sm text-muted-foreground">
@@ -167,7 +167,7 @@ const Resources = () => {
               
               <p className="text-muted-foreground mb-6 leading-relaxed">
                 Discover the vibrant ecosystem of robotics innovators shaping the future of Switzerland.
-                A comprehensive directory of 100+ robotics startups across automation, AI, and advanced manufacturing — curated in partnership with Swisscom Ventures.
+                A comprehensive directory of 100+ robotics startups across automation, AI, and advanced manufacturing - curated in partnership with Swisscom Ventures.
               </p>
 
               <div className="flex items-center gap-6 mb-6 text-sm text-muted-foreground">
@@ -209,7 +209,7 @@ const Resources = () => {
               
               <p className="text-muted-foreground mb-6 leading-relaxed">
                 Discover 150+ robotics companies, research labs, and autonomous systems innovators 
-                in one of the world's most dynamic innovation ecosystems — curated in partnership with Greater Zurich Area.
+                in one of the world's most dynamic innovation ecosystems - curated in partnership with Greater Zurich Area.
               </p>
 
               <div className="flex items-center gap-6 mb-6 text-sm text-muted-foreground">

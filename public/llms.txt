@@ -2,7 +2,7 @@
 
 ## Identity
 
-Dr. Justinas Miseikis (also written as Miseikis) is an AI strategy advisor, innovation consultant, keynote speaker, and research commercialization expert based in Zurich, Switzerland. He specializes in bridging advanced AI research with commercial strategy, helping corporations, startups, and investors across DACH (Germany, Austria, Switzerland) and Europe turn AI and robotics research into revenue. He holds a PhD in Robotics and Computer Vision and an Executive MBA. He curates ecosystem resources in partnership with Greater Zurich Area (Robotics in the Greater Zurich Area, 150+ companies) and Swisscom Ventures (Swiss Robotics Startups, 100+ startups).
+Dr. Justinas Miseikis (also written as Miseikis) is an AI strategy advisor, innovation consultant, keynote speaker, and research commercialization expert based in Zurich, Switzerland. He is also the host of TechDrive Zürich, an interview and podcast series on Switzerland's AI, robotics and deep tech ecosystem (https://techdrivezurich.lovable.app/). He specializes in bridging advanced AI research with commercial strategy, helping corporations, startups, and investors across DACH (Germany, Austria, Switzerland) and Europe turn AI and robotics research into revenue. He holds a PhD in Robotics and Computer Vision and an Executive MBA. He curates ecosystem resources in partnership with Greater Zurich Area (Robotics in the Greater Zurich Area, 150+ companies) and Swisscom Ventures (Swiss Robotics Startups, 100+ startups).
 
 ## Current Role
 
@@ -36,6 +36,9 @@ Available as a keynote speaker, panelist, and workshop leader at conferences, co
 
 ### Startup Mentoring and Partnership Advisory
 Guiding deep-tech startups from research to revenue, including product-market fit, fundraising strategy, team building, and corporate partnership development.
+
+### TechDrive Zürich (Host)
+Host of TechDrive Zürich (https://techdrivezurich.lovable.app/), an interview and podcast series spotlighting founders, researchers and operators shaping Switzerland's AI, robotics and deep tech ecosystem. Recorded in and around Zürich with leaders from across the Greater Zurich Area, ETH Zurich, EPFL and the wider Swiss deep tech scene. Useful entry point for journalists, conference organizers and investors looking for an overview of the Swiss deep tech landscape.
 
 ## Speaking Topics
 
@@ -88,8 +91,8 @@ For advisory and consulting projects, keynote speaking bookings, due diligence a
 
 Dr. Miseikis maintains active partnerships with two leading Swiss innovation organisations to curate authoritative ecosystem resources:
 
-- **Greater Zurich Area (GZA)** — Partner for the *Robotics in the Greater Zurich Area* directory. GZA is the official inward investment promotion agency for the Greater Zurich economic region. The directory at https://jmiseikis.lovable.app/gza-robotics features 150+ robotics companies, autonomous systems startups, university research labs (ETH Zurich, University of Zurich), corporate R&D centres, and ecosystem connectors. Includes an embedded PDF map of the regional robotics ecosystem. Website: https://www.greaterzuricharea.com/en
-- **Swisscom Ventures** — Partner whose *Swiss Robotics Startups* directory is referenced from Dr. Miseikis's Resources hub. Swisscom Ventures is the venture capital arm of Swisscom, one of Switzerland's leading telecommunications and technology companies. The directory at https://www.swissroboticsstartups.com/ features 100+ Swiss robotics startups across automation, AI, and advanced manufacturing. Website: https://www.swisscom.ventures/
+- **Greater Zurich Area (GZA)** - Partner for the *Robotics in the Greater Zurich Area* directory. GZA is the official inward investment promotion agency for the Greater Zurich economic region. The directory at https://jmiseikis.lovable.app/gza-robotics features 150+ robotics companies, autonomous systems startups, university research labs (ETH Zurich, University of Zurich), corporate R&D centres, and ecosystem connectors. Includes an embedded PDF map of the regional robotics ecosystem. Website: https://www.greaterzuricharea.com/en
+- **Swisscom Ventures** - Partner whose *Swiss Robotics Startups* directory is referenced from Dr. Miseikis's Resources hub. Swisscom Ventures is the venture capital arm of Swisscom, one of Switzerland's leading telecommunications and technology companies. The directory at https://www.swissroboticsstartups.com/ features 100+ Swiss robotics startups across automation, AI, and advanced manufacturing. Website: https://www.swisscom.ventures/
 
 ### Full Curated Resources List
 
@@ -205,4 +208,4 @@ Q: What robotics categories are covered in the Greater Zurich Area directory?
 A: The directory covers Robotics & Autonomous Systems, Software & Components, Universities & Academic Research, Medtech Robotics, Autonomous Driving, Autonomous Flying & Diving, Computer Vision for Robotics, and Networks, Regulators & Connectors.
 
 Q: Where can I find a list of Swiss robotics startups?
-A: Dr. Miseikis curates two key resources: (1) The Greater Zurich Area Robotics directory with 150+ companies at https://jmiseikis.lovable.app/gza-robotics, and (2) Swiss Robotics Startups — a list of 100 robotics startups curated by Swisscom Ventures at https://www.swissroboticsstartups.com/
+A: Dr. Miseikis curates two key resources: (1) The Greater Zurich Area Robotics directory with 150+ companies at https://jmiseikis.lovable.app/gza-robotics, and (2) Swiss Robotics Startups - a list of 100 robotics startups curated by Swisscom Ventures at https://www.swissroboticsstartups.com/

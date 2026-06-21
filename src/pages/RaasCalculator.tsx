@@ -317,15 +317,15 @@ const RaasCalculator = () => {
     verdictHtml = `The RaaS subscription (<strong>${fmt(calc.raasMonthly)}/mo</strong>) currently exceeds total savings. Consider <strong>fewer robots</strong>, a lower subscription tier, or replacing more workers to turn this positive.`;
   } else if (calc.breakeven < 0 || calc.breakeven > maxM) {
     verdictLabel = "\ud83d\udccb Beyond Contract Period";
-    verdictHtml = `Generates <strong>${fmt(calc.netMonthly)}/month</strong> net savings, but the <strong>${fmt(calc.setup)}</strong> setup cost would take <strong>${fmtMonths(calc.breakeven)}</strong> to recover — beyond the ${calc.contract}-year contract. Negotiate a lower setup fee or extend the term.`;
+    verdictHtml = `Generates <strong>${fmt(calc.netMonthly)}/month</strong> net savings, but the <strong>${fmt(calc.setup)}</strong> setup cost would take <strong>${fmtMonths(calc.breakeven)}</strong> to recover - beyond the ${calc.contract}-year contract. Negotiate a lower setup fee or extend the term.`;
   } else if (calc.breakeven <= 6) {
     verdictCls = "good";
     verdictLabel = "\ud83d\ude80 Excellent ROI Profile";
-    verdictHtml = `Break-even in just <strong>${fmtMonths(calc.breakeven)}</strong>. Net gain over ${calc.contract} year${calc.contract > 1 ? "s" : ""}: <strong>${fmt(calc.netGain)}</strong> at <strong>${calc.roi.toFixed(0)}% ROI</strong>. A highly compelling pitch — <strong>${calc.robots} robot${calc.robots > 1 ? "s" : ""}</strong> replacing/assisting <strong>${calc.workers} worker${calc.workers > 1 ? "s" : ""}</strong>.`;
+    verdictHtml = `Break-even in just <strong>${fmtMonths(calc.breakeven)}</strong>. Net gain over ${calc.contract} year${calc.contract > 1 ? "s" : ""}: <strong>${fmt(calc.netGain)}</strong> at <strong>${calc.roi.toFixed(0)}% ROI</strong>. A highly compelling pitch - <strong>${calc.robots} robot${calc.robots > 1 ? "s" : ""}</strong> replacing/assisting <strong>${calc.workers} worker${calc.workers > 1 ? "s" : ""}</strong>.`;
   } else if (calc.breakeven <= 18) {
     verdictCls = "good";
     verdictLabel = "\u2705 Strong Business Case";
-    verdictHtml = `Break-even at <strong>${fmtMonths(calc.breakeven)}</strong> is within the industry benchmark of 9-18 months. Net gain: <strong>${fmt(calc.netGain)}</strong> at <strong>${calc.roi.toFixed(0)}% ROI</strong> — a credible and competitive RaaS proposal.`;
+    verdictHtml = `Break-even at <strong>${fmtMonths(calc.breakeven)}</strong> is within the industry benchmark of 9-18 months. Net gain: <strong>${fmt(calc.netGain)}</strong> at <strong>${calc.roi.toFixed(0)}% ROI</strong> - a credible and competitive RaaS proposal.`;
   } else {
     verdictCls = "warn";
     verdictLabel = "\ud83d\udcca Moderate ROI";

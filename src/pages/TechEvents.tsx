@@ -83,8 +83,8 @@ const TechEvents = () => {
 
   // SEO: title, description, canonical, OG/Twitter tags, JSON-LD
   useEffect(() => {
-    const TITLE = "Tech Events Switzerland 2026 — AI, Robotics, Startup & VC Conferences | Curated by Dr. Justinas Mišeikis";
-    const DESC = "Curated calendar of 2026 tech, AI, robotics, deep-tech, startup and VC events in Switzerland — Zurich, Geneva, Lausanne, Basel and beyond. Filter by category, size, location and price. Add to Google, Outlook or Apple Calendar.";
+    const TITLE = "Tech Events Switzerland 2026 - AI, Robotics, Startup & VC Conferences | Curated by Dr. Justinas Mišeikis";
+    const DESC = "Curated calendar of 2026 tech, AI, robotics, deep-tech, startup and VC events in Switzerland - Zurich, Geneva, Lausanne, Basel and beyond. Filter by category, size, location and price. Add to Google, Outlook or Apple Calendar.";
     const URL = "https://jmiseikis.lovable.app/tech-events";
     const prev = document.title;
     document.title = TITLE;
@@ -101,7 +101,7 @@ const TechEvents = () => {
     setMeta("og:url", URL, "property");
     setMeta("og:type", "website", "property");
     setMeta("twitter:card", "summary_large_image");
-    setMeta("twitter:title", "Tech Events Switzerland 2026 — AI, Robotics & VC");
+    setMeta("twitter:title", "Tech Events Switzerland 2026 - AI, Robotics & VC");
     setMeta("twitter:description", DESC);
 
     let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;

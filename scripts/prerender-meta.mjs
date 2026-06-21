@@ -10,7 +10,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const distDir = join(__dirname, "..", "dist");
 const indexPath = join(distDir, "index.html");
 if (!existsSync(indexPath)) {
-  console.error("[prerender] dist/index.html not found — skipping");
+  console.error("[prerender] dist/index.html not found - skipping");
   process.exit(0);
 }
 const SITE = "https://jmiseikis.lovable.app";
@@ -20,49 +20,49 @@ const baseHtml = readFileSync(indexPath, "utf8");
 const routes = [
   {
     path: "/de",
-    title: "Dr. Justinas Mišeikis — KI-Keynote-Speaker & Strategieberater | Zürich, DACH",
+    title: "Dr. Justinas Mišeikis - KI-Keynote-Speaker & Strategieberater | Zürich, DACH",
     description:
       "KI- und Robotik-Keynote-Speaker, VC Due Diligence und Forschungskommerzialisierung. Beratung für Unternehmen und Investoren in der Schweiz, Deutschland und Österreich.",
   },
   {
     path: "/advisory",
-    title: "AI Advisory — Strategy, Robotics & Research Commercialization | Dr. Justinas Mišeikis",
+    title: "AI Advisory - Strategy, Robotics & Research Commercialization | Dr. Justinas Mišeikis",
     description:
       "Independent AI and robotics advisory for corporates and startups: strategy, partnerships, R&D-to-market and computer vision programs across Zurich, DACH and Europe.",
   },
   {
     path: "/speaking",
-    title: "AI Keynote Speaker — Davos, GenAI Zürich, ETH | Dr. Justinas Mišeikis",
+    title: "AI Keynote Speaker & TechDrive Zürich Host | Dr. Justinas Mišeikis",
     description:
-      "Book an AI and robotics keynote speaker for your conference, summit or corporate event. Past talks: Wisdom House @ Davos 2026 (WEF), GenAI Zürich, ETH Zurich, Sony AI.",
+      "Book Dr. Justinas Mišeikis as an AI and robotics keynote speaker, and host of TechDrive Zürich - the interview and podcast series on Switzerland's AI, robotics and deep tech. Past talks: Wisdom House @ Davos 2026 (WEF), GenAI Zürich, ETH Zurich, Sony AI.",
   },
   {
     path: "/due-diligence",
-    title: "VC Due Diligence — AI & Robotics Deep Tech | Dr. Justinas Mišeikis",
+    title: "VC Due Diligence - AI & Robotics Deep Tech | Dr. Justinas Mišeikis",
     description:
       "Independent technical due diligence for VCs and corporate investors evaluating AI, robotics, computer vision and deep tech ventures. Zurich, Switzerland.",
   },
   {
     path: "/tech-events",
-    title: "Tech Events Switzerland 2026 — AI, Robotics, Startups | Curated Calendar",
+    title: "Tech Events Switzerland 2026 - AI, Robotics, Startups | Curated Calendar",
     description:
       "Curated calendar of the best AI, robotics, deep tech and startup events in Switzerland and the DACH region for 2026. Filter by topic, city and month.",
   },
   {
     path: "/swiss-vcs",
-    title: "Swiss VCs Directory — 66+ Venture Capital Firms in Switzerland",
+    title: "Swiss VCs Directory - 66+ Venture Capital Firms in Switzerland",
     description:
       "Directory of 66+ Swiss venture capital firms investing in AI, robotics, deep tech, SaaS and climate. Filter by sector, stage and ticket size to find the right investor.",
   },
   {
     path: "/raas-calculator",
-    title: "Robotics-as-a-Service (RaaS) ROI Calculator — CapEx vs OpEx",
+    title: "Robotics-as-a-Service (RaaS) ROI Calculator - CapEx vs OpEx",
     description:
       "Free RaaS ROI calculator: compare upfront robot purchase vs Robotics-as-a-Service over 5 years. Charts, payback period and total cost of ownership.",
   },
   {
     path: "/gza-robotics",
-    title: "Robotics in the Greater Zurich Area — 150+ Companies (with GZA)",
+    title: "Robotics in the Greater Zurich Area - 150+ Companies (with GZA)",
     description:
       "Open resource mapping 150+ robotics companies, labs and startups across the Greater Zurich Area, produced with Greater Zurich Area (GZA).",
   },
