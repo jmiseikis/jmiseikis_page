@@ -85,7 +85,7 @@ const AdvisoryPage = () => {
             <p className="text-xl text-muted-foreground max-w-3xl leading-relaxed">
               I help organizations navigate the complex journey from cutting-edge AI research to commercial success.
               Whether you're a startup scaling AI products, an enterprise adopting emerging technology, or an investor
-              evaluating opportunities — I bring battle-tested strategy from Sony AI and beyond.
+              evaluating opportunities - I bring battle-tested strategy from Sony AI and beyond.
             </p>
           </div>
         </section>

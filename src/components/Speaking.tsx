@@ -150,7 +150,7 @@ const Speaking = () => {
                   <p className="text-muted-foreground leading-relaxed mb-6">
                     I host <strong>TechDrive Zürich</strong>, an interview and podcast series
                     spotlighting the founders, researchers and operators shaping
-                    Switzerland's AI, robotics and deep tech ecosystem — recorded in and around
+                    Switzerland's AI, robotics and deep tech ecosystem - recorded in and around
                     Zürich with leaders from across the Greater Zurich Area.
                   </p>
                   <Button asChild variant="outline" size="sm">

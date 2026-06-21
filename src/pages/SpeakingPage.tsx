@@ -86,7 +86,7 @@ const pastEvents = [
   "VentureLab Engineering Ecosystem Event",
 ];
 
-// Manually curated collaborations — videos hosted on other channels where Justinas appears.
+// Manually curated collaborations - videos hosted on other channels where Justinas appears.
 // The YouTube RSS feed only exposes uploads from his own channel, so cross-channel features
 // (e.g. fireside chats, podcasts) are added here.
 const collaborations: { id: string; title: string; channel: string; url: string; thumbnail: string; publishedAt: string }[] = [
@@ -130,7 +130,7 @@ const SpeakingPage = () => {
     <div className="min-h-screen">
       <Helmet>
         <title>AI Keynote Speaker & Talks | Dr. Justinas Mišeikis – Zurich, Europe</title>
-        <meta name="description" content="Book Dr. Justinas Mišeikis — AI & robotics keynote speaker featured at Wisdom House @ Davos 2026 (during WEF), GenAI Zürich, LOGIN Conference, ETH Zürich and Sony AI. Watch talks and shorts on AI strategy, commercialization, ethics, and physical AI. Available across DACH and Europe — partnerships with Greater Zurich Area and Swisscom Ventures." />
+        <meta name="description" content="Book Dr. Justinas Mišeikis - AI & robotics keynote speaker featured at Wisdom House @ Davos 2026 (during WEF), GenAI Zürich, LOGIN Conference, ETH Zürich and Sony AI. Watch talks and shorts on AI strategy, commercialization, ethics, and physical AI. Available across DACH and Europe - partnerships with Greater Zurich Area and Swisscom Ventures." />
         <meta name="keywords" content="AI keynote speaker, robotics speaker Europe, AI conference speaker Zurich, Davos 2026 speaker, WEF speaker, Wisdom House Davos, GenAI Zürich speaker, technology keynote DACH, innovation speaker, computer vision speaker, deep tech speaker, AI ethics speaker, physical AI speaker, Greater Zurich Area, Swisscom Ventures, Premium Speakers Agency" />
         <link rel="canonical" href="https://jmiseikis.lovable.app/speaking" />
         <meta property="og:title" content="AI Keynote Speaker | Dr. Justinas Mišeikis – Davos 2026, GenAI Zürich, ETH" />
@@ -246,7 +246,7 @@ const SpeakingPage = () => {
             )}
 
             {!loading && !error && longForm.length === 0 && (
-              <p className="text-muted-foreground">No talks available right now — check the channel for the latest uploads.</p>
+              <p className="text-muted-foreground">No talks available right now - check the channel for the latest uploads.</p>
             )}
           </section>
 
@@ -273,7 +273,7 @@ const SpeakingPage = () => {
                 Featured Collaborations
               </h2>
               <p className="text-muted-foreground mb-6 max-w-3xl">
-                Selected appearances on other channels — fireside chats, podcasts, and panel discussions.
+                Selected appearances on other channels - fireside chats, podcasts, and panel discussions.
               </p>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {collaborations.map((c) => (
