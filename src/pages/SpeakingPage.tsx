@@ -219,6 +219,39 @@ const SpeakingPage = () => {
             </div>
           </div>
 
+          {/* TechDrive Zürich - Host highlight */}
+          <section className="mb-16">
+            <div className="bg-card p-8 border-2 border-primary">
+              <div className="flex items-start gap-4">
+                <Podcast className="w-7 h-7 text-primary flex-shrink-0 mt-1" />
+                <div className="flex-1">
+                  <div className="text-primary font-medium tracking-wider uppercase text-xs mb-2">
+                    Host · Interview & Podcast Series
+                  </div>
+                  <h2 className="text-2xl md:text-3xl font-bold mb-3">TechDrive Zürich</h2>
+                  <p className="text-muted-foreground leading-relaxed mb-6 max-w-3xl">
+                    I host <strong>TechDrive Zürich</strong>, an interview and podcast series
+                    spotlighting the founders, researchers and operators shaping Switzerland's
+                    AI, robotics and deep tech ecosystem. Recorded in and around Zürich with
+                    leaders from across the Greater Zurich Area, ETH Zurich, EPFL and the wider
+                    Swiss deep tech scene.
+                  </p>
+                  <Button asChild variant="outline">
+                    <a
+                      href={TECHDRIVE_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={openExternal(TECHDRIVE_URL)}
+                    >
+                      Visit TechDrive Zürich
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* Videos: Talks & Interviews */}
           <section className="mb-16">
             <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3">
