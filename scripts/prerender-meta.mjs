@@ -32,9 +32,9 @@ const routes = [
   },
   {
     path: "/speaking",
-    title: "AI Keynote Speaker - Davos, GenAI Zürich, ETH | Dr. Justinas Mišeikis",
+    title: "AI Keynote Speaker & TechDrive Zürich Host | Dr. Justinas Mišeikis",
     description:
-      "Book an AI and robotics keynote speaker for your conference, summit or corporate event. Past talks: Wisdom House @ Davos 2026 (WEF), GenAI Zürich, ETH Zurich, Sony AI.",
+      "Book Dr. Justinas Mišeikis as an AI and robotics keynote speaker, and host of TechDrive Zürich - the interview and podcast series on Switzerland's AI, robotics and deep tech. Past talks: Wisdom House @ Davos 2026 (WEF), GenAI Zürich, ETH Zurich, Sony AI.",
   },
   {
     path: "/due-diligence",
