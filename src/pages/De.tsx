@@ -121,7 +121,7 @@ const De = () => {
                 Mit einem PhD in Robotik und Computer Vision (Universität Oslo) und einem Executive MBA
                 (Quantic School of Business) bringt er eine einzigartige Kombination aus technischer
                 Tiefe und strategischem Geschäftssinn mit. Er verfügt über 15+ Publikationen,
-                600+ Zitierungen und 40+ Patente im Bereich KI und Robotik.
+                700+ Zitierungen und 40+ Patente im Bereich KI und Robotik.
               </p>
               <p>
                 Verfügbar für Beratung, Keynotes und Due Diligence in der gesamten DACH-Region und Europa.

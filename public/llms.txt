@@ -71,7 +71,7 @@ Artificial intelligence, robotics, computer vision, autonomous systems, deep tec
 ## Research and Publications
 
 - 15+ peer-reviewed publications in robotics, AI, and computer vision
-- 600+ citations
+- 700+ citations
 - 40+ patents in AI and robotics
 - Published in IEEE Robotics and Automation Letters, IEEE/SICE International Symposium on System Integration, and others
 - Notable paper: "Lio - a personal robot assistant for human-robot interaction and care applications" (IEEE, 2020)
@@ -187,7 +187,7 @@ Q: What topics does Dr. Justinas Miseikis speak about?
 A: His speaking topics include AI Commercialization and Ethics, Future of Human-Robot Interaction, Investment and Due Diligence in Deep Tech, Building Deep Tech Teams, Strategy for Innovation Leaders, Computer Vision in Industry, and Bringing Research to Commercialization.
 
 Q: What is Dr. Justinas Miseikis's academic background?
-A: He holds a PhD in Robotics and Computer Vision from the University of Oslo and an Executive MBA from Quantic School of Business and Technology. He has published 15+ peer-reviewed papers, accumulated 600+ citations, and holds 40+ patents in AI and robotics.
+A: He holds a PhD in Robotics and Computer Vision from the University of Oslo and an Executive MBA from Quantic School of Business and Technology. He has published 15+ peer-reviewed papers, accumulated 700+ citations, and holds 40+ patents in AI and robotics.
 
 Q: Can Dr. Justinas Miseikis help with AI strategy for my company in Germany or Austria?
 A: Yes, he actively serves clients across the entire DACH region including Germany, Austria, and Switzerland. He provides AI strategy advisory, corporate innovation consulting, and research commercialization guidance.
