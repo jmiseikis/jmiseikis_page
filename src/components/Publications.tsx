@@ -105,7 +105,7 @@ const Publications = () => {
                   <p className="text-muted-foreground">Peer-reviewed Publications</p>
                 </div>
                 <div>
-                  <div className="text-4xl font-bold text-primary mb-2">600+</div>
+                  <div className="text-4xl font-bold text-primary mb-2">700+</div>
                   <p className="text-muted-foreground">Citations</p>
                 </div>
                 <div>
