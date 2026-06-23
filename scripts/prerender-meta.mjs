@@ -66,6 +66,12 @@ const routes = [
     description:
       "Open resource mapping 150+ robotics companies, labs and startups across the Greater Zurich Area, produced with Greater Zurich Area (GZA).",
   },
+  {
+    path: "/ai-agents-strategy",
+    title: "AI Agent Development Strategy | Dr. Justinas Mišeikis",
+    description:
+      "Enterprise guide to AI agent development strategy, technical viability, ROI assessment, and deployment roadmaps for production-ready systems.",
+  },
 ];
 
 function setOrInjectMeta(html, attr, value, content) {
