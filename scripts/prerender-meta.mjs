@@ -26,7 +26,7 @@ const routes = [
   },
   {
     path: "/advisory",
-    title: "AI Advisory - Strategy, Robotics & Research Commercialization | Dr. Justinas Mišeikis",
+    title: "AI Strategy Advisory | Dr. Justinas Mišeikis",
     description:
       "Independent AI and robotics advisory for corporates and startups: strategy, partnerships, R&D-to-market and computer vision programs across Zurich, DACH and Europe.",
   },
@@ -34,7 +34,7 @@ const routes = [
     path: "/speaking",
     title: "AI Keynote Speaker & TechDrive Zürich Host | Dr. Justinas Mišeikis",
     description:
-      "Book Dr. Justinas Mišeikis as an AI and robotics keynote speaker, and host of TechDrive Zürich - the interview and podcast series on Switzerland's AI, robotics and deep tech. Past talks: Wisdom House @ Davos 2026 (WEF), GenAI Zürich, ETH Zurich, Sony AI.",
+      "Book Dr. Justinas Mišeikis as an AI and robotics keynote speaker, and host of TechDrive Zürich. Featured at Davos 2026, GenAI Zürich and Sony AI.",
   },
   {
     path: "/due-diligence",
@@ -44,7 +44,7 @@ const routes = [
   },
   {
     path: "/tech-events",
-    title: "Tech Events Switzerland 2026 - AI, Robotics, Startups | Curated Calendar",
+    title: "Tech Events Switzerland 2026 | AI and Robotics",
     description:
       "Curated calendar of the best AI, robotics, deep tech and startup events in Switzerland and the DACH region for 2026. Filter by topic, city and month.",
   },
@@ -56,7 +56,7 @@ const routes = [
   },
   {
     path: "/raas-calculator",
-    title: "Robotics-as-a-Service (RaaS) ROI Calculator - CapEx vs OpEx",
+    title: "RaaS ROI Calculator | Robotics Automation Costs",
     description:
       "Free RaaS ROI calculator: compare upfront robot purchase vs Robotics-as-a-Service over 5 years. Charts, payback period and total cost of ownership.",
   },
