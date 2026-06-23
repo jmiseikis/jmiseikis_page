@@ -37,6 +37,7 @@ const CalendarDropdown = ({ event, variant = "icon" }: CalendarDropdownProps) =>
             size="sm"
             className="h-8 w-8 p-0 hover:bg-primary/10 hover:text-primary"
             title="Add to calendar"
+            aria-label="Add to calendar"
           >
             <Calendar className="w-4 h-4" />
           </Button>
