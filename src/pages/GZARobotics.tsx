@@ -113,7 +113,7 @@ const GZARobotics = () => {
   }, [companies]);
 
   const getCompanySize = (teamSize: string): string => {
-    if (!teamSize || teamSize === "—" || teamSize === "N/A") return "unknown";
+    if (!teamSize || teamSize === "\u2014" || teamSize === "N/A") return "unknown";
     const lower = teamSize.toLowerCase().trim();
     if (lower === "small") return "small";
     if (lower === "medium") return "medium";
@@ -162,7 +162,7 @@ const GZARobotics = () => {
   const hasActiveFilters = searchQuery || categoryFilter !== "all" || typeFilter !== "all" || sizeFilter !== "all";
 
   const formatUrl = (url: string) => {
-    if (!url || url === "N/A" || url === "—") return null;
+    if (!url || url === "N/A" || url === "\u2014") return null;
     return url.startsWith("http") ? url : `https://${url}`;
   };
 
@@ -191,8 +191,8 @@ const GZARobotics = () => {
         )}
         <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground mt-auto pt-2">
           {company.headquarters && <span>📍 {company.headquarters}</span>}
-          {company.founded && company.founded !== "—" && <span>🗓 {company.founded}</span>}
-          {company.teamSize && company.teamSize !== "—" && <span>👥 {company.teamSize}</span>}
+          {company.founded && company.founded !== "\u2014" && <span>🗓 {company.founded}</span>}
+          {company.teamSize && company.teamSize !== "\u2014" && <span>👥 {company.teamSize}</span>}
         </div>
         {formatUrl(company.website) && (
           <div className="pt-3 border-t border-border">
@@ -230,8 +230,8 @@ const GZARobotics = () => {
           )}
           <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground mt-3">
             {company.headquarters && <span>📍 {company.headquarters}</span>}
-            {company.founded && company.founded !== "—" && <span>🗓 {company.founded}</span>}
-            {company.teamSize && company.teamSize !== "—" && <span>👥 {company.teamSize}</span>}
+            {company.founded && company.founded !== "\u2014" && <span>🗓 {company.founded}</span>}
+            {company.teamSize && company.teamSize !== "\u2014" && <span>👥 {company.teamSize}</span>}
           </div>
         </div>
         <div className="flex flex-col items-end gap-3 min-w-[140px]">
