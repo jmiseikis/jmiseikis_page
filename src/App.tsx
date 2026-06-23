@@ -13,6 +13,7 @@ import AdvisoryPage from "./pages/AdvisoryPage";
 import SpeakingPage from "./pages/SpeakingPage";
 import DueDiligencePage from "./pages/DueDiligencePage";
 import GZARobotics from "./pages/GZARobotics";
+import AiAgentsStrategy from "./pages/AiAgentsStrategy";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -35,6 +36,7 @@ const App = () => (
             <Route path="/swiss-vcs" element={<SwissVCs />} />
             <Route path="/raas-calculator" element={<RaasCalculator />} />
             <Route path="/gza-robotics" element={<GZARobotics />} />
+            <Route path="/ai-agents-strategy" element={<AiAgentsStrategy />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

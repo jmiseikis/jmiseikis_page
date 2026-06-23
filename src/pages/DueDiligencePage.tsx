@@ -44,7 +44,7 @@ const DueDiligencePage = () => {
   return (
     <>
       <Helmet>
-        <title>AI & Robotics Due Diligence for Investors | Dr. Justinas Mišeikis – Zurich, DACH</title>
+        <title>AI & Robotics Due Diligence | Dr. Justinas Mišeikis</title>
         <meta name="description" content="Expert technical and strategic due diligence for VCs, investors, and acquirers evaluating AI, robotics, and deep tech companies. PhD-level assessment of technology, teams, and market potential." />
         <meta name="keywords" content="AI due diligence, robotics due diligence, deep tech due diligence, VC technical assessment, AI investment evaluation, robotics investment analysis, technology due diligence Zurich, deep tech investor advisory DACH" />
         <link rel="canonical" href="https://jmiseikis.lovable.app/due-diligence" />

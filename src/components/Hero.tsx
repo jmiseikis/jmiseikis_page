@@ -33,6 +33,9 @@ const Hero = () => {
                 Dr. Justinas
                 <br />
                 <span className="text-primary">Mišeikis</span>
+                <span className="block text-2xl md:text-3xl lg:text-4xl text-foreground mt-3">
+                  AI Strategy Advisor
+                </span>
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-xl">
                 Strategy executive bridging advanced AI research and commercial strategy. 
@@ -92,6 +95,10 @@ const Hero = () => {
                 <img 
                   src={profileImage} 
                   alt="Dr. Justinas Mišeikis"
+                  width="1200"
+                  height="1200"
+                  loading="eager"
+                  fetchPriority="high"
                   className="w-full h-full object-cover object-top grayscale hover:grayscale-0 transition-all duration-500"
                 />
               </div>

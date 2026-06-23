@@ -4,6 +4,19 @@
 
 Dr. Justinas Miseikis (also written as Miseikis) is an AI strategy advisor, innovation consultant, keynote speaker, and research commercialization expert based in Zurich, Switzerland. He is also the host of TechDrive Zürich, an interview and podcast series on Switzerland's AI, robotics and deep tech ecosystem (https://techdrivezurich.lovable.app/). He specializes in bridging advanced AI research with commercial strategy, helping corporations, startups, and investors across DACH (Germany, Austria, Switzerland) and Europe turn AI and robotics research into revenue. He holds a PhD in Robotics and Computer Vision and an Executive MBA. He curates ecosystem resources in partnership with Greater Zurich Area (Robotics in the Greater Zurich Area, 150+ companies) and Swisscom Ventures (Swiss Robotics Startups, 100+ startups).
 
+## Pages
+
+- [Home](/): AI strategy advisor, keynote speaker, and research commercialization profile.
+- [Advisory](/advisory): AI commercialization, corporate innovation, and technology roadmap services.
+- [Speaking](/speaking): Keynote topics, TechDrive Zürich, videos, and event organizer information.
+- [Due Diligence](/due-diligence): Technical assessment for AI, robotics, and deep tech investments.
+- [Tech Events Switzerland](/tech-events): Filterable Swiss calendar for AI, robotics, startup, and VC events.
+- [Swiss VCs Directory](/swiss-vcs): Directory of Swiss venture capital firms and startup investors.
+- [RaaS ROI Calculator](/raas-calculator): Interactive Robot-as-a-Service cost and ROI model.
+- [GZA Robotics Directory](/gza-robotics): Robotics companies, startups, and labs in Greater Zurich.
+- [AI Agent Development Strategy](/ai-agents-strategy): Guide to enterprise AI agent viability, ROI, and deployment roadmaps.
+- [German Landing Page](/de): German-language overview for DACH clients and event organizers.
+
 ## Current Role
 
 Strategy and Partnerships Manager at Sony AI (2024 to present). Leading research commercialization strategy, responsible for 4 R&D teams. Defines project direction, secures budgets, and manages external partnerships. Brings deep expertise in translating R&D breakthroughs into market-ready products and services.

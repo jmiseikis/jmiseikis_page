@@ -48,8 +48,8 @@ const AdvisoryPage = () => {
   return (
     <>
       <Helmet>
-        <title>AI Strategy Advisory & Consulting | Dr. Justinas Mišeikis – Zurich, DACH & Europe</title>
-        <meta name="description" content="Expert AI strategy advisory and consulting services in Zurich. AI commercialization, corporate innovation, startup mentoring, and technology roadmapping for enterprises, startups, and investors across DACH and Europe." />
+        <title>AI Strategy Advisory | Dr. Justinas Mišeikis</title>
+        <meta name="description" content="AI strategy advisory in Zurich for commercialization, corporate innovation, startup mentoring, and technology roadmaps across DACH and Europe." />
         <meta name="keywords" content="AI strategy advisory, AI consulting Zurich, AI commercialization consultant, corporate innovation consulting, startup mentoring AI, technology strategy DACH, robotics consulting Europe, AI roadmap consulting" />
         <link rel="canonical" href="https://jmiseikis.lovable.app/advisory" />
         <meta property="og:title" content="AI Strategy Advisory & Consulting | Dr. Justinas Mišeikis" />
