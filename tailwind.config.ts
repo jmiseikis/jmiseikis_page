@@ -19,6 +19,9 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        anton: ['Anton', 'Impact', 'sans-serif'],
+        barlow: ['Barlow', 'system-ui', 'sans-serif'],
+        'barlow-condensed': ['Barlow Condensed', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -91,6 +94,15 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "pulse-blip": "pulse-blip 3.5s linear infinite",
+      },
+      keyframes: {
+        "pulse-blip": {
+          "0%": { left: "0%", opacity: "0" },
+          "10%": { opacity: "1" },
+          "90%": { opacity: "1" },
+          "100%": { left: "100%", opacity: "0" },
+        },
       },
     },
   },
