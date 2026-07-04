@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "sdk_version": "0.20.0",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "jmiseikis-mcp",
+      "version": "0.1.0",
+      "title": "Justinas Mišeikis Portfolio MCP"
+    },
+    "tools": [
+      {
+        "name": "get_bio",
+        "title": "Get bio",
+        "description": "Return a concise bio and contact links for Dr. Justinas Mišeikis.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_services",
+        "title": "List services",
+        "description": "List the professional services Justinas Mišeikis offers (Advisory, Speaking, Technical Due Diligence) with page URLs.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_tech_events",
+        "title": "List tech events",
+        "description": "List curated European tech, AI, and robotics events from the Tech Events directory. Optionally filter by a search query and limit results.",
+        "annotations": {
+          "readOnlyHint": true,
+          "openWorldHint": true
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "query": {
+              "description": "Case-insensitive substring match against event name, location, or topic.",
+              "type": "string"
+            },
+            "limit": {
+              "description": "Max events to return (default 25).",
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "maximum": 100
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_swiss_vcs",
+        "title": "List Swiss VCs",
+        "description": "List Swiss venture capital firms from the Swiss VCs directory. Optionally filter by a search query (sector, stage, name) and limit results.",
+        "annotations": {
+          "readOnlyHint": true,
+          "openWorldHint": true
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "query": {
+              "description": "Case-insensitive substring match across all columns.",
+              "type": "string"
+            },
+            "limit": {
+              "description": "Max VCs to return (default 25).",
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "maximum": 100
+            }
+          }
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
