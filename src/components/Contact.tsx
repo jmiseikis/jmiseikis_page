@@ -37,7 +37,7 @@ const Contact = () => {
     const result = contactSchema.safeParse(formData);
     
     if (!result.success) {
-      const firstError = result.error.errors[0];
+      const firstError = result.error.issues[0];
       toast({
         title: "Validation Error",
         description: firstError.message,
