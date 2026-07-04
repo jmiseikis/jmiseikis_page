@@ -1,4 +1,4 @@
-import { ArrowRight, Calendar, MapPin, DollarSign, Building2, Target, Bot, Calculator, ExternalLink, Cpu } from "lucide-react";
+import { ArrowRight, Calendar, MapPin, DollarSign, Building2, Target, Bot, Calculator, ExternalLink, Cpu, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import swisscomVenturesLogo from "@/assets/swisscom-ventures.png";
@@ -26,6 +26,42 @@ const Resources = () => {
 
           {/* Resource Cards */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Swiss Tech Pulse Card */}
+            <Link
+              to="/resources/swiss-tech-pulse"
+              className="group bg-background p-8 border-2 border-border hover:border-primary transition-all duration-300"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-3 bg-primary/10">
+                  <Activity className="w-8 h-8 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold group-hover:text-primary transition-colors">
+                    Swiss Tech Pulse
+                  </h3>
+                  <p className="text-muted-foreground">Live Swiss startup signal feed</p>
+                </div>
+              </div>
+              <p className="text-muted-foreground mb-6 leading-relaxed">
+                Foundings, spin-offs, funding rounds, exits and new VC funds across Switzerland — aggregated
+                from official registries and leading editorial sources, updated automatically.
+              </p>
+              <div className="flex items-center gap-6 mb-6 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <Activity className="w-4 h-4 text-primary" />
+                  <span>Live feed</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-4 h-4 text-primary" />
+                  <span>Weekly digest</span>
+                </div>
+              </div>
+              <Button variant="swiss" className="group-hover:bg-primary/90">
+                <span>Open feed</span>
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+
             {/* Tech Events Card */}
             <Link
               to="/tech-events"

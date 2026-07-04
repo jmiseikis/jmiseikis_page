@@ -14,6 +14,10 @@ import SpeakingPage from "./pages/SpeakingPage";
 import DueDiligencePage from "./pages/DueDiligencePage";
 import GZARobotics from "./pages/GZARobotics";
 import AiAgentsStrategy from "./pages/AiAgentsStrategy";
+import SwissTechPulse from "./pages/SwissTechPulse";
+import SwissTechPulseAbout from "./pages/SwissTechPulseAbout";
+import SwissTechPulseDigest from "./pages/SwissTechPulseDigest";
+import SwissTechPulseReview from "./pages/SwissTechPulseReview";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -37,6 +41,10 @@ const App = () => (
             <Route path="/raas-calculator" element={<RaasCalculator />} />
             <Route path="/gza-robotics" element={<GZARobotics />} />
             <Route path="/ai-agents-strategy" element={<AiAgentsStrategy />} />
+            <Route path="/resources/swiss-tech-pulse" element={<SwissTechPulse />} />
+            <Route path="/resources/swiss-tech-pulse/about" element={<SwissTechPulseAbout />} />
+            <Route path="/resources/swiss-tech-pulse/digest/:week" element={<SwissTechPulseDigest />} />
+            <Route path="/resources/swiss-tech-pulse/review" element={<SwissTechPulseReview />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

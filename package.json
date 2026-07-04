@@ -11,6 +11,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/anton": "^5.2.7",
+    "@fontsource/barlow": "^5.2.8",
+    "@fontsource/barlow-condensed": "^5.2.8",
     "@hookform/resolvers": "^3.10.0",
     "@lovable.dev/mcp-js": "^0.20.0",
     "@marsidev/react-turnstile": "^1.4.2",
