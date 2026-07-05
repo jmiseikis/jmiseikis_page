@@ -10,6 +10,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { Separator } from "@/components/ui/separator";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Helmet } from "react-helmet-async";
+import { buildOgImageUrl } from "@/lib/ogImage";
 
 
 interface Company {
@@ -300,7 +301,11 @@ const GZARobotics = () => {
         <meta property="og:description" content="Filterable directory of 150+ robotics companies, autonomous systems startups, and research labs in the Greater Zurich Area. Curated in partnership with Greater Zurich Area (GZA)." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://jmiseikis.lovable.app/gza-robotics" />
-        <meta property="og:image" content="https://jmiseikis.lovable.app/og-image.png" />
+        <meta property="og:image" content={buildOgImageUrl({ title: "Robotics in the Greater Zurich Area", subtitle: "DIRECTORY · 150+ COMPANIES" })} />
+        <meta name="twitter:image" content={buildOgImageUrl({ title: "Robotics in the Greater Zurich Area", subtitle: "DIRECTORY · 150+ COMPANIES" })} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Dataset",
