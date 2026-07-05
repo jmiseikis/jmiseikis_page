@@ -13,6 +13,7 @@ import { DigestStrip } from "@/components/swiss-tech-pulse/DigestStrip";
 import { format, startOfDay } from "date-fns";
 import type { SignalType } from "@/components/swiss-tech-pulse/signals";
 import { SIGNAL_ORDER } from "@/components/swiss-tech-pulse/signals";
+import { buildOgImageUrl } from "@/lib/ogImage";
 
 const PAGE_SIZE = 30;
 
@@ -176,6 +177,14 @@ const SwissTechPulse = () => {
         <title>Swiss Tech Pulse — Live Swiss startup signal feed</title>
         <meta name="description" content="Foundings, spin-offs, funding rounds, exits and new VC funds across Switzerland — updated automatically." />
         <link rel="canonical" href="https://jmiseikis.lovable.app/resources/swiss-tech-pulse" />
+        <meta property="og:title" content="Swiss Tech Pulse — Live Swiss startup signal feed" />
+        <meta property="og:description" content="Foundings, spin-offs, funding rounds, exits and new VC funds across Switzerland — updated automatically." />
+        <meta property="og:url" content="https://jmiseikis.lovable.app/resources/swiss-tech-pulse" />
+        <meta property="og:image" content={buildOgImageUrl({ title: "Swiss Tech Pulse", subtitle: "LIVE SIGNAL FEED · SWITZERLAND" })} />
+        <meta name="twitter:image" content={buildOgImageUrl({ title: "Swiss Tech Pulse", subtitle: "LIVE SIGNAL FEED · SWITZERLAND" })} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
       <Navigation />
       <Masthead />
