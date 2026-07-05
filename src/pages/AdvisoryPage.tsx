@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Lightbulb, TrendingUp, Users, Cog } from "lucide-react";
-import { buildOgImageUrl, FALLBACK_OG_IMAGE } from "@/lib/ogImage";
+import { buildOgImageUrl } from "@/lib/ogImage";
 
 const AdvisoryPage = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
