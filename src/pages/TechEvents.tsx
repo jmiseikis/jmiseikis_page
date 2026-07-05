@@ -100,6 +100,19 @@ const TechEvents = () => {
     setMeta("og:description", DESC, "property");
     setMeta("og:url", URL, "property");
     setMeta("og:type", "website", "property");
+    const techEventsOg = (() => {
+      const pid = (import.meta as unknown as { env: { VITE_SUPABASE_PROJECT_ID?: string } }).env.VITE_SUPABASE_PROJECT_ID;
+      if (!pid) return "https://jmiseikis.lovable.app/og-image.png";
+      const p = new URLSearchParams({
+        title: "Tech Events Switzerland 2026",
+        subtitle: "AI · ROBOTICS · DEEP TECH · STARTUPS",
+      });
+      return `https://${pid}.supabase.co/functions/v1/og-image?${p.toString()}`;
+    })();
+    setMeta("og:image", techEventsOg, "property");
+    setMeta("twitter:image", techEventsOg);
+    setMeta("og:image:width", "1200", "property");
+    setMeta("og:image:height", "630", "property");
     setMeta("twitter:card", "summary_large_image");
     setMeta("twitter:title", TITLE);
     setMeta("twitter:description", DESC);
