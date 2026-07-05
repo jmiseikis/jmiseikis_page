@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { buildOgImageUrl } from "@/lib/ogImage";
 import { Link } from "react-router-dom";
 import { ArrowLeft, CheckCircle, LineChart, Map, ShieldCheck } from "lucide-react";
 import Navigation from "@/components/Navigation";
@@ -58,6 +59,11 @@ const AiAgentsStrategy = () => {
         <meta property="og:description" content={description} />
         <meta property="og:url" content="https://jmiseikis.lovable.app/ai-agents-strategy" />
         <meta property="og:type" content="article" />
+        <meta property="og:image" content={buildOgImageUrl({ title: "AI Agent Development Strategy", subtitle: "ENTERPRISE PLAYBOOK · JMISEIKIS" })} />
+        <meta name="twitter:image" content={buildOgImageUrl({ title: "AI Agent Development Strategy", subtitle: "ENTERPRISE PLAYBOOK · JMISEIKIS" })} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
