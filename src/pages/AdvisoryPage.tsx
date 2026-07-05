@@ -60,7 +60,6 @@ const AdvisoryPage = () => {
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <link rel="preload" as="image" href={FALLBACK_OG_IMAGE} />
       </Helmet>
 
       <div className="min-h-screen bg-background">
