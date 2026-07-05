@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
+import { buildOgImageUrl } from "@/lib/ogImage";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Shield, Search, BarChart3, CheckCircle } from "lucide-react";
@@ -50,7 +51,11 @@ const DueDiligencePage = () => {
         <link rel="canonical" href="https://jmiseikis.lovable.app/due-diligence" />
         <meta property="og:title" content="AI & Robotics Due Diligence | Dr. Justinas Mišeikis" />
         <meta property="og:description" content="Expert technical due diligence for investors evaluating AI, robotics, and deep tech companies." />
-        <meta property="og:image" content="https://jmiseikis.lovable.app/og-image.png" />
+        <meta property="og:image" content={buildOgImageUrl({ title: "AI & Robotics Due Diligence", subtitle: "DR. JUSTINAS MIŠEIKIS · DUE DILIGENCE" })} />
+        <meta name="twitter:image" content={buildOgImageUrl({ title: "AI & Robotics Due Diligence", subtitle: "DR. JUSTINAS MIŠEIKIS · DUE DILIGENCE" })} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
 
       <div className="min-h-screen bg-background">

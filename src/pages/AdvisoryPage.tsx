@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Lightbulb, TrendingUp, Users, Cog } from "lucide-react";
+import { buildOgImageUrl } from "@/lib/ogImage";
 
 const AdvisoryPage = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
@@ -54,7 +55,11 @@ const AdvisoryPage = () => {
         <link rel="canonical" href="https://jmiseikis.lovable.app/advisory" />
         <meta property="og:title" content="AI Strategy Advisory & Consulting | Dr. Justinas Mišeikis" />
         <meta property="og:description" content="Expert AI strategy advisory for corporations, startups, and investors. Zurich-based, serving DACH and Europe." />
-        <meta property="og:image" content="https://jmiseikis.lovable.app/og-image.png" />
+        <meta property="og:image" content={buildOgImageUrl({ title: "AI Strategy Advisory", subtitle: "DR. JUSTINAS MIŠEIKIS · ADVISORY" })} />
+        <meta name="twitter:image" content={buildOgImageUrl({ title: "AI Strategy Advisory", subtitle: "DR. JUSTINAS MIŠEIKIS · ADVISORY" })} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
 
       <div className="min-h-screen bg-background">

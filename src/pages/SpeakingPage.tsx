@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import { buildOgImageUrl } from "@/lib/ogImage";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ExternalLink, Play, Youtube, Mic, Video, Mail, Award, Podcast } from "lucide-react";
 import Navigation from "@/components/Navigation";
@@ -137,7 +138,10 @@ const SpeakingPage = () => {
         <meta property="og:title" content="AI Keynote Speaker & TechDrive Zürich Host | Dr. Justinas Mišeikis" />
         <meta property="og:description" content="Keynote speaker on AI and robotics, and host of TechDrive Zürich - the interview series on Switzerland's deep tech ecosystem. Featured at Wisdom House @ Davos 2026 (WEF), GenAI Zürich, ETH Zürich and Sony AI." />
         <meta property="og:url" content="https://jmiseikis.lovable.app/speaking" />
-        <meta property="og:image" content="https://jmiseikis.lovable.app/og-image.png" />
+        <meta property="og:image" content={buildOgImageUrl({ title: "AI Keynote Speaker & TechDrive Zürich Host", subtitle: "DR. JUSTINAS MIŠEIKIS · SPEAKING" })} />
+        <meta name="twitter:image" content={buildOgImageUrl({ title: "AI Keynote Speaker & TechDrive Zürich Host", subtitle: "DR. JUSTINAS MIŠEIKIS · SPEAKING" })} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta property="og:type" content="video.other" />
         <script type="application/ld+json">
           {JSON.stringify({
