@@ -265,6 +265,50 @@ const Resources = () => {
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
+
+            {/* Swiss Hack Events Card */}
+            <a
+              href="https://www.hackevents.net/ch"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group bg-background p-8 border-2 border-border hover:border-primary transition-all duration-300"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-3 bg-primary/10">
+                  <Calendar className="w-8 h-8 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold group-hover:text-primary transition-colors">
+                    Swiss Hack Events
+                  </h3>
+                  <div className="flex items-center gap-2 text-muted-foreground">
+                    <span>Curated by</span>
+                    <img src={rockstarLogo.url} alt="Rockstar Recruiting" className="h-5 inline-block" />
+                  </div>
+                </div>
+              </div>
+
+              <p className="text-muted-foreground mb-6 leading-relaxed">
+                Every relevant tech event in Switzerland. Found, ranked and kept live from one prompt.
+                Connect with like-minded hackers, founders, innovators, managers, and investors.
+              </p>
+
+              <div className="flex items-center gap-6 mb-6 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-4 h-4 text-primary" />
+                  <span>Live Directory</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4 text-primary" />
+                  <span>Switzerland</span>
+                </div>
+              </div>
+
+              <Button variant="swiss" className="group-hover:bg-primary/90">
+                <span>Explore Hack Events</span>
+                <ExternalLink className="w-4 h-4 ml-2" />
+              </Button>
+            </a>
           </div>
         </div>
       </div>
