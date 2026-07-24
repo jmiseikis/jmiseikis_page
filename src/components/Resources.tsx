@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import swisscomVenturesLogo from "@/assets/swisscom-ventures.png";
 import gzaLogo from "@/assets/gza-logo.png";
+import rockstarLogo from "@/assets/rockstar-recruiting.jpg.asset.json";
 
 const Resources = () => {
   return (
