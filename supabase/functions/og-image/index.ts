@@ -6,7 +6,8 @@
 // Uses Satori for SVG layout + Resvg (WASM) for rasterization.
 
 import satori from "npm:satori@0.10.13";
-import { Resvg, initWasm } from "npm:@resvg/[email protected]";
+import { Resvg, initWasm } from "./vendor/resvg-wasm.mjs";
+import { WASM_B64 } from "./vendor/wasm_b64.ts";
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
 
 const WIDTH = 1200;
@@ -16,15 +17,15 @@ const ANTON_URL =
   "https://raw.githubusercontent.com/google/fonts/main/ofl/anton/Anton-Regular.ttf";
 const BARLOW_URL =
   "https://raw.githubusercontent.com/google/fonts/main/ofl/barlowcondensed/BarlowCondensed-Medium.ttf";
-const WASM_URL =
-  "https://unpkg.com/@resvg/[email protected]/index_bg.wasm";
 
 let wasmReady: Promise<void> | null = null;
 function ensureWasm() {
   if (!wasmReady) {
     wasmReady = (async () => {
-      const wasm = await fetch(WASM_URL).then((r) => r.arrayBuffer());
-      await initWasm(wasm);
+      const bin = atob(WASM_B64);
+      const bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      await initWasm(bytes);
     })();
   }
   return wasmReady;
@@ -41,13 +42,78 @@ async function loadFonts() {
   return fontsCache;
 }
 
-async function tryFetchImage(url: string): Promise<string | null> {
+// Hosts we trust as image sources. Anything else is rejected to prevent
+// this public endpoint being used as an open proxy / SSRF oracle.
+const ALLOWED_IMAGE_HOSTS = new Set([
+  "jmiseikis.lovable.app",
+  "id-preview--71583109-f511-481b-9510-6ec54c78397f.lovable.app",
+  "uwdastthzqjbiyrxucci.supabase.co",
+]);
+const MAX_IMAGE_BYTES = 5 * 1024 * 1024; // 5 MB cap
+const FETCH_TIMEOUT_MS = 5000;
+
+// Reject loopback, link-local and private/special-use IPv4 ranges.
+function isPrivateIp(host: string): boolean {
+  const m = host.match(/^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/);
+  if (m) {
+    const [a, b] = [Number(m[1]), Number(m[2])];
+    if (a === 10 || a === 127 || a === 0) return true; // loopback / private / "this" net
+    if (a === 169 && b === 254) return true; // link-local (cloud metadata)
+    if (a === 172 && b >= 16 && b <= 31) return true;
+    if (a === 192 && b === 168) return true;
+    if (a === 100 && b >= 64 && b <= 127) return true; // CGNAT
+    return false;
+  }
+  const h = host.toLowerCase();
+  if (h === "localhost" || h.endsWith(".localhost") || h.endsWith(".internal")) return true;
+  if (h === "::1" || h === "[::1]") return true;
+  return false;
+}
+
+function validateImageUrl(raw: string): URL | null {
+  let url: URL;
   try {
-    const res = await fetch(url, { redirect: "follow" });
-    if (!res.ok) return null;
+    url = new URL(raw);
+  } catch (_) {
+    return null;
+  }
+  if (url.protocol !== "https:") return null;
+  if (!ALLOWED_IMAGE_HOSTS.has(url.hostname.toLowerCase())) return null;
+  if (isPrivateIp(url.hostname)) return null;
+  return url;
+}
+
+async function tryFetchImage(raw: string): Promise<string | null> {
+  const url = validateImageUrl(raw);
+  if (!url) return null;
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+    // Manual redirect handling so every hop is re-validated.
+    let current = url;
+    let res: Response | null = null;
+    for (let hop = 0; hop < 3; hop++) {
+      res = await fetch(current.toString(), {
+        redirect: "manual",
+        signal: controller.signal,
+      });
+      if (res.status >= 300 && res.status < 400) {
+        const loc = res.headers.get("location");
+        const next = loc ? validateImageUrl(new URL(loc, current).toString()) : null;
+        if (!next) return null;
+        current = next;
+        continue;
+      }
+      break;
+    }
+    clearTimeout(timer);
+    if (!res || !res.ok) return null;
     const type = res.headers.get("content-type") || "image/jpeg";
     if (!type.startsWith("image/")) return null;
+    const len = Number(res.headers.get("content-length") || 0);
+    if (len > MAX_IMAGE_BYTES) return null;
     const buf = new Uint8Array(await res.arrayBuffer());
+    if (buf.length > MAX_IMAGE_BYTES) return null;
     // Base64 encode
     let bin = "";
     for (let i = 0; i < buf.length; i++) bin += String.fromCharCode(buf[i]);
