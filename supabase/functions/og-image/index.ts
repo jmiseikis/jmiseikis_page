@@ -17,7 +17,7 @@ const ANTON_URL =
 const BARLOW_URL =
   "https://raw.githubusercontent.com/google/fonts/main/ofl/barlowcondensed/BarlowCondensed-Medium.ttf";
 const WASM_URL =
-  "https://unpkg.com/@resvg/[email protected]/index_bg.wasm";
+  "https://cdn.jsdelivr.net/npm/@resvg/[email protected]/index_bg.wasm";
 
 let wasmReady: Promise<void> | null = null;
 function ensureWasm() {
