@@ -16,14 +16,14 @@ const ANTON_URL =
   "https://raw.githubusercontent.com/google/fonts/main/ofl/anton/Anton-Regular.ttf";
 const BARLOW_URL =
   "https://raw.githubusercontent.com/google/fonts/main/ofl/barlowcondensed/BarlowCondensed-Medium.ttf";
-const WASM_URL =
-  "https://cdn.jsdelivr.net/npm/@resvg/[email protected]/index_bg.wasm";
+// WASM binary is vendored locally (no network dependency at runtime).
+const WASM_PATH = new URL("./vendor/index_bg.wasm", import.meta.url);
 
 let wasmReady: Promise<void> | null = null;
 function ensureWasm() {
   if (!wasmReady) {
     wasmReady = (async () => {
-      const wasm = await fetch(WASM_URL).then((r) => r.arrayBuffer());
+      const wasm = await Deno.readFile(WASM_PATH);
       await initWasm(wasm);
     })();
   }
