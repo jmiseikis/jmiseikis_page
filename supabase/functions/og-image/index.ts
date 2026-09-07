@@ -6,7 +6,7 @@
 // Uses Satori for SVG layout + Resvg (WASM) for rasterization.
 
 import satori from "npm:satori@0.10.13";
-import { Resvg, initWasm } from "https://esm.sh/@resvg/[email protected]";
+import { Resvg, initWasm } from "./vendor/resvg-wasm.mjs";
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
 
 const WIDTH = 1200;
