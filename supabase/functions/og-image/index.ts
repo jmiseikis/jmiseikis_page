@@ -7,6 +7,7 @@
 
 import satori from "npm:satori@0.10.13";
 import { Resvg, initWasm } from "./vendor/resvg-wasm.mjs";
+import { WASM_B64 } from "./vendor/wasm_b64.ts";
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
 
 const WIDTH = 1200;
@@ -16,15 +17,15 @@ const ANTON_URL =
   "https://raw.githubusercontent.com/google/fonts/main/ofl/anton/Anton-Regular.ttf";
 const BARLOW_URL =
   "https://raw.githubusercontent.com/google/fonts/main/ofl/barlowcondensed/BarlowCondensed-Medium.ttf";
-// WASM binary is vendored locally (no network dependency at runtime).
-const WASM_PATH = new URL("./vendor/index_bg.wasm", import.meta.url);
 
 let wasmReady: Promise<void> | null = null;
 function ensureWasm() {
   if (!wasmReady) {
     wasmReady = (async () => {
-      const wasm = await Deno.readFile(WASM_PATH);
-      await initWasm(wasm);
+      const bin = atob(WASM_B64);
+      const bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      await initWasm(bytes);
     })();
   }
   return wasmReady;
