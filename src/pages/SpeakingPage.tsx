@@ -95,15 +95,72 @@ const collaborations: { id: string; title: string; channel: string; url: string;
   {
     id: "8Vnh4vA--d0",
     title: "Keeping AIs debiased: a conversation with Dr. Justinas Mišeikis",
-    channel: "Deep Tech Experts and Justinas",
+    channel: "Deep Tech Experts",
     url: "https://www.youtube.com/watch?v=8Vnh4vA--d0",
     thumbnail: "https://i.ytimg.com/vi/8Vnh4vA--d0/hqdefault.jpg",
     publishedAt: "2026-01-22",
   },
 ];
 
+const TECHDRIVE_CHANNEL_URL = "https://www.youtube.com/@TechDriveZurich";
+
+// Fallback episode list used if the live feed is unavailable.
+const techdriveFallback: VideoItem[] = [
+  {
+    id: "uvoba2PyXEQ",
+    title: "Physical AI Is Ready. Your Building Isn't. | Kateryna Portmann on TechDrive Zurich",
+    description: "",
+    url: "https://www.youtube.com/watch?v=uvoba2PyXEQ",
+    thumbnail: "https://i.ytimg.com/vi/uvoba2PyXEQ/hqdefault.jpg",
+    publishedAt: "2026-09-02",
+    isShort: false,
+    views: 0,
+  },
+  {
+    id: "mS4hiMQVwpk",
+    title: "Switzerland's AI Movement is About to Start! | Swiss {ai} Weeks Team on TechDrive Zürich",
+    description: "",
+    url: "https://www.youtube.com/watch?v=mS4hiMQVwpk",
+    thumbnail: "https://i.ytimg.com/vi/mS4hiMQVwpk/hqdefault.jpg",
+    publishedAt: "2026-08-26",
+    isShort: false,
+    views: 0,
+  },
+  {
+    id: "pxH66TFgfu8",
+    title: "5 Years to Teach a Robot Table Tennis | Mireille El Geche on TechDrive Zürich",
+    description: "",
+    url: "https://www.youtube.com/watch?v=pxH66TFgfu8",
+    thumbnail: "https://i.ytimg.com/vi/pxH66TFgfu8/hqdefault.jpg",
+    publishedAt: "2026-08-19",
+    isShort: false,
+    views: 0,
+  },
+  {
+    id: "6S3xZYJgf84",
+    title: "DARE Campus: Where Robots Get to Run Wild | Stefan Zimmer on TechDrive Zürich",
+    description: "",
+    url: "https://www.youtube.com/watch?v=6S3xZYJgf84",
+    thumbnail: "https://i.ytimg.com/vi/6S3xZYJgf84/hqdefault.jpg",
+    publishedAt: "2026-08-05",
+    isShort: false,
+    views: 0,
+  },
+  {
+    id: "X6pt5X9Z0-M",
+    title: "Building World Class Startups at VentureLab | Raffael Kellner on TechDrive Zürich",
+    description: "",
+    url: "https://www.youtube.com/watch?v=X6pt5X9Z0-M",
+    thumbnail: "https://i.ytimg.com/vi/X6pt5X9Z0-M/hqdefault.jpg",
+    publishedAt: "2026-07-22",
+    isShort: false,
+    views: 0,
+  },
+];
+
 const SpeakingPage = () => {
   const [videos, setVideos] = useState<VideoItem[]>([]);
+  const [techdrive, setTechdrive] = useState<VideoItem[]>(techdriveFallback);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -115,7 +172,20 @@ const SpeakingPage = () => {
       try {
         const { data, error: fnError } = await supabase.functions.invoke("youtube-videos");
         if (fnError) throw fnError;
-        if (!cancelled) setVideos((data?.videos ?? []) as VideoItem[]);
+        if (!cancelled) {
+          setVideos((data?.videos ?? []) as VideoItem[]);
+          const eps = (data?.techdrive?.episodes ?? []) as VideoItem[];
+          if (eps.length > 0) {
+            // The RSS feed only exposes the most recent uploads, so merge with the
+            // curated fallback list to keep the full episode back catalogue visible.
+            const merged = [...eps];
+            for (const f of techdriveFallback) {
+              if (!merged.some((v) => v.id === f.id)) merged.push(f);
+            }
+            merged.sort((a, b) => +new Date(b.publishedAt) - +new Date(a.publishedAt));
+            setTechdrive(merged);
+          }
+        }
       } catch (err) {
         if (!cancelled) setError(err instanceof Error ? err.message : "Failed to load videos");
       } finally {
@@ -240,21 +310,46 @@ const SpeakingPage = () => {
                     leaders from across the Greater Zurich Area, ETH Zurich, EPFL and the wider
                     Swiss deep tech scene.
                   </p>
-                  <Button asChild variant="outline">
-                    <a
-                      href={TECHDRIVE_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={openExternal(TECHDRIVE_URL)}
-                    >
-                      Visit TechDrive Zürich
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  </Button>
+                  <div className="flex flex-wrap gap-3">
+                    <Button asChild variant="outline">
+                      <a
+                        href={TECHDRIVE_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={openExternal(TECHDRIVE_URL)}
+                      >
+                        Visit TechDrive Zürich
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    </Button>
+                    <Button asChild variant="outline">
+                      <a
+                        href={TECHDRIVE_CHANNEL_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={openExternal(TECHDRIVE_CHANNEL_URL)}
+                      >
+                        <Youtube className="w-4 h-4" />
+                        Watch on YouTube
+                      </a>
+                    </Button>
+                  </div>
                 </div>
               </div>
+
+              {techdrive.length > 0 && (
+                <div className="mt-8 pt-8 border-t border-border">
+                  <h3 className="text-lg font-bold mb-4">Latest Episodes</h3>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {techdrive.slice(0, 6).map((v) => (
+                      <VideoCard key={v.id} video={v} aspect="aspect-video" />
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </section>
+
 
           {/* Videos: Talks & Interviews */}
           <section className="mb-16">

@@ -7,6 +7,7 @@ const corsHeaders = {
 };
 
 const CHANNEL_ID = 'UC0BzySUmproMEBjeFpFVcFw'; // @JustinasMiseikis
+const TECHDRIVE_CHANNEL_ID = 'UCDrsD6eQrKczIMXv_vSBiuw'; // TechDrive Zürich (hosted by Justinas)
 
 interface Video {
   id: string;
@@ -52,29 +53,39 @@ function parseFeed(xml: string): Video[] {
   }).filter((v) => v.id);
 }
 
+async function fetchChannel(channelId: string): Promise<Video[]> {
+  const res = await fetch(
+    `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`,
+    { headers: { 'User-Agent': 'Mozilla/5.0 (compatible; LovableBot/1.0)' } },
+  );
+  if (!res.ok) {
+    throw new Error(`YouTube feed returned ${res.status}`);
+  }
+  return parseFeed(await res.text());
+}
+
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const res = await fetch(
-      `https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`,
-      { headers: { 'User-Agent': 'Mozilla/5.0 (compatible; LovableBot/1.0)' } },
-    );
-
-    if (!res.ok) {
-      throw new Error(`YouTube feed returned ${res.status}`);
-    }
-
-    const xml = await res.text();
-    const videos = parseFeed(xml);
+    const [videos, techdriveAll] = await Promise.all([
+      fetchChannel(CHANNEL_ID),
+      fetchChannel(TECHDRIVE_CHANNEL_ID).catch(() => [] as Video[]),
+    ]);
 
     return new Response(
       JSON.stringify({
         channel: 'Justinas Miseikis',
         channelUrl: `https://www.youtube.com/channel/${CHANNEL_ID}`,
         videos,
+        techdrive: {
+          channel: 'TechDrive Zürich',
+          channelUrl: `https://www.youtube.com/channel/${TECHDRIVE_CHANNEL_ID}`,
+          episodes: techdriveAll.filter((v) => !v.isShort),
+          shorts: techdriveAll.filter((v) => v.isShort),
+        },
       }),
       {
         status: 200,
