@@ -175,7 +175,16 @@ const SpeakingPage = () => {
         if (!cancelled) {
           setVideos((data?.videos ?? []) as VideoItem[]);
           const eps = (data?.techdrive?.episodes ?? []) as VideoItem[];
-          if (eps.length > 0) setTechdrive(eps);
+          if (eps.length > 0) {
+            // The RSS feed only exposes the most recent uploads, so merge with the
+            // curated fallback list to keep the full episode back catalogue visible.
+            const merged = [...eps];
+            for (const f of techdriveFallback) {
+              if (!merged.some((v) => v.id === f.id)) merged.push(f);
+            }
+            merged.sort((a, b) => +new Date(b.publishedAt) - +new Date(a.publishedAt));
+            setTechdrive(merged);
+          }
         }
       } catch (err) {
         if (!cancelled) setError(err instanceof Error ? err.message : "Failed to load videos");
