@@ -301,21 +301,46 @@ const SpeakingPage = () => {
                     leaders from across the Greater Zurich Area, ETH Zurich, EPFL and the wider
                     Swiss deep tech scene.
                   </p>
-                  <Button asChild variant="outline">
-                    <a
-                      href={TECHDRIVE_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={openExternal(TECHDRIVE_URL)}
-                    >
-                      Visit TechDrive Zürich
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  </Button>
+                  <div className="flex flex-wrap gap-3">
+                    <Button asChild variant="outline">
+                      <a
+                        href={TECHDRIVE_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={openExternal(TECHDRIVE_URL)}
+                      >
+                        Visit TechDrive Zürich
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    </Button>
+                    <Button asChild variant="outline">
+                      <a
+                        href={TECHDRIVE_CHANNEL_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={openExternal(TECHDRIVE_CHANNEL_URL)}
+                      >
+                        <Youtube className="w-4 h-4" />
+                        Watch on YouTube
+                      </a>
+                    </Button>
+                  </div>
                 </div>
               </div>
+
+              {techdrive.length > 0 && (
+                <div className="mt-8 pt-8 border-t border-border">
+                  <h3 className="text-lg font-bold mb-4">Latest Episodes</h3>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {techdrive.slice(0, 6).map((v) => (
+                      <VideoCard key={v.id} video={v} aspect="aspect-video" />
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </section>
+
 
           {/* Videos: Talks & Interviews */}
           <section className="mb-16">
