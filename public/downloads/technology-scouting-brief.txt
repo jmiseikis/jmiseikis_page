@@ -1,0 +1,14 @@
+﻿TECHNOLOGY SCOUTING BRIEF
+Dr. Justinas Mišeikis | jmiseikis.com/swiss-ai-robotics-ecosystem
+Blank working template | 6 October 2026
+
+THESIS: use case, technical capability, customer problem and strategic rationale.
+SCOPE: geography, early stage or scale-up, product maturity, company/lab/partner type, exclusions.
+EVIDENCE: what qualifies a candidate? Sources, customer proof, evaluation method, technical dependencies and open questions.
+SHORTLIST ROW: name; source URL; checked date; stage evidence; technical fit; commercial fit; key uncertainty; reason to approach; public contact route; relationship status.
+PRIORITIES: must-have criteria, useful extras, disqualifiers and largest uncertainty.
+ENGAGEMENT: partnership, pilot, supplier evaluation or investment assessment.
+OUTREACH: concise reason to speak, proposed question and desired next step. Introductions require agreement from the participants.
+DELIVERY: decision owner, deadline, review cadence and next validation steps.
+
+A listing or funding announcement is a discovery signal, not diligence or proof that a company is currently raising.

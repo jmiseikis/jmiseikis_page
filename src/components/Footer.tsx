@@ -1,86 +1,73 @@
-import { Linkedin, ExternalLink } from "lucide-react";
+import { Link } from "react-router-dom";
+import { LINKEDIN_URL, contactPath } from "@/lib/site";
+import { TextLink } from "@/components/site/primitives";
+
+const COLUMNS = [
+  {
+    title: "Work together",
+    links: [
+      { label: "Advisory", to: "/advisory" },
+      { label: "Due diligence", to: "/due-diligence" },
+      { label: "Speaking", to: "/speaking" },
+      { label: "About", to: "/about" },
+    ],
+  },
+  {
+    title: "Explore",
+    links: [
+      { label: "Resource hub", to: "/resources" },
+      { label: "Publications & patents", to: "/publications" },
+      { label: "Swiss ecosystem guide", to: "/swiss-ai-robotics-ecosystem" },
+      { label: "Market-entry guide", to: "/swiss-baltic-market-entry" },
+      { label: "Internal AI & workflows", to: "/ai-agents-strategy" },
+    ],
+  },
+  {
+    title: "Directories & tools",
+    links: [
+      { label: "Swiss tech events", to: "/tech-events" },
+      { label: "Swiss VCs & funds", to: "/swiss-vcs" },
+      { label: "GZA robotics", to: "/gza-robotics" },
+      { label: "RaaS calculator", to: "/raas-calculator" },
+    ],
+  },
+];
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
-  const footerLinks = {
-    sections: [
-      {
-        title: "Quick Links",
-        links: [
-          { label: "About", href: "#about" },
-          { label: "Advisory", href: "#advisory" },
-          { label: "Speaking", href: "#speaking" },
-          { label: "Publications", href: "#publications" },
-          { label: "Resources", href: "#resources" },
-        ],
-      },
-      {
-        title: "Resources",
-        links: [
-          { label: "Google Scholar", href: "https://scholar.google.com/citations?user=KeZ1-AwAAAAJ", external: true },
-          { label: "Patents", href: "https://patents.google.com/?inventor=justinas+miseikis,justinas+mi%C5%A1eikis", external: true },
-        ],
-      },
-    ],
-  };
-
-  const scrollToSection = (href: string) => {
-    if (href.startsWith("#")) {
-      const element = document.querySelector(href);
-      element?.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-foreground text-background">
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
-          {/* Brand */}
-          <div className="md:col-span-2">
-            <h3 className="text-2xl font-bold mb-4">Dr. Justinas Mišeikis</h3>
-            <p className="text-background/70 mb-6 leading-relaxed">
-              Technology expert and innovation advisor specializing in AI commercialization, 
-              robotics, and corporate strategy. Based in Zurich, active across DACH and Baltics.
+    <footer className="border-t border-border bg-muted pb-7 pt-9 md:pt-14">
+      <div className="site-wrap">
+        <div className="grid grid-cols-2 gap-6 md:gap-10 lg:grid-cols-[1.35fr_repeat(3,minmax(0,1fr))]">
+          <div className="col-span-2 lg:col-span-1">
+            <p className="text-base font-bold text-foreground">Dr. Justinas Mišeikis</p>
+            <p className="mt-4 text-sm text-muted-foreground">
+              AI & robotics advisory.
+              <br />
+              Swiss ecosystem expertise.
             </p>
-            <div className="flex gap-4">
-              <a
-                href="https://www.linkedin.com/in/justinasmiseikis/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 bg-background/10 hover:bg-primary transition-colors group"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              </a>
+            <p className="fine mt-4">
+              Zurich, Switzerland.
+              <br />
+              Working internationally in English.
+            </p>
+            <div className="mt-4">
+              <TextLink href={LINKEDIN_URL}>Connect on LinkedIn</TextLink>
             </div>
           </div>
-
-          {/* Links Sections */}
-          {footerLinks.sections.map((section, index) => (
-            <div key={index}>
-              <h4 className="font-bold mb-4 text-lg">{section.title}</h4>
-              <ul className="space-y-3">
-                {section.links.map((link, linkIndex) => (
-                  <li key={linkIndex}>
-                    {link.external ? (
-                      <a
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-background/70 hover:text-primary transition-colors inline-flex items-center gap-2 group"
-                      >
-                        {link.label}
-                        <ExternalLink className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                      </a>
-                    ) : (
-                      <button
-                        onClick={() => scrollToSection(link.href)}
-                        className="text-background/70 hover:text-primary transition-colors text-left"
-                      >
-                        {link.label}
-                      </button>
-                    )}
+          {COLUMNS.map((column) => (
+            <div key={column.title} className="min-w-0">
+              <p className="eyebrow text-[9px] md:text-[10px]">{column.title}</p>
+              <ul className="space-y-0">
+                {column.links.map((link) => (
+                  <li key={link.to}>
+                    <Link
+                      to={link.to}
+                      className="inline-flex min-h-9 items-center text-[12px] text-foreground no-underline hover:text-primary hover:underline md:min-h-8"
+                    >
+                      {link.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -88,22 +75,18 @@ const Footer = () => {
           ))}
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-background/20">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-background/60 text-sm">
-              © {currentYear} Dr. Justinas Mišeikis. All rights reserved.
-            </p>
-            <div className="flex gap-6 text-sm">
-              <button className="text-background/60 hover:text-primary transition-colors">
-                Privacy Policy
-              </button>
-              <button className="text-background/60 hover:text-primary transition-colors">
-                Terms of Service
-              </button>
-            </div>
-          </div>
+        <div className="mt-7 flex flex-wrap items-center gap-x-7 gap-y-2 border-t border-border pt-5 text-[11px] md:mt-8">
+          <span className="w-full text-muted-foreground md:mr-auto md:w-auto">© {year} Dr. Justinas Mišeikis</span>
+          <Link to="/de" lang="de" hrefLang="de" className="inline-flex min-h-9 items-center text-foreground no-underline hover:underline">
+            Deutsch
+          </Link>
+          <Link to={contactPath("other")} className="inline-flex min-h-9 items-center text-foreground no-underline hover:underline">
+            Contact
+          </Link>
         </div>
+        <p className="fine mt-3 max-w-[80ch] text-[11px]">
+          Professional experience and named organisations do not imply endorsement of independent services.
+        </p>
       </div>
     </footer>
   );

@@ -1,0 +1,27 @@
+﻿AI & ROBOTICS TECHNICAL DILIGENCE CHECKLIST
+Dr. Justinas Mišeikis | jmiseikis.com/due-diligence
+Working evidence request | 6 October 2026
+
+FOR EACH CLAIM: record the claim, evidence source/date, reproducibility, limitations, confidence, unresolved question and proposed validation. Distinguish demonstrated, reported and unverified claims.
+
+EARLY STAGE
+- Problem, user and why the proposed technology is necessary.
+- Demo conditions, evaluation dataset, baselines and independent reproduction.
+- Proprietary contribution versus third-party models, software and hardware.
+- Data provenance, access rights, quality and dependencies; specialist legal review where needed.
+- Team capability, ownership of critical knowledge and hiring gaps.
+- Next technical milestone, experiment, resources and failure condition.
+- Customer validation and assumptions behind the route to revenue.
+
+SCALE-UP
+- Performance across sites, users and edge cases; failures and incident handling.
+- Integration effort per deployment and customer-specific engineering.
+- Infrastructure, model, hardware, support and maintenance costs.
+- Reliability, monitoring, security controls and update/change process.
+- Manufacturing, supply-chain, service and capacity constraints for robotics.
+- Deployment backlog, repeatability, engineering organisation and roadmap risks.
+- Customer concentration and evidence supporting unit-economics assumptions.
+
+OUTPUT
+Evidence table; material risks; management questions; specialist-review needs; recommended tests; decision dependencies.
+A checklist does not establish a company's investment merit and does not replace a company-specific technical assessment or specialist legal review.

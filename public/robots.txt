@@ -37,4 +37,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://jmiseikis.lovable.app/sitemap.xml
+Sitemap: https://jmiseikis.com/sitemap.xml

@@ -1,224 +1,55 @@
-# Dr. Justinas Miseikis
+# Dr. Justinas Mišeikis
 
-## Identity
+> AI and robotics advisor and speaker based in Zurich, Switzerland, working internationally in English. Helps technology companies enter markets and build Swiss partnerships, helps investors scout and assess Swiss AI and robotics startups from early stage to scale-up, and advises teams on internal AI workflows. Host of TechDrive Zürich.
 
-Dr. Justinas Miseikis (also written as Miseikis) is an AI strategy advisor, innovation consultant, keynote speaker, and research commercialization expert based in Zurich, Switzerland. He is also the host of TechDrive Zürich, an interview and podcast series on Switzerland's AI, robotics and deep tech ecosystem (https://techdrivezurich.lovable.app/). He specializes in bridging advanced AI research with commercial strategy, helping corporations, startups, and investors across DACH (Germany, Austria, Switzerland) and Europe turn AI and robotics research into revenue. He holds a PhD in Robotics and Computer Vision and an Executive MBA. He curates ecosystem resources in partnership with Greater Zurich Area (Robotics in the Greater Zurich Area, 150+ companies) and Swisscom Ventures (Swiss Robotics Startups, 100+ startups).
+Website: https://jmiseikis.com
+Contact: the protected contact form at https://jmiseikis.com/#contact or LinkedIn (https://www.linkedin.com/in/justinasmiseikis/). Engagements are cash-paid and scoped per project; fees on request.
 
 ## Pages
 
-- [Home](/): AI strategy advisor, keynote speaker, and research commercialization profile.
-- [Advisory](/advisory): AI commercialization, corporate innovation, and technology roadmap services.
-- [Speaking](/speaking): Keynote topics, TechDrive Zürich, videos, and event organizer information.
-- [Due Diligence](/due-diligence): Technical assessment for AI, robotics, and deep tech investments.
-- [Tech Events Switzerland](/tech-events): Filterable Swiss calendar for AI, robotics, startup, and VC events.
-- [Swiss VCs Directory](/swiss-vcs): Directory of Swiss venture capital firms and startup investors.
-- [RaaS ROI Calculator](/raas-calculator): Interactive Robot-as-a-Service cost and ROI model.
-- [GZA Robotics Directory](/gza-robotics): Robotics companies, startups, and labs in Greater Zurich.
-- [AI Agent Development Strategy](/ai-agents-strategy): Guide to enterprise AI agent viability, ROI, and deployment roadmaps.
-- [German Landing Page](/de): German-language overview for DACH clients and event organizers.
+- [Home](https://jmiseikis.com/): Overview of advisory, relevant experience, speaking, resources, research and contact.
+- [Advisory](https://jmiseikis.com/advisory): Market entry and Swiss partnerships; startup scouting and technical diligence; Swiss presence and strategic support; AI for internal data and workflows. Engagement formats: focused project, recurring strategic support, event representation.
+- [Due diligence](https://jmiseikis.com/due-diligence): Technical and commercial assessment of AI, robotics and deep tech opportunities for investors, acquirers and strategy teams, with early-stage and scale-up evidence lists and a downloadable checklist.
+- [Speaking](https://jmiseikis.com/speaking): Keynotes, panels and workshops on physical AI, corporate-startup collaboration and evaluating AI and robotics beyond the pitch. Includes a recorded talk from CAIRO Forum, Zürich, talks, shorts and TechDrive Zürich episodes. Bookings also via Premium Speakers.
+- [About](https://jmiseikis.com/about): Professional history and education.
+- [Publications & patents](https://jmiseikis.com/publications): Selected papers with links to the full Google Scholar and Google Patents records.
+- [Resources](https://jmiseikis.com/resources): Decision guides, directories, tools and blank worksheets.
+- [Swiss AI & robotics ecosystem guide](https://jmiseikis.com/swiss-ai-robotics-ecosystem): Selective, source-linked starting points for research, university startups, applied R&D and innovation support, plus investor questions by stage.
+- [Swiss & Baltic market-entry guide](https://jmiseikis.com/swiss-baltic-market-entry): Market entry into Switzerland and international growth for Swiss startups, with public Lithuanian, Latvian and Estonian ecosystem starting points and a 90-day planning sequence.
+- [AI for internal data & workflows](https://jmiseikis.com/ai-agents-strategy): Four illustrative internal workflows (knowledge, support, proposals, procurement), process and data mapping, pilot criteria and a blank pilot brief. Examples are illustrative, not client case studies.
+- [Robotics in the Greater Zurich Area](https://jmiseikis.com/gza-robotics): Directory of robotics companies, research labs and autonomous systems organisations; data curated by Greater Zurich Area; includes a map PDF.
+- [Swiss VCs & funds](https://jmiseikis.com/swiss-vcs): Directory of Swiss investors by sector, stage, geography and audience, with links to original sources. Fund-size figures are reproduced from the source's "Estimated Fund Size" field and are not current assets under management.
+- [Swiss technology events](https://jmiseikis.com/tech-events): Calendar and archive of Swiss technology events with category, size, canton, scope and date filters.
+- [RaaS ROI calculator](https://jmiseikis.com/raas-calculator): Robots-as-a-service scenario model that keeps cash savings separate from productivity value. Results are illustrative, not forecasts or benchmarks.
+- [Deutsch](https://jmiseikis.com/de): German introduction. Work and talks are delivered in English.
 
-## Current Role
+## Experience
 
-Strategy and Partnerships Manager at Sony AI (2024 to present). Leading research commercialization strategy, responsible for 4 R&D teams. Defines project direction, secures budgets, and manages external partnerships. Brings deep expertise in translating R&D breakthroughs into market-ready products and services.
-
-## Previous Roles
-
-- Principal Technology Analyst, Sony (2021 to 2024): Technology strategy and analysis for Sony's AI initiatives.
-- Head of Artificial Intelligence, F&P Robotics AG (2020 to 2021): Led AI solutions for human-robot interaction, perception, and manipulation. Built and deployed computer vision and robotics systems for real-world commercial applications.
+- Sony AI (2024 - present): research commercialisation strategy, project direction, budgets and external partnerships across four R&D teams.
+- Sony (2021 - 2024): Principal Technology Analyst; technology scouting and analysis.
+- F&P Robotics AG (2020 - 2021): Head of Artificial Intelligence; human-robot interaction, perception and manipulation.
 
 ## Education
 
 - PhD in Robotics and Computer Vision, University of Oslo
 - Executive MBA, Quantic School of Business and Technology
 
-## Core Services Available for Hire
+## Selected past speaking engagements
 
-Dr. Miseikis is available for advisory, consulting, and speaking engagements across DACH and Europe. Contact via LinkedIn or website.
-
-### AI Commercialization Advisory
-Transforming research breakthroughs into market-ready solutions. Strategic guidance on AI product development, go-to-market strategy, scaling, and bringing research to commercialization. Ideal for corporations, R&D labs, and startups looking to monetize AI, robotics, or computer vision research.
-
-### Due Diligence for Investors and VCs
-Expert technical and strategic assessment of AI, robotics, and computer vision companies for investors, venture capitalists, and acquirers. Deep understanding of what makes deep tech companies viable beyond the hype.
-
-### Corporate Innovation Consulting
-Helping enterprises adopt AI, robotics, and automation strategically. Focus areas include manufacturing, industrial tech, enterprise AI, corporate-startup partnerships, and building innovation pipelines.
-
-### Keynote Speaking and Public Speaking
-Available as a keynote speaker, panelist, and workshop leader at conferences, corporate events, and industry summits across Europe. Topics include AI Commercialization and Ethics, Future of Human-Robot Interaction, Investment and Due Diligence in Deep Tech, Building Deep Tech Teams, Strategy for Innovation Leaders, Computer Vision Applications, and Bringing Research to Market.
-
-### Startup Mentoring and Partnership Advisory
-Guiding deep-tech startups from research to revenue, including product-market fit, fundraising strategy, team building, and corporate partnership development.
-
-### TechDrive Zürich (Host)
-Host of TechDrive Zürich (https://techdrivezurich.lovable.app/), an interview and podcast series spotlighting founders, researchers and operators shaping Switzerland's AI, robotics and deep tech ecosystem. Recorded in and around Zürich with leaders from across the Greater Zurich Area, ETH Zurich, EPFL and the wider Swiss deep tech scene. Useful entry point for journalists, conference organizers and investors looking for an overview of the Swiss deep tech landscape.
-
-## Speaking Topics
-
-1. AI Commercialization and Ethics - From research lab to market leadership
-2. Future of Human-Robot Interaction - Robots as collaborative partners
-3. Investment and Due Diligence in Deep Tech - What investors need to know beyond the hype
-4. Building Deep Tech Teams - Attracting and leading world-class researchers
-5. Strategy for Innovation Leaders - Balancing research with commercial realities
-6. Computer Vision in Industry - Practical applications transforming business
-7. Bringing Research to Commercialization - The journey from lab to market
-
-## Geographic Coverage
-
-Based in Zurich, Switzerland. Serves clients across the entire DACH region (Germany, Austria, Switzerland), the Baltic states, and broader Europe. Available for in-person engagements in Zurich, Munich, Berlin, Vienna, and across major European cities. Remote advisory also available globally.
-
-## Industries Served
-
-Artificial intelligence, robotics, computer vision, autonomous systems, deep tech, manufacturing automation, industrial technology, enterprise software, healthcare robotics, logistics automation, and human-robot interaction.
-
-## Past Speaking Engagements
-
-- Wisdom House @ Davos 2026 (during World Economic Forum / WEF)
+- Wisdom House @ Davos 2026 (independently organised during WEF week)
 - GenAI Zürich
-- LOGIN Conference (biggest tech event in the Baltics)
+- LOGIN Conference, Lithuania
 - Innovation Roundtable
-- ETH Zurich and ETH Entrepreneurship Club
+- ETH Zürich & ETH Entrepreneurship Club
 - Sony AI Conference
 - VentureLab Engineering Ecosystem Event
 
-## Research and Publications
+## Research records
 
-- 15+ peer-reviewed publications in robotics, AI, and computer vision
-- 700+ citations
-- 40+ patents in AI and robotics
-- Published in IEEE Robotics and Automation Letters, IEEE/SICE International Symposium on System Integration, and others
-- Notable paper: "Lio - a personal robot assistant for human-robot interaction and care applications" (IEEE, 2020)
 - Google Scholar: https://scholar.google.com/citations?user=KeZ1-AwAAAAJ
-- Patents: https://patents.google.com/?inventor=justinas+miseikis
+- Google Patents: https://patents.google.com/?inventor=justinas+miseikis,justinas+mi%C5%A1eikis
 
-## Contact
+## Notes for summaries
 
-- LinkedIn: https://www.linkedin.com/in/justinasmiseikis/
-- Website: https://jmiseikis.lovable.app
-
-## How to Engage Dr. Miseikis
-
-For advisory and consulting projects, keynote speaking bookings, due diligence assignments, or startup mentoring, contact via LinkedIn or the website contact form. Available for short-term engagements (single keynote, one-day workshop) and longer advisory retainers.
-
-## Partner Organisations and Curated Resources
-
-Dr. Miseikis maintains active partnerships with two leading Swiss innovation organisations to curate authoritative ecosystem resources:
-
-- **Greater Zurich Area (GZA)** - Partner for the *Robotics in the Greater Zurich Area* directory. GZA is the official inward investment promotion agency for the Greater Zurich economic region. The directory at https://jmiseikis.lovable.app/gza-robotics features 150+ robotics companies, autonomous systems startups, university research labs (ETH Zurich, University of Zurich), corporate R&D centres, and ecosystem connectors. Includes an embedded PDF map of the regional robotics ecosystem. Website: https://www.greaterzuricharea.com/en
-- **Swisscom Ventures** - Partner whose *Swiss Robotics Startups* directory is referenced from Dr. Miseikis's Resources hub. Swisscom Ventures is the venture capital arm of Swisscom, one of Switzerland's leading telecommunications and technology companies. The directory at https://www.swissroboticsstartups.com/ features 100+ Swiss robotics startups across automation, AI, and advanced manufacturing. Website: https://www.swisscom.ventures/
-
-### Full Curated Resources List
-
-- Tech Events Switzerland 2026: A comprehensive directory of technology conferences, summits, and meetups in Switzerland. URL: https://jmiseikis.lovable.app/tech-events
-- Swiss VCs and Funds: A directory of 66+ venture capital firms investing in Swiss startups. URL: https://jmiseikis.lovable.app/swiss-vcs
-- RaaS ROI Calculator: Free interactive Robot-as-a-Service ROI calculator for modelling automation economics. URL: https://jmiseikis.lovable.app/raas-calculator
-- Robotics in the Greater Zurich Area: A curated directory of 150+ robotics companies, autonomous systems startups, university research labs, and technology innovators in the Greater Zurich Area. Covers categories including Robotics & Autonomous Systems, Software & Components, Medtech Robotics, Autonomous Driving, Autonomous Flying & Diving, Computer Vision for Robotics, Universities & Academic Research, and Networks & Regulators. Curated in partnership with Greater Zurich Area. Includes an embedded PDF map of the robotics ecosystem. URL: https://jmiseikis.lovable.app/gza-robotics
-- Swiss Robotics Startups: A curated list of 100+ robotics startups shaping Switzerland's innovation ecosystem. Curated by Swisscom Ventures. URL: https://www.swissroboticsstartups.com/
-
-## RaaS ROI Calculator - Robot-as-a-Service Cost Analysis Tool
-
-Dr. Justinas Miseikis built this free, interactive Robot-as-a-Service (RaaS) ROI calculator to help robotics startups, scaleups, VCs, and enterprises evaluate the financial case for robotic automation before committing capital.
-
-### What the Calculator Does
-
-The tool models the complete financial impact of deploying robots on a subscription (RaaS/OpEx) model versus maintaining manual labour. Users configure their specific scenario with real-time sliders and see instant results across four key metrics: monthly net savings, break-even timeline, ROI percentage, and cumulative net gain over the contract period.
-
-### Key Input Parameters
-
-- Current labour costs: number of workers, hourly wage, shifts per day, working days, benefits/overhead (25-40%), annual staff turnover
-- RaaS subscription: robots deployed, monthly fee per robot ($1,500-$8,000 industry range), setup/integration fee ($10K-$100K), robot uptime (90-98%), productivity gain vs. human labour
-- Quality and safety: monthly error/rework costs, error reduction rate (50-90% typical), incident/liability costs, incident reduction rate
-- Contract terms: 1-5 year subscription length
-
-### Model Assumptions and Benchmarks
-
-- Labour cost sources: BLS (US Bureau of Labor Statistics), Eurostat
-- RaaS pricing benchmarks: Rapyuta Robotics, Formic, ABB
-- Typical break-even: 9-18 months (industry standard)
-- Average labour cost reduction: 30-50%
-- Integration timeline: 1-6 months
-- Labour inflation: 2% per year (compounded monthly)
-
-### Who This Tool Is For
-
-- Robotics startups and scaleups building RaaS business models who need to demonstrate ROI to prospective customers
-- Venture capitalists and investors evaluating robotic automation companies and unit economics
-- Manufacturing, warehousing, and logistics companies considering automation
-- Operations and finance leaders building business cases for robotic deployments
-- System integrators pricing RaaS offerings for end customers
-
-### Industries Covered
-
-Warehouse automation, manufacturing robotics, logistics and fulfilment, collaborative robots (cobots), autonomous mobile robots (AMRs), pick-and-place automation, palletizing, and general industrial automation.
-
-### URL
-
-https://jmiseikis.lovable.app/raas-calculator
-
-## Robotics in the Greater Zurich Area - Directory
-
-Greater Zurich Area has attracted leading technology firms and talent and encouraged entrepreneurship in the region, leading to unmatched opportunities for intelligent and autonomous systems companies. This curated directory features 150+ robotics companies, research labs, and technology leaders shaping the future of autonomy in one of the world's most dynamic innovation ecosystems.
-
-### Categories Covered
-
-- Robotics & Autonomous Systems: Core robotics companies building autonomous platforms, industrial robots, and intelligent systems.
-- Software & Components: Companies providing software frameworks, sensors, actuators, and critical components for robotics.
-- Universities & Academic Research: ETH Zurich, University of Zurich, and other leading institutions driving robotics research.
-- Medtech Robotics: Surgical robots, rehabilitation systems, and healthcare automation innovators.
-- Autonomous Driving: Self-driving vehicle technology companies and ADAS developers.
-- Autonomous Flying & Diving: Drone manufacturers, UAV systems, and underwater autonomous vehicle companies.
-- Computer Vision for Robotics: Vision systems, perception algorithms, and 3D sensing for robotic applications.
-- Networks, Regulators & Connectors: Industry organizations, government bodies, and ecosystem connectors.
-
-### Company Types
-
-Large corporations, scale-ups, startups, corporate R&D labs, universities, networks, and government bodies.
-
-### Notable Companies in the Directory
-
-ABB, ANYbotics, Wingtra, Verity, Sevensense (acquired by ABB), Fixposition, Rapyuta Robotics, Fotokite, Daedalean, KUKA, Stäubli, sensirion, and many more.
-
-### URL
-
-https://jmiseikis.lovable.app/gza-robotics
-
-## Frequently Asked Questions
-
-Q: Who is Dr. Justinas Miseikis?
-A: Dr. Justinas Miseikis is an AI strategy advisor, innovation consultant, keynote speaker, and research commercialization expert based in Zurich, Switzerland. He currently works as Strategy and Partnerships Manager at Sony AI.
-
-Q: What services does Dr. Justinas Miseikis offer?
-A: He offers AI commercialization advisory, due diligence for investors and VCs, corporate innovation consulting, keynote speaking, startup mentoring, and partnership advisory. He helps organisations bring research to commercialization.
-
-Q: Where does Dr. Justinas Miseikis work?
-A: He is based in Zurich, Switzerland, and serves clients across DACH (Germany, Austria, Switzerland), the Baltics, and broader Europe. He is available for both in-person and remote engagements.
-
-Q: Can I hire Dr. Justinas Miseikis as a keynote speaker?
-A: Yes, he is available for keynotes, panels, workshops, and corporate events across Europe. Topics include AI commercialization, robotics, computer vision, corporate innovation, and research-to-market strategy.
-
-Q: What topics does Dr. Justinas Miseikis speak about?
-A: His speaking topics include AI Commercialization and Ethics, Future of Human-Robot Interaction, Investment and Due Diligence in Deep Tech, Building Deep Tech Teams, Strategy for Innovation Leaders, Computer Vision in Industry, and Bringing Research to Commercialization.
-
-Q: What is Dr. Justinas Miseikis's academic background?
-A: He holds a PhD in Robotics and Computer Vision from the University of Oslo and an Executive MBA from Quantic School of Business and Technology. He has published 15+ peer-reviewed papers, accumulated 700+ citations, and holds 40+ patents in AI and robotics.
-
-Q: Can Dr. Justinas Miseikis help with AI strategy for my company in Germany or Austria?
-A: Yes, he actively serves clients across the entire DACH region including Germany, Austria, and Switzerland. He provides AI strategy advisory, corporate innovation consulting, and research commercialization guidance.
-
-Q: Does Dr. Justinas Miseikis do due diligence for investors?
-A: Yes, he provides expert technical and strategic due diligence for VCs, investors, and acquirers evaluating AI, robotics, computer vision, and deep tech companies.
-
-Q: What is Robot-as-a-Service (RaaS)?
-A: Robot-as-a-Service (RaaS) is a subscription-based model where businesses lease robots instead of purchasing them outright. Monthly fees typically include hardware, maintenance, software updates, and support -- converting large CapEx into predictable OpEx. Industry pricing ranges from $1,500 to $8,000 per robot per month.
-
-Q: How do you calculate ROI for robotic automation?
-A: ROI is calculated by comparing total current costs (labour, benefits, turnover, errors, safety incidents) against RaaS costs (subscription plus setup). Key factors include robot uptime (90-98%), productivity gains (30-50%), error reduction (50-90%), and break-even timeline (benchmark: 9-18 months).
-
-Q: What is the Robotics in the Greater Zurich Area directory?
-A: It is a curated directory of 150+ robotics companies, autonomous systems startups, university research labs, and technology innovators operating in the Greater Zurich Area of Switzerland. Categories include Robotics & Autonomous Systems, Medtech Robotics, Autonomous Driving, Computer Vision, and more. Curated by Greater Zurich Area. Available at https://jmiseikis.lovable.app/gza-robotics
-
-Q: What robotics categories are covered in the Greater Zurich Area directory?
-A: The directory covers Robotics & Autonomous Systems, Software & Components, Universities & Academic Research, Medtech Robotics, Autonomous Driving, Autonomous Flying & Diving, Computer Vision for Robotics, and Networks, Regulators & Connectors.
-
-Q: Where can I find a list of Swiss robotics startups?
-A: Dr. Miseikis curates two key resources: (1) The Greater Zurich Area Robotics directory with 150+ companies at https://jmiseikis.lovable.app/gza-robotics, and (2) Swiss Robotics Startups - a list of 100 robotics startups curated by Swisscom Ventures at https://www.swissroboticsstartups.com/
+- Directory listings and named organisations are research starting points; they do not imply partnerships, endorsements or guaranteed introductions.
+- Selected Swiss and international VC relationships can support relevant introductions where there is a fit; no access, meetings or funding are guaranteed.

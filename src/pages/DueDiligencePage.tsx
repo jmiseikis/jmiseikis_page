@@ -1,147 +1,162 @@
-import { useEffect } from "react";
-import { Helmet } from "react-helmet-async";
-import { buildOgImageUrl } from "@/lib/ogImage";
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { ArrowLeft, Shield, Search, BarChart3, CheckCircle } from "lucide-react";
+import SiteLayout from "@/components/site/SiteLayout";
+import {
+  Actions,
+  ButtonLink,
+  ContactCta,
+  Note,
+  PageHero,
+  RuleBlock,
+  SectionHead,
+  ServiceRow,
+  TextLink,
+} from "@/components/site/primitives";
+import { contactPath } from "@/lib/site";
 
-const DueDiligencePage = () => {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+const AREAS = [
+  {
+    title: "Technology",
+    text: "AI and ML models, robotics systems, computer vision pipelines, data infrastructure, scalability and defensibility.",
+  },
+  {
+    title: "Commercial context",
+    text: "Product-market assumptions, competitive positioning, go-to-market plans and the route from research to revenue.",
+  },
+  {
+    title: "Team & research",
+    text: "Technical capabilities, execution dependencies, research quality and the evidence behind claims. Review patent portfolios for technical context.",
+  },
+  {
+    title: "Decision brief",
+    text: "A concise assessment of evidence, material risks, open questions and recommended validation steps relevant to your decision.",
+  },
+];
 
-  const areas = [
-    {
-      icon: Search,
-      title: "Technology Assessment",
-      description: "In-depth evaluation of AI/ML models, robotics systems, computer vision pipelines, and data infrastructure. Assess technical viability, scalability, and defensibility.",
-    },
-    {
-      icon: BarChart3,
-      title: "Market & Commercial Analysis",
-      description: "Evaluate product-market fit, competitive positioning, and commercialization potential. Assess go-to-market strategy and revenue scalability.",
-    },
-    {
-      icon: Shield,
-      title: "Team & IP Evaluation",
-      description: "Assess team capabilities, organizational structure, patent portfolios, and research output quality. Identify talent risks and strengths.",
-    },
-    {
-      icon: CheckCircle,
-      title: "Strategic Recommendation",
-      description: "Comprehensive investment recommendation with risk assessment, growth potential analysis, and strategic considerations for the investment thesis.",
-    },
-  ];
+const COVERAGE = [
+  "AI & machine learning",
+  "Robotics & automation",
+  "Computer vision & perception",
+  "Healthcare technology",
+  "Industrial automation",
+  "Autonomous systems",
+  "Human-robot interaction",
+  "Deep tech hardware & software",
+];
 
-  const sectors = [
-    "Artificial Intelligence & Machine Learning",
-    "Robotics & Automation",
-    "Computer Vision & Perception",
-    "Healthcare Technology & Medical Devices",
-    "Industrial Automation & Industry 4.0",
-    "Autonomous Systems",
-    "Human-Robot Interaction",
-    "Deep Tech Hardware/Software",
-  ];
+const STAGES = [
+  {
+    title: "Early stage",
+    text: "Understand the technical thesis, the quality of the evidence and the work needed to reach the next milestone.",
+    points: [
+      "Reproducible demo and evaluation method",
+      "Data access, dependencies and IP provenance",
+      "Team capability and critical hiring gaps",
+      "Validation plan and commercial assumptions",
+    ],
+  },
+  {
+    title: "Scale-up stage",
+    text: "Assess repeatable delivery, deployment economics and the constraints that emerge as the business grows.",
+    points: [
+      "Performance across real customer environments",
+      "Integration effort and customer-specific work",
+      "Support, reliability and operating costs",
+      "Technical roadmap and scaling bottlenecks",
+    ],
+  },
+];
 
-  return (
-    <>
-      <Helmet>
-        <title>AI & Robotics Due Diligence | Dr. Justinas Mišeikis</title>
-        <meta name="description" content="Expert technical and strategic due diligence for VCs, investors, and acquirers evaluating AI, robotics, and deep tech companies. PhD-level assessment of technology, teams, and market potential." />
-        <meta name="keywords" content="AI due diligence, robotics due diligence, deep tech due diligence, VC technical assessment, AI investment evaluation, robotics investment analysis, technology due diligence Zurich, deep tech investor advisory DACH" />
-        <link rel="canonical" href="https://jmiseikis.lovable.app/due-diligence" />
-        <meta property="og:title" content="AI & Robotics Due Diligence | Dr. Justinas Mišeikis" />
-        <meta property="og:description" content="Expert technical due diligence for investors evaluating AI, robotics, and deep tech companies." />
-        <meta property="og:image" content={buildOgImageUrl({ title: "AI & Robotics Due Diligence", subtitle: "DR. JUSTINAS MIŠEIKIS · DUE DILIGENCE" })} />
-        <meta name="twitter:image" content={buildOgImageUrl({ title: "AI & Robotics Due Diligence", subtitle: "DR. JUSTINAS MIŠEIKIS · DUE DILIGENCE" })} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Helmet>
+const DueDiligencePage = () => (
+  <SiteLayout path="/due-diligence">
+    <PageHero
+      breadcrumb={{ to: "/advisory", label: "Advisory" }}
+      eyebrow="Advisory | Investors, acquirers & strategy teams"
+      title="AI & robotics due diligence."
+      lead="Assess the technical substance, deployment readiness and commercial assumptions behind an opportunity."
+    >
+      <Actions>
+        <ButtonLink href={contactPath("diligence")}>Discuss an assessment</ButtonLink>
+      </Actions>
+    </PageHero>
 
-      <div className="min-h-screen bg-background">
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
-          <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between h-20">
-              <Link to="/" className="text-xl font-bold tracking-tight hover:text-primary transition-colors">
-                Dr. Justinas Mišeikis
-              </Link>
-              <Link to="/#contact">
-                <Button variant="swiss" size="sm">Get in Touch</Button>
-              </Link>
-            </div>
-          </div>
-        </nav>
+    <section className="site-wrap pb-12 pt-10 md:pb-20" aria-labelledby="areas-title">
+      <SectionHead id="areas-title" eyebrow="Assessment areas" title="What needs to be true?" />
+      {AREAS.map((area, index) => (
+        <ServiceRow key={area.title} number={`0${index + 1}`} title={area.title}>
+          <p>{area.text}</p>
+        </ServiceRow>
+      ))}
+    </section>
 
-        <section className="pt-32 pb-16 px-4">
-          <div className="container mx-auto max-w-5xl">
-            <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8">
-              <ArrowLeft className="w-4 h-4" /> Back to Home
-            </Link>
-            <span className="block text-primary font-medium tracking-wider uppercase text-sm mb-4">
-              Due Diligence for Investors & VCs
-            </span>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              AI & Robotics <span className="text-primary">Due Diligence</span>
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl leading-relaxed">
-              Expert technical and strategic assessment of AI, robotics, and deep tech companies for VCs,
-              investors, and acquirers. PhD-level expertise combined with commercial acumen to evaluate
-              technology viability, team strength, and market potential.
-            </p>
-          </div>
-        </section>
-
-        <section className="py-16 bg-secondary/30 px-4">
-          <div className="container mx-auto max-w-5xl">
-            <h2 className="text-3xl font-bold mb-8">Assessment Areas</h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              {areas.map((area, index) => (
-                <div key={index} className="bg-card p-8 border-2 border-border hover:border-primary transition-all duration-300 group">
-                  <area.icon className="w-12 h-12 text-primary mb-6 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-2xl font-bold mb-4">{area.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{area.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="py-16 px-4">
-          <div className="container mx-auto max-w-5xl">
-            <div className="bg-secondary/50 p-8 md:p-12 border-l-4 border-primary">
-              <h2 className="text-2xl font-bold mb-8">Sectors Covered</h2>
-              <div className="grid md:grid-cols-2 gap-4">
-                {sectors.map((sector, index) => (
-                  <div key={index} className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                    <p className="text-muted-foreground">{sector}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-16 px-4">
-          <div className="container mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-bold mb-4">Need an expert assessment for your next investment?</h2>
-            <p className="text-muted-foreground mb-8">
-              Confidential, thorough, and actionable due diligence reports for AI and deep tech investments.
-            </p>
-            <Link to="/#contact">
-              <Button size="lg" variant="swiss">Request Due Diligence</Button>
-            </Link>
-          </div>
-        </section>
-
-        <footer className="py-8 border-t border-border px-4">
-          <div className="container mx-auto text-center text-sm text-muted-foreground">
-            <p>© {new Date().getFullYear()} Dr. Justinas Mišeikis. Zurich, Switzerland.</p>
-          </div>
-        </footer>
+    <section className="section-y bg-muted" aria-labelledby="outputs-title">
+      <div className="site-wrap">
+        <SectionHead id="outputs-title" eyebrow="Typical outputs" title="Evidence you can use in the decision." />
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10">
+          <RuleBlock title="Technical assessment">
+            <p>Capabilities, deployment constraints, evidence gaps and technical risks.</p>
+          </RuleBlock>
+          <RuleBlock title="Management questions">
+            <p>A focused set of questions and validation activities for the company and its technical team.</p>
+          </RuleBlock>
+          <RuleBlock title="Decision brief">
+            <p>Findings connected to commercial assumptions and the next steps in your assessment.</p>
+          </RuleBlock>
+        </div>
       </div>
-    </>
-  );
-};
+    </section>
+
+    <section className="site-wrap section-y" aria-labelledby="coverage-title">
+      <SectionHead id="coverage-title" eyebrow="Technical coverage" title="AI, robotics and their real-world use." />
+      <ul className="grid list-none grid-cols-1 border-t border-border p-0 min-[375px]:grid-cols-2 md:grid-cols-3">
+        {COVERAGE.map((item) => (
+          <li key={item} className="min-w-0 border-b border-border py-4 pr-4 text-[13px] text-foreground md:text-sm">
+            {item}
+          </li>
+        ))}
+      </ul>
+      <Note title="Scope the assessment around your decision.">
+        <p>
+          Agree the depth, access to evidence, timetable and deliverables before work begins. Technical review of IP does not
+          replace a legal opinion; specialist reviews can be defined as part of the broader process.
+        </p>
+      </Note>
+    </section>
+
+    <section id="stage" className="section-y bg-muted" aria-labelledby="stage-title">
+      <div className="site-wrap">
+        <SectionHead id="stage-title" eyebrow="For venture investors" title="Match the diligence to the company's stage." />
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10">
+          {STAGES.map((stage) => (
+            <article key={stage.title} className="min-w-0 border-t-2 border-primary pt-6">
+              <h3 className="text-[23px] md:text-2xl">{stage.title}</h3>
+              <p className="mt-3 text-[15px] text-muted-foreground">{stage.text}</p>
+              <ul className="mt-4 list-disc space-y-1.5 pl-5 text-[15px] text-muted-foreground">
+                {stage.points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+        <Actions>
+          <ButtonLink href="/downloads/technical-diligence-checklist.txt" download variant="secondary">
+            Download diligence checklist (TXT)
+          </ButtonLink>
+          <TextLink href="/swiss-ai-robotics-ecosystem">Explore Swiss startup scouting</TextLink>
+        </Actions>
+        <p className="fine mt-5 max-w-[70ch]">
+          Use the checklist to define scope and evidence requests. A public checklist is not an assessment of a specific
+          company.
+        </p>
+      </div>
+    </section>
+
+    <ContactCta
+      title="What do you need to understand before committing?"
+      lead="Share the opportunity, decision timeline and the technical questions you want to resolve."
+      intent="diligence"
+      label="Discuss an assessment"
+    />
+  </SiteLayout>
+);
 
 export default DueDiligencePage;

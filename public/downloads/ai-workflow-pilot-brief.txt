@@ -1,0 +1,16 @@
+﻿AI WORKFLOW PILOT BRIEF
+Dr. Justinas Mišeikis | jmiseikis.com/ai-agents-strategy
+Blank working template | 6 October 2026
+
+1. PROCESS: name, trigger, owner, users, steps, handoffs, exception paths and final system of record.
+2. BASELINE: cases per month, handling + review minutes per case, queue time, error/rework rate, current cost per completed case. Source and date of each measurement.
+3. DATA: required sources, business owner, current version, quality gaps, update cycle, sample availability. Distinguish documents from live structured records.
+4. ACCESS: allowed users/groups, account boundaries, read/write permissions, retention and hosting requirements, logging owner. Check retrieval and actions against source permissions.
+5. PROPOSED WORKFLOW: what is retrieved, summarised, drafted or changed? What can conventional search or rules already handle?
+6. HUMAN CONTROL: who approves external messages, commercial commitments and system updates? Which cases must stop or escalate? What happens if a connected system fails?
+7. TEST SET: authorised representative historical cases, separate held-out cases, expected answers/actions, source evidence, ambiguous cases, outdated/missing data, restricted documents and misleading source instructions.
+8. ACCEPTANCE: task quality, error severity, review effort, cycle time, access tests, adoption, operating cost. Set thresholds before the pilot and name the decision owner.
+9. ECONOMICS: monthly cases x reduction in end-to-end handling minutes / 60 = potential capacity hours. Confirm whether capacity becomes cash savings. Include implementation, licences, usage, support and evaluation cost. Do not count the same benefit twice.
+10. DELIVERY: responsible internal team/vendor, dependencies, timing, rollout limits, monitoring, rollback and go/no-go meeting.
+
+Use internally. Share process and system names first; do not send confidential datasets through an initial website enquiry.

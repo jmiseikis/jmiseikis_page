@@ -1,24 +1,29 @@
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import SiteLayout from "@/components/site/SiteLayout";
+import { Actions, ButtonLink, PageHero, TextLink } from "@/components/site/primitives";
 
-const NotFound = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
-  }, [location.pathname]);
-
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-gray-600">Oops! Page not found</p>
-        <a href="/" className="text-blue-500 underline hover:text-blue-700">
-          Return to Home
-        </a>
-      </div>
-    </div>
-  );
-};
+const NotFound = () => (
+  <SiteLayout path="*">
+    <PageHero
+      eyebrow="404 | Page not found"
+      title="Let's get you to the right place."
+      lead="The page you are looking for is not available here."
+    >
+      <Actions>
+        <ButtonLink href="/">Return home</ButtonLink>
+        <ButtonLink href="/resources" variant="secondary">
+          Explore resources
+        </ButtonLink>
+      </Actions>
+    </PageHero>
+    <section className="site-wrap section-y" aria-label="Popular pages">
+      <Actions className="mt-0">
+        <TextLink href="/advisory">Advisory</TextLink>
+        <TextLink href="/speaking">Speaking</TextLink>
+        <TextLink href="/publications">Publications & patents</TextLink>
+        <TextLink href="/about">About</TextLink>
+      </Actions>
+    </section>
+  </SiteLayout>
+);
 
 export default NotFound;

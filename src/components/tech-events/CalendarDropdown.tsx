@@ -42,10 +42,10 @@ const CalendarDropdown = ({ event, variant = "icon" }: CalendarDropdownProps) =>
             <Calendar className="w-4 h-4" />
           </Button>
         ) : (
-          <Button variant="outline" size="sm" className="gap-2">
-            <Calendar className="w-4 h-4" />
-            <span>Add to Calendar</span>
-          </Button>
+          <button type="button" className="text-link min-h-9 text-xs">
+            <Calendar aria-hidden="true" className="h-3.5 w-3.5" />
+            <span>Add to calendar</span>
+          </button>
         )}
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-52">

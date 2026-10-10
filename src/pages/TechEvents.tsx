@@ -1,772 +1,184 @@
-import { useState, useEffect, useMemo } from "react";
-import { Link } from "react-router-dom";
-import { ArrowLeft, Calendar, MapPin, Users, ExternalLink, Filter, List, LayoutGrid, Loader2, AlertCircle, ChevronDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { useCallback, useMemo, useState } from "react";
+import SiteLayout from "@/components/site/SiteLayout";
+import { ContactCta, PageHero } from "@/components/site/primitives";
+import { Directory, DirectoryItem, Meta, SourceLink, Tags, type DirectoryFilter } from "@/components/site/Directory";
 import CalendarDropdown from "@/components/tech-events/CalendarDropdown";
-import DateRangeFilter from "@/components/tech-events/DateRangeFilter";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { useEventsDirectory } from "@/hooks/use-directory";
+import { compareEvents, isPastEvent, zurichToday, type TechEventRecord } from "@/lib/sheets";
 
-interface TechEvent {
-  name: string;
-  startDate: string;
-  finishDate: string;
-  location: string;
-  category: string;
-  officialUrl: string;
-  ticketPrice: string;
-  size: string;
-  logoUrl: string;
-  targetAudience: string;
-  scope: string;
-  description: string;
-}
-
-const SHEET_ID = "1k4vfFfSX9Pmi5tNVuijUmubuTPSoFvBnIxC1kH_25x4";
-const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
-
-// Only allow http(s) links so a compromised sheet can't inject `javascript:` URLs.
-const isSafeUrl = (url: string | undefined | null): url is string =>
-  !!url && url !== "[URL]" && /^https?:\/\//i.test(url);
-
-const categoryColors: Record<string, string> = {
-  "Industry": "bg-blue-500/10 text-blue-600 border-blue-200",
-  "Startup": "bg-green-500/10 text-green-600 border-green-200",
-  "Research": "bg-purple-500/10 text-purple-600 border-purple-200",
-  "Other": "bg-orange-500/10 text-orange-600 border-orange-200",
+const formatDay = (iso: string) => {
+  const date = new Date(`${iso}T12:00:00`);
+  return Number.isNaN(date.getTime())
+    ? ""
+    : new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short", year: "numeric" }).format(date);
 };
 
-const sizeColors: Record<string, string> = {
-  "Small": "bg-muted text-muted-foreground",
-  "Medium": "bg-primary/10 text-primary",
-  "Large": "bg-primary/20 text-primary font-semibold",
+const dateRange = (event: TechEventRecord) => {
+  if (!event.startDate) return "Date to confirm";
+  const start = formatDay(event.startDate);
+  return event.finishDate && event.finishDate !== event.startDate ? `${start} - ${formatDay(event.finishDate)}` : start;
 };
+
+const BASE_FILTERS: DirectoryFilter<TechEventRecord>[] = [
+  { key: "category", label: "Categories", allLabel: "All categories", values: (e) => [e.category] },
+  { key: "size", label: "Sizes", allLabel: "All sizes", values: (e) => [e.size] },
+  { key: "canton", label: "Cantons", allLabel: "All cantons", values: (e) => [e.canton] },
+  { key: "scope", label: "Scopes", allLabel: "All scopes", values: (e) => [e.scope] },
+];
+// Only offered if the source sheet regains a ticket price column; missing prices are never treated as free.
+const PRICE_FILTER: DirectoryFilter<TechEventRecord> = {
+  key: "ticketPrice",
+  label: "Tickets",
+  allLabel: "All ticket types",
+  values: (e) => [e.ticketPrice ?? ""],
+};
+
+const searchText = (e: TechEventRecord) => [e.name, e.description, e.location, e.category, e.targetAudience, e.scope].join(" ");
+
+const dateInputClass =
+  "mt-2 block w-full max-w-full border border-input bg-background px-3 py-2 text-base font-normal text-foreground md:text-[13px]";
 
 const TechEvents = () => {
-  const [events, setEvents] = useState<TechEvent[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-  const [filtersOpen, setFiltersOpen] = useState(false);
-  const isMobile = useIsMobile();
-  
-  // Filters
-  const [searchQuery, setSearchQuery] = useState("");
-  const [categoryFilter, setCategoryFilter] = useState<string>("all");
-  const [sizeFilter, setSizeFilter] = useState<string>("all");
-  const [locationFilter, setLocationFilter] = useState<string>("all");
-  const [scopeFilter, setScopeFilter] = useState<string>("all");
-  const [priceFilter, setPriceFilter] = useState<string>("all");
-  const [startDateFilter, setStartDateFilter] = useState<Date | undefined>(undefined);
-  const [endDateFilter, setEndDateFilter] = useState<Date | undefined>(undefined);
-  const [showPastEvents, setShowPastEvents] = useState(false);
+  const { data, isLoading, error, refetch } = useEventsDirectory();
+  const [showPast, setShowPast] = useState(false);
+  const [from, setFrom] = useState("");
+  const [to, setTo] = useState("");
+  const today = zurichToday();
 
-  // Helper to parse Google Sheets date format
-  const parseSheetDate = (dateStr: string): Date | null => {
-    if (!dateStr) return null;
-    const dateMatch = dateStr.match(/Date\((\d+),(\d+),(\d+)\)/);
-    if (dateMatch) {
-      const [, year, month, day] = dateMatch;
-      return new Date(parseInt(year), parseInt(month), parseInt(day));
-    }
-    const date = new Date(dateStr);
-    return isNaN(date.getTime()) ? null : date;
-  };
+  const events = useMemo(() => (data ? [...data.events].sort(compareEvents) : undefined), [data]);
+  const filters = useMemo(() => (data?.hasTicketPrice ? [...BASE_FILTERS, PRICE_FILTER] : BASE_FILTERS), [data?.hasTicketPrice]);
+  const pastCount = useMemo(() => (events ?? []).filter((e) => isPastEvent(e, today)).length, [events, today]);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  // SEO: title, description, canonical, OG/Twitter tags, JSON-LD
-  useEffect(() => {
-    const TITLE = "Tech Events Switzerland 2026 | AI and Robotics";
-    const DESC = "Curated 2026 Swiss tech events calendar for AI, robotics, deep tech, startups, and VCs. Filter by topic, city, date, and price.";
-    const URL = "https://jmiseikis.lovable.app/tech-events";
-    const prev = document.title;
-    document.title = TITLE;
-
-    const setMeta = (name: string, content: string, attr = "name") => {
-      let el = document.querySelector(`meta[${attr}="${name}"]`) as HTMLMetaElement | null;
-      if (!el) { el = document.createElement("meta"); el.setAttribute(attr, name); document.head.appendChild(el); }
-      el.setAttribute("content", content);
-    };
-    setMeta("description", DESC);
-    setMeta("keywords", "tech events Switzerland 2026, AI conferences Switzerland, robotics events Zurich, startup events Switzerland, VC events Zurich, deep tech conferences Europe, tech calendar Switzerland, GenAI Zürich, Web Summit Europe, Davos WEF 2026, tech meetups Zurich Geneva Lausanne Basel");
-    setMeta("og:title", TITLE, "property");
-    setMeta("og:description", DESC, "property");
-    setMeta("og:url", URL, "property");
-    setMeta("og:type", "website", "property");
-    const techEventsOg = (() => {
-      const pid = (import.meta as unknown as { env: { VITE_SUPABASE_PROJECT_ID?: string } }).env.VITE_SUPABASE_PROJECT_ID;
-      if (!pid) return "https://jmiseikis.lovable.app/og-image.png";
-      const p = new URLSearchParams({
-        title: "Tech Events Switzerland 2026",
-        subtitle: "AI · ROBOTICS · DEEP TECH · STARTUPS",
-      });
-      return `https://${pid}.supabase.co/functions/v1/og-image?${p.toString()}`;
-    })();
-    setMeta("og:image", techEventsOg, "property");
-    setMeta("twitter:image", techEventsOg);
-    setMeta("og:image:width", "1200", "property");
-    setMeta("og:image:height", "630", "property");
-    setMeta("twitter:card", "summary_large_image");
-    setMeta("twitter:title", TITLE);
-    setMeta("twitter:description", DESC);
-
-    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-    if (!canonical) { canonical = document.createElement("link"); canonical.rel = "canonical"; document.head.appendChild(canonical); }
-    canonical.href = URL;
-
-    const jsonLd = {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "name": "Tech Events Switzerland 2026",
-      "url": URL,
-      "description": DESC,
-      "isPartOf": { "@type": "WebSite", "name": "Dr. Justinas Mišeikis", "url": "https://jmiseikis.lovable.app" },
-      "about": ["AI conferences", "Robotics events", "Startup events", "Venture capital events", "Deep tech"],
-      "inLanguage": "en"
-    };
-    const s = document.createElement("script");
-    s.type = "application/ld+json";
-    s.textContent = JSON.stringify(jsonLd);
-    document.head.appendChild(s);
-
-    return () => { document.title = prev; s.remove(); };
-  }, []);
-
-  useEffect(() => {
-    const fetchEvents = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(SHEET_URL);
-        const text = await response.text();
-        
-        // Parse the JSONP response from Google Sheets
-        const jsonMatch = text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\);?$/);
-        if (!jsonMatch) {
-          throw new Error("Failed to parse Google Sheets response");
-        }
-        
-        const data = JSON.parse(jsonMatch[1]);
-        const rows = data.table.rows;
-        
-        // Skip header row (index 0) and map data
-        const parsedEvents: TechEvent[] = rows.slice(1).map((row: { c: Array<{ v: string | null }> }) => {
-          const cells = row.c;
-          return {
-            name: cells[0]?.v || "",
-            startDate: cells[1]?.v || "",
-            finishDate: cells[2]?.v || "",
-            location: cells[3]?.v || "",
-            category: cells[4]?.v || "",
-            officialUrl: cells[5]?.v || "",
-            ticketPrice: cells[6]?.v || "",
-            size: cells[7]?.v || "",
-            logoUrl: cells[8]?.v || "",
-            targetAudience: cells[9]?.v || "",
-            scope: cells[10]?.v || "",
-            description: cells[11]?.v || "",
-          };
-        }).filter((event: TechEvent) => event.name);
-
-        setEvents(parsedEvents);
-        setError(null);
-      } catch (err) {
-        console.error("Error fetching events:", err);
-        setError("Failed to load events. Please try again later.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchEvents();
-  }, []);
-
-  // Extract unique filter options
-  const filterOptions = useMemo(() => {
-    const categories = [...new Set(events.map(e => e.category).filter(Boolean))];
-    const sizes = [...new Set(events.map(e => e.size).filter(Boolean))];
-    const locations = [...new Set(events.map(e => {
-      const parts = e.location.split(", ");
-      return parts[parts.length - 1]; // Get canton code
-    }).filter(Boolean))];
-    const scopes = [...new Set(events.map(e => e.scope).filter(Boolean))];
-    
-    return { categories, sizes, locations, scopes };
-  }, [events]);
-
-  // Apply filters
-  const filteredEvents = useMemo(() => {
-    const now = new Date();
-    now.setHours(0, 0, 0, 0);
-
-    return events.filter(event => {
-      // Hide past events unless toggled
-      if (!showPastEvents) {
-        const eventEndDate = parseSheetDate(event.finishDate) || parseSheetDate(event.startDate);
-        if (eventEndDate && eventEndDate < now) return false;
-      }
-
-      // Search filter
-      if (searchQuery) {
-        const query = searchQuery.toLowerCase();
-        if (!event.name.toLowerCase().includes(query) &&
-            !event.description.toLowerCase().includes(query) &&
-            !event.location.toLowerCase().includes(query)) {
-          return false;
-        }
-      }
-      
-      // Category filter
-      if (categoryFilter !== "all" && event.category !== categoryFilter) return false;
-      
-      // Size filter
-      if (sizeFilter !== "all" && event.size !== sizeFilter) return false;
-      
-      // Location filter
-      if (locationFilter !== "all") {
-        const canton = event.location.split(", ").pop();
-        if (canton !== locationFilter) return false;
-      }
-      
-      // Scope filter
-      if (scopeFilter !== "all" && event.scope !== scopeFilter) return false;
-      
-      // Price filter
-      if (priceFilter !== "all") {
-        const price = event.ticketPrice.toLowerCase();
-        if (priceFilter === "free" && !price.includes("free")) return false;
-        if (priceFilter === "paid" && (price.includes("free") || price.includes("invite"))) return false;
-        if (priceFilter === "invite" && !price.includes("invite")) return false;
-      }
-
-      // Date range filter
-      if (startDateFilter || endDateFilter) {
-        const eventStartDate = parseSheetDate(event.startDate);
-        const eventEndDate = parseSheetDate(event.finishDate);
-        
-        if (!eventStartDate || !eventEndDate) return false;
-        
-        // Check if event overlaps with the filter range
-        if (startDateFilter && eventEndDate < startDateFilter) return false;
-        if (endDateFilter && eventStartDate > endDateFilter) return false;
-      }
-      
+  const predicate = useCallback(
+    (event: TechEventRecord) => {
+      if (!showPast && isPastEvent(event, today)) return false;
+      const end = event.finishDate || event.startDate;
+      if ((from || to) && !event.startDate) return false;
+      if (from && end < from) return false;
+      if (to && event.startDate > to) return false;
       return true;
-    });
-  }, [events, searchQuery, categoryFilter, sizeFilter, locationFilter, scopeFilter, priceFilter, startDateFilter, endDateFilter, showPastEvents]);
+    },
+    [showPast, today, from, to],
+  );
 
-  const formatDate = (dateStr: string) => {
-    if (!dateStr) return "";
-    try {
-      // Handle "Date(year,month,day)" format from Google Sheets
-      const dateMatch = dateStr.match(/Date\((\d+),(\d+),(\d+)\)/);
-      if (dateMatch) {
-        const [, year, month, day] = dateMatch;
-        const date = new Date(parseInt(year), parseInt(month), parseInt(day));
-        return date.toLocaleDateString("en-CH", { month: "short", day: "numeric" });
-      }
-      // Handle regular date string
-      const date = new Date(dateStr);
-      return date.toLocaleDateString("en-CH", { month: "short", day: "numeric" });
-    } catch {
-      return dateStr;
-    }
-  };
+  const resetExtra = useCallback(() => {
+    setShowPast(false);
+    setFrom("");
+    setTo("");
+  }, []);
 
-  const formatDateRange = (start: string, finish: string) => {
-    const startFormatted = formatDate(start);
-    const finishFormatted = formatDate(finish);
-    
-    if (startFormatted === finishFormatted) return startFormatted;
-    return `${startFormatted} - ${finishFormatted}`;
-  };
-
-  const clearFilters = () => {
-    setSearchQuery("");
-    setCategoryFilter("all");
-    setSizeFilter("all");
-    setLocationFilter("all");
-    setScopeFilter("all");
-    setPriceFilter("all");
-    setStartDateFilter(undefined);
-    setEndDateFilter(undefined);
-  };
-
-  const hasActiveFilters = searchQuery || categoryFilter !== "all" || sizeFilter !== "all" || 
-    locationFilter !== "all" || scopeFilter !== "all" || priceFilter !== "all" ||
-    startDateFilter !== undefined || endDateFilter !== undefined;
-
-  return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="bg-foreground text-background py-16 md:py-24">
-        <div className="container px-4">
-          <Link 
-            to="/" 
-            className="inline-flex items-center gap-2 text-background/70 hover:text-primary transition-colors mb-8"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back to Home</span>
-          </Link>
-          
-          <div className="max-w-4xl">
-            <div className="inline-block mb-4">
-              <span className="text-primary font-medium tracking-wider uppercase text-sm">
-                Live Directory
-              </span>
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Tech Events <span className="text-primary">Switzerland 2026</span>
-            </h1>
-            <p className="text-xl text-background/70 max-w-2xl">
-              Your comprehensive guide to technology conferences, summits, and meetups 
-              across Switzerland. Updated regularly from our curated database.
+  const renderItem = useCallback(
+    (event: TechEventRecord) => {
+      const past = isPastEvent(event, today);
+      return (
+        <DirectoryItem
+          aside={
+            <>
+              <Tags items={[event.category, event.startDate ? (past ? "Past event" : "Upcoming") : "Date to confirm", event.scope]} />
+              <h2 className="text-[22px] md:text-[23px]">{event.name}</h2>
+              <Meta label="Date:" value={dateRange(event)} />
+              <Meta label="Location:" value={event.location} />
+              <Meta label="Size:" value={event.size} />
+              {event.ticketPrice !== undefined && <Meta label="Tickets:" value={event.ticketPrice} />}
+            </>
+          }
+        >
+          <p>{event.description}</p>
+          <Meta label="Audience:" value={event.targetAudience} />
+          {event.sourceVariants?.length ? (
+            <p className="fine mt-2">
+              Listed {event.sourceVariants.length + 1} times in the source with the same name, dates and website; shown once
+              here.
             </p>
-          </div>
-        </div>
-      </header>
-
-      {/* Filters */}
-      <section className="border-b border-border bg-card sticky top-0 z-40">
-        <div className="container px-4 py-4">
-          <div className="flex flex-col gap-4">
-            {/* Search and View Toggle */}
-            <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
-              <div className="relative flex-1 max-w-md w-full">
-                <Input
-                  type="search"
-                  placeholder="Search events..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-4 pr-4 h-10"
-                />
-              </div>
-              
-              <div className="flex items-center gap-2">
-                {/* Mobile filter toggle */}
-                {isMobile && (
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setFiltersOpen(!filtersOpen)}
-                    className="h-9 gap-2"
-                  >
-                    <Filter className="w-4 h-4" />
-                    Filters
-                    {hasActiveFilters && (
-                      <Badge variant="secondary" className="h-5 w-5 p-0 flex items-center justify-center text-xs">
-                        !
-                      </Badge>
-                    )}
-                    <ChevronDown className={`w-4 h-4 transition-transform ${filtersOpen ? 'rotate-180' : ''}`} />
-                  </Button>
-                )}
-                
-                <div className="flex border border-border">
-                  <Button
-                    variant={viewMode === "grid" ? "default" : "ghost"}
-                    size="sm"
-                    onClick={() => setViewMode("grid")}
-                    className="rounded-none"
-                  >
-                    <LayoutGrid className="w-4 h-4" />
-                  </Button>
-                  <Button
-                    variant={viewMode === "list" ? "default" : "ghost"}
-                    size="sm"
-                    onClick={() => setViewMode("list")}
-                    className="rounded-none"
-                  >
-                    <List className="w-4 h-4" />
-                  </Button>
-                </div>
-              </div>
-            </div>
-
-            {/* Filter Row - Collapsible on mobile, always visible on desktop */}
-            {isMobile ? (
-              <Collapsible open={filtersOpen} onOpenChange={setFiltersOpen}>
-                <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
-                  <div className="flex flex-wrap gap-3 items-center pt-2">
-                    <Filter className="w-4 h-4 text-muted-foreground" />
-                    
-                    <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-                      <SelectTrigger className="w-[130px] h-9">
-                        <SelectValue placeholder="Category" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="all">All Categories</SelectItem>
-                        {filterOptions.categories.map(cat => (
-                          <SelectItem key={cat} value={cat}>{cat}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-
-                    <Select value={sizeFilter} onValueChange={setSizeFilter}>
-                      <SelectTrigger className="w-[110px] h-9">
-                        <SelectValue placeholder="Size" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="all">All Sizes</SelectItem>
-                        {filterOptions.sizes.map(size => (
-                          <SelectItem key={size} value={size}>{size}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-
-                    <Select value={locationFilter} onValueChange={setLocationFilter}>
-                      <SelectTrigger className="w-[110px] h-9">
-                        <SelectValue placeholder="Canton" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="all">All Cantons</SelectItem>
-                        {filterOptions.locations.map(loc => (
-                          <SelectItem key={loc} value={loc}>{loc}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-
-                    <Select value={scopeFilter} onValueChange={setScopeFilter}>
-                      <SelectTrigger className="w-[140px] h-9">
-                        <SelectValue placeholder="Scope" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="all">All Scopes</SelectItem>
-                        {filterOptions.scopes.map(scope => (
-                          <SelectItem key={scope} value={scope}>{scope}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-
-                    <Select value={priceFilter} onValueChange={setPriceFilter}>
-                      <SelectTrigger className="w-[120px] h-9">
-                        <SelectValue placeholder="Price" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="all">All Prices</SelectItem>
-                        <SelectItem value="free">Free</SelectItem>
-                        <SelectItem value="paid">Paid</SelectItem>
-                        <SelectItem value="invite">Invite Only</SelectItem>
-                      </SelectContent>
-                    </Select>
-
-                    <DateRangeFilter
-                      startDate={startDateFilter}
-                      endDate={endDateFilter}
-                      onStartDateChange={setStartDateFilter}
-                      onEndDateChange={setEndDateFilter}
-                    />
-
-                    {hasActiveFilters && (
-                      <Button variant="ghost" size="sm" onClick={clearFilters} className="h-9">
-                        Clear all
-                      </Button>
-                    )}
-                  </div>
-                </CollapsibleContent>
-              </Collapsible>
-            ) : (
-              <div className="flex flex-wrap gap-3 items-center">
-                <Filter className="w-4 h-4 text-muted-foreground" />
-                
-                <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-                  <SelectTrigger className="w-[130px] h-9">
-                    <SelectValue placeholder="Category" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Categories</SelectItem>
-                    {filterOptions.categories.map(cat => (
-                      <SelectItem key={cat} value={cat}>{cat}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-
-                <Select value={sizeFilter} onValueChange={setSizeFilter}>
-                  <SelectTrigger className="w-[110px] h-9">
-                    <SelectValue placeholder="Size" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Sizes</SelectItem>
-                    {filterOptions.sizes.map(size => (
-                      <SelectItem key={size} value={size}>{size}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-
-                <Select value={locationFilter} onValueChange={setLocationFilter}>
-                  <SelectTrigger className="w-[110px] h-9">
-                    <SelectValue placeholder="Canton" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Cantons</SelectItem>
-                    {filterOptions.locations.map(loc => (
-                      <SelectItem key={loc} value={loc}>{loc}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-
-                <Select value={scopeFilter} onValueChange={setScopeFilter}>
-                  <SelectTrigger className="w-[140px] h-9">
-                    <SelectValue placeholder="Scope" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Scopes</SelectItem>
-                    {filterOptions.scopes.map(scope => (
-                      <SelectItem key={scope} value={scope}>{scope}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-
-                <Select value={priceFilter} onValueChange={setPriceFilter}>
-                  <SelectTrigger className="w-[120px] h-9">
-                    <SelectValue placeholder="Price" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Prices</SelectItem>
-                    <SelectItem value="free">Free</SelectItem>
-                    <SelectItem value="paid">Paid</SelectItem>
-                    <SelectItem value="invite">Invite Only</SelectItem>
-                  </SelectContent>
-                </Select>
-
-                <DateRangeFilter
-                  startDate={startDateFilter}
-                  endDate={endDateFilter}
-                  onStartDateChange={setStartDateFilter}
-                  onEndDateChange={setEndDateFilter}
-                />
-
-                {hasActiveFilters && (
-                  <Button variant="ghost" size="sm" onClick={clearFilters} className="h-9">
-                    Clear all
-                  </Button>
-                )}
-              </div>
+          ) : null}
+          <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <SourceLink href={event.officialUrl}>Event website</SourceLink>
+            {event.startDate && !past && (
+              <CalendarDropdown
+                variant="text"
+                event={{
+                  name: event.name,
+                  startDate: event.startDate,
+                  finishDate: event.finishDate || event.startDate,
+                  location: event.location,
+                  description: event.description,
+                  officialUrl: event.officialUrl,
+                }}
+              />
             )}
           </div>
-        </div>
-      </section>
+        </DirectoryItem>
+      );
+    },
+    [today],
+  );
 
-      {/* Results Summary */}
-      <section className="container px-4 py-6">
-        <div className="flex items-center justify-between flex-wrap gap-4">
-          <p className="text-muted-foreground">
-            Showing <span className="font-semibold text-foreground">{filteredEvents.length}</span> of{" "}
-            <span className="font-semibold text-foreground">{events.length}</span> events
-          </p>
-          <Button
-            variant={showPastEvents ? "default" : "outline"}
-            size="sm"
-            onClick={() => setShowPastEvents(!showPastEvents)}
-            className="gap-2"
-          >
-            <Calendar className="w-4 h-4" />
-            {showPastEvents ? "Hide past events" : "Show past events"}
-          </Button>
-        </div>
-      </section>
-
-      {/* Events Content */}
-      <section className="container px-4 pb-16">
-        {loading ? (
-          <div className="flex items-center justify-center py-24">
-            <Loader2 className="w-8 h-8 animate-spin text-primary" />
-            <span className="ml-3 text-muted-foreground">Loading events...</span>
-          </div>
-        ) : error ? (
-          <div className="flex flex-col items-center justify-center py-24 text-center">
-            <AlertCircle className="w-12 h-12 text-destructive mb-4" />
-            <p className="text-destructive font-medium mb-2">{error}</p>
-            <Button variant="outline" onClick={() => window.location.reload()}>
-              Try Again
-            </Button>
-          </div>
-        ) : filteredEvents.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-24 text-center">
-            <Calendar className="w-12 h-12 text-muted-foreground mb-4" />
-            <p className="text-muted-foreground mb-2">No events match your filters</p>
-            <Button variant="outline" onClick={clearFilters}>
-              Clear Filters
-            </Button>
-          </div>
-        ) : viewMode === "grid" ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredEvents.map((event, index) => (
-              <Card key={index} className="group hover:border-primary transition-all duration-300 flex flex-col">
-                <CardHeader className="pb-3">
-                  <div className="flex items-start justify-between gap-2 mb-2">
-                    <Badge 
-                      variant="outline" 
-                      className={categoryColors[event.category] || ""}
-                    >
-                      {event.category}
-                    </Badge>
-                    <Badge 
-                      variant="secondary" 
-                      className={sizeColors[event.size] || ""}
-                    >
-                      {event.size}
-                    </Badge>
-                  </div>
-                  <CardTitle className="text-lg group-hover:text-primary transition-colors line-clamp-2">
-                    {event.name}
-                  </CardTitle>
-                  <CardDescription className="flex flex-col gap-1">
-                    <span className="flex items-center gap-1.5">
-                      <Calendar className="w-3.5 h-3.5" />
-                      {formatDateRange(event.startDate, event.finishDate)}
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                      <MapPin className="w-3.5 h-3.5" />
-                      {event.location}
-                    </span>
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="flex-1 flex flex-col">
-                  <p className="text-sm text-muted-foreground line-clamp-3 mb-4 flex-1">
-                    {event.description}
-                  </p>
-                  <div className="flex items-center justify-between pt-3 border-t border-border">
-                    <div className="flex items-center gap-1.5 text-sm">
-                      <Users className="w-3.5 h-3.5 text-muted-foreground" />
-                      <span className="text-muted-foreground">{event.scope}</span>
-                    </div>
-                    <span className="text-sm font-medium text-primary">
-                      {event.ticketPrice}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between mt-4 pt-3 border-t border-border">
-                     {isSafeUrl(event.officialUrl) && (
-                      <a
-                        href={event.officialUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
-                      >
-                        <span>Visit website</span>
-                        <ExternalLink className="w-3.5 h-3.5" />
-                      </a>
-                    )}
-                    <CalendarDropdown
-                      event={{
-                        name: event.name,
-                        startDate: event.startDate,
-                        finishDate: event.finishDate,
-                        location: event.location,
-                        description: event.description,
-                        officialUrl: event.officialUrl,
-                      }}
-                    />
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        ) : (
-          <div className="space-y-4">
-            {filteredEvents.map((event, index) => (
-              <div
-                key={index}
-                className="group bg-card p-6 border-2 border-border hover:border-primary transition-all duration-300"
-              >
-                <div className="flex flex-col md:flex-row md:items-start gap-4">
-                  <div className="flex-1">
-                    <div className="flex flex-wrap items-center gap-2 mb-2">
-                      <Badge 
-                        variant="outline" 
-                        className={categoryColors[event.category] || ""}
-                      >
-                        {event.category}
-                      </Badge>
-                      <Badge 
-                        variant="secondary" 
-                        className={sizeColors[event.size] || ""}
-                      >
-                        {event.size}
-                      </Badge>
-                      <Badge variant="outline">{event.scope}</Badge>
-                    </div>
-                    
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                      {event.name}
-                    </h3>
-                    
-                    <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-3">
-                      <span className="flex items-center gap-1.5">
-                        <Calendar className="w-4 h-4" />
-                        {formatDateRange(event.startDate, event.finishDate)}
-                      </span>
-                      <span className="flex items-center gap-1.5">
-                        <MapPin className="w-4 h-4" />
-                        {event.location}
-                      </span>
-                      <span className="flex items-center gap-1.5">
-                        <Users className="w-4 h-4" />
-                        {event.targetAudience}
-                      </span>
-                    </div>
-                    
-                    <p className="text-muted-foreground line-clamp-2">
-                      {event.description}
-                    </p>
-                  </div>
-                  
-                  <div className="flex flex-col items-end gap-3 min-w-[140px]">
-                    <span className="text-lg font-bold text-primary">
-                      {event.ticketPrice}
-                    </span>
-                    <div className="flex items-center gap-2">
-                      <CalendarDropdown
-                        event={{
-                          name: event.name,
-                          startDate: event.startDate,
-                          finishDate: event.finishDate,
-                          location: event.location,
-                          description: event.description,
-                          officialUrl: event.officialUrl,
-                        }}
-                        variant="text"
-                      />
-                       {isSafeUrl(event.officialUrl) && (
-                        <a
-                          href={event.officialUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
-                        >
-                          <span>Website</span>
-                          <ExternalLink className="w-3.5 h-3.5" />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-foreground text-background py-8">
-        <div className="container px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-background/70 text-sm">
-              Data sourced from curated Google Sheets database. Updates automatically.
+  return (
+    <SiteLayout path="/tech-events">
+      <PageHero
+        breadcrumb={{ to: "/resources", label: "Resources" }}
+        eyebrow="Resources | Swiss ecosystem"
+        title="Swiss technology events."
+        lead="Conferences, summits and ecosystem gatherings across Switzerland. Plan your research, meetings and local presence."
+      />
+      <section className="site-wrap pb-12 pt-4 md:pb-20" aria-label="Event directory">
+        <Directory
+          records={events}
+          isLoading={isLoading}
+          error={error}
+          onRetry={() => refetch()}
+          noun={{ singular: "event", plural: "events" }}
+          searchLabel="Search events"
+          searchPlaceholder="Event, topic or location"
+          searchText={searchText}
+          filters={filters}
+          getKey={(e) => `${e.name}|${e.startDate}|${e.officialUrl}`}
+          renderItem={renderItem}
+          extraPredicate={predicate}
+          extraKey={`${showPast}|${from}|${to}`}
+          onReset={resetExtra}
+          extraFilters={
+            <>
+              <label className="block min-w-0 text-[13px] font-semibold text-foreground">
+                From
+                <input type="date" value={from} max={to || undefined} onChange={(e) => setFrom(e.target.value)} className={dateInputClass} />
+              </label>
+              <label className="block min-w-0 text-[13px] font-semibold text-foreground">
+                To
+                <input type="date" value={to} min={from || undefined} onChange={(e) => setTo(e.target.value)} className={dateInputClass} />
+              </label>
+            </>
+          }
+          inlineControls={
+            <label className="flex min-h-11 items-center gap-2 text-xs text-foreground">
+              <input
+                type="checkbox"
+                checked={showPast}
+                onChange={(e) => setShowPast(e.target.checked)}
+                className="h-[18px] w-[18px] accent-[hsl(var(--primary))]"
+              />
+              Include past events{pastCount ? ` (${pastCount})` : ""}
+            </label>
+          }
+          sourceNote={
+            <p>
+              Live data from the existing event database. Upcoming and past events follow Zurich calendar dates. Confirm
+              schedules, tickets and participation directly with organisers.
             </p>
-            <Link to="/" className="text-primary hover:underline text-sm">
-              Back to Dr. Justinas Mišeikis
-            </Link>
-          </div>
-        </div>
-      </footer>
-    </div>
+          }
+        />
+        <p className="fine mt-6 max-w-[80ch]">
+          Entries with the same name, dates and website are shown once; every source row is kept in the database.
+          {data && !data.hasTicketPrice && " The source currently has no ticket price field, so prices are not shown or filtered."}
+        </p>
+      </section>
+      <ContactCta
+        title="Planning your Swiss conference presence?"
+        lead="Agree a brief for local attendance, company representation, technical messaging and follow-up. Sponsorship, access and speaking opportunities depend on organisers."
+        intent="representation"
+        label="Discuss event representation"
+      />
+    </SiteLayout>
   );
 };
 

@@ -1,165 +1,111 @@
 // Post-build: emit per-route static HTML with route-specific <title>, description,
-// canonical, og:* and twitter:* tags so social-preview crawlers (LinkedIn, Slack,
-// Facebook, X) and search bots that don't execute JS see correct metadata for
-// every page on the site, not just "/".
+// canonical, robots, hreflang, og:*, twitter:* and JSON-LD so social-preview crawlers
+// (LinkedIn, Slack, Facebook, X) and search bots that don't execute JS see correct
+// metadata for every public page. This is metadata-only prerendering: page bodies
+// still render client-side, apart from a short <noscript> summary per route.
+//
+// Route metadata lives in src/lib/seo/routes.mjs, shared with the React <Seo> component.
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  DEFAULT_SUPABASE_PROJECT_ID,
+  NOT_FOUND_ROUTE,
+  ROUTES,
+  SITE_URL,
+  canonicalUrl,
+  headTags,
+} from "../src/lib/seo/routes.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const distDir = join(__dirname, "..", "dist");
+const root = join(__dirname, "..");
+const distDir = join(root, "dist");
 const indexPath = join(distDir, "index.html");
 if (!existsSync(indexPath)) {
   console.error("[prerender] dist/index.html not found - skipping");
   process.exit(0);
 }
-const SITE = "https://jmiseikis.lovable.app";
-// Dynamic OG image edge function. If the project id isn't available at build
-// time, fall back to the static /og-image.png bundled in /public.
-const SUPA_PROJECT_ID = process.env.VITE_SUPABASE_PROJECT_ID || "uwdastthzqjbiyrxucci";
-const FALLBACK_OG = `${SITE}/og-image.png`;
-function ogUrl({ title, subtitle, image }) {
-  if (!SUPA_PROJECT_ID) return FALLBACK_OG;
-  const p = new URLSearchParams({ title });
-  if (subtitle) p.set("subtitle", subtitle);
-  if (image) p.set("image", image);
-  return `https://${SUPA_PROJECT_ID}.supabase.co/functions/v1/og-image?${p.toString()}`;
-}
-const baseHtml = readFileSync(indexPath, "utf8");
 
-/** @type {{path:string,title:string,description:string,ogTitle?:string,ogSubtitle?:string,ogImage?:string}[]} */
-const routes = [
-  {
-    path: "/de",
-    title: "Dr. Justinas Mišeikis - KI-Keynote-Speaker & Strategieberater | Zürich, DACH",
-    description:
-      "KI- und Robotik-Keynote-Speaker, VC Due Diligence und Forschungskommerzialisierung. Beratung für Unternehmen und Investoren in der Schweiz, Deutschland und Österreich.",
-    ogTitle: "Dr. Justinas Mišeikis",
-    ogSubtitle: "KI-KEYNOTE-SPEAKER · STRATEGIEBERATER",
-  },
-  {
-    path: "/advisory",
-    title: "AI Strategy Advisory | Dr. Justinas Mišeikis",
-    description:
-      "Independent AI and robotics advisory for corporates and startups: strategy, partnerships, R&D-to-market and computer vision programs across Zurich, DACH and Europe.",
-    ogTitle: "AI Strategy Advisory",
-    ogSubtitle: "DR. JUSTINAS MIŠEIKIS · ADVISORY",
-  },
-  {
-    path: "/speaking",
-    title: "AI Keynote Speaker & TechDrive Zürich Host | Dr. Justinas Mišeikis",
-    description:
-      "Book Dr. Justinas Mišeikis as an AI and robotics keynote speaker, and host of TechDrive Zürich. Featured at Davos 2026, GenAI Zürich and Sony AI.",
-    ogTitle: "AI Keynote Speaker & TechDrive Zürich Host",
-    ogSubtitle: "DR. JUSTINAS MIŠEIKIS · SPEAKING",
-  },
-  {
-    path: "/due-diligence",
-    title: "VC Due Diligence - AI & Robotics Deep Tech | Dr. Justinas Mišeikis",
-    description:
-      "Independent technical due diligence for VCs and corporate investors evaluating AI, robotics, computer vision and deep tech ventures. Zurich, Switzerland.",
-    ogTitle: "AI & Robotics Due Diligence",
-    ogSubtitle: "DR. JUSTINAS MIŠEIKIS · DUE DILIGENCE",
-  },
-  {
-    path: "/tech-events",
-    title: "Tech Events Switzerland 2026 | AI and Robotics",
-    description:
-      "Curated calendar of the best AI, robotics, deep tech and startup events in Switzerland and the DACH region for 2026. Filter by topic, city and month.",
-    ogTitle: "Tech Events Switzerland 2026",
-    ogSubtitle: "AI · ROBOTICS · DEEP TECH · STARTUPS",
-  },
-  {
-    path: "/swiss-vcs",
-    title: "Swiss VCs Directory - 66+ Venture Capital Firms in Switzerland",
-    description:
-      "Directory of 66+ Swiss venture capital firms investing in AI, robotics, deep tech, SaaS and climate. Filter by sector, stage and ticket size to find the right investor.",
-    ogTitle: "Swiss VCs & Funds Directory",
-    ogSubtitle: "66+ FIRMS · SORTED BY SECTOR & STAGE",
-    ogImage: `${SITE}/og-swiss-vcs.png`,
-  },
-  {
-    path: "/raas-calculator",
-    title: "RaaS ROI Calculator | Robotics Automation Costs",
-    description:
-      "Free RaaS ROI calculator: compare upfront robot purchase vs Robotics-as-a-Service over 5 years. Charts, payback period and total cost of ownership.",
-    ogTitle: "RaaS ROI Calculator",
-    ogSubtitle: "ROBOT AS A SERVICE · COST ANALYSIS",
-    ogImage: `${SITE}/og-raas-calculator.png`,
-  },
-  {
-    path: "/gza-robotics",
-    title: "Robotics in the Greater Zurich Area - 150+ Companies (with GZA)",
-    description:
-      "Open resource mapping 150+ robotics companies, labs and startups across the Greater Zurich Area, produced with Greater Zurich Area (GZA).",
-    ogTitle: "Robotics in the Greater Zurich Area",
-    ogSubtitle: "DIRECTORY · 150+ COMPANIES",
-  },
-  {
-    path: "/ai-agents-strategy",
-    title: "AI Agent Development Strategy | Dr. Justinas Mišeikis",
-    description:
-      "Enterprise guide to AI agent development strategy, technical viability, ROI assessment, and deployment roadmaps for production-ready systems.",
-    ogTitle: "AI Agent Development Strategy",
-    ogSubtitle: "ENTERPRISE PLAYBOOK · JMISEIKIS",
-  },
-  {
-    path: "/resources/swiss-tech-pulse",
-    title: "Swiss Tech Pulse — Live Swiss startup signal feed",
-    description:
-      "Foundings, spin-offs, funding rounds, exits and new VC funds across Switzerland — updated automatically.",
-    ogTitle: "Swiss Tech Pulse",
-    ogSubtitle: "LIVE SIGNAL FEED · SWITZERLAND",
-  },
+const PROJECT_ID = process.env.VITE_SUPABASE_PROJECT_ID || DEFAULT_SUPABASE_PROJECT_ID;
+const baseHtml = readFileSync(indexPath, "utf8");
+const SEO_BLOCK = /<!-- seo:start -->[\s\S]*?<!-- seo:end -->/;
+if (!SEO_BLOCK.test(baseHtml)) {
+  console.error("[prerender] index.html is missing the <!-- seo:start --> ... <!-- seo:end --> block");
+  process.exit(1);
+}
+
+const escapeHtml = (s) => String(s).replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[c]);
+const escapeAttr = (s) => String(s).replace(/["&<>]/g, (c) => ({ '"': "&quot;", "&": "&amp;", "<": "&lt;", ">": "&gt;" })[c]);
+
+function renderTags(route) {
+  return headTags(route, PROJECT_ID)
+    .map(({ tag, attrs, content }) => {
+      const attrString = Object.entries(attrs)
+        .map(([key, value]) => `${key}="${escapeAttr(value)}"`)
+        .join(" ");
+      // data-seo marks static tags that main.tsx removes before Helmet takes over.
+      if (tag === "script") return `<script ${attrString} data-seo>${content}</script>`;
+      return `<${tag} ${attrString} data-seo />`;
+    })
+    .map((line) => `    ${line}`)
+    .join("\n");
+}
+
+const NAV = [
+  ["/", "Home"],
+  ["/advisory", "Advisory"],
+  ["/due-diligence", "Due diligence"],
+  ["/speaking", "Speaking"],
+  ["/resources", "Resources"],
+  ["/publications", "Publications & patents"],
+  ["/about", "About"],
+  ["/de", "Deutsch"],
 ];
 
-function setOrInjectMeta(html, attr, value, content) {
-  const re = new RegExp(`<meta\\s+${attr}=["']${value}["'][^>]*>`, "i");
-  const tag = `<meta ${attr}="${value}" content="${escapeAttr(content)}" />`;
-  if (re.test(html)) return html.replace(re, tag);
-  return html.replace(/<\/head>/i, `    ${tag}\n  </head>`);
+function renderNoscript(route) {
+  const links = NAV.map(([path, label]) => `<li><a href="${path}">${escapeHtml(label)}</a></li>`).join("");
+  return `<noscript>
+      <article>
+        <h1>${escapeHtml(route.title)}</h1>
+        <p>${escapeHtml(route.description)}</p>
+        <p>Dr. Justinas Mišeikis is based in Zurich, Switzerland, and works internationally in English. Please enable JavaScript to use the contact form and interactive directories.</p>
+        <nav aria-label="Site"><ul>${links}</ul></nav>
+      </article>
+    </noscript>`;
 }
-function setTitle(html, title) {
-  return html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(title)}</title>`);
-}
-function setCanonical(html, url) {
-  const re = /<link\s+rel=["']canonical["'][^>]*>/i;
-  const tag = `<link rel="canonical" href="${escapeAttr(url)}" />`;
-  return re.test(html) ? html.replace(re, tag) : html.replace(/<\/head>/i, `    ${tag}\n  </head>`);
-}
-function escapeHtml(s) {
-  return String(s).replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
-}
-function escapeAttr(s) {
-  return String(s).replace(/["&<>]/g, (c) => ({ '"': "&quot;", "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+
+function renderPage(route) {
+  let html = baseHtml.replace(SEO_BLOCK, `<!-- seo:start -->\n${renderTags(route)}\n    <!-- seo:end -->`);
+  html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(route.title)}</title>`);
+  html = html.replace(/<html lang="[^"]*"/i, `<html lang="${route.lang}"`);
+  html = html.replace(/<noscript>[\s\S]*?<\/noscript>/i, renderNoscript(route));
+  return html;
 }
 
 let count = 0;
-for (const r of routes) {
-  const url = SITE + r.path;
-  let html = baseHtml;
-  html = setTitle(html, r.title);
-  html = setOrInjectMeta(html, "name", "description", r.description);
-  html = setOrInjectMeta(html, "property", "og:title", r.title);
-  html = setOrInjectMeta(html, "property", "og:description", r.description);
-  html = setOrInjectMeta(html, "property", "og:url", url);
-  html = setOrInjectMeta(html, "name", "twitter:title", r.title);
-  html = setOrInjectMeta(html, "name", "twitter:description", r.description);
-  const og = ogUrl({
-    title: r.ogTitle || r.title,
-    subtitle: r.ogSubtitle,
-    image: r.ogImage,
-  });
-  html = setOrInjectMeta(html, "property", "og:image", og);
-  html = setOrInjectMeta(html, "property", "og:image:width", "1200");
-  html = setOrInjectMeta(html, "property", "og:image:height", "630");
-  html = setOrInjectMeta(html, "name", "twitter:image", og);
-  html = setOrInjectMeta(html, "name", "twitter:card", "summary_large_image");
-  html = setCanonical(html, url);
-
-  const outDir = join(distDir, r.path.replace(/^\//, ""));
+for (const route of ROUTES) {
+  const outDir = route.path === "/" ? distDir : join(distDir, route.path.replace(/^\//, ""));
   mkdirSync(outDir, { recursive: true });
-  writeFileSync(join(outDir, "index.html"), html);
+  writeFileSync(join(outDir, "index.html"), renderPage(route));
   count++;
 }
-console.log(`[prerender] wrote ${count} per-route HTML files`);
+
+// Hosts that support a custom 404 page serve this with a 404 status. It boots the same app,
+// which renders the NotFound route for the requested path. Retired Swiss Tech Pulse URLs
+// (/resources/swiss-tech-pulse/...) have no prerendered file and fall through to it.
+writeFileSync(join(distDir, "404.html"), renderPage(NOT_FOUND_ROUTE));
+console.log(`[prerender] wrote ${count} per-route HTML files and 404.html`);
+
+// Guard against sitemap drift: every indexable route must be listed, and nothing else.
+const sitemapPath = join(distDir, "sitemap.xml");
+if (existsSync(sitemapPath)) {
+  const listed = [...readFileSync(sitemapPath, "utf8").matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]).sort();
+  const expected = ROUTES.filter((r) => r.sitemap).map(canonicalUrl).sort();
+  const missing = expected.filter((u) => !listed.includes(u));
+  const extra = listed.filter((u) => !expected.includes(u));
+  if (missing.length || extra.length) {
+    console.warn(`[prerender] public/sitemap.xml is out of date. Missing: ${missing.join(", ") || "none"}. Unexpected: ${extra.join(", ") || "none"}.`);
+  } else {
+    console.log(`[prerender] sitemap.xml lists all ${expected.length} routes on ${SITE_URL}`);
+  }
+}
