@@ -1,41 +1,75 @@
-# jmiseikis
+# Welcome to your Lovable project
 
-Design a personal website for Dr. Justinas Mišeikis (PhD, EMBA) — a technology expert, innovation advisor, and public speaker based in Switzerland with activity across DACH and the Baltics.
+## Project info
 
-The design should combine Swiss minimalism (precision, whitespace, red/grey palette) with visionary tech aesthetics (clean motion, abstract forms).
+**URL**: https://lovable.dev/projects/71583109-f511-481b-9510-6ec54c78397f
 
-The site must showcase his advisory work, speaking engagements, patents, and leadership at Sony AI, with clear calls to action for booking talks or consulting.
+## How can I edit this code?
 
-Deliver a responsive, fast, elegant website built in Webflow or Next.js (Tailwind) with room to grow — including SEO, analytics, and downloadable speaker materials.
+There are several ways of editing your application.
 
-Section	Purpose	Content Highlights
-Home / Hero	Immediate introduction & first impression	Headline, short positioning sentence, professional photo, call-to-action (“Invite to Speak” / “Work With Me”)
-About	Establish credibility & human connection	Professional bio, career timeline, key facts (Sony AI, ETH Zürich, University of Oslo, Quantic EMBA), global presence map (Zurich, Munich, Vilnius)
-Advisory & Strategy	Promote consulting and advisory work	Focus on AI commercialization, corporate innovation, startup mentoring; sample engagements; industries covered (AI, robotics, healthcare, industrial tech)
-Speaking & Media	Showcase keynote/panel experience	Talk topics, speaker reel, sample videos, speaker one-pager downloads, event logos (Swiss Robotics Day, Startup Days Bern, EPFL, Sony AI Forum)
-Publications & Patents	Demonstrate thought leadership	Curated list (5–10 featured), links to Google Scholar, patents.google.com
-Testimonials	Social proof	Quotes from event organizers, partners, and peers
-Contact / Booking	Convert interest	Contact form, LinkedIn/email links, regional presence (Zurich  -DACH- Vilnius)
+**Use Lovable**
 
-This project was built with [Lovable](https://lovable.dev).
+Simply visit the [Lovable Project](https://lovable.dev/projects/71583109-f511-481b-9510-6ec54c78397f) and start prompting.
 
-**Live app**: https://jmiseikis.lovable.app
+Changes made via Lovable will be committed automatically to this repo.
 
-## Build with Lovable
+**Use your preferred IDE**
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/71583109-f511-481b-9510-6ec54c78397f).
+If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Follow these steps:
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
+# Step 1: Clone the repository using the project's Git URL.
+git clone <YOUR_GIT_URL>
+
+# Step 2: Navigate to the project directory.
+cd <YOUR_PROJECT_NAME>
+
+# Step 3: Install the necessary dependencies.
 npm i
+
+# Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev
 ```
+
+**Edit a file directly in GitHub**
+
+- Navigate to the desired file(s).
+- Click the "Edit" button (pencil icon) at the top right of the file view.
+- Make your changes and commit the changes.
+
+**Use GitHub Codespaces**
+
+- Navigate to the main page of your repository.
+- Click on the "Code" button (green button) near the top right.
+- Select the "Codespaces" tab.
+- Click on "New codespace" to launch a new Codespace environment.
+- Edit files directly within the Codespace and commit and push your changes once you're done.
+
+## What technologies are used for this project?
+
+This project is built with:
+
+- Vite
+- TypeScript
+- React
+- shadcn-ui
+- Tailwind CSS
+
+## How can I deploy this project?
+
+Simply open [Lovable](https://lovable.dev/projects/71583109-f511-481b-9510-6ec54c78397f) and click on Share -> Publish.
+
+## Can I connect a custom domain to my Lovable project?
+
+Yes, you can!
+
+To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+
+Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+
+<!-- GitHub sync test 2026-10-10 -->
