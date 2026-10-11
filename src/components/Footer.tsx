@@ -1,7 +1,10 @@
 import { Linkedin, ExternalLink } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const footerLinks = {
     sections: [
@@ -25,11 +28,14 @@ const Footer = () => {
     ],
   };
 
+  // Home sections only exist on "/": elsewhere, go to the home page and let Navigation scroll to the hash.
   const scrollToSection = (href: string) => {
-    if (href.startsWith("#")) {
-      const element = document.querySelector(href);
-      element?.scrollIntoView({ behavior: "smooth" });
+    if (!href.startsWith("#")) return;
+    if (location.pathname !== "/") {
+      navigate("/" + href);
+      return;
     }
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -95,12 +101,12 @@ const Footer = () => {
               © {currentYear} Dr. Justinas Mišeikis. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm">
-              <button className="text-background/60 hover:text-primary transition-colors">
+              <Link to="/privacy" className="text-background/60 hover:text-primary transition-colors">
                 Privacy Policy
-              </button>
-              <button className="text-background/60 hover:text-primary transition-colors">
-                Terms of Service
-              </button>
+              </Link>
+              <Link to="/terms" className="text-background/60 hover:text-primary transition-colors">
+                Terms of Use
+              </Link>
             </div>
           </div>
         </div>

@@ -8,7 +8,6 @@ import { Masthead } from "@/components/swiss-tech-pulse/Masthead";
 import { FilterRail, type Filters } from "@/components/swiss-tech-pulse/FilterRail";
 import { FeedItem, type FeedItemData, type ItemCompany } from "@/components/swiss-tech-pulse/FeedItem";
 import { CompanyDrawer } from "@/components/swiss-tech-pulse/CompanyDrawer";
-import { SubscribeForm } from "@/components/swiss-tech-pulse/SubscribeForm";
 import { DigestStrip } from "@/components/swiss-tech-pulse/DigestStrip";
 import { format, startOfDay } from "date-fns";
 import type { SignalType } from "@/components/swiss-tech-pulse/signals";
@@ -176,10 +175,10 @@ const SwissTechPulse = () => {
       <Helmet>
         <title>Swiss Tech Pulse — Live Swiss startup signal feed</title>
         <meta name="description" content="Foundings, spin-offs, funding rounds, exits and new VC funds across Switzerland — updated automatically." />
-        <link rel="canonical" href="https://jmiseikis.lovable.app/resources/swiss-tech-pulse" />
+        <link rel="canonical" href="https://jmiseikis.com/resources/swiss-tech-pulse" />
         <meta property="og:title" content="Swiss Tech Pulse — Live Swiss startup signal feed" />
         <meta property="og:description" content="Foundings, spin-offs, funding rounds, exits and new VC funds across Switzerland — updated automatically." />
-        <meta property="og:url" content="https://jmiseikis.lovable.app/resources/swiss-tech-pulse" />
+        <meta property="og:url" content="https://jmiseikis.com/resources/swiss-tech-pulse" />
         <meta property="og:image" content={buildOgImageUrl({ title: "Swiss Tech Pulse", subtitle: "LIVE SIGNAL FEED · SWITZERLAND" })} />
         <meta name="twitter:image" content={buildOgImageUrl({ title: "Swiss Tech Pulse", subtitle: "LIVE SIGNAL FEED · SWITZERLAND" })} />
         <meta property="og:image:width" content="1200" />
@@ -229,19 +228,6 @@ const SwissTechPulse = () => {
             </button>
           </div>
         )}
-
-        {/* Subscribe */}
-        <section className="mt-16 border-t border-[#CFD2D6] pt-10">
-          <div className="grid md:grid-cols-2 gap-6 items-start">
-            <div>
-              <h3 className="font-anton uppercase text-3xl leading-none">The Friday Digest</h3>
-              <p className="font-barlow text-[#0E0E10]/80 mt-2 max-w-md">
-                One email a week. Every Swiss tech signal that mattered, in your own words.
-              </p>
-            </div>
-            <SubscribeForm />
-          </div>
-        </section>
 
         <p className="mt-12 text-xs font-barlow text-[#0E0E10]/60 max-w-3xl">
           Summaries are AI-generated from linked sources. Always verify with the original. Built by Dr. Justinas Mišeikis.{" "}

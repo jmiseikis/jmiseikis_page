@@ -2,7 +2,7 @@
 // Falls back to the static /og-image.png if the project ID is unavailable.
 
 const PROJECT_ID = import.meta.env.VITE_SUPABASE_PROJECT_ID as string | undefined;
-const SITE = "https://jmiseikis.lovable.app";
+const SITE = "https://jmiseikis.com";
 export const FALLBACK_OG_IMAGE = `${SITE}/og-image.png`;
 
 export function buildOgImageUrl(opts: {

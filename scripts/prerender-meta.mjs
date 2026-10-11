@@ -89,9 +89,9 @@ const routes = [
   },
   {
     path: "/gza-robotics",
-    title: "Robotics in the Greater Zurich Area - 150+ Companies (with GZA)",
+    title: "Robotics in the Greater Zurich Area - 150+ Companies",
     description:
-      "Open resource mapping 150+ robotics companies, labs and startups across the Greater Zurich Area, produced with Greater Zurich Area (GZA).",
+      "Open resource mapping 150+ robotics companies, labs and startups across the Greater Zurich Area, listed with the agreement of Greater Zurich Area (GZA).",
     ogTitle: "Robotics in the Greater Zurich Area",
     ogSubtitle: "DIRECTORY · 150+ COMPANIES",
   },
@@ -102,6 +102,22 @@ const routes = [
       "Enterprise guide to AI agent development strategy, technical viability, ROI assessment, and deployment roadmaps for production-ready systems.",
     ogTitle: "AI Agent Development Strategy",
     ogSubtitle: "ENTERPRISE PLAYBOOK · JMISEIKIS",
+  },
+  {
+    path: "/privacy",
+    title: "Privacy Policy | Dr. Justinas Mišeikis",
+    description:
+      "How jmiseikis.com handles personal data: the contact form, content loaded from third parties, service providers and your rights under Swiss and EU law.",
+    ogTitle: "Privacy Policy",
+    ogSubtitle: "DR. JUSTINAS MIŠEIKIS · LEGAL",
+  },
+  {
+    path: "/terms",
+    title: "Terms of Use | Dr. Justinas Mišeikis",
+    description:
+      "Terms for using jmiseikis.com: general information only, the RaaS ROI calculator, directories, external links, intellectual property, liability and Swiss law.",
+    ogTitle: "Terms of Use",
+    ogSubtitle: "DR. JUSTINAS MIŠEIKIS · LEGAL",
   },
   {
     path: "/resources/swiss-tech-pulse",

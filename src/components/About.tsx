@@ -56,7 +56,7 @@ const About = () => {
     { 
       icon: Building2, 
       title: "Sony AI",
-      institution: "Strategy & Partnerships",
+      institution: "Strategy and Partnerships Manager",
       detail: "Responsible for 4 amazing R&D teams"
     },
     { 

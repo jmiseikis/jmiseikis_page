@@ -18,11 +18,11 @@ var get_bio_default = defineTool({
       {
         type: "text",
         text: [
-          "Dr. Justinas Mi\u0161eikis - AI Strategy Advisor, speaker, and researcher (PhD in Robotics & AI).",
-          "Currently at Sony AI. Based in Zurich, Switzerland.",
-          "Services: Advisory, Speaking, Technical Due Diligence.",
-          "Website: https://jmiseikis.lovable.app",
-          "LinkedIn: https://www.linkedin.com/in/miseikis/",
+          "Dr. Justinas Mi\u0161eikis - AI strategy advisor, keynote speaker and researcher (PhD in Robotics and Computer Vision).",
+          "Strategy and Partnerships Manager at Sony AI, and Founder and Host of TechDrive Z\xFCrich (https://techdrive.tv). Based in Zurich, Switzerland.",
+          "Services: Advisory, Speaking, Technical Due Diligence. Fees on request.",
+          "Website: https://jmiseikis.com",
+          "LinkedIn: https://www.linkedin.com/in/justinasmiseikis",
           "Contact via the website contact form."
         ].join("\n")
       }
@@ -46,22 +46,22 @@ var list_services_default = defineTool2({
           [
             {
               name: "AI Strategy Advisory",
-              url: "https://jmiseikis.lovable.app/advisory",
+              url: "https://jmiseikis.com/advisory",
               summary: "Fractional AI advisory for founders and executives: strategy, roadmap, agent architecture."
             },
             {
               name: "Keynote Speaking",
-              url: "https://jmiseikis.lovable.app/speaking",
+              url: "https://jmiseikis.com/speaking",
               summary: "Keynotes and workshops on applied AI, robotics, and AI agents."
             },
             {
               name: "Technical Due Diligence",
-              url: "https://jmiseikis.lovable.app/due-diligence",
+              url: "https://jmiseikis.com/due-diligence",
               summary: "Independent AI/ML technical due diligence for VCs and acquirers."
             },
             {
               name: "AI Agents Strategy Guide",
-              url: "https://jmiseikis.lovable.app/ai-agents-strategy",
+              url: "https://jmiseikis.com/ai-agents-strategy",
               summary: "Guide for enterprises adopting AI agents."
             }
           ],

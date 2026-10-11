@@ -1,9 +1,11 @@
+import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
+import RouteErrorBoundary from "@/components/RouteErrorBoundary";
 import Index from "./pages/Index";
 import TechEvents from "./pages/TechEvents";
 import SwissVCs from "./pages/SwissVCs";
@@ -19,6 +21,15 @@ import SwissTechPulseAbout from "./pages/SwissTechPulseAbout";
 import SwissTechPulseDigest from "./pages/SwissTechPulseDigest";
 import SwissTechPulseReview from "./pages/SwissTechPulseReview";
 import NotFound from "./pages/NotFound";
+
+// Loaded on demand, so the privacy contact address ships only with the legal pages.
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const TermsOfUse = lazy(() => import("./pages/TermsOfUse"));
+const legalPage = (page: React.ReactNode) => (
+  <RouteErrorBoundary>
+    <Suspense fallback={<div className="min-h-screen bg-background" />}>{page}</Suspense>
+  </RouteErrorBoundary>
+);
 
 const queryClient = new QueryClient();
 
@@ -41,6 +52,8 @@ const App = () => (
             <Route path="/raas-calculator" element={<RaasCalculator />} />
             <Route path="/gza-robotics" element={<GZARobotics />} />
             <Route path="/ai-agents-strategy" element={<AiAgentsStrategy />} />
+            <Route path="/privacy" element={legalPage(<PrivacyPolicy />)} />
+            <Route path="/terms" element={legalPage(<TermsOfUse />)} />
             <Route path="/resources/swiss-tech-pulse" element={<SwissTechPulse />} />
             <Route path="/resources/swiss-tech-pulse/about" element={<SwissTechPulseAbout />} />
             <Route path="/resources/swiss-tech-pulse/digest/:week" element={<SwissTechPulseDigest />} />
