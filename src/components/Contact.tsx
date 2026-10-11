@@ -11,6 +11,11 @@ import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 // Cloudflare Turnstile site key - this is a PUBLIC key, safe to include in code
 const TURNSTILE_SITE_KEY = "0x4AAAAAACdRLN4Eb1C9KeHc";
 
+// Shown when the spam check cannot run (for example the site's hostname is missing from the
+// widget's hostname list in Cloudflare, or a browser extension blocks challenges.cloudflare.com).
+const CAPTCHA_UNAVAILABLE =
+  "The spam check could not load, so the form cannot be sent right now. Please try again later or message me on LinkedIn.";
+
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
   email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
@@ -22,6 +27,7 @@ const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [captchaFailed, setCaptchaFailed] = useState(false);
   const turnstileRef = useRef<TurnstileInstance>(null);
   const [formData, setFormData] = useState({
     name: "",
@@ -49,8 +55,8 @@ const Contact = () => {
     // Check CAPTCHA
     if (!captchaToken) {
       toast({
-        title: "Verification Required",
-        description: "Please complete the CAPTCHA verification.",
+        title: captchaFailed ? "Verification Unavailable" : "Verification Required",
+        description: captchaFailed ? CAPTCHA_UNAVAILABLE : "Please complete the CAPTCHA verification.",
         variant: "destructive",
       });
       return;
@@ -97,10 +103,18 @@ const Contact = () => {
 
   const handleTurnstileSuccess = (token: string) => {
     setCaptchaToken(token);
+    setCaptchaFailed(false);
   };
 
   const handleTurnstileExpire = () => {
     setCaptchaToken(null);
+  };
+
+  // errorCode is Cloudflare's code, e.g. 110200 = this hostname is not allowed for the site key.
+  const handleTurnstileError = (errorCode?: string) => {
+    console.error("Turnstile error:", errorCode ?? "script failed to load");
+    setCaptchaToken(null);
+    setCaptchaFailed(true);
   };
 
   return (
@@ -189,13 +203,30 @@ const Contact = () => {
                   />
                 </div>
 
-                <div className="flex justify-center">
+                <div className="flex flex-col items-center gap-3">
                   <Turnstile
                     ref={turnstileRef}
                     siteKey={TURNSTILE_SITE_KEY}
                     onSuccess={handleTurnstileSuccess}
                     onExpire={handleTurnstileExpire}
+                    onError={handleTurnstileError}
+                    scriptOptions={{ onError: () => handleTurnstileError() }}
                   />
+                  {captchaFailed && (
+                    <p role="alert" className="text-sm text-destructive text-center max-w-md">
+                      The spam check could not load, so the form cannot be sent right now. Please try again
+                      later or{" "}
+                      <a
+                        href="https://www.linkedin.com/in/justinasmiseikis/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline hover:text-primary"
+                      >
+                        message me on LinkedIn
+                      </a>
+                      .
+                    </p>
+                  )}
                 </div>
 
                 <Button type="submit" size="lg" variant="swiss" className="w-full group" disabled={isSubmitting}>
