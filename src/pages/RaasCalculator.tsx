@@ -9,6 +9,7 @@ import {
   LineElement,
   Filler,
   Tooltip as ChartTooltip,
+  type TooltipItem,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 
@@ -390,7 +391,7 @@ const RaasCalculator = () => {
         bodyColor: "#fff",
         padding: 12,
         callbacks: {
-          label: (ctx: any) => "  " + ctx.dataset.label + ": " + fmt(ctx.parsed.y),
+          label: (ctx: TooltipItem<"line">) => "  " + ctx.dataset.label + ": " + fmt(ctx.parsed.y),
         },
       },
     },
@@ -404,7 +405,7 @@ const RaasCalculator = () => {
         ticks: {
           color: "#aaa",
           font: { family: "Inter", size: 10 },
-          callback: (v: any) => fmt(v),
+          callback: (v: string | number) => fmt(Number(v)),
         },
       },
     },
