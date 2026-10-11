@@ -11,13 +11,13 @@ const De = () => {
         <title>Dr. Justinas Mišeikis – KI-Strategieberater, Keynote Speaker & Robotik-Experte | Zürich, DACH</title>
         <meta name="description" content="KI-Strategieberater und Keynote Speaker in Zürich. Beratung für Unternehmen, Startups und Investoren in den Bereichen KI-Kommerzialisierung, Robotik, Computer Vision und Due Diligence in der DACH-Region und Europa." />
         <meta name="keywords" content="KI Berater Zürich, KI Strategieberatung DACH, Robotik Berater Schweiz, KI Keynote Speaker Deutschland, Computer Vision Experte, Deep Tech Due Diligence, Forschung Kommerzialisierung, KI Beratung Österreich, Startup Beratung KI, Innovationsberatung" />
-        <link rel="canonical" href="https://jmiseikis.lovable.app/de" />
-        <link rel="alternate" hrefLang="en" href="https://jmiseikis.lovable.app/" />
-        <link rel="alternate" hrefLang="de" href="https://jmiseikis.lovable.app/de" />
+        <link rel="canonical" href="https://jmiseikis.com/de" />
+        <link rel="alternate" hrefLang="en" href="https://jmiseikis.com/" />
+        <link rel="alternate" hrefLang="de" href="https://jmiseikis.com/de" />
         <meta property="og:title" content="Dr. Justinas Mišeikis – KI-Strategieberater & Keynote Speaker | DACH" />
         <meta property="og:description" content="KI-Strategieberater für Unternehmen, Startups und Investoren. Beratung, Due Diligence und Keynotes in Zürich und der DACH-Region." />
         <meta property="og:locale" content="de_CH" />
-        <meta property="og:image" content="https://jmiseikis.lovable.app/og-image.png" />
+        <meta property="og:image" content="https://jmiseikis.com/og-image.png" />
       </Helmet>
 
       <div className="min-h-screen bg-background">
@@ -115,13 +115,41 @@ const De = () => {
               <p>
                 Dr. Justinas Mišeikis ist Strategy and Partnerships Manager bei Sony AI in Zürich.
                 Er leitet die Forschungskommerzialisierung für 4 F&E-Teams und verbindet dabei
-                akademische Forschung mit geschäftlicher Wertschöpfung.
+                akademische Forschung mit geschäftlicher Wertschöpfung. Ausserdem ist er Gründer und
+                Host von{" "}
+                <a
+                  href="https://techdrive.tv/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  TechDrive Zürich
+                </a>
+                , einer Interview- und Podcastreihe über das Schweizer KI-, Robotik- und Deep-Tech-Ökosystem.
               </p>
               <p>
                 Mit einem PhD in Robotik und Computer Vision (Universität Oslo) und einem Executive MBA
                 (Quantic School of Business) bringt er eine einzigartige Kombination aus technischer
-                Tiefe und strategischem Geschäftssinn mit. Er verfügt über 15+ Publikationen,
-                700+ Zitierungen und 40+ Patente im Bereich KI und Robotik.
+                Tiefe und strategischem Geschäftssinn mit. Er verfügt über 15+ begutachtete Publikationen,
+                700+ Zitierungen und 40+ Patente im Bereich KI und Robotik (Nachweise:{" "}
+                <a
+                  href="https://scholar.google.com/citations?user=KeZ1-AwAAAAJ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  Google Scholar
+                </a>
+                ,{" "}
+                <a
+                  href="https://patents.google.com/?inventor=justinas+miseikis,justinas+mi%C5%A1eikis"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  Google Patents
+                </a>
+                ).
               </p>
               <p>
                 Verfügbar für Beratung, Keynotes und Due Diligence in der gesamten DACH-Region und Europa.
@@ -141,6 +169,10 @@ const De = () => {
         <footer className="py-8 border-t border-border px-4">
           <div className="container mx-auto text-center text-sm text-muted-foreground">
             <p>© {new Date().getFullYear()} Dr. Justinas Mišeikis. Zürich, Schweiz.</p>
+            <p className="mt-2 space-x-4">
+              <Link to="/privacy" className="hover:text-primary transition-colors">Datenschutz</Link>
+              <Link to="/terms" className="hover:text-primary transition-colors">Nutzungsbedingungen</Link>
+            </p>
           </div>
         </footer>
       </div>

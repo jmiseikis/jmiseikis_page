@@ -45,6 +45,8 @@ async function loadFonts() {
 // Hosts we trust as image sources. Anything else is rejected to prevent
 // this public endpoint being used as an open proxy / SSRF oracle.
 const ALLOWED_IMAGE_HOSTS = new Set([
+  "jmiseikis.com",
+  "www.jmiseikis.com",
   "jmiseikis.lovable.app",
   "id-preview--71583109-f511-481b-9510-6ec54c78397f.lovable.app",
   "uwdastthzqjbiyrxucci.supabase.co",
@@ -224,7 +226,7 @@ Deno.serve(async (req) => {
                       textTransform: "uppercase",
                       color: "#CFD2D6",
                     },
-                    children: "jmiseikis.lovable.app",
+                    children: "jmiseikis.com",
                   },
                 },
               ],
@@ -291,7 +293,7 @@ Deno.serve(async (req) => {
     console.error("og-image error", err);
     // Redirect to static fallback so crawlers never get a broken image
     return Response.redirect(
-      "https://jmiseikis.lovable.app/og-image.png",
+      "https://jmiseikis.com/og-image.png",
       302,
     );
   }

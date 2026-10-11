@@ -54,10 +54,10 @@ const AiAgentsStrategy = () => {
         <title>{title}</title>
         <meta name="description" content={description} />
         <meta name="keywords" content="ai agent development strategy, enterprise AI agents, AI agent ROI, production AI agents, AI automation roadmap, agentic AI strategy" />
-        <link rel="canonical" href="https://jmiseikis.lovable.app/ai-agents-strategy" />
+        <link rel="canonical" href="https://jmiseikis.com/ai-agents-strategy" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta property="og:url" content="https://jmiseikis.lovable.app/ai-agents-strategy" />
+        <meta property="og:url" content="https://jmiseikis.com/ai-agents-strategy" />
         <meta property="og:type" content="article" />
         <meta property="og:image" content={buildOgImageUrl({ title: "AI Agent Development Strategy", subtitle: "ENTERPRISE PLAYBOOK · JMISEIKIS" })} />
         <meta name="twitter:image" content={buildOgImageUrl({ title: "AI Agent Development Strategy", subtitle: "ENTERPRISE PLAYBOOK · JMISEIKIS" })} />
@@ -70,8 +70,8 @@ const AiAgentsStrategy = () => {
             "@type": "Article",
             "headline": "AI Agent Development Strategy: Bridging Research and Commercial Impact",
             "description": description,
-            "url": "https://jmiseikis.lovable.app/ai-agents-strategy",
-            "author": { "@type": "Person", "name": "Dr. Justinas Mišeikis", "url": "https://jmiseikis.lovable.app" },
+            "url": "https://jmiseikis.com/ai-agents-strategy",
+            "author": { "@type": "Person", "name": "Dr. Justinas Mišeikis", "url": "https://jmiseikis.com" },
             "about": ["AI agent development strategy", "enterprise AI", "AI ROI", "AI deployment roadmap"],
             "inLanguage": "en"
           })}

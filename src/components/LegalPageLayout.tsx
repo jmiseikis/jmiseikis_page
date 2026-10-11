@@ -1,0 +1,105 @@
+import { useEffect, type ReactNode } from "react";
+import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import { buildOgImageUrl } from "@/lib/ogImage";
+
+const SITE = "https://jmiseikis.com";
+
+interface LegalPageLayoutProps {
+  /** Visible H1, also used for the <title> and the OG image. */
+  heading: string;
+  /** Meta description, at most 160 characters, no email address. */
+  description: string;
+  /** Route path, e.g. "/privacy". */
+  path: string;
+  lastUpdated: { iso: string; label: string };
+  children: ReactNode;
+}
+
+// Long-form shell for /privacy and /terms, modelled on src/pages/AiAgentsStrategy.tsx
+// (shared Navigation and Footer, pt-32 main, back link, eyebrow + H1 header).
+const LegalPageLayout = ({ heading, description, path, lastUpdated, children }: LegalPageLayoutProps) => {
+  // BrowserRouter keeps the previous scroll offset; the footer links are at the bottom of every page.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const title = `${heading} | Dr. Justinas Mišeikis`;
+  const url = `${SITE}${path}`;
+  const ogImage = buildOgImageUrl({ title: heading, subtitle: "DR. JUSTINAS MIŠEIKIS · LEGAL" });
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={url} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={url} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={ogImage} />
+        <meta name="twitter:image" content={ogImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
+
+      <Navigation />
+
+      <main className="pt-32 pb-16">
+        <article className="container px-4 max-w-3xl mx-auto">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8"
+          >
+            <ArrowLeft className="w-4 h-4" /> Back to Home
+          </Link>
+
+          <header className="mb-12">
+            <span className="text-primary font-medium tracking-wider uppercase text-sm">Legal</span>
+            <h1 className="text-4xl md:text-5xl font-bold mt-4 mb-6">{heading}</h1>
+            <p className="text-sm text-muted-foreground">
+              Last updated: <time dateTime={lastUpdated.iso}>{lastUpdated.label}</time>
+            </p>
+          </header>
+
+          <div className="space-y-12 text-muted-foreground leading-relaxed">{children}</div>
+        </article>
+      </main>
+
+      <Footer />
+    </div>
+  );
+};
+
+export const LegalSection = ({ title, children }: { title: string; children: ReactNode }) => (
+  <section className="space-y-4">
+    <h2 className="text-2xl md:text-3xl font-bold text-foreground">{title}</h2>
+    {children}
+  </section>
+);
+
+export const LegalSubsection = ({ title, children }: { title: string; children: ReactNode }) => (
+  <div className="space-y-4 pt-2">
+    <h3 className="text-xl font-bold text-foreground">{title}</h3>
+    {children}
+  </div>
+);
+
+// Same bullet as the "Typical Engagements" list in src/pages/AdvisoryPage.tsx.
+export const LegalList = ({ items }: { items: ReactNode[] }) => (
+  <ul className="space-y-3">
+    {items.map((item, index) => (
+      <li key={index} className="flex items-start gap-3">
+        <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" aria-hidden="true" />
+        <span>{item}</span>
+      </li>
+    ))}
+  </ul>
+);
+
+export default LegalPageLayout;

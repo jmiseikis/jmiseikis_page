@@ -296,11 +296,11 @@ const GZARobotics = () => {
         <title>GZA Robotics Directory | Dr. Justinas Mišeikis</title>
         <meta name="description" content="Explore 150+ robotics companies, startups, labs, and AI innovators in Greater Zurich. Filterable directory listed with the agreement of Greater Zurich Area." />
         <meta name="keywords" content="robotics companies Zurich, Greater Zurich Area robotics, Swiss robotics startups, autonomous systems Switzerland, robotics directory Zurich, medtech robotics Switzerland, autonomous driving Zurich, computer vision robotics, robotics research labs ETH, Swiss robotics ecosystem, GZA robotics map, Swisscom Ventures robotics" />
-        <link rel="canonical" href="https://jmiseikis.lovable.app/gza-robotics" />
+        <link rel="canonical" href="https://jmiseikis.com/gza-robotics" />
         <meta property="og:title" content="GZA Robotics Directory | Dr. Justinas Mišeikis" />
         <meta property="og:description" content="Filterable directory of 150+ robotics companies, autonomous systems startups, and research labs in the Greater Zurich Area. Listed with the agreement of Greater Zurich Area (GZA)." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://jmiseikis.lovable.app/gza-robotics" />
+        <meta property="og:url" content="https://jmiseikis.com/gza-robotics" />
         <meta property="og:image" content={buildOgImageUrl({ title: "Robotics in the Greater Zurich Area", subtitle: "DIRECTORY · 150+ COMPANIES" })} />
         <meta name="twitter:image" content={buildOgImageUrl({ title: "Robotics in the Greater Zurich Area", subtitle: "DIRECTORY · 150+ COMPANIES" })} />
         <meta property="og:image:width" content="1200" />
@@ -311,9 +311,9 @@ const GZARobotics = () => {
           "@type": "Dataset",
           "name": "Robotics Companies in the Greater Zurich Area",
           "description": "A curated directory of 150+ robotics companies, autonomous systems startups, university research labs, and technology innovators operating in the Greater Zurich Area of Switzerland. Listed with the agreement of Greater Zurich Area (GZA).",
-          "url": "https://jmiseikis.lovable.app/gza-robotics",
+          "url": "https://jmiseikis.com/gza-robotics",
           "creator": { "@type": "Organization", "name": "Greater Zurich Area", "url": "https://www.greaterzuricharea.com/en" },
-          "publisher": { "@type": "Person", "name": "Dr. Justinas Miseikis", "url": "https://jmiseikis.lovable.app" },
+          "publisher": { "@type": "Person", "name": "Dr. Justinas Miseikis", "url": "https://jmiseikis.com" },
           "keywords": ["robotics", "autonomous systems", "Greater Zurich Area", "GZA", "Switzerland", "startups", "research labs", "medtech robotics", "autonomous driving", "computer vision", "ETH Zurich"],
           "spatialCoverage": { "@type": "Place", "name": "Greater Zurich Area, Switzerland" },
           "isAccessibleForFree": true
@@ -503,7 +503,15 @@ const GZARobotics = () => {
         <div className="container px-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-background/70 text-sm">Data curated by Greater Zurich Area. Updates automatically.</p>
-            <Link to="/" className="text-primary hover:underline text-sm">Back to Dr. Justinas Mišeikis</Link>
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
+              <Link to="/" className="text-primary hover:underline">Back to Dr. Justinas Mišeikis</Link>
+              <Link to="/privacy" className="text-background/60 hover:text-primary transition-colors">
+                Privacy Policy
+              </Link>
+              <Link to="/terms" className="text-background/60 hover:text-primary transition-colors">
+                Terms of Use
+              </Link>
+            </div>
           </div>
         </div>
       </footer>

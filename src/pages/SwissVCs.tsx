@@ -80,15 +80,15 @@ const SwissVCs = () => {
     setMeta("keywords", "Swiss VCs, venture capital Switzerland, Swiss venture capital directory, VC firms Zurich, Swiss deep tech investors, AI investors Switzerland, robotics VC Europe, Series A Switzerland, pre-seed Swiss startups, fundraising Switzerland, Swiss startup ecosystem, DACH venture capital");
     setMeta("og:title", "Swiss VCs Directory | Dr. Justinas Mišeikis", "property");
     setMeta("og:description", "Find the right VC for your Swiss startup. 66+ firms filterable by sector, stage and geography. Curated by Dr. Justinas Mišeikis.", "property");
-    setMeta("og:url", "https://jmiseikis.lovable.app/swiss-vcs", "property");
+    setMeta("og:url", "https://jmiseikis.com/swiss-vcs", "property");
     setMeta("og:type", "website", "property");
     const swissVcsOg = (() => {
       const pid = (import.meta as unknown as { env: { VITE_SUPABASE_PROJECT_ID?: string } }).env.VITE_SUPABASE_PROJECT_ID;
-      if (!pid) return "https://jmiseikis.lovable.app/og-swiss-vcs.png";
+      if (!pid) return "https://jmiseikis.com/og-swiss-vcs.png";
       const p = new URLSearchParams({
         title: "Swiss VCs & Funds Directory",
         subtitle: "66+ FIRMS · SORTED BY SECTOR & STAGE",
-        image: "https://jmiseikis.lovable.app/og-swiss-vcs.png",
+        image: "https://jmiseikis.com/og-swiss-vcs.png",
       });
       return `https://${pid}.supabase.co/functions/v1/og-image?${p.toString()}`;
     })();
@@ -101,7 +101,7 @@ const SwissVCs = () => {
     setMeta("twitter:description", "66+ venture capital firms investing in Swiss startups. Filter by sector, stage and geography.");
     let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
     if (!canonical) { canonical = document.createElement("link"); canonical.rel = "canonical"; document.head.appendChild(canonical); }
-    canonical.href = "https://jmiseikis.lovable.app/swiss-vcs";
+    canonical.href = "https://jmiseikis.com/swiss-vcs";
     const jsonLd = document.createElement("script");
     jsonLd.type = "application/ld+json";
     jsonLd.textContent = JSON.stringify({
@@ -109,8 +109,8 @@ const SwissVCs = () => {
       "@type": "Dataset",
       "name": "Swiss VCs and Funds Directory",
       "description": "Curated directory of Swiss venture capital firms and funds investing in startups across AI, robotics, deep tech, fintech, biotech, climate, SaaS, and industrial technology.",
-      "url": "https://jmiseikis.lovable.app/swiss-vcs",
-      "creator": { "@type": "Person", "name": "Dr. Justinas Mišeikis", "url": "https://jmiseikis.lovable.app" },
+      "url": "https://jmiseikis.com/swiss-vcs",
+      "creator": { "@type": "Person", "name": "Dr. Justinas Mišeikis", "url": "https://jmiseikis.com" },
       "about": ["Swiss venture capital", "startup fundraising", "AI investors", "robotics investors", "deep tech investors"],
       "spatialCoverage": { "@type": "Country", "name": "Switzerland" },
       "isAccessibleForFree": true
@@ -522,9 +522,17 @@ const SwissVCs = () => {
             <p className="text-background/70 text-sm">
               Data sourced from curated Google Sheets database. Updates automatically.
             </p>
-            <Link to="/" className="text-primary hover:underline text-sm">
-              Back to Dr. Justinas Mišeikis
-            </Link>
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
+              <Link to="/" className="text-primary hover:underline">
+                Back to Dr. Justinas Mišeikis
+              </Link>
+              <Link to="/privacy" className="text-background/60 hover:text-primary transition-colors">
+                Privacy Policy
+              </Link>
+              <Link to="/terms" className="text-background/60 hover:text-primary transition-colors">
+                Terms of Use
+              </Link>
+            </div>
           </div>
         </div>
       </footer>

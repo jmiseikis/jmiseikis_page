@@ -14,22 +14,22 @@ export default defineTool({
           [
             {
               name: "AI Strategy Advisory",
-              url: "https://jmiseikis.lovable.app/advisory",
+              url: "https://jmiseikis.com/advisory",
               summary: "Fractional AI advisory for founders and executives: strategy, roadmap, agent architecture.",
             },
             {
               name: "Keynote Speaking",
-              url: "https://jmiseikis.lovable.app/speaking",
+              url: "https://jmiseikis.com/speaking",
               summary: "Keynotes and workshops on applied AI, robotics, and AI agents.",
             },
             {
               name: "Technical Due Diligence",
-              url: "https://jmiseikis.lovable.app/due-diligence",
+              url: "https://jmiseikis.com/due-diligence",
               summary: "Independent AI/ML technical due diligence for VCs and acquirers.",
             },
             {
               name: "AI Agents Strategy Guide",
-              url: "https://jmiseikis.lovable.app/ai-agents-strategy",
+              url: "https://jmiseikis.com/ai-agents-strategy",
               summary: "Guide for enterprises adopting AI agents.",
             },
           ],

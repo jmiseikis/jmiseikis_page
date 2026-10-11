@@ -86,7 +86,7 @@ const Speaking = () => {
                 <Podcast className="w-7 h-7 text-primary flex-shrink-0 mt-1" />
                 <div className="flex-1">
                   <div className="text-primary font-medium tracking-wider uppercase text-xs mb-2">
-                    Host · Interview & Podcast Series
+                    Founder and Host · Interview & Podcast Series
                   </div>
                   <h3 className="text-2xl font-bold mb-3">TechDrive Zürich</h3>
                   <p className="text-muted-foreground leading-relaxed mb-6">
