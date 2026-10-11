@@ -10,24 +10,8 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import CalendarDropdown from "@/components/tech-events/CalendarDropdown";
 import DateRangeFilter from "@/components/tech-events/DateRangeFilter";
 import { useIsMobile } from "@/hooks/use-mobile";
-
-interface TechEvent {
-  name: string;
-  startDate: string;
-  finishDate: string;
-  location: string;
-  category: string;
-  officialUrl: string;
-  ticketPrice: string;
-  size: string;
-  logoUrl: string;
-  targetAudience: string;
-  scope: string;
-  description: string;
-}
-
-const SHEET_ID = "1k4vfFfSX9Pmi5tNVuijUmubuTPSoFvBnIxC1kH_25x4";
-const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+import { useTechEvents } from "@/hooks/use-tech-events";
+import { SheetFormatError, isPastEvent, zurichToday } from "@/lib/sheets";
 
 // Only allow http(s) links so a compromised sheet can't inject `javascript:` URLs.
 const isSafeUrl = (url: string | undefined | null): url is string =>
@@ -46,10 +30,28 @@ const sizeColors: Record<string, string> = {
   "Large": "bg-primary/20 text-primary font-semibold",
 };
 
+// A date picked in the date range filter, as a YYYY-MM-DD calendar date.
+const toCalendarDate = (date: Date) =>
+  `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+
 const TechEvents = () => {
-  const [events, setEvents] = useState<TechEvent[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const { data, isPending, fetchStatus, error: loadError, refetch, isFetching } = useTechEvents();
+  const events = useMemo(() => data?.events ?? [], [data]);
+  const hasTicketPrice = data?.hasTicketPrice ?? false;
+  const combinedRows = data ? data.sourceCount - data.events.length : 0;
+  // React Query pauses the request while the browser is offline; it resumes when the connection is back.
+  const offline = isPending && fetchStatus === "paused";
+  const loading = isPending && !offline;
+  // Keep showing cached events if a background refresh fails.
+  const error = data
+    ? null
+    : loadError instanceof SheetFormatError
+      ? "The events directory has changed format and cannot be shown right now."
+      : loadError
+        ? "Failed to load events. Please try again later."
+        : offline
+          ? "You appear to be offline. The events will load when your connection is back."
+          : null;
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [filtersOpen, setFiltersOpen] = useState(false);
   const isMobile = useIsMobile();
@@ -65,18 +67,6 @@ const TechEvents = () => {
   const [endDateFilter, setEndDateFilter] = useState<Date | undefined>(undefined);
   const [showPastEvents, setShowPastEvents] = useState(false);
 
-  // Helper to parse Google Sheets date format
-  const parseSheetDate = (dateStr: string): Date | null => {
-    if (!dateStr) return null;
-    const dateMatch = dateStr.match(/Date\((\d+),(\d+),(\d+)\)/);
-    if (dateMatch) {
-      const [, year, month, day] = dateMatch;
-      return new Date(parseInt(year), parseInt(month), parseInt(day));
-    }
-    const date = new Date(dateStr);
-    return isNaN(date.getTime()) ? null : date;
-  };
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -84,7 +74,7 @@ const TechEvents = () => {
   // SEO: title, description, canonical, OG/Twitter tags, JSON-LD
   useEffect(() => {
     const TITLE = "Tech Events Switzerland 2026 | AI and Robotics";
-    const DESC = "Curated 2026 Swiss tech events calendar for AI, robotics, deep tech, startups, and VCs. Filter by topic, city, date, and price.";
+    const DESC = "Curated 2026 Swiss tech events calendar for AI, robotics, deep tech, startups, and VCs. Filter by topic, city and date.";
     const URL = "https://jmiseikis.lovable.app/tech-events";
     const prev = document.title;
     document.title = TITLE;
@@ -139,62 +129,11 @@ const TechEvents = () => {
     return () => { document.title = prev; s.remove(); };
   }, []);
 
-  useEffect(() => {
-    const fetchEvents = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(SHEET_URL);
-        const text = await response.text();
-        
-        // Parse the JSONP response from Google Sheets
-        const jsonMatch = text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\);?$/);
-        if (!jsonMatch) {
-          throw new Error("Failed to parse Google Sheets response");
-        }
-        
-        const data = JSON.parse(jsonMatch[1]);
-        const rows = data.table.rows;
-        
-        // Skip header row (index 0) and map data
-        const parsedEvents: TechEvent[] = rows.slice(1).map((row: { c: Array<{ v: string | null }> }) => {
-          const cells = row.c;
-          return {
-            name: cells[0]?.v || "",
-            startDate: cells[1]?.v || "",
-            finishDate: cells[2]?.v || "",
-            location: cells[3]?.v || "",
-            category: cells[4]?.v || "",
-            officialUrl: cells[5]?.v || "",
-            ticketPrice: cells[6]?.v || "",
-            size: cells[7]?.v || "",
-            logoUrl: cells[8]?.v || "",
-            targetAudience: cells[9]?.v || "",
-            scope: cells[10]?.v || "",
-            description: cells[11]?.v || "",
-          };
-        }).filter((event: TechEvent) => event.name);
-
-        setEvents(parsedEvents);
-        setError(null);
-      } catch (err) {
-        console.error("Error fetching events:", err);
-        setError("Failed to load events. Please try again later.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchEvents();
-  }, []);
-
   // Extract unique filter options
   const filterOptions = useMemo(() => {
     const categories = [...new Set(events.map(e => e.category).filter(Boolean))];
     const sizes = [...new Set(events.map(e => e.size).filter(Boolean))];
-    const locations = [...new Set(events.map(e => {
-      const parts = e.location.split(", ");
-      return parts[parts.length - 1]; // Get canton code
-    }).filter(Boolean))];
+    const locations = [...new Set(events.map(e => e.canton).filter(Boolean))];
     const scopes = [...new Set(events.map(e => e.scope).filter(Boolean))];
     
     return { categories, sizes, locations, scopes };
@@ -202,15 +141,11 @@ const TechEvents = () => {
 
   // Apply filters
   const filteredEvents = useMemo(() => {
-    const now = new Date();
-    now.setHours(0, 0, 0, 0);
+    const today = zurichToday();
 
     return events.filter(event => {
-      // Hide past events unless toggled
-      if (!showPastEvents) {
-        const eventEndDate = parseSheetDate(event.finishDate) || parseSheetDate(event.startDate);
-        if (eventEndDate && eventEndDate < now) return false;
-      }
+      // Hide past events unless toggled (an event is past once its finish date is before today in Zurich)
+      if (!showPastEvents && isPastEvent(event, today)) return false;
 
       // Search filter
       if (searchQuery) {
@@ -229,17 +164,14 @@ const TechEvents = () => {
       if (sizeFilter !== "all" && event.size !== sizeFilter) return false;
       
       // Location filter
-      if (locationFilter !== "all") {
-        const canton = event.location.split(", ").pop();
-        if (canton !== locationFilter) return false;
-      }
+      if (locationFilter !== "all" && event.canton !== locationFilter) return false;
       
       // Scope filter
       if (scopeFilter !== "all" && event.scope !== scopeFilter) return false;
       
-      // Price filter
-      if (priceFilter !== "all") {
-        const price = event.ticketPrice.toLowerCase();
+      // Price filter (only offered when the sheet has a ticket price column)
+      if (hasTicketPrice && priceFilter !== "all") {
+        const price = (event.ticketPrice ?? "").toLowerCase();
         if (priceFilter === "free" && !price.includes("free")) return false;
         if (priceFilter === "paid" && (price.includes("free") || price.includes("invite"))) return false;
         if (priceFilter === "invite" && !price.includes("invite")) return false;
@@ -247,36 +179,24 @@ const TechEvents = () => {
 
       // Date range filter
       if (startDateFilter || endDateFilter) {
-        const eventStartDate = parseSheetDate(event.startDate);
-        const eventEndDate = parseSheetDate(event.finishDate);
-        
-        if (!eventStartDate || !eventEndDate) return false;
-        
-        // Check if event overlaps with the filter range
-        if (startDateFilter && eventEndDate < startDateFilter) return false;
-        if (endDateFilter && eventStartDate > endDateFilter) return false;
+        if (!event.startDate || !event.finishDate) return false;
+
+        // Check if event overlaps with the filter range (YYYY-MM-DD strings compare as dates)
+        if (startDateFilter && event.finishDate < toCalendarDate(startDateFilter)) return false;
+        if (endDateFilter && event.startDate > toCalendarDate(endDateFilter)) return false;
       }
       
       return true;
     });
-  }, [events, searchQuery, categoryFilter, sizeFilter, locationFilter, scopeFilter, priceFilter, startDateFilter, endDateFilter, showPastEvents]);
+  }, [events, hasTicketPrice, searchQuery, categoryFilter, sizeFilter, locationFilter, scopeFilter, priceFilter, startDateFilter, endDateFilter, showPastEvents]);
 
+  // Dates arrive as YYYY-MM-DD calendar dates; build a local date so the day never shifts.
   const formatDate = (dateStr: string) => {
-    if (!dateStr) return "";
-    try {
-      // Handle "Date(year,month,day)" format from Google Sheets
-      const dateMatch = dateStr.match(/Date\((\d+),(\d+),(\d+)\)/);
-      if (dateMatch) {
-        const [, year, month, day] = dateMatch;
-        const date = new Date(parseInt(year), parseInt(month), parseInt(day));
-        return date.toLocaleDateString("en-CH", { month: "short", day: "numeric" });
-      }
-      // Handle regular date string
-      const date = new Date(dateStr);
-      return date.toLocaleDateString("en-CH", { month: "short", day: "numeric" });
-    } catch {
-      return dateStr;
-    }
+    const match = dateStr.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (!match) return "";
+    const [, year, month, day] = match;
+    const date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+    return date.toLocaleDateString("en-CH", { month: "short", day: "numeric" });
   };
 
   const formatDateRange = (start: string, finish: string) => {
@@ -444,17 +364,19 @@ const TechEvents = () => {
                       </SelectContent>
                     </Select>
 
-                    <Select value={priceFilter} onValueChange={setPriceFilter}>
-                      <SelectTrigger className="w-[120px] h-9">
-                        <SelectValue placeholder="Price" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="all">All Prices</SelectItem>
-                        <SelectItem value="free">Free</SelectItem>
-                        <SelectItem value="paid">Paid</SelectItem>
-                        <SelectItem value="invite">Invite Only</SelectItem>
-                      </SelectContent>
-                    </Select>
+                    {hasTicketPrice && (
+                      <Select value={priceFilter} onValueChange={setPriceFilter}>
+                        <SelectTrigger className="w-[120px] h-9">
+                          <SelectValue placeholder="Price" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="all">All Prices</SelectItem>
+                          <SelectItem value="free">Free</SelectItem>
+                          <SelectItem value="paid">Paid</SelectItem>
+                          <SelectItem value="invite">Invite Only</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    )}
 
                     <DateRangeFilter
                       startDate={startDateFilter}
@@ -523,17 +445,19 @@ const TechEvents = () => {
                   </SelectContent>
                 </Select>
 
-                <Select value={priceFilter} onValueChange={setPriceFilter}>
-                  <SelectTrigger className="w-[120px] h-9">
-                    <SelectValue placeholder="Price" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Prices</SelectItem>
-                    <SelectItem value="free">Free</SelectItem>
-                    <SelectItem value="paid">Paid</SelectItem>
-                    <SelectItem value="invite">Invite Only</SelectItem>
-                  </SelectContent>
-                </Select>
+                {hasTicketPrice && (
+                  <Select value={priceFilter} onValueChange={setPriceFilter}>
+                    <SelectTrigger className="w-[120px] h-9">
+                      <SelectValue placeholder="Price" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Prices</SelectItem>
+                      <SelectItem value="free">Free</SelectItem>
+                      <SelectItem value="paid">Paid</SelectItem>
+                      <SelectItem value="invite">Invite Only</SelectItem>
+                    </SelectContent>
+                  </Select>
+                )}
 
                 <DateRangeFilter
                   startDate={startDateFilter}
@@ -559,6 +483,11 @@ const TechEvents = () => {
           <p className="text-muted-foreground">
             Showing <span className="font-semibold text-foreground">{filteredEvents.length}</span> of{" "}
             <span className="font-semibold text-foreground">{events.length}</span> events
+            {combinedRows > 0 && (
+              <span className="text-sm">
+                {" "}({combinedRows} duplicate {combinedRows === 1 ? "listing" : "listings"} combined)
+              </span>
+            )}
           </p>
           <Button
             variant={showPastEvents ? "default" : "outline"}
@@ -583,8 +512,8 @@ const TechEvents = () => {
           <div className="flex flex-col items-center justify-center py-24 text-center">
             <AlertCircle className="w-12 h-12 text-destructive mb-4" />
             <p className="text-destructive font-medium mb-2">{error}</p>
-            <Button variant="outline" onClick={() => window.location.reload()}>
-              Try Again
+            <Button variant="outline" onClick={() => refetch()} disabled={isFetching}>
+              {isFetching ? "Retrying..." : "Try Again"}
             </Button>
           </div>
         ) : filteredEvents.length === 0 ? (
@@ -637,9 +566,11 @@ const TechEvents = () => {
                       <Users className="w-3.5 h-3.5 text-muted-foreground" />
                       <span className="text-muted-foreground">{event.scope}</span>
                     </div>
-                    <span className="text-sm font-medium text-primary">
-                      {event.ticketPrice}
-                    </span>
+                    {event.ticketPrice && (
+                      <span className="text-sm font-medium text-primary">
+                        {event.ticketPrice}
+                      </span>
+                    )}
                   </div>
                   <div className="flex items-center justify-between mt-4 pt-3 border-t border-border">
                      {isSafeUrl(event.officialUrl) && (
@@ -718,9 +649,11 @@ const TechEvents = () => {
                   </div>
                   
                   <div className="flex flex-col items-end gap-3 min-w-[140px]">
-                    <span className="text-lg font-bold text-primary">
-                      {event.ticketPrice}
-                    </span>
+                    {event.ticketPrice && (
+                      <span className="text-lg font-bold text-primary">
+                        {event.ticketPrice}
+                      </span>
+                    )}
                     <div className="flex items-center gap-2">
                       <CalendarDropdown
                         event={{

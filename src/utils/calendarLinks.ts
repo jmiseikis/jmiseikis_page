@@ -9,13 +9,19 @@ export interface CalendarEvent {
   officialUrl: string;
 }
 
-// Parse Google Sheets date format: "Date(year,month,day)"
+// Parse Google Sheets date format "Date(year,month,day)" or an ISO "YYYY-MM-DD" calendar date.
+// Both are read as local calendar dates so all-day events never shift by a day.
 const parseSheetDate = (dateStr: string): Date | null => {
   if (!dateStr) return null;
   const dateMatch = dateStr.match(/Date\((\d+),(\d+),(\d+)\)/);
   if (dateMatch) {
     const [, year, month, day] = dateMatch;
     return new Date(parseInt(year), parseInt(month), parseInt(day));
+  }
+  const isoMatch = dateStr.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (isoMatch) {
+    const [, year, month, day] = isoMatch;
+    return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
   }
   // Try regular date string
   const date = new Date(dateStr);
@@ -30,9 +36,13 @@ const formatDateForGoogle = (date: Date): string => {
   return `${year}${month}${day}`;
 };
 
-// Format date to ISO format for Outlook
+// Format date as YYYY-MM-DD for Outlook. Uses local date parts: toISOString() would convert
+// local midnight to UTC and move the event to the previous day in Central European time.
 const formatDateForOutlook = (date: Date): string => {
-  return date.toISOString().split('T')[0];
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
 };
 
 // Format date for ICS (YYYYMMDD for all-day events)
