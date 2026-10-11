@@ -294,11 +294,11 @@ const GZARobotics = () => {
     <div className="min-h-screen bg-background">
       <Helmet>
         <title>GZA Robotics Directory | Dr. Justinas Mišeikis</title>
-        <meta name="description" content="Explore 150+ robotics companies, startups, labs, and AI innovators in Greater Zurich. Filterable directory curated with Greater Zurich Area." />
-        <meta name="keywords" content="robotics companies Zurich, Greater Zurich Area robotics, GZA robotics partner, Swiss robotics startups, autonomous systems Switzerland, robotics directory Zurich, medtech robotics Switzerland, autonomous driving Zurich, computer vision robotics, robotics research labs ETH, Swiss robotics ecosystem, GZA robotics map, Swisscom Ventures robotics, Greater Zurich Area partnership" />
+        <meta name="description" content="Explore 150+ robotics companies, startups, labs, and AI innovators in Greater Zurich. Filterable directory listed with the agreement of Greater Zurich Area." />
+        <meta name="keywords" content="robotics companies Zurich, Greater Zurich Area robotics, Swiss robotics startups, autonomous systems Switzerland, robotics directory Zurich, medtech robotics Switzerland, autonomous driving Zurich, computer vision robotics, robotics research labs ETH, Swiss robotics ecosystem, GZA robotics map, Swisscom Ventures robotics" />
         <link rel="canonical" href="https://jmiseikis.lovable.app/gza-robotics" />
         <meta property="og:title" content="GZA Robotics Directory | Dr. Justinas Mišeikis" />
-        <meta property="og:description" content="Filterable directory of 150+ robotics companies, autonomous systems startups, and research labs in the Greater Zurich Area. Curated in partnership with Greater Zurich Area (GZA)." />
+        <meta property="og:description" content="Filterable directory of 150+ robotics companies, autonomous systems startups, and research labs in the Greater Zurich Area. Listed with the agreement of Greater Zurich Area (GZA)." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://jmiseikis.lovable.app/gza-robotics" />
         <meta property="og:image" content={buildOgImageUrl({ title: "Robotics in the Greater Zurich Area", subtitle: "DIRECTORY · 150+ COMPANIES" })} />
@@ -310,7 +310,7 @@ const GZARobotics = () => {
           "@context": "https://schema.org",
           "@type": "Dataset",
           "name": "Robotics Companies in the Greater Zurich Area",
-          "description": "A curated directory of 150+ robotics companies, autonomous systems startups, university research labs, and technology innovators operating in the Greater Zurich Area of Switzerland. Curated in partnership with Greater Zurich Area (GZA).",
+          "description": "A curated directory of 150+ robotics companies, autonomous systems startups, university research labs, and technology innovators operating in the Greater Zurich Area of Switzerland. Listed with the agreement of Greater Zurich Area (GZA).",
           "url": "https://jmiseikis.lovable.app/gza-robotics",
           "creator": { "@type": "Organization", "name": "Greater Zurich Area", "url": "https://www.greaterzuricharea.com/en" },
           "publisher": { "@type": "Person", "name": "Dr. Justinas Miseikis", "url": "https://jmiseikis.lovable.app" },
@@ -344,7 +344,7 @@ const GZARobotics = () => {
             in the region, leading to unmatched opportunities for intelligent &amp; autonomous systems companies.
             Explore this comprehensive directory of robotics innovators, research labs, and technology leaders
             shaping the future of autonomy in one of the world's most dynamic innovation ecosystems,
-            curated in partnership with <a href="https://www.greaterzuricharea.com/en" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Greater Zurich Area</a>.
+            listed with the agreement of <a href="https://www.greaterzuricharea.com/en" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Greater Zurich Area</a>.
           </p>
           <a href="#company-list" className="inline-flex items-center gap-2 text-primary hover:underline font-medium">
             ↓ Jump to the company list

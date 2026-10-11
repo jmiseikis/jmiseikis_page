@@ -21,7 +21,7 @@ interface VideoItem {
 
 const CHANNEL_URL = "https://www.youtube.com/@JustinasMiseikis";
 const PREMIUM_SPEAKERS_URL = "https://premium-speakers.com/en/speaker-presenter/justinas-miseikis/";
-const TECHDRIVE_URL = "https://techdrivezurich.lovable.app/";
+const TECHDRIVE_URL = "https://techdrive.tv/";
 
 const openExternal = (url: string) => (e: React.MouseEvent) => {
   e.preventDefault();
@@ -223,7 +223,7 @@ const SpeakingPage = () => {
             "sameAs": [
               "https://www.youtube.com/@JustinasMiseikis",
               "https://premium-speakers.com/en/speaker-presenter/justinas-miseikis/",
-              "https://techdrivezurich.lovable.app/"
+              "https://techdrive.tv/"
             ],
             "knowsAbout": ["Artificial Intelligence", "Robotics", "Computer Vision", "AI Commercialization", "AI Ethics", "Physical AI", "Deep Tech Investment"],
             "performerIn": [
@@ -240,7 +240,7 @@ const SpeakingPage = () => {
             "@context": "https://schema.org",
             "@type": "PodcastSeries",
             "name": "TechDrive Zürich",
-            "url": "https://techdrivezurich.lovable.app/",
+            "url": "https://techdrive.tv/",
             "description": "Interview and podcast series hosted by Dr. Justinas Mišeikis, spotlighting founders, researchers and operators shaping Switzerland's AI, robotics and deep tech ecosystem, recorded in and around Zürich.",
             "inLanguage": "en",
             "author": { "@type": "Person", "name": "Dr. Justinas Mišeikis", "url": "https://jmiseikis.lovable.app/" },
