@@ -13,7 +13,7 @@ if (!existsSync(indexPath)) {
   console.error("[prerender] dist/index.html not found - skipping");
   process.exit(0);
 }
-const SITE = "https://jmiseikis.lovable.app";
+const SITE = "https://jmiseikis.com";
 // Dynamic OG image edge function. If the project id isn't available at build
 // time, fall back to the static /og-image.png bundled in /public.
 const SUPA_PROJECT_ID = process.env.VITE_SUPABASE_PROJECT_ID || "uwdastthzqjbiyrxucci";

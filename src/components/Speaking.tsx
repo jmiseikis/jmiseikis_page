@@ -97,7 +97,7 @@ const Speaking = () => {
                   </p>
                   <Button asChild variant="outline" size="sm">
                     <a
-                      href="https://techdrivezurich.lovable.app/"
+                      href="https://techdrive.tv/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
