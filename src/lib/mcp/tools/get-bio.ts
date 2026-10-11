@@ -11,11 +11,11 @@ export default defineTool({
       {
         type: "text",
         text: [
-          "Dr. Justinas Mišeikis - AI Strategy Advisor, speaker, and researcher (PhD in Robotics & AI).",
-          "Currently at Sony AI. Based in Zurich, Switzerland.",
-          "Services: Advisory, Speaking, Technical Due Diligence.",
-          "Website: https://jmiseikis.lovable.app",
-          "LinkedIn: https://www.linkedin.com/in/miseikis/",
+          "Dr. Justinas Mišeikis - AI strategy advisor, keynote speaker and researcher (PhD in Robotics and Computer Vision).",
+          "Strategy and Partnerships Manager at Sony AI, and Founder and Host of TechDrive Zürich (https://techdrive.tv). Based in Zurich, Switzerland.",
+          "Services: Advisory, Speaking, Technical Due Diligence. Fees on request.",
+          "Website: https://jmiseikis.com",
+          "LinkedIn: https://www.linkedin.com/in/justinasmiseikis",
           "Contact via the website contact form.",
         ].join("\n"),
       },

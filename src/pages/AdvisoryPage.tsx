@@ -52,7 +52,7 @@ const AdvisoryPage = () => {
         <title>AI Strategy Advisory | Dr. Justinas Mišeikis</title>
         <meta name="description" content="AI strategy advisory in Zurich for commercialization, corporate innovation, startup mentoring, and technology roadmaps across DACH and Europe." />
         <meta name="keywords" content="AI strategy advisory, AI consulting Zurich, AI commercialization consultant, corporate innovation consulting, startup mentoring AI, technology strategy DACH, robotics consulting Europe, AI roadmap consulting" />
-        <link rel="canonical" href="https://jmiseikis.lovable.app/advisory" />
+        <link rel="canonical" href="https://jmiseikis.com/advisory" />
         <meta property="og:title" content="AI Strategy Advisory & Consulting | Dr. Justinas Mišeikis" />
         <meta property="og:description" content="Expert AI strategy advisory for corporations, startups, and investors. Zurich-based, serving DACH and Europe." />
         <meta property="og:image" content={buildOgImageUrl({ title: "AI Strategy Advisory", subtitle: "DR. JUSTINAS MIŠEIKIS · ADVISORY" })} />
@@ -147,6 +147,10 @@ const AdvisoryPage = () => {
         <footer className="py-8 border-t border-border px-4">
           <div className="container mx-auto text-center text-sm text-muted-foreground">
             <p>© {new Date().getFullYear()} Dr. Justinas Mišeikis. Zurich, Switzerland.</p>
+            <p className="mt-2 space-x-4">
+              <Link to="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
+              <Link to="/terms" className="hover:text-primary transition-colors">Terms of Use</Link>
+            </p>
           </div>
         </footer>
       </div>

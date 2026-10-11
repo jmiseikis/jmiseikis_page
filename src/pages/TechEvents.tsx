@@ -75,7 +75,7 @@ const TechEvents = () => {
   useEffect(() => {
     const TITLE = "Tech Events Switzerland 2026 | AI and Robotics";
     const DESC = "Curated 2026 Swiss tech events calendar for AI, robotics, deep tech, startups, and VCs. Filter by topic, city and date.";
-    const URL = "https://jmiseikis.lovable.app/tech-events";
+    const URL = "https://jmiseikis.com/tech-events";
     const prev = document.title;
     document.title = TITLE;
 
@@ -92,7 +92,7 @@ const TechEvents = () => {
     setMeta("og:type", "website", "property");
     const techEventsOg = (() => {
       const pid = (import.meta as unknown as { env: { VITE_SUPABASE_PROJECT_ID?: string } }).env.VITE_SUPABASE_PROJECT_ID;
-      if (!pid) return "https://jmiseikis.lovable.app/og-image.png";
+      if (!pid) return "https://jmiseikis.com/og-image.png";
       const p = new URLSearchParams({
         title: "Tech Events Switzerland 2026",
         subtitle: "AI · ROBOTICS · DEEP TECH · STARTUPS",
@@ -117,7 +117,7 @@ const TechEvents = () => {
       "name": "Tech Events Switzerland 2026",
       "url": URL,
       "description": DESC,
-      "isPartOf": { "@type": "WebSite", "name": "Dr. Justinas Mišeikis", "url": "https://jmiseikis.lovable.app" },
+      "isPartOf": { "@type": "WebSite", "name": "Dr. Justinas Mišeikis", "url": "https://jmiseikis.com" },
       "about": ["AI conferences", "Robotics events", "Startup events", "Venture capital events", "Deep tech"],
       "inLanguage": "en"
     };
@@ -693,9 +693,17 @@ const TechEvents = () => {
             <p className="text-background/70 text-sm">
               Data sourced from curated Google Sheets database. Updates automatically.
             </p>
-            <Link to="/" className="text-primary hover:underline text-sm">
-              Back to Dr. Justinas Mišeikis
-            </Link>
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
+              <Link to="/" className="text-primary hover:underline">
+                Back to Dr. Justinas Mišeikis
+              </Link>
+              <Link to="/privacy" className="text-background/60 hover:text-primary transition-colors">
+                Privacy Policy
+              </Link>
+              <Link to="/terms" className="text-background/60 hover:text-primary transition-colors">
+                Terms of Use
+              </Link>
+            </div>
           </div>
         </div>
       </footer>

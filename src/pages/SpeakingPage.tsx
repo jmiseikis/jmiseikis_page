@@ -204,10 +204,10 @@ const SpeakingPage = () => {
         <title>AI Keynote Speaker & TechDrive Zürich Host | Dr. Justinas Mišeikis</title>
         <meta name="description" content="Dr. Justinas Mišeikis: AI & robotics keynote speaker and host of TechDrive Zürich, the interview and podcast series on Switzerland's AI, robotics and deep tech scene. Featured at Wisdom House @ Davos 2026 (WEF), GenAI Zürich, LOGIN Conference, ETH Zürich and Sony AI. Available across DACH and Europe." />
         <meta name="keywords" content="AI keynote speaker, TechDrive Zürich, TechDrive Zurich podcast, Swiss AI podcast, robotics podcast Switzerland, deep tech interview series Zurich, robotics speaker Europe, AI conference speaker Zurich, Davos 2026 speaker, WEF speaker, Wisdom House Davos, GenAI Zürich speaker, technology keynote DACH, innovation speaker, computer vision speaker, deep tech speaker, AI ethics speaker, physical AI speaker, Greater Zurich Area, Swisscom Ventures, Premium Speakers Agency" />
-        <link rel="canonical" href="https://jmiseikis.lovable.app/speaking" />
+        <link rel="canonical" href="https://jmiseikis.com/speaking" />
         <meta property="og:title" content="AI Keynote Speaker & TechDrive Zürich Host | Dr. Justinas Mišeikis" />
         <meta property="og:description" content="Keynote speaker on AI and robotics, and host of TechDrive Zürich - the interview series on Switzerland's deep tech ecosystem. Featured at Wisdom House @ Davos 2026 (WEF), GenAI Zürich, ETH Zürich and Sony AI." />
-        <meta property="og:url" content="https://jmiseikis.lovable.app/speaking" />
+        <meta property="og:url" content="https://jmiseikis.com/speaking" />
         <meta property="og:image" content={buildOgImageUrl({ title: "AI Keynote Speaker & TechDrive Zürich Host", subtitle: "DR. JUSTINAS MIŠEIKIS · SPEAKING" })} />
         <meta name="twitter:image" content={buildOgImageUrl({ title: "AI Keynote Speaker & TechDrive Zürich Host", subtitle: "DR. JUSTINAS MIŠEIKIS · SPEAKING" })} />
         <meta property="og:image:width" content="1200" />
@@ -218,8 +218,14 @@ const SpeakingPage = () => {
             "@context": "https://schema.org",
             "@type": "Person",
             "name": "Dr. Justinas Mišeikis",
-            "jobTitle": "AI Keynote Speaker, Strategy Advisor & Host of TechDrive Zürich",
-            "url": "https://jmiseikis.lovable.app/speaking",
+            "jobTitle": ["Strategy and Partnerships Manager at Sony AI", "Founder and Host of TechDrive Zürich"],
+            "worksFor": {
+              "@type": "Organization",
+              "name": "Sony AI",
+              "url": "https://ai.sony",
+              "parentOrganization": { "@type": "Organization", "name": "Sony", "url": "https://www.sony.com" }
+            },
+            "url": "https://jmiseikis.com/speaking",
             "sameAs": [
               "https://www.youtube.com/@JustinasMiseikis",
               "https://premium-speakers.com/en/speaker-presenter/justinas-miseikis/",
@@ -243,8 +249,8 @@ const SpeakingPage = () => {
             "url": "https://techdrive.tv/",
             "description": "Interview and podcast series hosted by Dr. Justinas Mišeikis, spotlighting founders, researchers and operators shaping Switzerland's AI, robotics and deep tech ecosystem, recorded in and around Zürich.",
             "inLanguage": "en",
-            "author": { "@type": "Person", "name": "Dr. Justinas Mišeikis", "url": "https://jmiseikis.lovable.app/" },
-            "host": { "@type": "Person", "name": "Dr. Justinas Mišeikis", "url": "https://jmiseikis.lovable.app/" },
+            "author": { "@type": "Person", "name": "Dr. Justinas Mišeikis", "url": "https://jmiseikis.com/" },
+            "host": { "@type": "Person", "name": "Dr. Justinas Mišeikis", "url": "https://jmiseikis.com/" },
             "about": ["Artificial Intelligence", "Robotics", "Deep Tech", "Swiss Startups", "Greater Zurich Area"]
           })}
         </script>
@@ -300,7 +306,7 @@ const SpeakingPage = () => {
                 <Podcast className="w-7 h-7 text-primary flex-shrink-0 mt-1" />
                 <div className="flex-1">
                   <div className="text-primary font-medium tracking-wider uppercase text-xs mb-2">
-                    Host · Interview & Podcast Series
+                    Founder and Host · Interview & Podcast Series
                   </div>
                   <h2 className="text-2xl md:text-3xl font-bold mb-3">TechDrive Zürich</h2>
                   <p className="text-muted-foreground leading-relaxed mb-6 max-w-3xl">

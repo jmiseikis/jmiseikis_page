@@ -48,7 +48,7 @@ const DueDiligencePage = () => {
         <title>AI & Robotics Due Diligence | Dr. Justinas Mišeikis</title>
         <meta name="description" content="Expert technical and strategic due diligence for VCs, investors, and acquirers evaluating AI, robotics, and deep tech companies. PhD-level assessment of technology, teams, and market potential." />
         <meta name="keywords" content="AI due diligence, robotics due diligence, deep tech due diligence, VC technical assessment, AI investment evaluation, robotics investment analysis, technology due diligence Zurich, deep tech investor advisory DACH" />
-        <link rel="canonical" href="https://jmiseikis.lovable.app/due-diligence" />
+        <link rel="canonical" href="https://jmiseikis.com/due-diligence" />
         <meta property="og:title" content="AI & Robotics Due Diligence | Dr. Justinas Mišeikis" />
         <meta property="og:description" content="Expert technical due diligence for investors evaluating AI, robotics, and deep tech companies." />
         <meta property="og:image" content={buildOgImageUrl({ title: "AI & Robotics Due Diligence", subtitle: "DR. JUSTINAS MIŠEIKIS · DUE DILIGENCE" })} />
@@ -137,6 +137,10 @@ const DueDiligencePage = () => {
         <footer className="py-8 border-t border-border px-4">
           <div className="container mx-auto text-center text-sm text-muted-foreground">
             <p>© {new Date().getFullYear()} Dr. Justinas Mišeikis. Zurich, Switzerland.</p>
+            <p className="mt-2 space-x-4">
+              <Link to="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
+              <Link to="/terms" className="hover:text-primary transition-colors">Terms of Use</Link>
+            </p>
           </div>
         </footer>
       </div>

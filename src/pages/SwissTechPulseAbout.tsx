@@ -8,7 +8,7 @@ const SwissTechPulseAbout = () => (
     <Helmet>
       <title>About Swiss Tech Pulse — Sources & Methodology</title>
       <meta name="description" content="How the Swiss Tech Pulse feed is built: sources, aggregation, and editorial process." />
-      <link rel="canonical" href="https://jmiseikis.lovable.app/resources/swiss-tech-pulse/about" />
+      <link rel="canonical" href="https://jmiseikis.com/resources/swiss-tech-pulse/about" />
     </Helmet>
     <Navigation />
     <main className="container mx-auto px-4 pt-28 pb-16 max-w-3xl">

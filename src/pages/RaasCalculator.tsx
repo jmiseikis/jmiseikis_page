@@ -123,12 +123,12 @@ const RAAS_JSONLD = {
   "name": "RaaS ROI Calculator",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Web",
-  "url": "https://jmiseikis.lovable.app/raas-calculator",
+  "url": "https://jmiseikis.com/raas-calculator",
   "description": PAGE_DESC,
   "author": {
     "@type": "Person",
     "name": "Dr. Justinas Miseikis",
-    "url": "https://jmiseikis.lovable.app"
+    "url": "https://jmiseikis.com"
   },
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
   "keywords": "RaaS, Robot as a Service, ROI calculator, robotic automation, warehouse automation, manufacturing robots, cobot ROI, automation cost analysis, labour cost reduction, break-even analysis"
@@ -211,15 +211,15 @@ const RaasCalculator = () => {
     setMeta("keywords", "RaaS ROI calculator, Robot as a Service, robotic automation ROI, warehouse automation cost, manufacturing robot cost analysis, cobot ROI, automation break-even, labour cost reduction robots, RaaS pricing, robotics startup tools, automation business case, OpEx robotics");
     setMeta("og:title", PAGE_TITLE, "property");
     setMeta("og:description", PAGE_DESC, "property");
-    setMeta("og:url", "https://jmiseikis.lovable.app/raas-calculator", "property");
+    setMeta("og:url", "https://jmiseikis.com/raas-calculator", "property");
     setMeta("og:type", "website", "property");
     const raasOg = (() => {
       const pid = (import.meta as unknown as { env: { VITE_SUPABASE_PROJECT_ID?: string } }).env.VITE_SUPABASE_PROJECT_ID;
-      if (!pid) return "https://jmiseikis.lovable.app/og-raas-calculator.png";
+      if (!pid) return "https://jmiseikis.com/og-raas-calculator.png";
       const p = new URLSearchParams({
         title: "RaaS ROI Calculator",
         subtitle: "ROBOT AS A SERVICE · COST ANALYSIS",
-        image: "https://jmiseikis.lovable.app/og-raas-calculator.png",
+        image: "https://jmiseikis.com/og-raas-calculator.png",
       });
       return `https://${pid}.supabase.co/functions/v1/og-image?${p.toString()}`;
     })();
@@ -232,7 +232,7 @@ const RaasCalculator = () => {
 
     let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
     if (!canonical) { canonical = document.createElement("link"); canonical.rel = "canonical"; document.head.appendChild(canonical); }
-    canonical.href = "https://jmiseikis.lovable.app/raas-calculator";
+    canonical.href = "https://jmiseikis.com/raas-calculator";
 
     // Inject JSON-LD
     const scripts: HTMLScriptElement[] = [];
@@ -561,7 +561,7 @@ const RaasCalculator = () => {
 
       {/* Footer */}
       <footer className="raas-footer" itemProp="author" itemScope itemType="https://schema.org/Person">
-        Built by <Link to="/" className="raas-footer-link" itemProp="url"><span itemProp="name">Dr. Justinas Miseikis</span></Link> · <span itemProp="jobTitle">AI Strategy & Robotics Expert</span> · Benchmarks: BLS, Rapyuta, Automate.org, Formic
+        Built by <Link to="/" className="raas-footer-link" itemProp="url"><span itemProp="name">Dr. Justinas Mišeikis</span></Link> · AI Strategy & Robotics Expert · Benchmarks: BLS, Rapyuta, Automate.org, Formic · <Link to="/privacy" className="raas-footer-link">Privacy Policy</Link> · <Link to="/terms" className="raas-footer-link">Terms of Use</Link>
       </footer>
     </article>
   );
