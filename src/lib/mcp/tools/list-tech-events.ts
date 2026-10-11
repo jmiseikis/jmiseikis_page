@@ -1,21 +1,14 @@
 import { defineTool } from "@lovable.dev/mcp-js";
 import { z } from "zod";
-
-const SHEET_ID = "1k4vfFfSX9Pmi5tNVuijUmubuTPSoFvBnIxC1kH_25x4";
-const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
-
-type Row = { c: Array<{ v: unknown; f?: string } | null> };
-
-function parseGviz(text: string): Row[] {
-  const match = text.match(/google\.visualization\.Query\.setResponse\(([\s\S]+)\);?/);
-  if (!match) return [];
-  try {
-    const json = JSON.parse(match[1]);
-    return json?.table?.rows ?? [];
-  } catch {
-    return [];
-  }
-}
+import {
+  EVENTS_REQUIRED,
+  SHEET_URLS,
+  type TechEventsResult,
+  fetchSheet,
+  isPastEvent,
+  toEvents,
+  zurichToday,
+} from "../../sheets";
 
 export default defineTool({
   name: "list_tech_events",
@@ -31,18 +24,27 @@ export default defineTool({
   },
   annotations: { readOnlyHint: true, openWorldHint: true },
   handler: async ({ query, limit }) => {
-    const res = await fetch(SHEET_URL);
-    if (!res.ok) {
-      return { content: [{ type: "text", text: `Failed to fetch events: ${res.status}` }], isError: true };
+    let result: TechEventsResult;
+    try {
+      // Columns are mapped by header name, the same way as on the /tech-events page.
+      result = toEvents(await fetchSheet(SHEET_URLS.events, EVENTS_REQUIRED));
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      return { content: [{ type: "text", text: `Failed to load events: ${message}` }], isError: true };
     }
-    const rows = parseGviz(await res.text());
-    const events = rows
-      .map((r) => r.c.map((cell) => (cell?.f ?? cell?.v ?? "") as string))
-      .filter((cols) => cols.some((c) => c && String(c).trim().length > 0));
+
+    const today = zurichToday();
+    // Return every source row: rows combined on the page (same name, dates and URL) can still
+    // differ in other columns. Dates are YYYY-MM-DD; `past` uses today's date in Zurich.
+    const events = result.events
+      .flatMap((event) => [event, ...(event.sourceVariants ?? [])])
+      .map(({ sourceVariants, canton, ...event }) => ({ ...event, past: isPastEvent(event, today) }));
 
     const q = query?.toLowerCase().trim();
     const filtered = q
-      ? events.filter((cols) => cols.some((c) => String(c).toLowerCase().includes(q)))
+      ? events.filter((event) =>
+          Object.values(event).some((value) => typeof value === "string" && value.toLowerCase().includes(q)),
+        )
       : events;
 
     const capped = filtered.slice(0, limit ?? 25);

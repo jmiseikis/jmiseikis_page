@@ -1,21 +1,6 @@
 import { defineTool } from "@lovable.dev/mcp-js";
 import { z } from "zod";
-
-const SHEET_ID = "1FqX_G9qw9srGHumCWfQH1L4RCDlW4EtJ8-iXTfzsblI";
-const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
-
-type Row = { c: Array<{ v: unknown; f?: string } | null> };
-
-function parseGviz(text: string): Row[] {
-  const match = text.match(/google\.visualization\.Query\.setResponse\(([\s\S]+)\);?/);
-  if (!match) return [];
-  try {
-    const json = JSON.parse(match[1]);
-    return json?.table?.rows ?? [];
-  } catch {
-    return [];
-  }
-}
+import { type InvestorRecord, SHEET_URLS, VCS_REQUIRED, fetchSheet, toInvestors } from "../../sheets";
 
 export default defineTool({
   name: "list_swiss_vcs",
@@ -28,17 +13,17 @@ export default defineTool({
   },
   annotations: { readOnlyHint: true, openWorldHint: true },
   handler: async ({ query, limit }) => {
-    const res = await fetch(SHEET_URL);
-    if (!res.ok) {
-      return { content: [{ type: "text", text: `Failed to fetch VCs: ${res.status}` }], isError: true };
+    let vcs: InvestorRecord[];
+    try {
+      // Columns are mapped by header name; the header row is not returned as a firm.
+      vcs = toInvestors(await fetchSheet(SHEET_URLS.vcs, VCS_REQUIRED));
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      return { content: [{ type: "text", text: `Failed to load VCs: ${message}` }], isError: true };
     }
-    const rows = parseGviz(await res.text());
-    const vcs = rows
-      .map((r) => r.c.map((cell) => (cell?.f ?? cell?.v ?? "") as string))
-      .filter((cols) => cols.some((c) => c && String(c).trim().length > 0));
 
     const q = query?.toLowerCase().trim();
-    const filtered = q ? vcs.filter((cols) => cols.some((c) => String(c).toLowerCase().includes(q))) : vcs;
+    const filtered = q ? vcs.filter((vc) => Object.values(vc).some((value) => value.toLowerCase().includes(q))) : vcs;
     const capped = filtered.slice(0, limit ?? 25);
     return {
       content: [{ type: "text", text: JSON.stringify(capped, null, 2) }],

@@ -76,18 +76,187 @@ var list_services_default = defineTool2({
 // src/lib/mcp/tools/list-tech-events.ts
 import { defineTool as defineTool3 } from "npm:@lovable.dev/mcp-js@0.20.0";
 import { z } from "npm:zod@^4.4.3";
-var SHEET_ID = "1k4vfFfSX9Pmi5tNVuijUmubuTPSoFvBnIxC1kH_25x4";
-var SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
-function parseGviz(text) {
-  const match = text.match(/google\.visualization\.Query\.setResponse\(([\s\S]+)\);?/);
-  if (!match) return [];
-  try {
-    const json = JSON.parse(match[1]);
-    return json?.table?.rows ?? [];
-  } catch {
-    return [];
+
+// src/lib/sheets.ts
+var SheetFormatError = class extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "SheetFormatError";
   }
+};
+var normalise = (value) => String(value ?? "").trim().toLowerCase().replace(/\s+/g, " ");
+var ALIASES = {
+  name: ["event name", "name", "organisation name", "organization name"],
+  startDate: ["start date"],
+  finishDate: ["finish date", "end date"],
+  location: ["location"],
+  category: ["category"],
+  officialUrl: ["official url"],
+  size: ["size"],
+  targetAudience: ["target audience"],
+  scope: ["local/international", "scope"],
+  description: ["one paragraph description", "description"],
+  ticketPrice: ["ticket price", "price"],
+  sector: ["sector"],
+  investmentRounds: ["investment rounds"],
+  targetGeography: ["target geography"],
+  estimatedFundSize: ["estimated fund size"],
+  crunchbaseUrl: ["crunchbase url"],
+  pitchbookUrl: ["pitchbook url"],
+  linkedinUrl: ["linkedin url"],
+  type: ["type"],
+  website: ["website"],
+  headquarters: ["headquarters"],
+  founded: ["founded"],
+  teamSize: ["team size"],
+  achievements: ["key achievements / products", "key achievements"],
+  notes: ["notes"]
+};
+var isHeaderRow = (headers) => headers.some((h) => ALIASES.name.includes(h));
+var cellText = (cell) => {
+  const value = cell?.v;
+  if (value === null || value === void 0) return "";
+  return String(value).trim();
+};
+var rowCells = (row) => row?.c ?? [];
+function parseTable(table, required = ["name"]) {
+  if (!table || !Array.isArray(table.cols) || !Array.isArray(table.rows)) {
+    throw new SheetFormatError("The directory response did not contain a table.");
+  }
+  let rows = table.rows;
+  let headers = table.cols.map((col) => normalise(col?.label));
+  if (isHeaderRow(headers)) {
+    if (rows.length && isHeaderRow(rowCells(rows[0]).map((cell) => normalise(cellText(cell))))) rows = rows.slice(1);
+  } else {
+    if (!rows.length) return { records: [], availableFields: [] };
+    headers = rowCells(rows[0]).map((cell) => normalise(cellText(cell)));
+    if (!isHeaderRow(headers)) throw new SheetFormatError("The directory is missing its name column.");
+    rows = rows.slice(1);
+  }
+  const indexes = Object.entries(ALIASES).map(([field, names]) => [field, headers.findIndex((h) => names.includes(h))]).filter(([, index]) => index >= 0);
+  const availableFields = indexes.map(([field]) => field);
+  const missing = required.filter((field) => !availableFields.includes(field));
+  if (missing.length) {
+    throw new SheetFormatError(`The directory format has changed (missing: ${missing.join(", ")}).`);
+  }
+  const records = rows.map((row) => {
+    const cells = rowCells(row);
+    const record = {};
+    for (const [field, index] of indexes) record[field] = cellText(cells[index]);
+    return record;
+  }).filter((record) => record.name);
+  return { records, availableFields };
 }
+function parseGviz(text, required) {
+  const match = text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\);?\s*$/);
+  if (!match) throw new SheetFormatError("Unrecognised Google Sheets response.");
+  let parsed;
+  try {
+    parsed = JSON.parse(match[1]);
+  } catch {
+    throw new SheetFormatError("The directory response could not be read.");
+  }
+  if (parsed.status && parsed.status !== "ok") throw new SheetFormatError("The directory query failed.");
+  return parseTable(parsed.table, required);
+}
+async function fetchSheet(url, required) {
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`Directory request failed (${response.status}).`);
+  return parseGviz(await response.text(), required);
+}
+function gvizDate(value) {
+  const raw = String(value ?? "").trim();
+  const gviz = raw.match(/^Date\((\d{4}),(\d{1,2}),(\d{1,2})/);
+  if (gviz) {
+    const [, year, month, day] = gviz;
+    return `${year}-${String(Number(month) + 1).padStart(2, "0")}-${String(Number(day)).padStart(2, "0")}`;
+  }
+  const iso = raw.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  return iso ? `${iso[1]}-${iso[2]}-${iso[3]}` : "";
+}
+function zurichToday(now = /* @__PURE__ */ new Date()) {
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Europe/Zurich",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).format(now);
+}
+var EVENTS_REQUIRED = ["name", "startDate", "finishDate", "location", "officialUrl"];
+function toEvents(sheet) {
+  const hasTicketPrice = sheet.availableFields.includes("ticketPrice");
+  const rows = sheet.records.map((r) => {
+    const startDate = gvizDate(r.startDate);
+    const location = r.location ?? "";
+    const event = {
+      name: r.name,
+      startDate,
+      finishDate: gvizDate(r.finishDate) || startDate,
+      location,
+      canton: location.split(",").map((part) => part.trim()).filter(Boolean).pop() ?? "",
+      category: r.category ?? "",
+      officialUrl: r.officialUrl ?? "",
+      size: r.size ?? "",
+      targetAudience: r.targetAudience ?? "",
+      scope: r.scope ?? "",
+      description: r.description ?? ""
+    };
+    if (hasTicketPrice) event.ticketPrice = r.ticketPrice ?? "";
+    return event;
+  });
+  return { events: combineExactEvents(rows).sort(compareEvents), sourceCount: rows.length, hasTicketPrice };
+}
+function combineExactEvents(records) {
+  const seen = /* @__PURE__ */ new Map();
+  const out = [];
+  for (const record of records) {
+    if (!record.name || !record.startDate || !record.finishDate || !record.officialUrl) {
+      out.push(record);
+      continue;
+    }
+    const key = [
+      normalise(record.name),
+      record.startDate,
+      record.finishDate,
+      record.officialUrl.trim().replace(/\/+$/, "").toLowerCase()
+    ].join("|");
+    const first = seen.get(key);
+    if (first) {
+      first.sourceVariants = [...first.sourceVariants ?? [], record];
+    } else {
+      const copy = { ...record };
+      seen.set(key, copy);
+      out.push(copy);
+    }
+  }
+  return out;
+}
+var compareEvents = (a, b) => (a.startDate || "9999-99-99").localeCompare(b.startDate || "9999-99-99") || a.name.localeCompare(b.name);
+var isPastEvent = (event, today) => {
+  const end = event.finishDate || event.startDate;
+  return !!end && end < today;
+};
+var VCS_REQUIRED = ["name", "sector", "investmentRounds", "description"];
+var toInvestors = (sheet) => sheet.records.map((r) => ({
+  name: r.name,
+  sector: r.sector ?? "",
+  investmentRounds: r.investmentRounds ?? "",
+  targetGeography: r.targetGeography ?? "",
+  targetAudience: r.targetAudience ?? "",
+  estimatedFundSize: r.estimatedFundSize ?? "",
+  officialUrl: r.officialUrl ?? "",
+  crunchbaseUrl: r.crunchbaseUrl ?? "",
+  pitchbookUrl: r.pitchbookUrl ?? "",
+  linkedinUrl: r.linkedinUrl ?? "",
+  description: r.description ?? ""
+}));
+var sheetUrl = (id) => `https://docs.google.com/spreadsheets/d/${id}/gviz/tq?tqx=out:json`;
+var SHEET_URLS = {
+  events: sheetUrl("1k4vfFfSX9Pmi5tNVuijUmubuTPSoFvBnIxC1kH_25x4"),
+  vcs: sheetUrl("1FqX_G9qw9srGHumCWfQH1L4RCDlW4EtJ8-iXTfzsblI")
+};
+
+// src/lib/mcp/tools/list-tech-events.ts
 var list_tech_events_default = defineTool3({
   name: "list_tech_events",
   title: "List tech events",
@@ -98,14 +267,19 @@ var list_tech_events_default = defineTool3({
   },
   annotations: { readOnlyHint: true, openWorldHint: true },
   handler: async ({ query, limit }) => {
-    const res = await fetch(SHEET_URL);
-    if (!res.ok) {
-      return { content: [{ type: "text", text: `Failed to fetch events: ${res.status}` }], isError: true };
+    let result;
+    try {
+      result = toEvents(await fetchSheet(SHEET_URLS.events, EVENTS_REQUIRED));
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      return { content: [{ type: "text", text: `Failed to load events: ${message}` }], isError: true };
     }
-    const rows = parseGviz(await res.text());
-    const events = rows.map((r) => r.c.map((cell) => cell?.f ?? cell?.v ?? "")).filter((cols) => cols.some((c) => c && String(c).trim().length > 0));
+    const today = zurichToday();
+    const events = result.events.flatMap((event) => [event, ...event.sourceVariants ?? []]).map(({ sourceVariants, canton, ...event }) => ({ ...event, past: isPastEvent(event, today) }));
     const q = query?.toLowerCase().trim();
-    const filtered = q ? events.filter((cols) => cols.some((c) => String(c).toLowerCase().includes(q))) : events;
+    const filtered = q ? events.filter(
+      (event) => Object.values(event).some((value) => typeof value === "string" && value.toLowerCase().includes(q))
+    ) : events;
     const capped = filtered.slice(0, limit ?? 25);
     return {
       content: [{ type: "text", text: JSON.stringify(capped, null, 2) }],
@@ -117,18 +291,6 @@ var list_tech_events_default = defineTool3({
 // src/lib/mcp/tools/list-swiss-vcs.ts
 import { defineTool as defineTool4 } from "npm:@lovable.dev/mcp-js@0.20.0";
 import { z as z2 } from "npm:zod@^4.4.3";
-var SHEET_ID2 = "1FqX_G9qw9srGHumCWfQH1L4RCDlW4EtJ8-iXTfzsblI";
-var SHEET_URL2 = `https://docs.google.com/spreadsheets/d/${SHEET_ID2}/gviz/tq?tqx=out:json`;
-function parseGviz2(text) {
-  const match = text.match(/google\.visualization\.Query\.setResponse\(([\s\S]+)\);?/);
-  if (!match) return [];
-  try {
-    const json = JSON.parse(match[1]);
-    return json?.table?.rows ?? [];
-  } catch {
-    return [];
-  }
-}
 var list_swiss_vcs_default = defineTool4({
   name: "list_swiss_vcs",
   title: "List Swiss VCs",
@@ -139,14 +301,15 @@ var list_swiss_vcs_default = defineTool4({
   },
   annotations: { readOnlyHint: true, openWorldHint: true },
   handler: async ({ query, limit }) => {
-    const res = await fetch(SHEET_URL2);
-    if (!res.ok) {
-      return { content: [{ type: "text", text: `Failed to fetch VCs: ${res.status}` }], isError: true };
+    let vcs;
+    try {
+      vcs = toInvestors(await fetchSheet(SHEET_URLS.vcs, VCS_REQUIRED));
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      return { content: [{ type: "text", text: `Failed to load VCs: ${message}` }], isError: true };
     }
-    const rows = parseGviz2(await res.text());
-    const vcs = rows.map((r) => r.c.map((cell) => cell?.f ?? cell?.v ?? "")).filter((cols) => cols.some((c) => c && String(c).trim().length > 0));
     const q = query?.toLowerCase().trim();
-    const filtered = q ? vcs.filter((cols) => cols.some((c) => String(c).toLowerCase().includes(q))) : vcs;
+    const filtered = q ? vcs.filter((vc) => Object.values(vc).some((value) => value.toLowerCase().includes(q))) : vcs;
     const capped = filtered.slice(0, limit ?? 25);
     return {
       content: [{ type: "text", text: JSON.stringify(capped, null, 2) }],
