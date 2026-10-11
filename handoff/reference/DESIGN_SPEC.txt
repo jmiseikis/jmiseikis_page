@@ -1,0 +1,57 @@
+JMiseikis website design specification
+
+Design intent
+An identifiable Swiss personal brand with three clear buyer paths: advisory, Swiss ecosystem work, and speaking. The design should convey technical judgement, clarity and personal credibility. Retain the original red, monochrome palette, strong typography and sharp edges.
+
+What changes
+Reduce repeated generic headings and large card grids. Put services directly after the hero and compact evidence. Move detailed biography and the complete resource catalogue to their own pages. Use real outputs and relevant experience to explain value. Make speaking easy to find without making the podcast feed the opening evidence for stage work.
+
+What stays
+Dr. Justinas Mišeikis as the personal brand; the existing portrait; the Swiss visual vocabulary; sharp buttons and cards; semantic tokens; existing content integrations; visible affiliation attribution; light and dark themes; the protected contact flow.
+
+Grid and rhythm
+Use a centred content width around 72rem, with 20-24px mobile gutters and 32-48px desktop gutters. Use a 12-column mental grid: approximately seven columns of hero copy and five of portrait, then a 3/9 or 4/8 split for service labels and detail. Service rows use a number, a clear heading and outputs. On mobile, stack in reading order with the number attached to the heading.
+
+Do not apply the maximum .section-padding to every nested subsection. Use about 64-88px section spacing on desktop and 40-56px on mobile, with 24-40px inside groups. Preserve whitespace but make it meaningful. Avoid fixed section heights or clipping to meet a pixel target. A useful design target is roughly half the previous homepage length: around 5,000-6,000px at desktop and 9,000-11,000px at 390px width, depending on the integrated form and approved content. These are review targets, not CSS height requirements.
+
+Hero
+Eyebrow: Dr. Justinas Mišeikis | Zurich, Switzerland.
+Headline: AI & robotics strategy. Swiss ecosystem expertise.
+Desktop type approximately 52-64px; mobile approximately 36-42px with a tight but readable line height. Keep the introductory paragraph to approximately 45 words and a readable measure around 55-65 characters. Use a primary advisory CTA and a secondary speaking CTA. Keep the portrait visible in the opening desktop view. On mobile, use a compact portrait after the CTA and location line; do not let an oversized photo delay service discovery. Do not force all hero material into one screen by making text illegible.
+
+Evidence strip
+Three compact items are enough: Sony technology scouting; Sony AI strategy and partnerships; PhD and EMBA. Place detailed F&P Robotics evidence in the relevant-experience section. These are professional experience labels, not client logos or testimonials. No numerical research claims in the strip until their definitions are verified.
+
+Content treatment
+Use service rows with subtle rules, a short description and a tangible output. Use a three-column relevant-experience section on desktop and stacked rows on mobile. Keep it explicitly labelled experience rather than implying three paid advisory client successes. Speaking can use an asymmetric split with one verified recording and three compact topic rows. Resource teasers use text and restrained arrows rather than a giant grid of badges.
+
+Colour
+Use bg-background, text-foreground, bg-card, text-card-foreground, text-muted-foreground, border-border, bg-primary and text-primary-foreground in React components. Do not introduce raw bg-black/text-white or arbitrary hex classes. Define any justified colour adjustment only in the central theme tokens. The supplied notes' HSL and hexadecimal red values are not identical; inspect the actual CSS tokens. Test computed foreground/background pairs in both themes.
+
+The reference HTML uses a slightly darker red in light mode to provide a margin above the 4.5:1 normal-text contrast threshold. Dark mode uses a brighter red with dark foreground on red buttons. It demonstrates the relationship; adapt the real project's tokens after measurement. Aim for at least 4.5:1 normal text and 3:1 large text and meaningful controls, with visible focus indicators. Keep borders and muted text legible in dark mode.
+
+Typography and detail
+Retain the installed font family. Use font-bold tracking-tight for display text; normal body tracking and generous line height. Keep readable body text at approximately 16-18px. Do not make every paragraph a large hero introduction. Use Swiss red for a few deliberate accents rather than highlighting arbitrary words in every heading. Use standard hyphens, colons and pipes; no em dashes in authored content.
+
+Images and motion
+Use existing real portraits, stage recordings and approved project imagery. Preserve informative alternative text and dimensions. Optimise the large portrait into appropriately sized responsive formats using the project's asset pipeline. Do not lazy-load the main hero image; lazy-load lower-page media. Avoid autoplay and animated logo marquees. Honour reduced-motion preferences and keep the opening text immediately visible. No animation library is required for this redesign.
+
+Navigation and contact
+Desktop links: Advisory, Speaking, Resources, About, plus Discuss a project. On mobile use the existing accessible menu, with proper expanded state, focus behaviour and comfortable targets. Keep old root anchors functional. Use a fixed-header scroll offset so headings and form fields remain visible. Forms retain visible labels, required-field semantics, helpful errors and a clear success state. Enquiry context should preselect a purpose, not auto-submit.
+
+Reference pages
+preview/index.html: homepage composition and content hierarchy.
+preview/advisory.html: service, engagement and process layout.
+preview/speaking.html: topic-first speaking composition; the live implementation must place the best existing verified stage recording near the top and preserve YouTube/agency integrations.
+The reference uses lightweight HTML/CSS to make visual review portable. Implement its design with the existing React components and semantic Tailwind tokens, not by dropping an iframe or copying the preview into the app.
+
+Full-site extension (6 October, after owner approved the initial preview)
+The expanded preview has 17 screens. The navigation adds Publications alongside Advisory, Speaking, Resources and About. A review-only page map is available from the top strip; do not ship that strip/map in production. Footer links expose deeper resources. All standalone pages share the same header, page hero, section rhythm and footer.
+Resources use numbered ruled rows, rather than a uniform card wall. Directories default to a readable list, with an optional grid, labelled filters, 12-record pagination and separate loading/error/empty states. Mobile filters use two columns; search occupies a full row. Dataset descriptions are preserved and achievements/financial definitions use accessible disclosures. Use descriptive source credits beside the content.
+Publications use year/title/venue rows. Three featured papers are a selected list, not a claim of a complete bibliography. About uses a real portrait, a timeline, education and a static organisation-name grid rather than an animated employer marquee.
+Speaking features an actual CAIRO Forum stage recording, three signature topics, the wider catalogue, existing talks, shorts, guest media and TechDrive episodes. Thumbnails link to the real videos. No autoplay or invented showreel.
+Article pages use a readable main column and desktop contents sidebar. On mobile, contents precede the article. The German landing page uses the same system, with English service delivery made explicit.
+Calculator uses neutral result panels and a cash-versus-economic-value chart. Red is the core accent, not a recommendation signal. Large amounts use compact notation in headline metrics and exact values in breakdowns. Add clear input/chart jumps on mobile. Keep currency relabelling visible.
+Swiss Tech Pulse is removed at the owner’s request. The resource hub leads with decision guides, followed by existing directories/tools. New guides retain ruled rows and precise typography; accordion examples are native details/summary with all content in HTML.
+
+Responsive corrections: every service-row third child occupies the content column below the title at <=767px; minmax(0,1fr) grids allow real reflow. At <375px use 16px gutters, 34px hero text, single-column filters and full-width actions. Forms use 16px text on mobile. New workflow facts, ecosystem rows and process diagrams stack vertically. Do not hide overflow to conceal a layout bug.

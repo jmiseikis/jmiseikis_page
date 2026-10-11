@@ -1,0 +1,30 @@
+Data and calculator corrections proposed by the full-site preview
+
+EVENT DATA
+Current Google Sheets response: 44 event rows, with real labels in table.cols. The old deployed adapter unconditionally uses rows.slice(1), losing World Economic Forum Annual Meeting. The sheet now has Size at column 6, Target Audience at 7, Local/International at 8 and Description at 9. The deployed adapter expects ticket price at 6, size at 7, logo at 8, audience at 9, scope at 10 and description at 11. This causes incorrect filters/content. The preview maps the observed schema correctly; production should map validated header names. Missing ticket price is unavailable, not zero/free.
+The source contains two Swiss AI Summit rows on 16 November 2026 with identical URL and event identity. Both are preserved; one becomes sourceVariants on the display record. No Google Sheet was edited. Source 44 -> display 43. Upcoming snapshot on 6 October: 7 distinct events. The old live page showed 43 total/8 upcoming because it dropped WEF and kept the duplicate.
+The reusable adapter tests cover column-label headers, first-row headers, retained first event, correct size/scope/description, absent price, exact duplicate identity, different dates, and both other directories. Production must tolerate schema change with a visible failure, not silently assign wrong fields.
+
+DIRECTORY LIMITS
+These are copies of existing public data, not fresh verification of every organisation, financial figure or conference date. Capture date is clearly labelled. Preserve source links and original credits. Recheck details with original sources when using the directories for a business decision.
+
+CALCULATOR: ORIGINAL OBSERVED BEHAVIOUR
+Original defaults: 3 workers, $25/hour, 2 shifts/day, 5 days/week, 30% benefits, 20% annual turnover, 2 robots, $3,000/month/robot, $20,000 setup, 95% uptime, 40% productivity uplift, 3 years, $5,000 errors with 75% reduction, $1,000 incidents with 60% reduction; 2% annual labour inflation is hidden in the original code.
+Original formula assumed all affected labour cost was saved and added productivity value into 'Monthly Net Savings'. It displayed approx. $45.9k/month, one-month payback, 709% ROI and $1.67m gain. Its breakdown labelled loaded pay as base pay alongside a separate benefits line. The terms 'workers replaced/assisted' did not explain multiplication by shift count. The 9-18 month benchmark and other ranges were not supported by precise citations in the page.
+
+PROPOSED PREVIEW MODEL
+Workers are explicitly per shift. Base pay = workers × wage × shifts × 8 hours × days × 4.33 weeks.
+Benefits = base × benefits percentage. Turnover = base × annual turnover percentage × 0.75. The 75% replacement-cost assumption is explicit, not a newly verified benchmark.
+Cashable labour avoided = (base + benefits + turnover) × user-entered cash realisation percentage.
+Cashable quality/incident benefit = errors × reduction + incidents × reduction.
+Monthly cash benefit = avoided labour + quality/incident benefit - subscriptions - extra operating costs.
+Productivity value = base × productivity uplift × uptime × explicit realisation percentage. It is kept in a separate economic-value series and defaults to zero realisation. Uptime affects this estimate only; deployment capacity is not inferred.
+Contract cash position starts at negative setup. Each month adds cashable labour adjusted by annual inflation, plus quality benefits, less ongoing costs. Month 1 is the configured baseline. Cash payback is the first non-negative whole-month position within the contract; otherwise 'Not within term'.
+Cash ROI = final net cash gain / (setup + all modelled cash operating costs). Zero denominator -> not defined. Negative returns are shown honestly.
+Currency selector changes labels only, with a visible statement; there is no FX conversion. Exact numbers remain in the breakdown; large headline numbers use compact notation for mobile readability.
+Default cash result after corrections: $36,021 first month, 1 month payback, $1,316,696.31 contract cash gain, approx. 558% cash ROI. These large illustrative results arise from the stated full labour-reduction assumption and are not a validated deployment forecast. A high figure is not labelled a strong business case.
+14 calculation test scenarios cover baseline arithmetic, no savings, negative return, separate productivity value, zero cost denominator, setup that never pays back, staffing/shift interpretation, operating costs, invalid term, invalid numbers, negative inputs, zero robots, invalid percentage and missing inputs.
+
+REMAINING MODELLING LIMITS
+No capacity matching, rollout ramp, explicit residual-staff schedule, financing, discounting, tax or residual asset value. Additional ongoing costs can be entered, and labour realisation can represent retained labour, but those do not replace a deployment model. Capacity and operational feasibility must be validated separately. Do not double-count the same output as both labour savings and incremental productivity.
+The changed formulas are a proposal for the owner to review. The production calculator is unchanged. Claude must integrate with meaningful tests, record the exact mathematical change and retain any additional validated behaviour in the actual repository.

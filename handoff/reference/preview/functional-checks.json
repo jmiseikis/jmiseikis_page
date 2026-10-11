@@ -1,0 +1,118 @@
+[
+  {
+    "test": "workflow-0-keyboard-open",
+    "pass": true,
+    "labels": [
+      "Internal data",
+      "Work to support",
+      "Human decision",
+      "Pilot evidence"
+    ]
+  },
+  {
+    "test": "workflow-0-keyboard-close",
+    "pass": true
+  },
+  {
+    "test": "workflow-1-keyboard-open",
+    "pass": true,
+    "labels": [
+      "Internal data",
+      "Work to support",
+      "Human decision",
+      "Pilot evidence"
+    ]
+  },
+  {
+    "test": "workflow-1-keyboard-close",
+    "pass": true
+  },
+  {
+    "test": "workflow-2-keyboard-open",
+    "pass": true,
+    "labels": [
+      "Internal data",
+      "Work to support",
+      "Human decision",
+      "Pilot evidence"
+    ]
+  },
+  {
+    "test": "workflow-2-keyboard-close",
+    "pass": true
+  },
+  {
+    "test": "workflow-3-keyboard-open",
+    "pass": true,
+    "labels": [
+      "Internal data",
+      "Work to support",
+      "Human decision",
+      "Pilot evidence"
+    ]
+  },
+  {
+    "test": "workflow-3-keyboard-close",
+    "pass": true
+  },
+  {
+    "test": "pilot-anchor",
+    "pass": true,
+    "download": "/downloads/ai-workflow-pilot-brief.txt"
+  },
+  {
+    "test": "ai-enquiry-intent",
+    "pass": true,
+    "value": "advisory"
+  },
+  {
+    "test": "mobile-menu-open",
+    "pass": true,
+    "links": [
+      "Advisory",
+      "Speaking",
+      "Resources",
+      "Publications",
+      "About",
+      "Discuss a project ↗"
+    ]
+  },
+  {
+    "test": "mobile-menu-escape",
+    "pass": true
+  },
+  {
+    "test": "swiss-ai-robotics-ecosystem-download",
+    "pass": true,
+    "bytes": 1104
+  },
+  {
+    "test": "swiss-ai-robotics-ecosystem-enquiry",
+    "pass": true,
+    "value": "scouting"
+  },
+  {
+    "test": "swiss-baltic-market-entry-download",
+    "pass": true,
+    "bytes": 1300
+  },
+  {
+    "test": "swiss-baltic-market-entry-enquiry",
+    "pass": true,
+    "value": "scouting"
+  },
+  {
+    "test": "due-diligence-download",
+    "pass": true,
+    "bytes": 1692
+  },
+  {
+    "test": "due-diligence-enquiry",
+    "pass": true,
+    "value": "diligence"
+  },
+  {
+    "test": "diligence-320-readable-descriptions",
+    "pass": true
+  }
+]

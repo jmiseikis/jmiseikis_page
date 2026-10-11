@@ -1,0 +1,76 @@
+Update the existing jmiseikis.com Lovable-connected website using this full-site redesign package. The owner has approved the visual direction and asked for it to extend across the entire website. Implement it in the real React/Vite project, preserving relevant content and working integrations, with the owner-requested retirement of Swiss Tech Pulse. Do not start a replacement project or move hosting.
+
+Read START_HERE.txt, FULL_SITE_INVENTORY.json, CONTENT_PRESERVATION.txt, DATA_AND_CALCULATOR_CHANGES.txt, DESIGN_SPEC.txt, IMPLEMENTATION_AND_QA.txt DECISIONS_AND_FACTS.json, LATEST_CHANGES.txt and RESOURCE_AND_POSITIONING_STRATEGY.txt. Open preview/all-pages.html through a local server to review all 17 screens. The HTML is a visual and copy reference, not production code to embed or publish. PAGE_COPY.json is the original five-page positioning brief; the expanded preview and full-site documents supersede it where coverage or content differs. FULL_SITE_COPY.json extracts the expanded page content for reference. Production copy must omit preview-specific notices.
+
+GOAL AND AUDIENCE
+Position Justinas around three commercial jobs: market entry and Swiss partnerships for technology companies; thesis-led scouting and technical diligence of early-stage and scale-up Swiss AI/robotics startups for VCs and corporate investors; internal AI workflow and data-readiness advisory. Include support for Swiss startups entering other markets. Selected Swiss/international VC relationships support relevant introductions, but do not claim broad privileged access, guaranteed meetings, funding or deal flow. Public speaking remains a clear secondary path. Selected startup advisory is relevant. Justinas remains based in Switzerland and works internationally in English. Consulting is cash-paid. Present engagement formats with fees on request; do not introduce equity compensation, public rates, relocation promises, an immediate start date or a fixed weekly capacity.
+
+INSPECT FIRST
+Read repository instructions and existing changes. Inspect package scripts, all route definitions, shared navigation/footer, themes, contact forms, validation and edge functions. Inspect the real Google Sheets and YouTube adapters, query caching, calculator, metadata/prerender script, sitemap and the Pulse routes/dependencies that must be retired. Keep the current framework/dependencies unless a specific blocker justifies a narrow change. This handoff was prepared from public pages, public deployment code and owner-supplied architecture, not the private production checkout. Treat function/component names as discovery clues.
+
+KEEP THE WORKING SYSTEM
+Retain Lovable Cloud/Supabase configuration, React Query behaviour, Cloudflare Turnstile server verification, send-contact-email, youtube-videos, og-image and the existing MCP contracts. Swiss Tech Pulse also uses public-feed, admin-actions, digest_subscribers, digests, items and user_roles in the deployed code. Preserve authentication, admin authorisation, RLS, published-only visibility, subscriber consent and all existing server-side guards. Do not expose private review items, credentials or secrets. Do not change recipients, credentials, permission policies or database structure for the visual refresh. Never copy source-snapshots or internal handoff notes into public assets.
+
+CONTACT AND FACTS
+Do not display the owner's email address, mailto links, or the old PDF containing email and fees anywhere on the website or in metadata/downloads. Preserve the protected contact form and established LinkedIn URL. Visitor email inputs are expected. The reference enquiry form reviews a local draft only; replace it with the existing production form and actual response/error states. Do not fake a successful send or disable Turnstile.
+
+The current Sony title conflicts between the live site and the supplied Lovable notes. Retain the neutral descriptor in new copy, and preserve supported career chronology without inventing an end date. Technology scouting at Sony is explicitly confirmed. Use relevant experience rather than invented case studies or client outcomes. Do not publish unverified 700+/15+/40+ counts or conflate patent applications, grants and families. Keep Scholar/patent record links. Resolve counts and the current title only from owner confirmation or evidence. Do not invent testimonials, endorsement logos, access to investors, guaranteed introductions or conference slots.
+
+COMPLETE ROUTE COVERAGE
+Rebuild all these routes with the shared visual system:
+/                    Approved overview plus research teaser and real protected contact
+/advisory            Four offers including market entry, investor scouting/diligence, Swiss presence and internal AI
+/speaking            Stage recording, signature topics, complete visible media catalogue
+/about               New standalone professional history and education page
+/resources           Decision-led hub, existing directories and downloadable working briefs
+/publications        New standalone selected papers and patent-record page
+/due-diligence       Assessment areas, technical coverage and decision outputs
+/ai-agents-strategy  Internal data/workflows guide, four concrete examples and a pilot brief
+/gza-robotics        Complete live directory, filters, attribution and map PDF
+/swiss-vcs           Complete live directory and original external profile links
+/tech-events         Complete event data, archive, corrected field mapping and filters
+/raas-calculator     Reworked presentation and explicitly documented proposed model
+/swiss-ai-robotics-ecosystem  Selective functional ecosystem guide and investor-stage questions
+/swiss-baltic-market-entry   Market entry in both directions and Baltic public starting points
+/de                  German introduction with English delivery made clear
+*                    Consistent, usable 404
+
+Retain /speaking-examples -> /speaking. Do not create a second archive there. Keep old home anchors #about, #advisory, #services, #speaking, #resources, #publications and #contact. New links use the production routes rather than the preview's .html paths. All-pages.html, preview banners, local review forms and test fixtures must not ship to production.
+
+SHARED DESIGN
+Keep the approved Swiss identity: sharp edges, red accents, monochrome neutrals, Inter/current installed sans-serif, strong but readable typography and a precise grid. Use semantic Tailwind tokens and existing components. Avoid arbitrary component colours, rounded pills, gradient decoration and giant repeated card grids. Use ruled service rows and resource lists, compact metadata, clear active navigation, accessible forms and useful empty/error states. Keep both themes. Maintain responsive layouts, comfortable tap targets, keyboard focus, reduced motion and cross-route hash offsets.
+
+Keep the approved homepage hero and portrait. Desktop navigation: Advisory, Speaking, Resources, Publications, About and Discuss a project. Mobile navigation must reach the same destinations. Footer exposes useful deeper routes; do not expose the private review queue in public navigation. Do not add fake legal pages: the public footer's Privacy Policy and Terms buttons had no observable action on 6 October. Inspect the repository for approved policy content and connect it if it exists; otherwise report the gap without fabricating text.
+
+CONTENT PRESERVATION
+Use CONTENT_PRESERVATION.txt as a checklist. Retain the featured papers and original Scholar links, Google Patents search, existing career organisations and education, eight speaking subjects (grouped into three signature topics and a wider catalogue), seven owner-confirmed speaking engagements, the current stage recordings, shorts, guest appearance, TechDrive links and Premium Speakers booking.
+
+The preview captures 15 visible video links on 6 October. In production retain the existing YouTube service/cache/fallbacks and full browsing behaviour, rather than replacing dynamic content with a static list. Label a stage recording honestly; do not call it an edited showreel. Keep the Davos engagement distinct from an official WEF speaking role. The reference fixes the visible truncated title 'he Secret...' to 'The Secret...'; confirm/correct its source record in the real integration.
+
+DIRECTORIES
+Retain live Google Sheets integration. The JSON in preview/data is a review snapshot, not a production replacement. Retain 157 robotics organisations, 66 VCs and all source event records. Preserve GZA's data credit, the map PDF, Swisscom Ventures and Rockstar Recruiting credits and external resource links without expanding partnership claims.
+
+The current events adapter has an actual schema mismatch: the sheet exposes headers in cols, but the deployed code skips rows[0], dropping WEF. Columns after Official URL have shifted: Size, Target Audience, Local/International, Description, New Addition. They must not be interpreted as Ticket Price, Size, Logo URL, Audience, Scope and Description. Reconcile by header names. The current source has no ticket-price field; hide unavailable price filters rather than invent prices. implementation/google-sheets-adapter.mjs and test-sheets.mjs demonstrate a tested correction. Adapt to the real types/query layer, and retain error handling when required columns disappear.
+
+The snapshot has 44 source events. Two Swiss AI Summit entries share name, dates and URL; combine them only at presentation level, retaining provenance. The preview shows 43 distinct events including the previously dropped WEF row. Do not delete rows from the source sheet. Preserve distinct sessions/dates. Use Zurich calendar dates for upcoming/archive boundaries; missing dates need an explicit unknown-date state. Snapshot capture date is not a fact-verification date. Do not relabel fund figures as current AUM: they come from a heterogeneous Estimated Fund Size field.
+
+CALCULATOR
+Read DATA_AND_CALCULATOR_CHANGES.txt before adopting the proposed model. This is a substantive, visible change, not just CSS. Preserve the original inputs/default amounts and USD default; clarify workers per shift. Add cashable labour reduction, separately recognised productivity value, extra operating cost and configurable inflation. The preview defaults productivity realisation to zero, separates economic value from cash, uses a cumulative payback calculation and corrects the base-pay label. The original benchmark claims have no verified supporting references, so they are not repeated as validated ranges.
+
+Use implementation/calculator.mjs as a reviewed proposal with its tests, or implement equivalent tested logic in the existing calculator. Explicitly communicate capacity, ramp-up, downtime, residual staffing, tax and discounting limitations. Currency choice relabels the scenario; it is not exchange-rate conversion. Do not promise that any illustrative ROI is realistic for a specific customer. Report exactly which formulas changed. Do not silently keep labels claiming cash savings while adding non-cash productivity value.
+
+SWISS TECH PULSE: REMOVE
+The owner explicitly requested removal because it does not function. Remove all Pulse cards, navigation/footer links, public feed, subscription controls, digest and review screens from the website. Remove associated public metadata/sitemap entries and unused client code/imports. Do not replace it with a coming-soon or empty-feed page. Return a genuine 410/404 for retired public paths where hosting supports it, or use the existing not-found route; do not redirect every missing article to an unrelated resource. The preview removes the files rather than simulating the old feature.
+
+Do not delete historical items, digests, subscribers or roles, alter consent records, weaken authentication/RLS, or change shared backend functions. Inspect cron/jobs/edge-function dependencies and report any remaining feature-specific infrastructure separately. UI removal does not require destructive backend cleanup. Keep the protected review data inaccessible when removing its client route.
+
+PRACTICAL RESOURCES
+Use the new guide copy, source links and four /downloads/*.txt worksheets. Keep all useful public content readable without form submission. Retain evidence dates and clearly distinguish illustrative workflows from past client work. There are no claimed enterprise implementations or invented client results. Advisory scope is assessment, process/data mapping, pilot definition and implementation handoff; do not promise a delivered production integration without an agreed delivery scope.
+
+The Swiss and Baltic guides are selective, source-linked starting points, not comprehensive maps, rankings or relationship lists. Public organisations must not become partner logos. Keep existing directories separate and preserve attribution. The source lists are checked on the stated date, not live verified. Templates must remain blank; never collect confidential company data in a public resource tool.
+
+SEO AND RELEASE
+Use https://jmiseikis.com as the canonical origin. Add appropriate unique Helmet, canonical, OG/Twitter and JSON-LD for every public standalone route; update prerender-meta.mjs and sitemap together. Follow implementation/route-metadata.json as a proposal. Avoid duplicate canonical/robots tags. Keep retired Pulse paths and errors out of the sitemap; remove the redirect alias from canonical sitemap entries. Retain language alternates for / and /de without claiming English-only subpages have German counterparts. Use real getOgImageUrl and preserve the OG service. Never put personal email, disputed counts/title, invented ratings or prices into schema. Do not promise FAQ rich results.
+
+FINISH THE WORK
+Implement the full scope, run the actual repository checks/build, and verify desktop/mobile in both themes. Check 320, 360, 390, 480, 640, 768, 1024 and 1280 px widths plus both themes. Specifically verify the third child of every service row spans the text column on phones, regardless of whether it is a div or paragraph. Check all direct routes, old fragments, filters, preserved data counts, media, calculator boundary cases and protected contact integration. Use existing mocks/test mode for sending; no unsolicited test email, subscription or admin mutation. Keep publication within the existing Lovable workflow and the owner's actual authority. Provide the working preview, screenshots, changed files, exact checks, model/data corrections and any remaining factual questions. Do not claim production publication, inbox delivery, complete accessibility compliance from this local reference alone.

@@ -1,0 +1,146 @@
+{
+  "capturedAt": "2026-10-06",
+  "pages": [
+    {
+      "slug": "index",
+      "route": "/",
+      "title": "AI & robotics strategy",
+      "preview": "/index.html",
+      "lang": "en"
+    },
+    {
+      "slug": "advisory",
+      "route": "/advisory",
+      "title": "AI & robotics advisory",
+      "preview": "/advisory.html",
+      "lang": "en"
+    },
+    {
+      "slug": "publications",
+      "route": "/publications",
+      "title": "Publications & patents",
+      "preview": "/publications.html",
+      "lang": "en"
+    },
+    {
+      "slug": "about",
+      "route": "/about",
+      "title": "About",
+      "preview": "/about.html",
+      "lang": "en"
+    },
+    {
+      "slug": "speaking",
+      "route": "/speaking",
+      "title": "Speaking",
+      "preview": "/speaking.html",
+      "lang": "en"
+    },
+    {
+      "slug": "resources",
+      "route": "/resources",
+      "title": "Resources for Swiss technology & AI decisions",
+      "preview": "/resources.html",
+      "lang": "en"
+    },
+    {
+      "slug": "swiss-ai-robotics-ecosystem",
+      "route": "/swiss-ai-robotics-ecosystem",
+      "title": "Swiss AI & robotics ecosystem guide",
+      "preview": "/swiss-ai-robotics-ecosystem.html",
+      "lang": "en"
+    },
+    {
+      "slug": "swiss-baltic-market-entry",
+      "route": "/swiss-baltic-market-entry",
+      "title": "Swiss & Baltic technology market-entry guide",
+      "preview": "/swiss-baltic-market-entry.html",
+      "lang": "en"
+    },
+    {
+      "slug": "due-diligence",
+      "route": "/due-diligence",
+      "title": "AI & robotics due diligence",
+      "preview": "/due-diligence.html",
+      "lang": "en"
+    },
+    {
+      "slug": "ai-agents-strategy",
+      "route": "/ai-agents-strategy",
+      "title": "AI for internal data & workflows",
+      "preview": "/ai-agents-strategy.html",
+      "lang": "en"
+    },
+    {
+      "slug": "gza-robotics",
+      "route": "/gza-robotics",
+      "title": "Robotics in the Greater Zurich Area",
+      "preview": "/gza-robotics.html",
+      "lang": "en"
+    },
+    {
+      "slug": "swiss-vcs",
+      "route": "/swiss-vcs",
+      "title": "Swiss VCs & funds",
+      "preview": "/swiss-vcs.html",
+      "lang": "en"
+    },
+    {
+      "slug": "tech-events",
+      "route": "/tech-events",
+      "title": "Swiss technology events",
+      "preview": "/tech-events.html",
+      "lang": "en"
+    },
+    {
+      "slug": "raas-calculator",
+      "route": "/raas-calculator",
+      "title": "RaaS ROI calculator",
+      "preview": "/raas-calculator.html",
+      "lang": "en"
+    },
+    {
+      "slug": "de",
+      "route": "/de",
+      "title": "KI- und Robotikstrategie",
+      "preview": "/de.html",
+      "lang": "de"
+    },
+    {
+      "slug": "404",
+      "route": "*",
+      "title": "Page not found",
+      "preview": "/404.html",
+      "lang": "en"
+    },
+    {
+      "slug": "all-pages",
+      "route": "preview only",
+      "title": "All preview pages",
+      "preview": "/all-pages.html",
+      "lang": "en"
+    }
+  ],
+  "liveRedirects": {
+    "/speaking-examples": "/speaking"
+  },
+  "sourceCounts": {
+    "events": 44,
+    "vcs": 66,
+    "robotics": 157
+  },
+  "displayCounts": {
+    "events": 43,
+    "vcs": 66,
+    "robotics": 157
+  },
+  "notes": [
+    "Event sheet currently uses column labels as headers; the old adapter skips the first real record.",
+    "Event source has 44 entries, including two Swiss AI Summit entries with the same dates and URL; display combines those into 43.",
+    "43 visible event records on the old page omit the WEF record and retain the duplicate.",
+    "The event source no longer has ticket price or logo columns. Do not invent values or map unrelated columns into these fields.",
+    "Privacy and Terms footer buttons have no observable action. No policy text was provided.",
+    "Owner requested removal of Swiss Tech Pulse; all four preview screens and navigation removed. Retire production routes without deleting backend records.",
+    "Current Sony title and research counts remain subject to the existing factual decision notes."
+  ]
+}

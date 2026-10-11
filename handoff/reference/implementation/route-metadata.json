@@ -1,0 +1,215 @@
+[
+  {
+    "path": "/",
+    "title": "AI & robotics strategy | Dr. Justinas Mišeikis",
+    "description": "AI and robotics advisory, technology scouting and speaking. Based in Zurich, working with international companies and investors.",
+    "language": "en",
+    "schemaTypes": [
+      "WebPage"
+    ],
+    "sitemap": true,
+    "robots": "index,follow",
+    "canonical": "https://jmiseikis.com/",
+    "alternates": {
+      "en": "https://jmiseikis.com/",
+      "de": "https://jmiseikis.com/de",
+      "x-default": "https://jmiseikis.com/"
+    }
+  },
+  {
+    "path": "/advisory",
+    "title": "AI & robotics advisory | Dr. Justinas Mišeikis",
+    "description": "Technology scouting, AI and robotics diligence, Swiss partnerships and local representation for international companies and investors.",
+    "language": "en",
+    "schemaTypes": [
+      "WebPage",
+      "Service",
+      "Person"
+    ],
+    "sitemap": true,
+    "robots": "index,follow",
+    "canonical": "https://jmiseikis.com/advisory"
+  },
+  {
+    "path": "/publications",
+    "title": "Publications & patents | Dr. Justinas Mišeikis",
+    "description": "Selected papers in robotics, computer vision and human-robot interaction, with links to full publication and patent records.",
+    "language": "en",
+    "schemaTypes": [
+      "CollectionPage"
+    ],
+    "sitemap": true,
+    "robots": "index,follow",
+    "canonical": "https://jmiseikis.com/publications"
+  },
+  {
+    "path": "/about",
+    "title": "About | Dr. Justinas Mišeikis",
+    "description": "Explore Justinas Mišeikis’s background in Sony technology scouting, Sony AI strategy, robotics leadership, research and business.",
+    "language": "en",
+    "schemaTypes": [
+      "AboutPage",
+      "Person"
+    ],
+    "sitemap": true,
+    "robots": "index,follow",
+    "canonical": "https://jmiseikis.com/about"
+  },
+  {
+    "path": "/speaking",
+    "title": "Speaking | Dr. Justinas Mišeikis",
+    "description": "Keynotes, panels and workshops on physical AI, research commercialisation and technology partnerships. Based in Switzerland, delivered in English.",
+    "language": "en",
+    "schemaTypes": [
+      "WebPage"
+    ],
+    "sitemap": true,
+    "robots": "index,follow",
+    "canonical": "https://jmiseikis.com/speaking"
+  },
+  {
+    "path": "/resources",
+    "title": "Resources for Swiss technology & AI decisions | Dr. Justinas Mišeikis",
+    "description": "Guides, directories and templates for Swiss technology scouting, market entry, AI adoption and investor due diligence.",
+    "language": "en",
+    "schemaTypes": [
+      "CollectionPage"
+    ],
+    "sitemap": true,
+    "robots": "index,follow",
+    "canonical": "https://jmiseikis.com/resources"
+  },
+  {
+    "path": "/swiss-ai-robotics-ecosystem",
+    "title": "Swiss AI & robotics ecosystem guide | Dr. Justinas Mišeikis",
+    "description": "Navigate Swiss AI and robotics research, startups and scale-ups. Public sources, investor questions and a downloadable technology scouting brief.",
+    "language": "en",
+    "schemaTypes": [
+      "WebPage",
+      "Article",
+      "Person"
+    ],
+    "sitemap": true,
+    "robots": "index,follow",
+    "canonical": "https://jmiseikis.com/swiss-ai-robotics-ecosystem"
+  },
+  {
+    "path": "/swiss-baltic-market-entry",
+    "title": "Swiss & Baltic technology market-entry guide | Dr. Justinas Mišeikis",
+    "description": "Plan technology market entry into Switzerland and international growth for Swiss startups, with Baltic ecosystem sources and a reusable brief.",
+    "language": "en",
+    "schemaTypes": [
+      "WebPage",
+      "Article",
+      "Person"
+    ],
+    "sitemap": true,
+    "robots": "index,follow",
+    "canonical": "https://jmiseikis.com/swiss-baltic-market-entry"
+  },
+  {
+    "path": "/due-diligence",
+    "title": "AI & robotics due diligence | Dr. Justinas Mišeikis",
+    "description": "Technical and commercial assessment of AI, robotics and deep tech opportunities for investors, acquirers and corporate strategy teams.",
+    "language": "en",
+    "schemaTypes": [
+      "WebPage",
+      "Service",
+      "Person"
+    ],
+    "sitemap": true,
+    "robots": "index,follow",
+    "canonical": "https://jmiseikis.com/due-diligence"
+  },
+  {
+    "path": "/ai-agents-strategy",
+    "title": "AI for internal data & workflows | Dr. Justinas Mišeikis",
+    "description": "Assess AI for internal knowledge, support, proposals and operations. Map company data, processes and permissions, then define a measurable pilot.",
+    "language": "en",
+    "schemaTypes": [
+      "WebPage",
+      "Article",
+      "Person"
+    ],
+    "sitemap": true,
+    "robots": "index,follow",
+    "canonical": "https://jmiseikis.com/ai-agents-strategy"
+  },
+  {
+    "path": "/gza-robotics",
+    "title": "Robotics in the Greater Zurich Area | Dr. Justinas Mišeikis",
+    "description": "Explore robotics companies, research labs and autonomous systems organisations in the Greater Zurich Area, with data curated by GZA.",
+    "language": "en",
+    "schemaTypes": [
+      "CollectionPage"
+    ],
+    "sitemap": true,
+    "robots": "index,follow",
+    "canonical": "https://jmiseikis.com/gza-robotics"
+  },
+  {
+    "path": "/swiss-vcs",
+    "title": "Swiss VCs & funds | Dr. Justinas Mišeikis",
+    "description": "Explore Swiss investors by sector, stage, geography and audience, with links to original investment-firm information.",
+    "language": "en",
+    "schemaTypes": [
+      "CollectionPage"
+    ],
+    "sitemap": true,
+    "robots": "index,follow",
+    "canonical": "https://jmiseikis.com/swiss-vcs"
+  },
+  {
+    "path": "/tech-events",
+    "title": "Swiss technology events | Dr. Justinas Mišeikis",
+    "description": "Explore technology conferences, summits and ecosystem events in Switzerland, with date, topic, location and scope filters.",
+    "language": "en",
+    "schemaTypes": [
+      "CollectionPage"
+    ],
+    "sitemap": true,
+    "robots": "index,follow",
+    "canonical": "https://jmiseikis.com/tech-events"
+  },
+  {
+    "path": "/raas-calculator",
+    "title": "RaaS ROI calculator | Dr. Justinas Mišeikis",
+    "description": "Explore robot-as-a-service costs, cash savings, productivity assumptions and payback with an interactive robotics scenario model.",
+    "language": "en",
+    "schemaTypes": [
+      "WebPage",
+      "SoftwareApplication"
+    ],
+    "sitemap": true,
+    "robots": "index,follow",
+    "canonical": "https://jmiseikis.com/raas-calculator"
+  },
+  {
+    "path": "/de",
+    "title": "KI- und Robotikstrategie | Dr. Justinas Mišeikis",
+    "description": "KI- und Robotikberatung, Technologie-Scouting und Keynotes. Sitz in Zürich, internationale Zusammenarbeit auf Englisch.",
+    "language": "de",
+    "schemaTypes": [
+      "WebPage"
+    ],
+    "sitemap": true,
+    "robots": "index,follow",
+    "canonical": "https://jmiseikis.com/de",
+    "alternates": {
+      "en": "https://jmiseikis.com/",
+      "de": "https://jmiseikis.com/de",
+      "x-default": "https://jmiseikis.com/"
+    }
+  },
+  {
+    "path": "*",
+    "title": "Page not found | Dr. Justinas Mišeikis",
+    "description": "Find the right page on the website of Dr. Justinas Mišeikis.",
+    "language": "en",
+    "schemaTypes": [
+      "WebPage"
+    ],
+    "sitemap": false,
+    "robots": "noindex,nofollow"
+  }
+]

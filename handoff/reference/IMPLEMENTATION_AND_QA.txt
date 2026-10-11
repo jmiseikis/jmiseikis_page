@@ -1,0 +1,49 @@
+Full-site Lovable implementation and acceptance notes
+
+Use CLAUDE_CODE_PROMPT.txt for the complete scope, FULL_SITE_INVENTORY.json for all routes and CONTENT_PRESERVATION.txt for retention. The package was prepared without the private production repository. The HTML preview is functional locally; it is not a compiled patch against the existing React app.
+
+Suggested order
+1. Inspect repository instructions, uncommitted changes, components, routes, integrations and package scripts. Record baseline issues.
+2. Implement shared page shell, navigation/footer, tokens and accessible controls. Keep the approved homepage direction.
+3. Add About, Resources and Publications; rebuild existing advisory, speaking, diligence and article routes; preserve old fragments and redirect.
+4. Restyle live directories; integrate the header-aware adapter correction with tests and source provenance. Never replace production live queries with the snapshot files.
+5. Implement the calculator proposal with explicit mathematical review and regression tests. Document any changes relative to the actual source.
+6. Remove Pulse feature UI/routes and add the new decision guides and blank worksheet downloads. Preserve backend historical records and shared security.
+7. Integrate contact intent and actual protected delivery; preserve the working media feed.
+8. Update metadata, prerender configuration, sitemap, language alternatives and canonical origin together.
+9. Run actual project checks/build and review the whole site. Publish only through the existing authorised Lovable workflow.
+
+Contact contract
+/?enquiry=advisory#contact, scouting, diligence, representation, speaking and other are suggested allowlisted values. Keep whatever equivalent convention the actual project already uses. Unknown values fall back safely. No personal information in URL parameters. Intent preselection must not reset a message already typed. Use real links for navigation and correct cross-route hashes.
+Keep react-hook-form, zod, server validation, Turnstile verification/expiry/retry and all existing delivery guards. Never put the owner's address in frontend assets. No success UI before server acknowledgement. Test using existing mocks or a supported test mode; no unsolicited real email/subscription. The local reference's Review enquiry action is not the production submit action.
+
+Content checks
+Compare CONTENT_PRESERVATION.txt and original snapshots with the actual repository. Keep all original relevant content, datasets, source links, speaking catalogue and archive. New copy should preserve Sony technology scouting, Swiss base and international English delivery. No public prices, published owner email, unverified numerical claims, current-title invention, unapproved testimonials or institutional endorsements. Preserve the existing email-and-fees PDF separately.
+No privacy or terms content was discoverable through the live buttons. Inspect the private repository before treating that as missing project content. Connect an existing approved document if present; otherwise report the unresolved content requirement rather than inventing it.
+
+Directories
+Separate loading, error, genuinely empty source and filter-no-results states. Show source data and capture/refresh information accurately; a refresh is not factual re-verification. Preserve date ranges and distinct event sessions. Do not use unconditional rows.slice(1). Missing price is unavailable. Preserve all source entries when merging duplicate display identities. Keep original external links. Invalid links should not become clickable javascript/data schemes. Escape text content. Financial numbers remain labelled according to their source, not reinterpreted as AUM.
+Use Zurich local dates for date-only event comparisons. Preserve the 2026 archive. Do not invent future dates. Search/filter combinations, reset, grid/list, pagination boundaries, absent fields and remote failure/retry must work. Maintain state coherently when a filter changes or data refreshes.
+
+Calculator
+The proposed pure model and tests are in implementation/. See DATA_AND_CALCULATOR_CHANGES.txt. Check current production model before integration and preserve any additional legitimate behaviour not visible in the audit. Verify scalar inputs/percentages, no robots, invalid/missing values, negative cash, zero investment denominator, no payback within term, staffing per shift, setup recovery, inflation, incremental productivity and currency labelling. Prevent non-cash value from being called cash savings. Do not infer capacity from robot count alone.
+Default outcome is illustrative, not a recommendation or validated ROI forecast. Formula changes require clear release notes. Exact values remain accessible in breakdowns and chart descriptions; currency switch does not perform conversion.
+
+Retired feature
+Remove Swiss Tech Pulse routes, public entry points, subscription controls and client-only code. Do not delete stored records, consent or roles, or alter server-side guards. Inspect background jobs separately and report remaining feature dependencies. Use a genuine missing/retired response for old URLs; keep them out of the sitemap.
+
+SEO
+All public standalone routes need unique title/description, exactly one self-referencing canonical, matching OG/Twitter tags and appropriate supported JSON-LD. Use https://jmiseikis.com, the real OG helper and existing prerender pipeline. Do not retain stale lovable.app canonical tags. Keep a shared Person identity without email/disputed title. Add genuine public pages to sitemap; exclude retired Pulse routes, 404 and preview files. Preserve /speaking-examples redirect; do not canonicalise it independently. Language alternates exist for / and /de only. Inspect generated HTML and hydrated DOM for duplicate or conflicting metadata. Do not claim full-body prerendering from metadata-only prerender output. Do not promise FAQ rich-result eligibility.
+
+Functionality and visual QA
+Check direct entry/refresh for every production route and old anchors. Check all navigation/CTAs, source links, media, query-preserved form intent and accessible mobile menu. Keep 404 last. Use site-relative real routes, not preview .html URLs.
+Review at 320/360/390/480/640/768/1024/1280/1440 CSS pixels and 200% zoom. Check both themes, overflow, long amounts, missing data, sticky headings, keyboard order, Escape behaviour, labels/errors, focus visibility and reduced motion. Contrast target: 4.5:1 normal text, 3:1 large text and meaningful controls. Do not put interactive buttons inside linked cards. Reuse current image/media optimisation; hero should not lazy-load and lower media should.
+
+Performance and analytics
+Keep existing analytics only; never log message contents or personal contact details. Preserve query caching and do not fetch enormous directories repeatedly on every keystroke. Avoid introducing heavy animation libraries. Do not claim measured conversion/performance improvement without measurements.
+
+Delivery
+Return actual changed files, preview URL, screenshots, checks/build results, formula/data changes and outstanding owner facts. Distinguish local reference QA from actual production integration checks. Do not claim email delivery, healthy live backend, deployment, indexing or full accessibility compliance without evidence.
+
+Content and enquiry measurement
+Use RESOURCE_AND_POSITIONING_STRATEGY.txt for a staged resource roadmap. No traffic, ranking or AI-citation promises. Measure resource-to-service clicks and qualified enquiries without including enquiry text or personal data in analytics events. Source/date labels and visible authorship are editorial requirements; structured data must match the page.

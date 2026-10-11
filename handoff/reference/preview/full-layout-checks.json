@@ -1,0 +1,2960 @@
+[
+  {
+    "slug": "index",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "slug": "advisory",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "slug": "publications",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "slug": "about",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "slug": "speaking",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "slug": "resources",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "slug": "swiss-ai-robotics-ecosystem",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "slug": "swiss-baltic-market-entry",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "slug": "due-diligence",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "slug": "ai-agents-strategy",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "slug": "gza-robotics",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "slug": "swiss-vcs",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "slug": "tech-events",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "slug": "raas-calculator",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "slug": "de",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "slug": "404",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "slug": "all-pages",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "slug": "index",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 360
+  },
+  {
+    "slug": "advisory",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 360
+  },
+  {
+    "slug": "publications",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 360
+  },
+  {
+    "slug": "about",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 360
+  },
+  {
+    "slug": "speaking",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 360
+  },
+  {
+    "slug": "resources",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 360
+  },
+  {
+    "slug": "swiss-ai-robotics-ecosystem",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 360
+  },
+  {
+    "slug": "swiss-baltic-market-entry",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 360
+  },
+  {
+    "slug": "due-diligence",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 360
+  },
+  {
+    "slug": "ai-agents-strategy",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 360
+  },
+  {
+    "slug": "gza-robotics",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 360
+  },
+  {
+    "slug": "swiss-vcs",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 360
+  },
+  {
+    "slug": "tech-events",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 360
+  },
+  {
+    "slug": "raas-calculator",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 360
+  },
+  {
+    "slug": "de",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 360
+  },
+  {
+    "slug": "404",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 360
+  },
+  {
+    "slug": "all-pages",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 360
+  },
+  {
+    "slug": "index",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "slug": "advisory",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "slug": "publications",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "slug": "about",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "slug": "speaking",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "slug": "resources",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "slug": "swiss-ai-robotics-ecosystem",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "slug": "swiss-baltic-market-entry",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "slug": "due-diligence",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "slug": "ai-agents-strategy",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "slug": "gza-robotics",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "slug": "swiss-vcs",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "slug": "tech-events",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "slug": "raas-calculator",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "slug": "de",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "slug": "404",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "slug": "all-pages",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "slug": "index",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 480
+  },
+  {
+    "slug": "advisory",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 480
+  },
+  {
+    "slug": "publications",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 480
+  },
+  {
+    "slug": "about",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 480
+  },
+  {
+    "slug": "speaking",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 480
+  },
+  {
+    "slug": "resources",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 480
+  },
+  {
+    "slug": "swiss-ai-robotics-ecosystem",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 480
+  },
+  {
+    "slug": "swiss-baltic-market-entry",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 480
+  },
+  {
+    "slug": "due-diligence",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 480
+  },
+  {
+    "slug": "ai-agents-strategy",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 480
+  },
+  {
+    "slug": "gza-robotics",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 480
+  },
+  {
+    "slug": "swiss-vcs",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 480
+  },
+  {
+    "slug": "tech-events",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 480
+  },
+  {
+    "slug": "raas-calculator",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 480
+  },
+  {
+    "slug": "de",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 480
+  },
+  {
+    "slug": "404",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 480
+  },
+  {
+    "slug": "all-pages",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 480
+  },
+  {
+    "slug": "index",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 640
+  },
+  {
+    "slug": "advisory",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 640
+  },
+  {
+    "slug": "publications",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 640
+  },
+  {
+    "slug": "about",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 640
+  },
+  {
+    "slug": "speaking",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 640
+  },
+  {
+    "slug": "resources",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 640
+  },
+  {
+    "slug": "swiss-ai-robotics-ecosystem",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 640
+  },
+  {
+    "slug": "swiss-baltic-market-entry",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 640
+  },
+  {
+    "slug": "due-diligence",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 640
+  },
+  {
+    "slug": "ai-agents-strategy",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 640
+  },
+  {
+    "slug": "gza-robotics",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 640
+  },
+  {
+    "slug": "swiss-vcs",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 640
+  },
+  {
+    "slug": "tech-events",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 640
+  },
+  {
+    "slug": "raas-calculator",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 640
+  },
+  {
+    "slug": "de",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 640
+  },
+  {
+    "slug": "404",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 640
+  },
+  {
+    "slug": "all-pages",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 640
+  },
+  {
+    "slug": "index",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "slug": "advisory",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "slug": "publications",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "slug": "about",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "slug": "speaking",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "slug": "resources",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "slug": "swiss-ai-robotics-ecosystem",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "slug": "swiss-baltic-market-entry",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "slug": "due-diligence",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "slug": "ai-agents-strategy",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "slug": "gza-robotics",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "slug": "swiss-vcs",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "slug": "tech-events",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "slug": "raas-calculator",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "slug": "de",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "slug": "404",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "slug": "all-pages",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "slug": "index",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1024
+  },
+  {
+    "slug": "advisory",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1024
+  },
+  {
+    "slug": "publications",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1024
+  },
+  {
+    "slug": "about",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1024
+  },
+  {
+    "slug": "speaking",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1024
+  },
+  {
+    "slug": "resources",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1024
+  },
+  {
+    "slug": "swiss-ai-robotics-ecosystem",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1024
+  },
+  {
+    "slug": "swiss-baltic-market-entry",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1024
+  },
+  {
+    "slug": "due-diligence",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1024
+  },
+  {
+    "slug": "ai-agents-strategy",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1024
+  },
+  {
+    "slug": "gza-robotics",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1024
+  },
+  {
+    "slug": "swiss-vcs",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1024
+  },
+  {
+    "slug": "tech-events",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1024
+  },
+  {
+    "slug": "raas-calculator",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1024
+  },
+  {
+    "slug": "de",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1024
+  },
+  {
+    "slug": "404",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1024
+  },
+  {
+    "slug": "all-pages",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1024
+  },
+  {
+    "slug": "index",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1280
+  },
+  {
+    "slug": "advisory",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1280
+  },
+  {
+    "slug": "publications",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1280
+  },
+  {
+    "slug": "about",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1280
+  },
+  {
+    "slug": "speaking",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1280
+  },
+  {
+    "slug": "resources",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1280
+  },
+  {
+    "slug": "swiss-ai-robotics-ecosystem",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1280
+  },
+  {
+    "slug": "swiss-baltic-market-entry",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1280
+  },
+  {
+    "slug": "due-diligence",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1280
+  },
+  {
+    "slug": "ai-agents-strategy",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1280
+  },
+  {
+    "slug": "gza-robotics",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1280
+  },
+  {
+    "slug": "swiss-vcs",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1280
+  },
+  {
+    "slug": "tech-events",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1280
+  },
+  {
+    "slug": "raas-calculator",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1280
+  },
+  {
+    "slug": "de",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1280
+  },
+  {
+    "slug": "404",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1280
+  },
+  {
+    "slug": "all-pages",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "light",
+    "width": 1280
+  },
+  {
+    "slug": "index",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "slug": "advisory",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "slug": "publications",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "slug": "about",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "slug": "speaking",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "slug": "resources",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "slug": "swiss-ai-robotics-ecosystem",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "slug": "swiss-baltic-market-entry",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "slug": "due-diligence",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "slug": "ai-agents-strategy",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "slug": "gza-robotics",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "slug": "swiss-vcs",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "slug": "tech-events",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "slug": "raas-calculator",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "slug": "de",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "slug": "404",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "slug": "all-pages",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "slug": "index",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "slug": "advisory",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "slug": "publications",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "slug": "about",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "slug": "speaking",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "slug": "resources",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "slug": "swiss-ai-robotics-ecosystem",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "slug": "swiss-baltic-market-entry",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "slug": "due-diligence",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "slug": "ai-agents-strategy",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "slug": "gza-robotics",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "slug": "swiss-vcs",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "slug": "tech-events",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "slug": "raas-calculator",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "slug": "de",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "slug": "404",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "slug": "all-pages",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "slug": "index",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "slug": "advisory",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "slug": "publications",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "slug": "about",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "slug": "speaking",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "slug": "resources",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "slug": "swiss-ai-robotics-ecosystem",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "slug": "swiss-baltic-market-entry",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "slug": "due-diligence",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "slug": "ai-agents-strategy",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "slug": "gza-robotics",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "slug": "swiss-vcs",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "slug": "tech-events",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "slug": "raas-calculator",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "slug": "de",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "slug": "404",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "slug": "all-pages",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [
+      "SPAN."
+    ],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "slug": "index",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 1280
+  },
+  {
+    "slug": "advisory",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 1280
+  },
+  {
+    "slug": "publications",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 1280
+  },
+  {
+    "slug": "about",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 1280
+  },
+  {
+    "slug": "speaking",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 1280
+  },
+  {
+    "slug": "resources",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 1280
+  },
+  {
+    "slug": "swiss-ai-robotics-ecosystem",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 1280
+  },
+  {
+    "slug": "swiss-baltic-market-entry",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 1280
+  },
+  {
+    "slug": "due-diligence",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 1280
+  },
+  {
+    "slug": "ai-agents-strategy",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 1280
+  },
+  {
+    "slug": "gza-robotics",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 1280
+  },
+  {
+    "slug": "swiss-vcs",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 1280
+  },
+  {
+    "slug": "tech-events",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 1280
+  },
+  {
+    "slug": "raas-calculator",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 1280
+  },
+  {
+    "slug": "de",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 1280
+  },
+  {
+    "slug": "404",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 1280
+  },
+  {
+    "slug": "all-pages",
+    "blank": false,
+    "brokenImages": [],
+    "h1": 1,
+    "narrowParagraphs": [],
+    "overflow": false,
+    "overflowElements": [],
+    "ownerEmail": false,
+    "pulse": false,
+    "theme": "dark",
+    "width": 1280
+  }
+]

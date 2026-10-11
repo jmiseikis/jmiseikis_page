@@ -1,0 +1,22 @@
+{
+  "workers": 3,
+  "wage": 25,
+  "shifts": 2,
+  "days": 5,
+  "overhead": 30,
+  "turnover": 20,
+  "labourRealisation": 100,
+  "robots": 2,
+  "subscription": 3000,
+  "setup": 20000,
+  "uptime": 95,
+  "productivity": 40,
+  "productivityRealisation": 0,
+  "years": 3,
+  "operations": 0,
+  "errors": 5000,
+  "errorReduction": 75,
+  "incidents": 1000,
+  "incidentReduction": 60,
+  "inflation": 2
+}

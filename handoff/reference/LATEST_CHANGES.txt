@@ -1,0 +1,17 @@
+LATEST OWNER-REQUESTED REVISION | 6 October 2026
+
+1. Swiss Tech Pulse removed from the entire preview: four screens, clean-path aliases, navigation/footer, resource list and client controls. Production handoff now explicitly retires the feature; it must not be recreated by following the older package. Historical backend records and shared security must remain intact.
+
+2. AI Agents Strategy rewritten as “Make AI useful inside your business,” at the same route. Four concrete workflow examples name internal data, the work supported, the human decision and pilot evidence. Adds process/data mapping, readiness questions, pilot gates, economics, tangible advisory outputs and a downloadable blank pilot brief.
+
+3. Positioning reinforced on Home, Advisory and Diligence: market entry and Swiss partnerships; international growth support for Swiss startups; VC/CVC scouting and technical assessment of early-stage and scale-up Swiss startups. Describes selected Swiss/international VC relationships without overclaiming access. Internal AI advisory is a fourth explicit Advisory offer.
+
+4. New public resources: Swiss AI/robotics ecosystem guide, Swiss/Baltic market-entry guide, plus four TXT worksheets (AI pilot, market entry, scouting, technical diligence). Resource hub reorganised around decisions. Frameworks and examples do not claim past client outcomes.
+
+5. Narrow layouts: corrected a real mobile service-row bug where a paragraph occupied the 25px number column. The third child now uses the main text column regardless of element type. Added shrinkable grid tracks, small-phone typography/gutters, full-width small-phone actions, stacked filters, readable form text, responsive guide layouts and wrapping calculator breakdowns. No blanket overflow hiding.
+
+Read RESOURCE_AND_POSITIONING_STRATEGY.txt for the prioritised resource roadmap and SEO/AI-search guidance. See VALIDATION.txt for the current measured browser checks; do not reuse the earlier 95-observation count for this revision.
+
+The complete page copy and preview supersede the older single-page implementation/Advisory.tsx and advisory-content.ts adapters. Their service copy is updated, but they remain partial integration examples rather than the complete final page. Use FULL_SITE_COPY.json, the preview and route-metadata.json for the latest content and routes.
+
+This remains a local review site and Claude Code/Lovable handoff, not a deployment to jmiseikis.com.

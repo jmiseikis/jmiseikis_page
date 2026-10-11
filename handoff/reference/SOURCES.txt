@@ -1,0 +1,32 @@
+Context and evidence
+
+Owner-provided Lovable project notes, attached 6 October 2026.
+Live website audit performed 5 October 2026 at https://jmiseikis.com and its speaking, robotics, events, VC and calculator routes.
+Owner-confirmed Sony technology scouting, Swiss location, remote international work, cash consulting preference and past speaking engagements in the conversation.
+The existing services PDF and standalone advisory page informed service scope, but their public pricing and email presentation are not copied into the new website by default.
+
+Technical references
+Google canonical guidance:
+https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls
+Canonical tags are a preference signal; they do not establish that the wrong URL is already ranking.
+
+W3C normal-text contrast guidance:
+https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html
+Normal text requires 4.5:1; large text has a 3:1 threshold. Do not round a below-threshold result up to a pass.
+
+Google Search documentation updates:
+https://developers.google.com/search/updates
+Checked 6 October 2026. The June 15 and May 8, 2026 entries record removal/deprecation of FAQ rich results. Use FAQ content for readers without promising a search enhancement.
+
+Public profile URL status
+The earlier supplied profile and live site used https://www.linkedin.com/in/justinasmiseikis/.
+The Lovable notes supplied https://www.linkedin.com/in/justinas-miseikis/.
+Direct automated retrieval did not establish which is authoritative. Preserve the established link until confirmed by the owner or a visible profile/redirect. No new relationship or identity claim is inferred from this conflict.
+
+Full-site extension evidence, captured 6 October 2026
+https://jmiseikis.com/ and all routes listed in FULL_SITE_INVENTORY.json were inspected through the rendered website. Public sitemap and public JavaScript route definitions supplied additional route discovery. The deployed JavaScript URL at inspection was https://jmiseikis.com/assets/index-D89SlyJR.js . No private repository or authenticated review data was accessed.
+source-snapshots/ contains captured page text/links, data-source URLs and the original public Google Sheets responses. Those are comparison references, not an independent verification of every directory claim. The public source endpoints already used by the website are recorded in source-snapshots/data-sources.json.
+Speaking recordings/thumbnails and Scholar/Patent URLs were preserved from visible page links. No external endorsement or investor relationship is inferred from a directory listing.
+
+6 October 2026 resource revision
+The complete current source list and limitations are in RESOURCE_AND_POSITIONING_STRATEGY.txt. Pulse references above document the original audit only; the feature is now explicitly removed. Public guide sources were read on this revision date.
