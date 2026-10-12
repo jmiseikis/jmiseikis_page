@@ -20,26 +20,19 @@ const De = () => {
         <meta property="og:image" content="https://jmiseikis.com/og-image.png" />
       </Helmet>
 
-      <div className="min-h-screen bg-background">
-        {/* Navigation */}
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
-          <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between h-20">
-              <Link to="/" className="text-xl font-bold tracking-tight hover:text-primary transition-colors">
-                Dr. Justinas Mišeikis
-              </Link>
-              <div className="flex items-center gap-4">
-                <Link to="/" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  English
-                </Link>
-              </div>
-            </div>
-          </div>
-        </nav>
-
+      <div className="bg-background">
         {/* Hero */}
-        <section className="pt-32 pb-20 px-4">
+        <section className="pt-12 md:pt-16 pb-20 px-4">
           <div className="container mx-auto max-w-4xl">
+            <p className="mb-6">
+              <Link
+                to="/"
+                lang="en"
+                className="inline-flex min-h-11 items-center text-sm font-semibold text-muted-foreground underline underline-offset-4 hover:text-foreground"
+              >
+                English version
+              </Link>
+            </p>
             <span className="text-primary font-medium tracking-wider uppercase text-sm">
               KI-Strategieberater • Keynote Speaker • Robotik-Experte
             </span>
@@ -166,15 +159,6 @@ const De = () => {
         </section>
 
         {/* Footer */}
-        <footer className="py-8 border-t border-border px-4">
-          <div className="container mx-auto text-center text-sm text-muted-foreground">
-            <p>© {new Date().getFullYear()} Dr. Justinas Mišeikis. Zürich, Schweiz.</p>
-            <p className="mt-2 space-x-4">
-              <Link to="/privacy" className="hover:text-primary transition-colors">Datenschutz</Link>
-              <Link to="/terms" className="hover:text-primary transition-colors">Nutzungsbedingungen</Link>
-            </p>
-          </div>
-        </footer>
       </div>
     </>
   );

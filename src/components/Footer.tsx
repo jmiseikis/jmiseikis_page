@@ -1,92 +1,57 @@
-import { Linkedin, ExternalLink } from "lucide-react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { CONTACT_PATH, FOOTER_COLUMNS, LINKEDIN_URL, type FooterLink } from "@/lib/site";
+
+const linkClass = "text-muted-foreground transition-colors hover:text-foreground hover:underline underline-offset-4";
+
+const FooterItem = ({ link }: { link: FooterLink }) =>
+  link.external ? (
+    <a href={link.to} target="_blank" rel="noopener noreferrer" className={linkClass}>
+      {link.label} <span aria-hidden="true">↗</span>
+    </a>
+  ) : (
+    <Link to={link.to} className={linkClass}>
+      {link.label}
+    </Link>
+  );
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const footerLinks = {
-    sections: [
-      {
-        title: "Quick Links",
-        links: [
-          { label: "About", href: "#about" },
-          { label: "Advisory", href: "#advisory" },
-          { label: "Speaking", href: "#speaking" },
-          { label: "Publications", href: "#publications" },
-          { label: "Resources", href: "#resources" },
-        ],
-      },
-      {
-        title: "Resources",
-        links: [
-          { label: "Google Scholar", href: "https://scholar.google.com/citations?user=KeZ1-AwAAAAJ", external: true },
-          { label: "Patents", href: "https://patents.google.com/?inventor=justinas+miseikis,justinas+mi%C5%A1eikis", external: true },
-        ],
-      },
-    ],
-  };
-
-  // Home sections only exist on "/": elsewhere, go to the home page and let Navigation scroll to the hash.
-  const scrollToSection = (href: string) => {
-    if (!href.startsWith("#")) return;
-    if (location.pathname !== "/") {
-      navigate("/" + href);
-      return;
-    }
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
-  };
+  // The German page links back to English; every other page offers the German page.
+  const onGermanPage = useLocation().pathname.toLowerCase().replace(/\/+$/, "") === "/de";
 
   return (
-    <footer className="bg-foreground text-background">
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
-          {/* Brand */}
-          <div className="md:col-span-2">
-            <h3 className="text-2xl font-bold mb-4">Dr. Justinas Mišeikis</h3>
-            <p className="text-background/70 mb-6 leading-relaxed">
-              Technology expert and innovation advisor specializing in AI commercialization, 
-              robotics, and corporate strategy. Based in Zurich, active across DACH and Baltics.
+    <footer className="border-t border-border bg-muted pb-7 pt-9 md:pt-14">
+      <div className="site-wrap">
+        <div className="grid grid-cols-2 gap-6 md:gap-9 nav:grid-cols-[minmax(0,1.35fr)_repeat(3,minmax(0,1fr))] nav:gap-10">
+          <div className="col-span-2 space-y-3 nav:col-span-1">
+            <p className="text-base font-bold text-foreground">Dr. Justinas Mišeikis</p>
+            <p className="text-sm text-foreground">
+              AI &amp; robotics advisory.
+              <br />
+              Swiss ecosystem expertise.
             </p>
-            <div className="flex gap-4">
-              <a
-                href="https://www.linkedin.com/in/justinasmiseikis/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 bg-background/10 hover:bg-primary transition-colors group"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              </a>
-            </div>
+            <p className="text-xs text-muted-foreground">
+              Zurich, Switzerland.
+              <br />
+              Working internationally in English.
+            </p>
+            <a
+              href={LINKEDIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block border-b border-primary pb-1 text-[13px] font-semibold text-foreground hover:text-primary"
+            >
+              Connect on LinkedIn <span aria-hidden="true">↗</span>
+            </a>
           </div>
 
-          {/* Links Sections */}
-          {footerLinks.sections.map((section, index) => (
-            <div key={index}>
-              <h4 className="font-bold mb-4 text-lg">{section.title}</h4>
-              <ul className="space-y-3">
-                {section.links.map((link, linkIndex) => (
-                  <li key={linkIndex}>
-                    {link.external ? (
-                      <a
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-background/70 hover:text-primary transition-colors inline-flex items-center gap-2 group"
-                      >
-                        {link.label}
-                        <ExternalLink className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                      </a>
-                    ) : (
-                      <button
-                        onClick={() => scrollToSection(link.href)}
-                        className="text-background/70 hover:text-primary transition-colors text-left"
-                      >
-                        {link.label}
-                      </button>
-                    )}
+          {FOOTER_COLUMNS.map((column) => (
+            <div key={column.title} className="min-w-0">
+              <h2 className="eyebrow mb-2 tracking-[0.12em]">{column.title}</h2>
+              <ul className="text-[13px]">
+                {column.links.map((link) => (
+                  <li key={link.label} className="py-1.5">
+                    <FooterItem link={link} />
                   </li>
                 ))}
               </ul>
@@ -94,22 +59,30 @@ const Footer = () => {
           ))}
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-background/20">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-background/60 text-sm">
-              © {currentYear} Dr. Justinas Mišeikis. All rights reserved.
-            </p>
-            <div className="flex gap-6 text-sm">
-              <Link to="/privacy" className="text-background/60 hover:text-primary transition-colors">
-                Privacy Policy
-              </Link>
-              <Link to="/terms" className="text-background/60 hover:text-primary transition-colors">
-                Terms of Use
-              </Link>
-            </div>
-          </div>
+        <div className="mt-7 flex flex-wrap items-center gap-x-7 gap-y-3 border-t border-border pt-5 text-xs text-muted-foreground">
+          <span className="w-full md:mr-auto md:w-auto">© {currentYear} Dr. Justinas Mišeikis</span>
+          {onGermanPage ? (
+            <Link to="/" lang="en" className={linkClass}>
+              English
+            </Link>
+          ) : (
+            <Link to="/de" lang="de" className={linkClass}>
+              Deutsch
+            </Link>
+          )}
+          <Link to={CONTACT_PATH} className={linkClass}>
+            Contact
+          </Link>
+          <Link to="/privacy" className={linkClass}>
+            Privacy Policy
+          </Link>
+          <Link to="/terms" className={linkClass}>
+            Terms of Use
+          </Link>
         </div>
+        <p className="mt-3 max-w-[80ch] text-xs text-muted-foreground">
+          Professional experience and named organisations do not imply endorsement of independent services.
+        </p>
       </div>
     </footer>
   );

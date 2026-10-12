@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import RouteErrorBoundary from "@/components/RouteErrorBoundary";
+import SiteShell from "@/components/site/SiteShell";
 import Index from "./pages/Index";
 import TechEvents from "./pages/TechEvents";
 import SwissVCs from "./pages/SwissVCs";
@@ -37,30 +38,32 @@ const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <Toaster />
-        <Sonner />
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/de" element={<De />} />
-            <Route path="/advisory" element={<AdvisoryPage />} />
-            <Route path="/speaking" element={<SpeakingPage />} />
-            <Route path="/speaking-examples" element={<Navigate to="/speaking" replace />} />
-            <Route path="/due-diligence" element={<DueDiligencePage />} />
-            <Route path="/tech-events" element={<TechEvents />} />
-            <Route path="/swiss-vcs" element={<SwissVCs />} />
-            <Route path="/raas-calculator" element={<RaasCalculator />} />
-            <Route path="/gza-robotics" element={<GZARobotics />} />
-            <Route path="/ai-agents-strategy" element={<AiAgentsStrategy />} />
-            <Route path="/privacy" element={legalPage(<PrivacyPolicy />)} />
-            <Route path="/terms" element={legalPage(<TermsOfUse />)} />
-            <Route path="/resources/swiss-tech-pulse" element={<SwissTechPulse />} />
-            <Route path="/resources/swiss-tech-pulse/about" element={<SwissTechPulseAbout />} />
-            <Route path="/resources/swiss-tech-pulse/digest/:week" element={<SwissTechPulseDigest />} />
-            <Route path="/resources/swiss-tech-pulse/review" element={<SwissTechPulseReview />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <SiteShell>
+            <Toaster />
+            <Sonner />
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/de" element={<De />} />
+              <Route path="/advisory" element={<AdvisoryPage />} />
+              <Route path="/speaking" element={<SpeakingPage />} />
+              <Route path="/speaking-examples" element={<Navigate to="/speaking" replace />} />
+              <Route path="/due-diligence" element={<DueDiligencePage />} />
+              <Route path="/tech-events" element={<TechEvents />} />
+              <Route path="/swiss-vcs" element={<SwissVCs />} />
+              <Route path="/raas-calculator" element={<RaasCalculator />} />
+              <Route path="/gza-robotics" element={<GZARobotics />} />
+              <Route path="/ai-agents-strategy" element={<AiAgentsStrategy />} />
+              <Route path="/privacy" element={legalPage(<PrivacyPolicy />)} />
+              <Route path="/terms" element={legalPage(<TermsOfUse />)} />
+              <Route path="/resources/swiss-tech-pulse" element={<SwissTechPulse />} />
+              <Route path="/resources/swiss-tech-pulse/about" element={<SwissTechPulseAbout />} />
+              <Route path="/resources/swiss-tech-pulse/digest/:week" element={<SwissTechPulseDigest />} />
+              <Route path="/resources/swiss-tech-pulse/review" element={<SwissTechPulseReview />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </SiteShell>
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

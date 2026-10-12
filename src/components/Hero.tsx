@@ -9,7 +9,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section className="relative flex min-h-[calc(100svh-var(--header-h))] items-center justify-center overflow-hidden py-16">
       {/* Background */}
       <div 
         className="absolute inset-0 bg-cover bg-center z-0"

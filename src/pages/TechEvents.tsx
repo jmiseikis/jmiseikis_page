@@ -18,16 +18,16 @@ const isSafeUrl = (url: string | undefined | null): url is string =>
   !!url && url !== "[URL]" && /^https?:\/\//i.test(url);
 
 const categoryColors: Record<string, string> = {
-  "Industry": "bg-blue-500/10 text-blue-600 border-blue-200",
-  "Startup": "bg-green-500/10 text-green-600 border-green-200",
-  "Research": "bg-purple-500/10 text-purple-600 border-purple-200",
-  "Other": "bg-orange-500/10 text-orange-600 border-orange-200",
+  "Industry": "bg-blue-500/10 text-blue-700 border-blue-200 dark:text-blue-300 dark:border-blue-500/40",
+  "Startup": "bg-green-500/10 text-green-800 border-green-200 dark:text-green-300 dark:border-green-500/40",
+  "Research": "bg-purple-500/10 text-purple-700 border-purple-200 dark:text-purple-300 dark:border-purple-500/40",
+  "Other": "bg-orange-500/10 text-orange-800 border-orange-200 dark:text-orange-300 dark:border-orange-500/40",
 };
 
 const sizeColors: Record<string, string> = {
   "Small": "bg-muted text-muted-foreground",
-  "Medium": "bg-primary/10 text-primary",
-  "Large": "bg-primary/20 text-primary font-semibold",
+  "Medium": "border-primary text-primary",
+  "Large": "border-primary bg-primary text-primary-foreground font-semibold",
 };
 
 // A date picked in the date range filter, as a YYYY-MM-DD calendar date.
@@ -66,10 +66,6 @@ const TechEvents = () => {
   const [startDateFilter, setStartDateFilter] = useState<Date | undefined>(undefined);
   const [endDateFilter, setEndDateFilter] = useState<Date | undefined>(undefined);
   const [showPastEvents, setShowPastEvents] = useState(false);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   // SEO: title, description, canonical, OG/Twitter tags, JSON-LD
   useEffect(() => {
@@ -223,13 +219,13 @@ const TechEvents = () => {
     startDateFilter !== undefined || endDateFilter !== undefined;
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="bg-background">
       {/* Header */}
       <header className="bg-foreground text-background py-16 md:py-24">
         <div className="container px-4">
           <Link 
             to="/" 
-            className="inline-flex items-center gap-2 text-background/70 hover:text-primary transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-background/70 hover:text-primary-inverse transition-colors mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Home</span>
@@ -237,12 +233,12 @@ const TechEvents = () => {
           
           <div className="max-w-4xl">
             <div className="inline-block mb-4">
-              <span className="text-primary font-medium tracking-wider uppercase text-sm">
+              <span className="text-primary-inverse font-medium tracking-wider uppercase text-sm">
                 Live Directory
               </span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Tech Events <span className="text-primary">Switzerland 2026</span>
+              Tech Events <span className="text-primary-inverse">Switzerland 2026</span>
             </h1>
             <p className="text-xl text-background/70 max-w-2xl">
               Your comprehensive guide to technology conferences, summits, and meetups 
@@ -253,7 +249,7 @@ const TechEvents = () => {
       </header>
 
       {/* Filters */}
-      <section className="border-b border-border bg-card sticky top-0 z-40">
+      <section className="border-b border-border bg-card sticky top-[var(--header-h)] z-40">
         <div className="container px-4 py-4">
           <div className="flex flex-col gap-4">
             {/* Search and View Toggle */}
@@ -687,26 +683,6 @@ const TechEvents = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-foreground text-background py-8">
-        <div className="container px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-background/70 text-sm">
-              Data sourced from curated Google Sheets database. Updates automatically.
-            </p>
-            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
-              <Link to="/" className="text-primary hover:underline">
-                Back to Dr. Justinas Mišeikis
-              </Link>
-              <Link to="/privacy" className="text-background/60 hover:text-primary transition-colors">
-                Privacy Policy
-              </Link>
-              <Link to="/terms" className="text-background/60 hover:text-primary transition-colors">
-                Terms of Use
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };

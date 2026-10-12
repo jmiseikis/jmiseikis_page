@@ -161,7 +161,7 @@ const Resources = () => {
                   </h3>
                   <div className="flex items-center gap-2 text-muted-foreground">
                     <span>Curated by</span>
-                    <img src={swisscomVenturesLogo} alt="Swisscom Ventures" className="h-5 inline-block" />
+                    <img src={swisscomVenturesLogo} alt="Swisscom Ventures" className="logo-plate h-5 inline-block" />
                   </div>
                 </div>
               </div>
@@ -203,7 +203,7 @@ const Resources = () => {
                   </h3>
                   <div className="flex items-center gap-2 text-muted-foreground">
                     <span>Curated by</span>
-                    <img src={gzaLogo} alt="Greater Zurich Area" className="h-5 inline-block" />
+                    <img src={gzaLogo} alt="Greater Zurich Area" className="logo-plate h-5 inline-block" />
                   </div>
                 </div>
               </div>
@@ -247,7 +247,7 @@ const Resources = () => {
                   </h3>
                   <div className="flex items-center gap-2 text-muted-foreground">
                     <span>Curated by</span>
-                    <img src={rockstarLogo.url} alt="Rockstar Recruiting" className="h-5 inline-block" />
+                    <img src={rockstarLogo.url} alt="Rockstar Recruiting" className="logo-plate h-5 inline-block" />
                   </div>
                 </div>
               </div>

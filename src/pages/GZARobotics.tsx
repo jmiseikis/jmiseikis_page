@@ -29,24 +29,24 @@ const SHEET_ID = "1CL3fGiT1QvDAWQ_Itn1ixw-lvJc07ABUr3cjJHnvIRs";
 const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
 
 const categoryColors: Record<string, string> = {
-  "Robotics & Autonomous Systems": "bg-blue-500/10 text-blue-600 border-blue-200",
-  "Software & Components": "bg-green-500/10 text-green-600 border-green-200",
-  "Universities & Academic Research": "bg-purple-500/10 text-purple-600 border-purple-200",
-  "Autonomous Flying & Diving": "bg-sky-500/10 text-sky-600 border-sky-200",
-  "Networks, Regulators & Connectors": "bg-orange-500/10 text-orange-600 border-orange-200",
-  "Medtech Robotics": "bg-rose-500/10 text-rose-600 border-rose-200",
-  "Autonomous Driving": "bg-amber-500/10 text-amber-600 border-amber-200",
-  "Computer Vision for Robotics": "bg-indigo-500/10 text-indigo-600 border-indigo-200",
+  "Robotics & Autonomous Systems": "bg-blue-500/10 text-blue-700 border-blue-200 dark:text-blue-300 dark:border-blue-500/40",
+  "Software & Components": "bg-green-500/10 text-green-800 border-green-200 dark:text-green-300 dark:border-green-500/40",
+  "Universities & Academic Research": "bg-purple-500/10 text-purple-700 border-purple-200 dark:text-purple-300 dark:border-purple-500/40",
+  "Autonomous Flying & Diving": "bg-sky-500/10 text-sky-700 border-sky-200 dark:text-sky-300 dark:border-sky-500/40",
+  "Networks, Regulators & Connectors": "bg-orange-500/10 text-orange-800 border-orange-200 dark:text-orange-300 dark:border-orange-500/40",
+  "Medtech Robotics": "bg-rose-500/10 text-rose-700 border-rose-200 dark:text-rose-300 dark:border-rose-500/40",
+  "Autonomous Driving": "bg-amber-500/10 text-amber-800 border-amber-200 dark:text-amber-300 dark:border-amber-500/40",
+  "Computer Vision for Robotics": "bg-indigo-500/10 text-indigo-700 border-indigo-200 dark:text-indigo-300 dark:border-indigo-500/40",
 };
 
 const typeColors: Record<string, string> = {
-  "Large Corp": "bg-slate-500/10 text-slate-600 border-slate-200",
-  "Scale-up": "bg-emerald-500/10 text-emerald-600 border-emerald-200",
-  "Startup": "bg-cyan-500/10 text-cyan-600 border-cyan-200",
-  "Corporate R&D": "bg-violet-500/10 text-violet-600 border-violet-200",
-  "University": "bg-fuchsia-500/10 text-fuchsia-600 border-fuchsia-200",
-  "Network": "bg-yellow-500/10 text-yellow-600 border-yellow-200",
-  "Government": "bg-red-500/10 text-red-600 border-red-200",
+  "Large Corp": "bg-slate-500/10 text-slate-700 border-slate-200 dark:text-slate-300 dark:border-slate-500/40",
+  "Scale-up": "bg-emerald-500/10 text-emerald-700 border-emerald-200 dark:text-emerald-300 dark:border-emerald-500/40",
+  "Startup": "bg-cyan-500/10 text-cyan-700 border-cyan-200 dark:text-cyan-300 dark:border-cyan-500/40",
+  "Corporate R&D": "bg-violet-500/10 text-violet-700 border-violet-200 dark:text-violet-300 dark:border-violet-500/40",
+  "University": "bg-fuchsia-500/10 text-fuchsia-700 border-fuchsia-200 dark:text-fuchsia-300 dark:border-fuchsia-500/40",
+  "Network": "bg-yellow-500/10 text-yellow-800 border-yellow-200 dark:text-yellow-300 dark:border-yellow-500/40",
+  "Government": "bg-red-500/10 text-red-700 border-red-200 dark:text-red-300 dark:border-red-500/40",
 };
 
 const GZARobotics = () => {
@@ -61,10 +61,6 @@ const GZARobotics = () => {
   const [categoryFilter, setCategoryFilter] = useState<string>("all");
   const [typeFilter, setTypeFilter] = useState<string>("all");
   const [sizeFilter, setSizeFilter] = useState<string>("all");
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   useEffect(() => {
     const fetchCompanies = async () => {
@@ -291,7 +287,7 @@ const GZARobotics = () => {
   );
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="bg-background">
       <Helmet>
         <title>GZA Robotics Directory | Dr. Justinas Mišeikis</title>
         <meta name="description" content="Explore 150+ robotics companies, startups, labs, and AI innovators in Greater Zurich. Filterable directory listed with the agreement of Greater Zurich Area." />
@@ -323,15 +319,15 @@ const GZARobotics = () => {
       {/* Header */}
       <header className="bg-foreground text-background py-16 md:py-24">
         <div className="container px-4">
-          <Link to="/" className="inline-flex items-center gap-2 text-background/70 hover:text-primary transition-colors mb-8">
+          <Link to="/" className="inline-flex items-center gap-2 text-background/70 hover:text-primary-inverse transition-colors mb-8">
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Home</span>
           </Link>
           <div className="max-w-4xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Robotics in the <a href="https://www.greaterzuricharea.com/en" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Greater Zurich Area</a>
+              Robotics in the <a href="https://www.greaterzuricharea.com/en" target="_blank" rel="noopener noreferrer" className="text-primary-inverse hover:underline">Greater Zurich Area</a>
             </h1>
-            <p className="text-xl text-background/70 max-w-2xl">Curated by <a href="https://www.greaterzuricharea.com/en" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Greater Zurich Area</a></p>
+            <p className="text-xl text-background/70 max-w-2xl">Curated by <a href="https://www.greaterzuricharea.com/en" target="_blank" rel="noopener noreferrer" className="text-primary-inverse hover:underline">Greater Zurich Area</a></p>
           </div>
         </div>
       </header>
@@ -398,7 +394,7 @@ const GZARobotics = () => {
       </section>
 
       {/* Filters */}
-      <section className="border-b border-border bg-card sticky top-0 z-40">
+      <section className="border-b border-border bg-card sticky top-[var(--header-h)] z-40">
         <div className="container px-4 py-4">
           <div className="flex flex-col gap-4">
             <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
@@ -442,7 +438,7 @@ const GZARobotics = () => {
       </section>
 
       {/* Results Summary */}
-      <section id="company-list" className="container px-4 py-6">
+      <section id="company-list" className="scroll-mt-36 container px-4 py-6">
         <p className="text-muted-foreground">
           Showing <span className="font-semibold text-foreground">{filteredCompanies.length}</span> of{" "}
           <span className="font-semibold text-foreground">{companies.length}</span> companies & institutions
@@ -499,22 +495,6 @@ const GZARobotics = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-foreground text-background py-8">
-        <div className="container px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-background/70 text-sm">Data curated by Greater Zurich Area. Updates automatically.</p>
-            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
-              <Link to="/" className="text-primary hover:underline">Back to Dr. Justinas Mišeikis</Link>
-              <Link to="/privacy" className="text-background/60 hover:text-primary transition-colors">
-                Privacy Policy
-              </Link>
-              <Link to="/terms" className="text-background/60 hover:text-primary transition-colors">
-                Terms of Use
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };

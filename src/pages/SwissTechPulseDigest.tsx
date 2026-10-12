@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 import { supabase } from "@/integrations/supabase/client";
 import { SIGNAL_LABELS, SIGNAL_ORDER, type SignalType } from "@/components/swiss-tech-pulse/signals";
 
@@ -48,8 +46,7 @@ const SwissTechPulseDigest = () => {
         <title>{`Swiss Tech Pulse Digest — ${week}`}</title>
         <meta name="description" content={`Weekly Swiss tech ecosystem digest for ${week}.`} />
       </Helmet>
-      <Navigation />
-      <main className="container mx-auto px-4 pt-28 pb-16 max-w-3xl">
+      <div className="container mx-auto px-4 pt-12 pb-16 max-w-3xl">
         <Link to="/resources/swiss-tech-pulse" className="font-barlow-condensed uppercase tracking-widest text-xs text-[#EC1313] hover:underline">
           ← Back to feed
         </Link>
@@ -86,8 +83,7 @@ const SwissTechPulseDigest = () => {
             </div>
           </>
         )}
-      </main>
-      <Footer />
+      </div>
     </div>
   );
 };

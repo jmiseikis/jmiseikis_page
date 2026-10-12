@@ -20,7 +20,7 @@ export const FilterRail = ({ filters, onChange }: Props) => {
     onChange({ ...filters, signals: has ? filters.signals.filter((x) => x !== s) : [...filters.signals, s] });
   };
   return (
-    <div className="sticky top-20 z-30 bg-white/95 backdrop-blur border-b border-[#CFD2D6]">
+    <div className="sticky top-[var(--header-h)] z-30 bg-white/95 backdrop-blur border-b border-[#CFD2D6]">
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center gap-2 overflow-x-auto md:overflow-visible md:flex-wrap md:gap-3 -mx-1 px-1 no-scrollbar">
           {SIGNAL_ORDER.map((s) => {

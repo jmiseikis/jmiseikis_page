@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 import { supabase } from "@/integrations/supabase/client";
 import type { Session } from "@supabase/supabase-js";
 import { toast } from "sonner";
@@ -87,8 +85,7 @@ const SwissTechPulseReview = () => {
         <title>Swiss Tech Pulse — Review</title>
         <meta name="robots" content="noindex" />
       </Helmet>
-      <Navigation />
-      <main className="container mx-auto px-4 pt-28 pb-16 max-w-5xl">
+      <div className="container mx-auto px-4 pt-12 pb-16 max-w-5xl">
         <h1 className="font-anton uppercase text-4xl">Review queue</h1>
         {!session && (
           <div className="mt-6">
@@ -148,8 +145,7 @@ const SwissTechPulseReview = () => {
             {rows.length === 0 && <li className="py-6 font-barlow text-[#0E0E10]/60">Queue empty.</li>}
           </ul>
         )}
-      </main>
-      <Footer />
+      </div>
     </div>
   );
 };

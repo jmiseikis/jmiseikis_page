@@ -202,7 +202,7 @@ const About = () => {
                       <img 
                         src={org.logo} 
                         alt={org.name}
-                        className="max-w-full max-h-[80px] object-contain"
+                        className="logo-plate max-w-full max-h-[80px] object-contain"
                       />
                     ) : (
                       <span className="text-center font-medium text-sm">{org.name}</span>
