@@ -4,6 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="google-site-verification" content="boNDMi1Eq_Bg4dFNB0zS3Ohj0KRNqUpgi-_GgFDNA-c" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Apply a stored dark theme before the first paint so the page does not flash light.
+      // Keep the list in sync with LIGHT_ONLY_ROUTES in src/lib/site.ts.
+      (function () {
+        try {
+          if (localStorage.getItem("jm-theme") !== "dark") return;
+          var path = location.pathname;
+          if (location.hash.indexOf("#/") === 0) path = location.hash.slice(1);
+          else if (new URLSearchParams(location.search).get("p")) path = new URLSearchParams(location.search).get("p");
+          path = path.split(/[?#]/)[0].toLowerCase();
+          var lightOnly = ["/raas-calculator", "/resources/swiss-tech-pulse"];
+          for (var i = 0; i < lightOnly.length; i++) {
+            if (path === lightOnly[i] || path.indexOf(lightOnly[i] + "/") === 0) return;
+          }
+          document.documentElement.classList.add("dark");
+          document.documentElement.style.colorScheme = "dark";
+        } catch (e) {}
+      })();
+    </script>
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <title>Dr. Justinas Mišeikis - AI Advisor & TechDrive Zürich Host</title>
     <meta name="description" content="AI advisor, keynote speaker and host of the TechDrive Zürich podcast. Robotics strategy, VC due diligence and research commercialization in Zurich, DACH and Europe." />
@@ -264,7 +283,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&display=swap" rel="stylesheet">
   </head>
 
   <body>

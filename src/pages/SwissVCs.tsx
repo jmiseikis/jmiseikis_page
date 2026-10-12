@@ -27,20 +27,20 @@ const SHEET_ID = "1FqX_G9qw9srGHumCWfQH1L4RCDlW4EtJ8-iXTfzsblI";
 const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
 
 const sectorColors: Record<string, string> = {
-  "DeepTech": "bg-blue-500/10 text-blue-600 border-blue-200",
-  "AI": "bg-violet-500/10 text-violet-600 border-violet-200",
-  "FinTech": "bg-green-500/10 text-green-600 border-green-200",
-  "Health/Bio": "bg-rose-500/10 text-rose-600 border-rose-200",
-  "Climate": "bg-emerald-500/10 text-emerald-600 border-emerald-200",
-  "SaaS": "bg-sky-500/10 text-sky-600 border-sky-200",
-  "Robotics": "bg-orange-500/10 text-orange-600 border-orange-200",
-  "Industrial": "bg-amber-500/10 text-amber-600 border-amber-200",
-  "Consumer": "bg-pink-500/10 text-pink-600 border-pink-200",
-  "FoodTech": "bg-lime-500/10 text-lime-600 border-lime-200",
-  "Cybersecurity": "bg-red-500/10 text-red-600 border-red-200",
-  "Hardware": "bg-slate-500/10 text-slate-600 border-slate-200",
-  "EdTech": "bg-indigo-500/10 text-indigo-600 border-indigo-200",
-  "Logistics": "bg-teal-500/10 text-teal-600 border-teal-200",
+  "DeepTech": "bg-blue-500/10 text-blue-700 border-blue-200 dark:text-blue-300 dark:border-blue-500/40",
+  "AI": "bg-violet-500/10 text-violet-700 border-violet-200 dark:text-violet-300 dark:border-violet-500/40",
+  "FinTech": "bg-green-500/10 text-green-800 border-green-200 dark:text-green-300 dark:border-green-500/40",
+  "Health/Bio": "bg-rose-500/10 text-rose-700 border-rose-200 dark:text-rose-300 dark:border-rose-500/40",
+  "Climate": "bg-emerald-500/10 text-emerald-700 border-emerald-200 dark:text-emerald-300 dark:border-emerald-500/40",
+  "SaaS": "bg-sky-500/10 text-sky-700 border-sky-200 dark:text-sky-300 dark:border-sky-500/40",
+  "Robotics": "bg-orange-500/10 text-orange-800 border-orange-200 dark:text-orange-300 dark:border-orange-500/40",
+  "Industrial": "bg-amber-500/10 text-amber-800 border-amber-200 dark:text-amber-300 dark:border-amber-500/40",
+  "Consumer": "bg-pink-500/10 text-pink-700 border-pink-200 dark:text-pink-300 dark:border-pink-500/40",
+  "FoodTech": "bg-lime-500/10 text-lime-800 border-lime-200 dark:text-lime-300 dark:border-lime-500/40",
+  "Cybersecurity": "bg-red-500/10 text-red-700 border-red-200 dark:text-red-300 dark:border-red-500/40",
+  "Hardware": "bg-slate-500/10 text-slate-700 border-slate-200 dark:text-slate-300 dark:border-slate-500/40",
+  "EdTech": "bg-indigo-500/10 text-indigo-700 border-indigo-200 dark:text-indigo-300 dark:border-indigo-500/40",
+  "Logistics": "bg-teal-500/10 text-teal-700 border-teal-200 dark:text-teal-300 dark:border-teal-500/40",
 };
 
 const getSectorColor = (sector: string) => {
@@ -64,10 +64,6 @@ const SwissVCs = () => {
   const [roundFilter, setRoundFilter] = useState<string>("all");
   const [geoFilter, setGeoFilter] = useState<string>("all");
   const [audienceFilter, setAudienceFilter] = useState<string>("all");
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   useEffect(() => {
     document.title = "Swiss VCs Directory | Dr. Justinas Mišeikis";
@@ -307,23 +303,23 @@ const SwissVCs = () => {
   );
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="bg-background">
       {/* Header */}
       <header className="bg-foreground text-background py-16 md:py-24">
         <div className="container px-4">
-          <Link to="/" className="inline-flex items-center gap-2 text-background/70 hover:text-primary transition-colors mb-8">
+          <Link to="/" className="inline-flex items-center gap-2 text-background/70 hover:text-primary-inverse transition-colors mb-8">
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Home</span>
           </Link>
 
           <div className="max-w-4xl">
             <div className="inline-block mb-4">
-              <span className="text-primary font-medium tracking-wider uppercase text-sm">
+              <span className="text-primary-inverse font-medium tracking-wider uppercase text-sm">
                 Living Directory
               </span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Swiss <span className="text-primary">VCs and Funds</span>
+              Swiss <span className="text-primary-inverse">VCs and Funds</span>
             </h1>
             <p className="text-xl text-background/70 max-w-2xl">
               A comprehensive directory of venture capital firms investing in Swiss startups.
@@ -333,7 +329,7 @@ const SwissVCs = () => {
       </header>
 
       {/* Filters */}
-      <section className="border-b border-border bg-card sticky top-0 z-40">
+      <section className="border-b border-border bg-card sticky top-[var(--header-h)] z-40">
         <div className="container px-4 py-4">
           <div className="flex flex-col gap-4">
             <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
@@ -516,26 +512,6 @@ const SwissVCs = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-foreground text-background py-8">
-        <div className="container px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-background/70 text-sm">
-              Data sourced from curated Google Sheets database. Updates automatically.
-            </p>
-            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
-              <Link to="/" className="text-primary hover:underline">
-                Back to Dr. Justinas Mišeikis
-              </Link>
-              <Link to="/privacy" className="text-background/60 hover:text-primary transition-colors">
-                Privacy Policy
-              </Link>
-              <Link to="/terms" className="text-background/60 hover:text-primary transition-colors">
-                Terms of Use
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };

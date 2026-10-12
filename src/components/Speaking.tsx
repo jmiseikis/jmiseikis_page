@@ -173,7 +173,7 @@ const Speaking = () => {
             <h3 className="text-3xl font-bold mb-4">
               Looking for a speaker who bridges tech and business?
             </h3>
-            <p className="text-primary-foreground/90 mb-8 max-w-2xl mx-auto text-lg">
+            <p className="text-primary-foreground mb-8 max-w-2xl mx-auto text-lg">
               Available for keynotes, panels, workshops, and corporate events across Europe
             </p>
             <Button 

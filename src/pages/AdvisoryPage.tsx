@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -6,8 +5,6 @@ import { ArrowLeft, Lightbulb, TrendingUp, Users, Cog } from "lucide-react";
 import { buildOgImageUrl } from "@/lib/ogImage";
 
 const AdvisoryPage = () => {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
-
   const services = [
     {
       icon: Lightbulb,
@@ -62,21 +59,8 @@ const AdvisoryPage = () => {
         <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
 
-      <div className="min-h-screen bg-background">
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
-          <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between h-20">
-              <Link to="/" className="text-xl font-bold tracking-tight hover:text-primary transition-colors">
-                Dr. Justinas Mišeikis
-              </Link>
-              <Link to="/#contact">
-                <Button variant="swiss" size="sm">Get in Touch</Button>
-              </Link>
-            </div>
-          </div>
-        </nav>
-
-        <section className="pt-32 pb-16 px-4">
+      <div className="bg-background">
+        <section className="pt-12 md:pt-16 pb-16 px-4">
           <div className="container mx-auto max-w-5xl">
             <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8">
               <ArrowLeft className="w-4 h-4" /> Back to Home
@@ -144,15 +128,6 @@ const AdvisoryPage = () => {
           </div>
         </section>
 
-        <footer className="py-8 border-t border-border px-4">
-          <div className="container mx-auto text-center text-sm text-muted-foreground">
-            <p>© {new Date().getFullYear()} Dr. Justinas Mišeikis. Zurich, Switzerland.</p>
-            <p className="mt-2 space-x-4">
-              <Link to="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
-              <Link to="/terms" className="hover:text-primary transition-colors">Terms of Use</Link>
-            </p>
-          </div>
-        </footer>
       </div>
     </>
   );

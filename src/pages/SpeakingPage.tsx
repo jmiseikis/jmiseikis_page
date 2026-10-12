@@ -3,8 +3,6 @@ import { Helmet } from "react-helmet-async";
 import { buildOgImageUrl } from "@/lib/ogImage";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ExternalLink, Play, Youtube, Mic, Video, Mail, Award, Podcast } from "lucide-react";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -164,7 +162,6 @@ const SpeakingPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => { window.scrollTo(0, 0); }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -256,9 +253,8 @@ const SpeakingPage = () => {
         </script>
       </Helmet>
 
-      <Navigation />
 
-      <main className="pt-32 pb-16">
+      <div className="pt-12 md:pt-16 pb-16">
         <div className="container px-4 max-w-6xl mx-auto">
           <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8">
             <ArrowLeft className="w-4 h-4" /> Back to Home
@@ -522,7 +518,7 @@ const SpeakingPage = () => {
           <section>
             <div className="bg-primary text-primary-foreground p-8 md:p-12 text-center">
               <h2 className="text-3xl font-bold mb-4">Looking for a speaker who bridges tech and business?</h2>
-              <p className="text-primary-foreground/90 mb-8 text-lg max-w-2xl mx-auto">
+              <p className="text-primary-foreground mb-8 text-lg max-w-2xl mx-auto">
                 Available for keynotes, panels, workshops, and corporate events across Europe.
               </p>
               <div className="flex flex-wrap gap-3 justify-center">
@@ -542,9 +538,8 @@ const SpeakingPage = () => {
             </div>
           </section>
         </div>
-      </main>
+      </div>
 
-      <Footer />
     </div>
   );
 };

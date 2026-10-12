@@ -2,8 +2,6 @@ import { Helmet } from "react-helmet-async";
 import { buildOgImageUrl } from "@/lib/ogImage";
 import { Link } from "react-router-dom";
 import { ArrowLeft, CheckCircle, LineChart, Map, ShieldCheck } from "lucide-react";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 
 const pillars = [
@@ -78,9 +76,8 @@ const AiAgentsStrategy = () => {
         </script>
       </Helmet>
 
-      <Navigation />
 
-      <main className="pt-32 pb-16">
+      <div className="pt-12 md:pt-16 pb-16">
         <article className="container px-4 max-w-5xl mx-auto">
           <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8">
             <ArrowLeft className="w-4 h-4" /> Back to Home
@@ -149,9 +146,8 @@ const AiAgentsStrategy = () => {
             </Button>
           </section>
         </article>
-      </main>
+      </div>
 
-      <Footer />
     </div>
   );
 };

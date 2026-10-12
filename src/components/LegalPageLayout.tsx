@@ -1,9 +1,7 @@
-import { useEffect, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 import { buildOgImageUrl } from "@/lib/ogImage";
 
 const SITE = "https://jmiseikis.com";
@@ -19,14 +17,8 @@ interface LegalPageLayoutProps {
   children: ReactNode;
 }
 
-// Long-form shell for /privacy and /terms, modelled on src/pages/AiAgentsStrategy.tsx
-// (shared Navigation and Footer, pt-32 main, back link, eyebrow + H1 header).
+// Long-form layout for /privacy and /terms inside the shared site shell (back link, eyebrow + H1 header).
 const LegalPageLayout = ({ heading, description, path, lastUpdated, children }: LegalPageLayoutProps) => {
-  // BrowserRouter keeps the previous scroll offset; the footer links are at the bottom of every page.
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   const title = `${heading} | Dr. Justinas Mišeikis`;
   const url = `${SITE}${path}`;
   const ogImage = buildOgImageUrl({ title: heading, subtitle: "DR. JUSTINAS MIŠEIKIS · LEGAL" });
@@ -48,9 +40,8 @@ const LegalPageLayout = ({ heading, description, path, lastUpdated, children }: 
         <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
 
-      <Navigation />
 
-      <main className="pt-32 pb-16">
+      <div className="pt-12 md:pt-16 pb-16">
         <article className="container px-4 max-w-3xl mx-auto">
           <Link
             to="/"
@@ -69,9 +60,8 @@ const LegalPageLayout = ({ heading, description, path, lastUpdated, children }: 
 
           <div className="space-y-12 text-muted-foreground leading-relaxed">{children}</div>
         </article>
-      </main>
+      </div>
 
-      <Footer />
     </div>
   );
 };

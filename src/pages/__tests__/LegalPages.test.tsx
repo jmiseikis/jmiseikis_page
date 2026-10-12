@@ -23,14 +23,14 @@ beforeEach(() => {
 });
 
 describe.each([
-  ["Privacy Policy", PrivacyPolicy],
-  ["Terms of Use", TermsOfUse],
-])("%s page", (heading, Page) => {
+  ["Privacy Policy", PrivacyPolicy, "12 October 2026", "2026-10-12"],
+  ["Terms of Use", TermsOfUse, "11 October 2026", "2026-10-11"],
+])("%s page", (heading, Page, label, iso) => {
   it("renders one H1 and the publication date", () => {
     renderWithProviders(<Page />);
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(heading);
-    expect(screen.getByText("11 October 2026").closest("time")).toHaveAttribute("datetime", "2026-10-11");
+    expect(screen.getByText(label).closest("time")).toHaveAttribute("datetime", iso);
   });
 
   it("shows the privacy contact as plain text, never as a link", () => {
@@ -85,7 +85,9 @@ describe("Footer", () => {
       </Routes>,
       "/privacy",
     );
-    fireEvent.click(screen.getByRole("button", { name: "About" }));
+    const about = screen.getByRole("link", { name: "About" });
+    expect(about).toHaveAttribute("href", "/#about");
+    fireEvent.click(about);
     expect(screen.getByTestId("where")).toHaveTextContent("/#about");
   });
 });

@@ -2,8 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { supabase } from "@/integrations/supabase/client";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 import { Masthead } from "@/components/swiss-tech-pulse/Masthead";
 import { FilterRail, type Filters } from "@/components/swiss-tech-pulse/FilterRail";
 import { FeedItem, type FeedItemData, type ItemCompany } from "@/components/swiss-tech-pulse/FeedItem";
@@ -185,11 +183,10 @@ const SwissTechPulse = () => {
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
-      <Navigation />
       <Masthead />
       <FilterRail filters={filters} onChange={setFilters} />
 
-      <main className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8">
         {digest && (
           <div className="mb-8">
             <DigestStrip week={digest.week} editorial={digest.editorial} />
@@ -205,7 +202,7 @@ const SwissTechPulse = () => {
 
         {grouped.map((g) => (
           <section key={g.day} className="mb-10">
-            <div className="sticky top-[7.5rem] z-10 bg-white/95 backdrop-blur py-2 border-b-2 border-[#0E0E10]">
+            <div className="sticky top-[calc(var(--header-h)+2.5rem)] z-10 bg-white/95 backdrop-blur py-2 border-b-2 border-[#0E0E10]">
               <h2 className="font-barlow-condensed uppercase tracking-widest text-xs text-[#0E0E10]/70">{g.label}</h2>
             </div>
             <div>
@@ -236,10 +233,9 @@ const SwissTechPulse = () => {
           </Link>
           .
         </p>
-      </main>
+      </div>
 
       <CompanyDrawer company={openCompany} onClose={() => setOpenCompany(null)} />
-      <Footer />
     </div>
   );
 };

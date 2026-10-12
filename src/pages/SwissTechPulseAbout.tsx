@@ -1,7 +1,5 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 
 const SwissTechPulseAbout = () => (
   <div className="min-h-screen bg-white text-[#0E0E10]">
@@ -10,8 +8,7 @@ const SwissTechPulseAbout = () => (
       <meta name="description" content="How the Swiss Tech Pulse feed is built: sources, aggregation, and editorial process." />
       <link rel="canonical" href="https://jmiseikis.com/resources/swiss-tech-pulse/about" />
     </Helmet>
-    <Navigation />
-    <main className="container mx-auto px-4 pt-28 pb-16 max-w-3xl">
+    <div className="container mx-auto px-4 pt-12 pb-16 max-w-3xl">
       <h1 className="font-anton uppercase text-5xl md:text-6xl leading-none">
         About <span className="text-[#EC1313]">Swiss Tech Pulse</span>
       </h1>
@@ -36,8 +33,7 @@ const SwissTechPulseAbout = () => (
           <Link to="/#contact" className="text-[#EC1313] hover:underline">Get in touch</Link>.
         </p>
       </div>
-    </main>
-    <Footer />
+    </div>
   </div>
 );
 

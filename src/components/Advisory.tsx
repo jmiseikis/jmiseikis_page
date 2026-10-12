@@ -44,6 +44,8 @@ const Advisory = () => {
 
   return (
     <section id="advisory" className="section-padding">
+      {/* Old links to /#services land on this section too. */}
+      <span id="services" className="block" aria-hidden="true" />
       <div className="container px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header */}

@@ -4,7 +4,7 @@ const FEED_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/public-feed/
 
 export const Masthead = () => (
   <header className="border-b border-[#CFD2D6] bg-white">
-    <div className="container mx-auto px-4 pt-28 pb-10">
+    <div className="container mx-auto px-4 pt-12 pb-10">
       <div className="flex items-start justify-between gap-6 flex-wrap">
         <div>
           <h1 className="font-anton uppercase leading-none tracking-tight text-[56px] md:text-[104px]">

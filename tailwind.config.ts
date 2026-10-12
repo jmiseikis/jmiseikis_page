@@ -18,6 +18,11 @@ export default {
       },
     },
     extend: {
+      screens: {
+        // Small phones get narrower gutters; the header switches to the full nav from 951px.
+        xs: "375px",
+        nav: "951px",
+      },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
         anton: ['Anton', 'Impact', 'sans-serif'],
@@ -33,6 +38,7 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          inverse: "hsl(var(--primary-inverse))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
