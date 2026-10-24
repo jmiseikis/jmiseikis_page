@@ -9,6 +9,10 @@ import PublicationsPage from "../PublicationsPage";
 import ResourcesPage from "../ResourcesPage";
 import SwissEcosystemGuide from "../SwissEcosystemGuide";
 import MarketEntryGuide from "../MarketEntryGuide";
+import AdvisoryPage from "../AdvisoryPage";
+import DueDiligencePage from "../DueDiligencePage";
+import AiAgentsStrategy from "../AiAgentsStrategy";
+import De from "../De";
 import { ENQUIRY_INTENTS } from "@/lib/site";
 
 const ROOT = process.cwd();
@@ -36,6 +40,10 @@ const PAGES = [
   ["/resources", ResourcesPage, "Explore an ecosystem. Shape a decision."],
   ["/swiss-ai-robotics-ecosystem", SwissEcosystemGuide, "Navigate the Swiss AI & robotics ecosystem."],
   ["/swiss-baltic-market-entry", MarketEntryGuide, "Build your route into a new market."],
+  ["/advisory", AdvisoryPage, "Turn technical possibilities into informed decisions."],
+  ["/due-diligence", DueDiligencePage, "AI & robotics due diligence."],
+  ["/ai-agents-strategy", AiAgentsStrategy, "Make AI useful inside your business."],
+  ["/de", De, "KI- und Robotikstrategie. Schweizer Ökosystem."],
 ] as const;
 
 describe.each(PAGES)("%s", (path, Page, heading) => {
@@ -49,11 +57,14 @@ describe.each(PAGES)("%s", (path, Page, heading) => {
     renderPage(Page, path);
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(heading);
-    await waitFor(() => expect(document.title).toContain("Dr. Justinas Mišeikis"));
+    // Helmet applies tags asynchronously; wait until this page's own canonical is in place.
+    await waitFor(() =>
+      expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute("href", `https://jmiseikis.com${path}`),
+    );
     expect(prerender).toContain(`title: "${document.title}"`);
-    const description = document.querySelector('meta[name="description"]')?.getAttribute("content");
-    expect(description && prerender.includes(description)).toBe(true);
-    expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute("href", `https://jmiseikis.com${path}`);
+    const description = document.querySelector('meta[name="description"]')?.getAttribute("content") ?? "";
+    expect(description).not.toBe("");
+    expect(prerender).toContain(description);
   });
 
   it("links only to real routes, shipped files and safe external pages", () => {
@@ -83,6 +94,36 @@ describe.each(PAGES)("%s", (path, Page, heading) => {
     const { container } = renderPage(Page, path);
     expect(container.textContent).not.toMatch(/\u2014/);
     expect(container.innerHTML).not.toMatch(/mailto:|[\w.+-]+@[\w-]+\.[a-z]{2,}/i);
+  });
+});
+
+describe("Advisory page", () => {
+  it("anchors every offer, so guides and the Speaking page can link to one", () => {
+    renderPage(AdvisoryPage, "/advisory");
+    for (const id of ["market-entry", "scouting-diligence", "swiss-presence", "internal-ai"]) {
+      expect(document.getElementById(id), `#${id}`).not.toBeNull();
+    }
+  });
+});
+
+describe("Due diligence page", () => {
+  it("has the stage section the Resources page links to, with the checklist download", () => {
+    renderPage(DueDiligencePage, "/due-diligence");
+    const stage = document.getElementById("stage")!;
+    expect(within(stage).getByRole("link", { name: /Download diligence checklist/ })).toHaveAttribute(
+      "href",
+      "/downloads/technical-diligence-checklist.txt",
+    );
+  });
+});
+
+describe("German page", () => {
+  it("states English delivery and keeps the confirmed facts", () => {
+    const { container } = renderPage(De, "/de");
+    expect(container.textContent).toContain("Die Zusammenarbeit und Vorträge erfolgen auf Englisch.");
+    expect(container.textContent).toContain("Gründer und Host von");
+    expect(screen.getByRole("link", { name: /TechDrive Zürich/ })).toHaveAttribute("href", "https://techdrive.tv/");
+    expect(container.textContent).toContain("15+ begutachtete Publikationen, 700+ Zitierungen und 40+ Patente");
   });
 });
 
