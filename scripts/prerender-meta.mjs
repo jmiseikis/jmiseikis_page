@@ -159,14 +159,6 @@ const routes = [
     ogTitle: "Terms of Use",
     ogSubtitle: "DR. JUSTINAS MIŠEIKIS · LEGAL",
   },
-  {
-    path: "/resources/swiss-tech-pulse",
-    title: "Swiss Tech Pulse — Live Swiss startup signal feed",
-    description:
-      "Foundings, spin-offs, funding rounds, exits and new VC funds across Switzerland — updated automatically.",
-    ogTitle: "Swiss Tech Pulse",
-    ogSubtitle: "LIVE SIGNAL FEED · SWITZERLAND",
-  },
 ];
 
 function setOrInjectMeta(html, attr, value, content) {

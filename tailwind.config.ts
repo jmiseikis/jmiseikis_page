@@ -96,17 +96,10 @@ export default {
             height: "0",
           },
         },
-        "pulse-blip": {
-          "0%": { left: "0%", opacity: "0" },
-          "10%": { opacity: "1" },
-          "90%": { opacity: "1" },
-          "100%": { left: "100%", opacity: "0" },
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "pulse-blip": "pulse-blip 3.5s linear infinite",
       },
     },
   },
