@@ -27,7 +27,7 @@ const categoryColors: Record<string, string> = {
 const sizeColors: Record<string, string> = {
   "Small": "bg-muted text-muted-foreground",
   "Medium": "border-primary text-primary",
-  "Large": "border-primary bg-primary text-primary-foreground font-semibold",
+  "Large": "border-primary bg-primary text-primary-foreground hover:bg-primary font-semibold",
 };
 
 // A date picked in the date range filter, as a YYYY-MM-DD calendar date.
@@ -221,11 +221,11 @@ const TechEvents = () => {
   return (
     <div className="bg-background">
       {/* Header */}
-      <header className="bg-foreground text-background py-16 md:py-24">
+      <header className="band-dark border-b border-border bg-background text-foreground py-16 md:py-24">
         <div className="container px-4">
           <Link 
             to="/" 
-            className="inline-flex items-center gap-2 text-background/70 hover:text-primary-inverse transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Home</span>
@@ -233,14 +233,14 @@ const TechEvents = () => {
           
           <div className="max-w-4xl">
             <div className="inline-block mb-4">
-              <span className="text-primary-inverse font-medium tracking-wider uppercase text-sm">
+              <span className="text-primary font-medium tracking-wider uppercase text-sm">
                 Live Directory
               </span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Tech Events <span className="text-primary-inverse">Switzerland 2026</span>
+              Tech Events <span className="text-primary">Switzerland 2026</span>
             </h1>
-            <p className="text-xl text-background/70 max-w-2xl">
+            <p className="text-xl text-muted-foreground max-w-2xl">
               Your comprehensive guide to technology conferences, summits, and meetups 
               across Switzerland. Updated regularly from our curated database.
             </p>

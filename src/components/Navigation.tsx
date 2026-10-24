@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type FocusEvent } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { CONTACT_PATH, NAV_LINKS, type NavLinkConfig } from "@/lib/site";
@@ -12,7 +12,7 @@ const Navigation = () => {
 
   const close = useCallback((returnFocus = false) => {
     setOpen(false);
-    if (returnFocus) toggleRef.current?.focus();
+    if (returnFocus) toggleRef.current?.focus({ preventScroll: true });
   }, []);
 
   // Close the mobile menu after any navigation.
@@ -37,11 +37,36 @@ const Navigation = () => {
     };
   }, [open, close]);
 
+  // The page's scroll padding keeps anchors and focused content clear of this sticky header, but it also
+  // makes the browser treat the header's own controls as hidden and scroll when one of them gets focus.
+  // That scroll is set up before focus events fire. Scroll events arrive a frame later, so lastScrollY
+  // still holds the position from before the focus change: go back to it, which also cancels a smooth
+  // scroll that has not started moving yet.
+  const lastScrollY = useRef(0);
+  useEffect(() => {
+    lastScrollY.current = window.scrollY;
+    const onScroll = () => {
+      lastScrollY.current = window.scrollY;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  const onFocus = () => {
+    window.scrollTo({ top: lastScrollY.current, left: window.scrollX, behavior: "instant" as ScrollBehavior });
+  };
+
+  // Keyboard focus leaving the open panel must not land on something the panel covers.
+  const onBlur = (event: FocusEvent<HTMLElement>) => {
+    const next = event.relatedTarget as Node | null;
+    if (open && next && !event.currentTarget.contains(next)) setOpen(false);
+  };
+
   const isCurrent = (link: NavLinkConfig) => pathname === link.to;
   const inSection = (link: NavLinkConfig) => isCurrent(link) || link.section.includes(pathname);
+  const currentState = (link: NavLinkConfig) => (isCurrent(link) ? "page" : inSection(link) ? "true" : undefined);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background">
+    <header lang="en" onFocus={onFocus} onBlur={onBlur} className="site-header sticky top-0 z-50 border-b border-border bg-background">
       <div className="site-wrap flex h-[calc(var(--header-h)-1px)] items-center justify-between gap-3 nav:gap-6">
         <Link
           to="/"
@@ -55,7 +80,7 @@ const Navigation = () => {
             <Link
               key={link.label}
               to={link.to}
-              aria-current={isCurrent(link) ? "page" : undefined}
+              aria-current={currentState(link)}
               className={cn(
                 "text-[13px] font-semibold underline-offset-[6px] transition-colors hover:text-primary",
                 inSection(link) ? "text-primary underline" : "text-foreground",
@@ -99,7 +124,7 @@ const Navigation = () => {
             <Link
               key={link.label}
               to={link.to}
-              aria-current={isCurrent(link) ? "page" : undefined}
+              aria-current={currentState(link)}
               className={cn(
                 "flex min-h-11 items-center text-base font-semibold",
                 inSection(link) ? "text-primary underline underline-offset-[6px]" : "text-foreground",

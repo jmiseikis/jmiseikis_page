@@ -305,23 +305,23 @@ const SwissVCs = () => {
   return (
     <div className="bg-background">
       {/* Header */}
-      <header className="bg-foreground text-background py-16 md:py-24">
+      <header className="band-dark border-b border-border bg-background text-foreground py-16 md:py-24">
         <div className="container px-4">
-          <Link to="/" className="inline-flex items-center gap-2 text-background/70 hover:text-primary-inverse transition-colors mb-8">
+          <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8">
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Home</span>
           </Link>
 
           <div className="max-w-4xl">
             <div className="inline-block mb-4">
-              <span className="text-primary-inverse font-medium tracking-wider uppercase text-sm">
+              <span className="text-primary font-medium tracking-wider uppercase text-sm">
                 Living Directory
               </span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Swiss <span className="text-primary-inverse">VCs and Funds</span>
+              Swiss <span className="text-primary">VCs and Funds</span>
             </h1>
-            <p className="text-xl text-background/70 max-w-2xl">
+            <p className="text-xl text-muted-foreground max-w-2xl">
               A comprehensive directory of venture capital firms investing in Swiss startups.
             </p>
           </div>
