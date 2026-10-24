@@ -154,6 +154,45 @@ export const SectionHead = ({
   </div>
 );
 
+/**
+ * Ruled service row: number, heading block, detail. On phones the number column stays narrow and the third
+ * child (whatever element it is) spans the text column below the heading.
+ */
+export const ServiceRow = ({
+  number,
+  title,
+  fine,
+  children,
+  id,
+  headingLevel = "h3",
+}: {
+  number: string;
+  title: ReactNode;
+  fine?: ReactNode;
+  children: ReactNode;
+  id?: string;
+  headingLevel?: "h2" | "h3";
+}) => {
+  const Heading = headingLevel;
+  return (
+    <article
+      id={id}
+      className="grid grid-cols-[25px_minmax(0,1fr)] items-start gap-x-3 gap-y-3 border-t border-border py-6 md:grid-cols-[30px_minmax(0,1fr)_minmax(0,1.4fr)] md:gap-x-5 md:py-8 lg:grid-cols-[44px_minmax(0,1fr)_minmax(0,1.5fr)] lg:gap-x-6 [&>*:nth-child(3)]:col-start-2 md:[&>*:nth-child(3)]:col-start-auto"
+    >
+      <span className="pt-1 text-xs font-semibold tracking-[0.04em] text-primary" aria-hidden="true">
+        {number}
+      </span>
+      <div className="min-w-0">
+        <Heading className="text-[21px] leading-tight md:text-[22px]">{title}</Heading>
+        {fine && <p className="fine mt-2 md:mt-3">{fine}</p>}
+      </div>
+      <div className="min-w-0 text-[15px] text-muted-foreground md:text-base [&_ul]:mt-4 [&_ul]:list-disc [&_ul]:space-y-1.5 [&_ul]:pl-5 [&_ul]:text-[14px] md:[&_ul]:text-[15px]">
+        {children}
+      </div>
+    </article>
+  );
+};
+
 /** Column with a red top rule, used for formats, outputs and compact explainer blocks. */
 export const RuleBlock = ({ title, children, eyebrow }: { title: ReactNode; children: ReactNode; eyebrow?: ReactNode }) => (
   <article className="min-w-0 border-t-2 border-primary pt-5">
