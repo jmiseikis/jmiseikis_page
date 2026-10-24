@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import PageMeta from "@/components/site/PageMeta";
+import { WORKSHEET_LIST, worksheetPath, worksheetPdf } from "@/content/worksheets";
 import { ContactCta, Eyebrow, PageHero, SectionHead, TextLink } from "@/components/site/primitives";
 import { SWISS_HACK_EVENTS_URL, SWISS_ROBOTICS_STARTUPS_URL, TECHDRIVE_URL } from "@/lib/site";
 
@@ -53,33 +54,11 @@ const TOOLS = [
   {
     title: "AI & robotics diligence checklist",
     text: "Define the evidence to request at early stage and at scale-up stage.",
-    meta: "Assessment guide | Downloadable checklist",
+    meta: "Assessment guide | Fillable checklist and PDF",
     href: "/due-diligence#stage",
   },
 ];
 
-const TEMPLATES = [
-  {
-    title: "Technology scouting brief",
-    text: "Set the thesis, scope, evidence threshold and shortlist fields before collecting names.",
-    file: "/downloads/technology-scouting-brief.txt",
-  },
-  {
-    title: "Market-entry brief",
-    text: "Write down the market hypothesis, entry route, validation questions and pilot.",
-    file: "/downloads/market-entry-brief.txt",
-  },
-  {
-    title: "AI workflow pilot brief",
-    text: "Describe the process, data, access, human control and acceptance criteria for an internal AI pilot.",
-    file: "/downloads/ai-workflow-pilot-brief.txt",
-  },
-  {
-    title: "AI & robotics technical diligence checklist",
-    text: "The evidence to request from early-stage and scale-up companies, claim by claim.",
-    file: "/downloads/technical-diligence-checklist.txt",
-  },
-];
 
 const ELSEWHERE = [
   { title: "Swiss Robotics Startups", text: "A directory curated by Swisscom Ventures.", href: SWISS_ROBOTICS_STARTUPS_URL },
@@ -148,16 +127,21 @@ const ResourcesPage = () => (
           id="templates-title"
           eyebrow="Working templates"
           title="Blank briefs to use with your team."
-          intro="Plain-text worksheets to download and fill in internally. They do not collect or send any information."
+          intro="Fill them in online, where answers stay in your browser, or download a blank PDF to use with your team."
         />
         <ul className="grid list-none grid-cols-1 gap-8 p-0 md:grid-cols-2 md:gap-x-16 md:gap-y-10">
-          {TEMPLATES.map((template) => (
-            <li key={template.file} className="min-w-0 border-t-2 border-primary pt-5">
-              <h3 className="text-[21px] leading-tight">{template.title}</h3>
-              <p className="mb-4 mt-3 text-[15px] text-muted-foreground">{template.text}</p>
-              <TextLink href={template.file} download>
-                Download (TXT)<span className="sr-only">: {template.title}</span>
-              </TextLink>
+          {WORKSHEET_LIST.map((sheet) => (
+            <li key={sheet.slug} className="min-w-0 border-t-2 border-primary pt-5">
+              <h3 className="text-[21px] leading-tight">{sheet.title}</h3>
+              <p className="mb-4 mt-3 text-[15px] text-muted-foreground">{sheet.lead}</p>
+              <div className="flex flex-wrap gap-x-6 gap-y-2">
+                <TextLink href={worksheetPath(sheet.slug)}>
+                  Fill in online<span className="sr-only">: {sheet.title}</span>
+                </TextLink>
+                <TextLink href={worksheetPdf(sheet.slug)} download>
+                  Download PDF<span className="sr-only">: {sheet.title}</span>
+                </TextLink>
+              </div>
             </li>
           ))}
         </ul>

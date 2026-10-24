@@ -11,6 +11,7 @@ import {
   TextLink,
 } from "@/components/site/primitives";
 import { contactPath } from "@/lib/site";
+import { worksheetPath, worksheetPdf } from "@/content/worksheets";
 
 const AREAS = [
   {
@@ -139,14 +140,15 @@ const DueDiligencePage = () => (
           ))}
         </div>
         <Actions>
-          <ButtonLink href="/downloads/technical-diligence-checklist.txt" download variant="secondary">
-            Download diligence checklist (TXT)
+          <ButtonLink href={worksheetPath("technical-diligence-checklist")}>Fill in the diligence checklist</ButtonLink>
+          <ButtonLink href={worksheetPdf("technical-diligence-checklist")} download variant="secondary">
+            Download checklist (PDF)
           </ButtonLink>
           <TextLink href="/swiss-ai-robotics-ecosystem">Explore Swiss startup scouting</TextLink>
         </Actions>
         <p className="fine mt-5 max-w-[70ch]">
-          Use the checklist to define scope and evidence requests. A public checklist is not an assessment of a specific
-          company.
+          Use the checklist to define scope and evidence requests. Online answers stay in your browser. A public
+          checklist is not an assessment of a specific company.
         </p>
       </div>
     </section>

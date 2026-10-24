@@ -266,8 +266,7 @@ const AiAgentsStrategy = () => (
         "What may AI draft, recommend or change?",
         "What would make a pilot worth continuing?",
       ]}
-      file="/downloads/ai-workflow-pilot-brief.txt"
-      label="Download the pilot brief (TXT)"
+      slug="ai-workflow-pilot-brief"
     />
 
     <ContactCta

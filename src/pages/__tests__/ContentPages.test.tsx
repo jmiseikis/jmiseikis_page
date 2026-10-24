@@ -121,9 +121,13 @@ describe("Due diligence page", () => {
   it("has the stage section the Resources page links to, with the checklist download", () => {
     renderPage(DueDiligencePage, "/due-diligence");
     const stage = document.getElementById("stage")!;
-    expect(within(stage).getByRole("link", { name: /Download diligence checklist/ })).toHaveAttribute(
+    expect(within(stage).getByRole("link", { name: /Fill in the diligence checklist/ })).toHaveAttribute(
       "href",
-      "/downloads/technical-diligence-checklist.txt",
+      "/worksheets/technical-diligence-checklist",
+    );
+    expect(within(stage).getByRole("link", { name: /Download checklist \(PDF\)/ })).toHaveAttribute(
+      "href",
+      "/downloads/technical-diligence-checklist.pdf",
     );
   });
 });
@@ -175,17 +179,21 @@ describe("Publications page", () => {
 });
 
 describe("Resources page", () => {
-  it("offers all four blank worksheets as downloads", () => {
+  it("offers all four worksheets to fill in online or download as PDF", () => {
     renderPage(ResourcesPage, "/resources");
     const templates = screen.getByRole("region", { name: "Blank briefs to use with your team." });
     const files = within(templates)
       .getAllByRole("link")
       .map((a) => a.getAttribute("href"));
     expect(files).toEqual([
-      "/downloads/technology-scouting-brief.txt",
-      "/downloads/market-entry-brief.txt",
-      "/downloads/ai-workflow-pilot-brief.txt",
-      "/downloads/technical-diligence-checklist.txt",
+      "/worksheets/technology-scouting-brief",
+      "/downloads/technology-scouting-brief.pdf",
+      "/worksheets/market-entry-brief",
+      "/downloads/market-entry-brief.pdf",
+      "/worksheets/ai-workflow-pilot-brief",
+      "/downloads/ai-workflow-pilot-brief.pdf",
+      "/worksheets/technical-diligence-checklist",
+      "/downloads/technical-diligence-checklist.pdf",
     ]);
   });
 });
