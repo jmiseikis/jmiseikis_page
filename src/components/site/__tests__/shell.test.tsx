@@ -138,20 +138,20 @@ describe("Theme", () => {
 
   it("keeps pages that are not yet built for dark mode in the light theme", () => {
     localStorage.setItem("jm-theme", "dark");
-    renderShell("/raas-calculator");
+    renderShell("/resources/swiss-tech-pulse");
     expect(document.documentElement).not.toHaveClass("dark");
     expect(screen.queryByRole("button", { name: "Dark theme" })).not.toBeInTheDocument();
   });
 
   it("matches light-only routes regardless of case, as the router does", () => {
     localStorage.setItem("jm-theme", "dark");
-    renderShell("/RaaS-Calculator");
+    renderShell("/Resources/Swiss-Tech-Pulse");
     expect(document.documentElement).not.toHaveClass("dark");
   });
 
-  it("applies a stored dark preference on other pages", () => {
+  it.each(["/advisory", "/raas-calculator"])("applies a stored dark preference on %s", (path) => {
     localStorage.setItem("jm-theme", "dark");
-    renderShell("/advisory");
+    renderShell(path);
     expect(document.documentElement).toHaveClass("dark");
   });
 });

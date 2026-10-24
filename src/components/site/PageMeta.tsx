@@ -13,15 +13,18 @@ const PageMeta = ({
   path,
   ogTitle,
   ogSubtitle,
+  ogImage,
 }: {
   title: string;
   description: string;
   path: string;
   ogTitle: string;
   ogSubtitle: string;
+  /** Background image for the generated preview, as in the route's prerender entry. */
+  ogImage?: string;
 }) => {
   const url = `${SITE}${path}`;
-  const image = buildOgImageUrl({ title: ogTitle, subtitle: ogSubtitle });
+  const image = buildOgImageUrl({ title: ogTitle, subtitle: ogSubtitle, image: ogImage });
 
   return (
     <Helmet>
