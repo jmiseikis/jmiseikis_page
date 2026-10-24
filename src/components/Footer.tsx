@@ -20,7 +20,7 @@ const Footer = () => {
   const onGermanPage = useLocation().pathname.toLowerCase().replace(/\/+$/, "") === "/de";
 
   return (
-    <footer className="border-t border-border bg-muted pb-7 pt-9 md:pt-14">
+    <footer lang="en" className="border-t border-border bg-muted pb-7 pt-9 md:pt-14">
       <div className="site-wrap">
         <div className="grid grid-cols-2 gap-6 md:gap-9 nav:grid-cols-[minmax(0,1.35fr)_repeat(3,minmax(0,1fr))] nav:gap-10">
           <div className="col-span-2 space-y-3 nav:col-span-1">

@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import SiteShell from "@/components/site/SiteShell";
@@ -42,6 +42,24 @@ describe("Site header", () => {
     expect(within(nav).getByRole("link", { name: "Speaking" })).not.toHaveClass("text-primary");
   });
 
+  it("tells screen readers about the section and the page", () => {
+    const { unmount } = renderShell("/due-diligence");
+    let nav = screen.getByRole("navigation", { name: "Main navigation" });
+    expect(within(nav).getByRole("link", { name: "Advisory" })).toHaveAttribute("aria-current", "true");
+    expect(within(nav).getByRole("link", { name: "Speaking" })).not.toHaveAttribute("aria-current");
+    unmount();
+
+    renderShell("/advisory");
+    nav = screen.getByRole("navigation", { name: "Main navigation" });
+    expect(within(nav).getByRole("link", { name: "Advisory" })).toHaveAttribute("aria-current", "page");
+  });
+
+  it("marks the shell as English on the German page", () => {
+    renderShell("/de");
+    expect(screen.getByRole("banner")).toHaveAttribute("lang", "en");
+    expect(screen.getByRole("contentinfo")).toHaveAttribute("lang", "en");
+  });
+
   it("opens the mobile menu and closes it with Escape, returning focus to the button", () => {
     renderShell();
     const button = screen.getByRole("button", { name: "Menu" });
@@ -57,6 +75,44 @@ describe("Site header", () => {
     fireEvent.keyDown(document, { key: "Escape" });
     expect(button).toHaveAttribute("aria-expanded", "false");
     expect(button).toHaveFocus();
+  });
+
+  it("closes the mobile menu when keyboard focus moves past it, but not within the header", () => {
+    render(
+      <HelmetProvider>
+        <MemoryRouter>
+          <SiteShell>
+            <a href="/elsewhere">First link in the page</a>
+          </SiteShell>
+        </MemoryRouter>
+      </HelmetProvider>,
+    );
+    const button = screen.getByRole("button", { name: "Menu" });
+    const panel = document.getElementById("mobile-navigation")!;
+    fireEvent.click(button);
+    const cta = within(panel).getByRole("link", { name: /Discuss a project/ });
+
+    // Moving between header controls keeps it open.
+    act(() => cta.focus());
+    act(() => button.focus());
+    expect(button).toHaveAttribute("aria-expanded", "true");
+
+    // Tabbing out of the header to the page closes it, so it cannot cover the focused link.
+    act(() => cta.focus());
+    act(() => screen.getByRole("link", { name: "First link in the page" }).focus());
+    expect(button).toHaveAttribute("aria-expanded", "false");
+  });
+
+  it("puts the page back if focusing a header control scrolls it", () => {
+    renderShell();
+    const setScrollY = (y: number) => Object.defineProperty(window, "scrollY", { value: y, configurable: true });
+    setScrollY(1200);
+    fireEvent.scroll(window);
+    // The browser's focus scroll lands before the scroll event, so the header still knows the old position.
+    setScrollY(740);
+    fireEvent.focus(within(screen.getByRole("navigation", { name: "Main navigation" })).getByRole("link", { name: "Speaking" }));
+    expect(window.scrollTo).toHaveBeenLastCalledWith(expect.objectContaining({ top: 1200 }));
+    setScrollY(0);
   });
 
   it("closes the mobile menu after following a link", () => {
@@ -134,9 +190,17 @@ describe("Old home anchors", () => {
     expect(advisory.querySelector("#services")).toBeInTheDocument();
   });
 
-  it("has a skip link to the main landmark", () => {
+  it("has a skip link that focuses the main landmark only once it is used", () => {
     renderShell();
+    const main = screen.getByRole("main");
     expect(screen.getByRole("link", { name: "Skip to content" })).toHaveAttribute("href", "#main");
-    expect(screen.getByRole("main")).toHaveAttribute("id", "main");
+    expect(main).toHaveAttribute("id", "main");
+    // No permanent tabindex: clicking page text must not focus the whole landmark.
+    expect(main).not.toHaveAttribute("tabindex");
+
+    fireEvent.click(screen.getByRole("link", { name: "Skip to content" }));
+    expect(main).toHaveFocus();
+    act(() => main.blur());
+    expect(main).not.toHaveAttribute("tabindex");
   });
 });

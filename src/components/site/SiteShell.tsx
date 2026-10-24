@@ -6,6 +6,16 @@ import Footer from "@/components/Footer";
 import ScrollManager from "@/components/site/ScrollManager";
 import { isLightOnlyRoute } from "@/lib/site";
 
+// Focus lands on <main> only after the skip link is used. A permanent tabindex would make a click on any
+// page text focus the whole landmark, and the next Tab would jump back to the top of the page.
+const skipToMain = () => {
+  const main = document.getElementById("main");
+  if (!main) return;
+  main.setAttribute("tabindex", "-1");
+  main.addEventListener("blur", () => main.removeAttribute("tabindex"), { once: true });
+  main.focus({ preventScroll: true });
+};
+
 /**
  * Shared page shell: theme, skip link, sticky header, main landmark and footer around every route.
  * The site starts in the light theme; the header switch stores the visitor's choice.
@@ -26,12 +36,14 @@ const SiteShell = ({ children }: { children: ReactNode }) => {
       <div className="flex min-h-screen flex-col bg-background text-foreground">
         <a
           href="#main"
-          className="sr-only z-[100] bg-background px-4 py-3 text-sm font-semibold text-foreground focus:not-sr-only focus:fixed focus:left-3 focus:top-3"
+          lang="en"
+          onClick={skipToMain}
+          className="sr-only z-[100] bg-background text-sm font-semibold text-foreground focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:px-4 focus:py-3"
         >
           Skip to content
         </a>
         <Navigation />
-        <main id="main" tabIndex={-1} className="flex-1 focus:outline-none">
+        <main id="main" className="flex-1">
           {children}
         </main>
         <Footer />

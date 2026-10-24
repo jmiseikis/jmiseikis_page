@@ -45,6 +45,15 @@ describe("ScrollManager", () => {
     expect(el.scrollIntoView).toHaveBeenCalledTimes(1);
   });
 
+  it("moves keyboard focus to the target so the next Tab continues from there", () => {
+    const el = section("contact", () => 500);
+    renderAt("/#contact", el);
+    expect(el).toHaveFocus();
+    expect(el).toHaveAttribute("tabindex", "-1");
+    act(() => el.blur());
+    expect(el).not.toHaveAttribute("tabindex");
+  });
+
   it("scrolls again when content above the target changes height", () => {
     let top = 2000;
     const el = section("company-list", () => top);

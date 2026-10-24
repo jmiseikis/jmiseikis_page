@@ -26,8 +26,6 @@
     /* Swiss red */
     --primary: 0 85% 46%;
     --primary-foreground: 0 0% 100%;
-    /* Red for text on the inverted bands (bg-foreground), which flip between dark and light. */
-    --primary-inverse: 0 85% 62%;
 
     --secondary: 0 0% 96%;
     --secondary-foreground: 0 0% 15%;
@@ -74,7 +72,6 @@
     /* Brighter red with dark text on red buttons */
     --primary: 0 85% 62%;
     --primary-foreground: 0 0% 5%;
-    --primary-inverse: 0 85% 46%;
 
     --secondary: 0 0% 12%;
     --secondary-foreground: 0 0% 96%;
@@ -108,7 +105,8 @@
     @apply border-border;
   }
 
-  /* Height of the sticky site header, border included. Sticky bars, the hero and anchor jumps use it. */
+  /* Height of the sticky site header, border included. Sticky bars, the hero and anchor jumps use it.
+     The scroll padding keeps anchor targets and focused controls clear of the header. */
   html {
     --header-h: 69px;
     scroll-behavior: smooth;
@@ -133,12 +131,17 @@
     @apply font-bold tracking-tight;
   }
 
+  /* Containers focused by script (main, anchor targets use tabindex -1) are not controls: no ring. */
   a:focus-visible,
   button:focus-visible,
   summary:focus-visible,
-  [tabindex]:focus-visible {
+  [tabindex]:not([tabindex="-1"]):focus-visible {
     outline: 3px solid hsl(var(--ring));
     outline-offset: 4px;
+  }
+
+  [tabindex="-1"]:focus {
+    outline: none;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -177,6 +180,18 @@
 
   .eyebrow {
     @apply text-[11px] font-semibold uppercase tracking-[0.12em] text-primary;
+  }
+
+  /* A band that stays dark in both themes, so the dark theme has no light islands. Inside it the
+     usual tokens (text-foreground, text-primary, text-muted-foreground) resolve to dark-surface values:
+     red is 5.4:1 on the band, muted text 9:1. */
+  .band-dark {
+    --background: 0 0% 5%;
+    --foreground: 0 0% 96%;
+    --muted-foreground: 0 0% 72%;
+    --primary: 0 85% 62%;
+    --ring: 0 85% 62%;
+    --border: 0 0% 32%;
   }
 
   /* Organisation logos are dark artwork on transparent images. In the dark theme they sit on a light plate

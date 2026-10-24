@@ -317,17 +317,17 @@ const GZARobotics = () => {
       </Helmet>
 
       {/* Header */}
-      <header className="bg-foreground text-background py-16 md:py-24">
+      <header className="band-dark border-b border-border bg-background text-foreground py-16 md:py-24">
         <div className="container px-4">
-          <Link to="/" className="inline-flex items-center gap-2 text-background/70 hover:text-primary-inverse transition-colors mb-8">
+          <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8">
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Home</span>
           </Link>
           <div className="max-w-4xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Robotics in the <a href="https://www.greaterzuricharea.com/en" target="_blank" rel="noopener noreferrer" className="text-primary-inverse hover:underline">Greater Zurich Area</a>
+              Robotics in the <a href="https://www.greaterzuricharea.com/en" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Greater Zurich Area</a>
             </h1>
-            <p className="text-xl text-background/70 max-w-2xl">Curated by <a href="https://www.greaterzuricharea.com/en" target="_blank" rel="noopener noreferrer" className="text-primary-inverse hover:underline">Greater Zurich Area</a></p>
+            <p className="text-xl text-muted-foreground max-w-2xl">Curated by <a href="https://www.greaterzuricharea.com/en" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Greater Zurich Area</a></p>
           </div>
         </div>
       </header>

@@ -45,6 +45,16 @@ const ScrollManager = () => {
 
     const pageTop = (el: HTMLElement) => el.getBoundingClientRect().top + window.scrollY;
 
+    // Scrolling alone leaves keyboard focus on the link that was used, so the next Tab would go back
+    // to the header or footer. Move focus to the section, as a native fragment link does.
+    const focusTarget = (el: HTMLElement) => {
+      if (!el.hasAttribute("tabindex")) {
+        el.setAttribute("tabindex", "-1");
+        el.addEventListener("blur", () => el.removeAttribute("tabindex"), { once: true });
+      }
+      el.focus({ preventScroll: true });
+    };
+
     const tryScroll = () => {
       const target = document.getElementById(id);
       if (!target) {
@@ -54,9 +64,11 @@ const ScrollManager = () => {
       }
       if (samePage) {
         target.scrollIntoView({ block: "start", behavior: reducedMotion() ? "auto" : "smooth" });
+        focusTarget(target);
         return;
       }
       target.scrollIntoView({ block: "start", behavior: "instant" as ScrollBehavior });
+      focusTarget(target);
 
       // Follow the target for two seconds, unless the visitor scrolls first.
       let last = pageTop(target);
