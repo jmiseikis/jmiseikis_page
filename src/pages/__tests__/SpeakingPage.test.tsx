@@ -65,7 +65,9 @@ describe("Speaking page", () => {
   it("falls back to the dated snapshot, and says so, when the feed fails", async () => {
     invoke.mockResolvedValue({ data: null, error: new Error("feed down") });
     renderPage();
-    expect(await screen.findByText(/live video feed is unavailable/)).toBeInTheDocument();
+    // The page retries once before falling back.
+    expect(await screen.findByText(/live video feed is unavailable/, {}, { timeout: 5000 })).toBeInTheDocument();
+    expect(invoke).toHaveBeenCalledTimes(2);
     const talks = screen.getByRole("region", { name: "Watch the work." });
     const firstTalk = PERSONAL_FALLBACK.find((v) => !v.isShort)!;
     expect(within(talks).getByText(firstTalk.title)).toBeInTheDocument();

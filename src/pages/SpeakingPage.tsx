@@ -127,6 +127,8 @@ const MediaGrid = ({ items }: { items: VideoItem[] }) => (
   </div>
 );
 
+// One retry only: if the feed is down, the dated snapshot appears within a couple of seconds instead of
+// after React Query's default three retries with backoff.
 const useYoutubeFeed = () =>
   useQuery({
     queryKey: ["youtube-videos"],
@@ -135,6 +137,8 @@ const useYoutubeFeed = () =>
       if (error) throw error;
       return (data ?? {}) as YoutubeFeed;
     },
+    retry: 1,
+    staleTime: 10 * 60 * 1000,
   });
 
 const SpeakingPage = () => {
@@ -199,7 +203,7 @@ const SpeakingPage = () => {
 
       <section className="site-wrap section-y" aria-labelledby="topics-title">
         <SectionHead id="topics-title" eyebrow="Signature topics" title="Designed around your audience." />
-        <div data-testid="signature-topics">
+        <div>
           {SIGNATURE_TOPICS.map((topic, index) => (
             <ServiceRow key={topic.title} number={`0${index + 1}`} title={topic.title} fine={topic.audience}>
               <p>{topic.description}</p>
