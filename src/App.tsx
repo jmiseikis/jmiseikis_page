@@ -1,11 +1,11 @@
-import { lazy, Suspense } from "react";
+import { lazy } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
-import RouteErrorBoundary from "@/components/RouteErrorBoundary";
+import { lazyRoute } from "@/components/LazyRoute";
 import SiteShell from "@/components/site/SiteShell";
 import Index from "./pages/Index";
 import TechEvents from "./pages/TechEvents";
@@ -32,11 +32,6 @@ const PublicationsPage = lazy(() => import("./pages/PublicationsPage"));
 const ResourcesPage = lazy(() => import("./pages/ResourcesPage"));
 const SwissEcosystemGuide = lazy(() => import("./pages/SwissEcosystemGuide"));
 const MarketEntryGuide = lazy(() => import("./pages/MarketEntryGuide"));
-const lazyPage = (page: React.ReactNode) => (
-  <RouteErrorBoundary>
-    <Suspense fallback={<div className="min-h-screen bg-background" />}>{page}</Suspense>
-  </RouteErrorBoundary>
-);
 
 const queryClient = new QueryClient();
 
@@ -60,13 +55,13 @@ const App = () => (
               <Route path="/raas-calculator" element={<RaasCalculator />} />
               <Route path="/gza-robotics" element={<GZARobotics />} />
               <Route path="/ai-agents-strategy" element={<AiAgentsStrategy />} />
-              <Route path="/about" element={lazyPage(<AboutPage />)} />
-              <Route path="/publications" element={lazyPage(<PublicationsPage />)} />
-              <Route path="/resources" element={lazyPage(<ResourcesPage />)} />
-              <Route path="/swiss-ai-robotics-ecosystem" element={lazyPage(<SwissEcosystemGuide />)} />
-              <Route path="/swiss-baltic-market-entry" element={lazyPage(<MarketEntryGuide />)} />
-              <Route path="/privacy" element={lazyPage(<PrivacyPolicy />)} />
-              <Route path="/terms" element={lazyPage(<TermsOfUse />)} />
+              <Route path="/about" element={lazyRoute("/about", <AboutPage />)} />
+              <Route path="/publications" element={lazyRoute("/publications", <PublicationsPage />)} />
+              <Route path="/resources" element={lazyRoute("/resources", <ResourcesPage />)} />
+              <Route path="/swiss-ai-robotics-ecosystem" element={lazyRoute("/swiss-ai-robotics-ecosystem", <SwissEcosystemGuide />)} />
+              <Route path="/swiss-baltic-market-entry" element={lazyRoute("/swiss-baltic-market-entry", <MarketEntryGuide />)} />
+              <Route path="/privacy" element={lazyRoute("/privacy", <PrivacyPolicy />)} />
+              <Route path="/terms" element={lazyRoute("/terms", <TermsOfUse />)} />
               <Route path="/resources/swiss-tech-pulse" element={<SwissTechPulse />} />
               <Route path="/resources/swiss-tech-pulse/about" element={<SwissTechPulseAbout />} />
               <Route path="/resources/swiss-tech-pulse/digest/:week" element={<SwissTechPulseDigest />} />
