@@ -12,8 +12,18 @@ export const SWISS_HACK_EVENTS_URL = "https://www.hackevents.net/ch";
 export const CONTACT_PATH = "/#contact";
 
 /** Enquiry purposes a link can preselect on the contact form. No personal data goes in the URL. */
-export const ENQUIRY_INTENTS = ["advisory", "scouting", "diligence", "representation", "speaking", "other"] as const;
-export type EnquiryIntent = (typeof ENQUIRY_INTENTS)[number];
+export const ENQUIRY_OPTIONS = [
+  { value: "advisory", label: "Advisory or strategy" },
+  { value: "scouting", label: "Technology scouting, market entry or Swiss partnerships" },
+  { value: "diligence", label: "Technical-commercial assessment" },
+  { value: "representation", label: "Swiss presence or event representation" },
+  { value: "speaking", label: "Speaking or workshop" },
+  { value: "other", label: "Other enquiry" },
+] as const;
+export type EnquiryIntent = (typeof ENQUIRY_OPTIONS)[number]["value"];
+export const ENQUIRY_INTENTS: readonly EnquiryIntent[] = ENQUIRY_OPTIONS.map((option) => option.value);
+export const isEnquiryIntent = (value: string | null | undefined): value is EnquiryIntent =>
+  ENQUIRY_INTENTS.includes(value as EnquiryIntent);
 
 /** Link to the protected contact form on the home page with a suggested purpose. */
 export const contactPath = (intent: EnquiryIntent = "advisory") => `/?enquiry=${intent}#contact`;
