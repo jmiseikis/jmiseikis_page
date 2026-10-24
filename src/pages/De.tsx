@@ -60,6 +60,9 @@ const De = () => (
           <span lang="en">English website</span>
         </ButtonLink>
       </Actions>
+      <p className="mt-6 text-xs text-muted-foreground">
+        Sitz in der Schweiz. Beratung, Workshops und Vorträge ausschliesslich auf Englisch.
+      </p>
     </PageHero>
 
     <section className="site-wrap pb-12 pt-10 md:pb-20" aria-labelledby="de-services-title">
@@ -73,7 +76,8 @@ const De = () => (
       </div>
       <Note>
         <p>
-          Die Zusammenarbeit und Vorträge erfolgen auf Englisch. Weitere Inhalte dieser Website sind auf Englisch verfügbar.
+          Beratung, Due Diligence, Workshops und Vorträge erfolgen ausschliesslich auf Englisch. Weitere Inhalte dieser
+          Website sind auf Englisch verfügbar.
           Honorare werden je nach Umfang vereinbart und auf Anfrage mitgeteilt.
         </p>
       </Note>
