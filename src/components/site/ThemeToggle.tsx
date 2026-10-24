@@ -4,12 +4,9 @@ import { cn } from "@/lib/utils";
 
 /** Dark theme on/off switch. next-themes remembers the choice in localStorage. */
 const ThemeToggle = ({ compact = false }: { compact?: boolean }) => {
-  const { resolvedTheme, setTheme, forcedTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
-
-  // Pages that are not yet built for the dark theme force light; a switch there would do nothing.
-  if (forcedTheme) return null;
 
   const dark = mounted && resolvedTheme === "dark";
 
