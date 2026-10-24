@@ -67,13 +67,7 @@ const STAGES = [
 
 const DueDiligencePage = () => (
   <>
-    <PageMeta
-      path="/due-diligence"
-      title="AI & robotics due diligence | Dr. Justinas Mišeikis"
-      description="Technical and commercial assessment of AI, robotics and deep tech opportunities for investors, acquirers and corporate strategy teams."
-      ogTitle="AI & robotics due diligence"
-      ogSubtitle="DR. JUSTINAS MIŠEIKIS · DUE DILIGENCE"
-    />
+    <PageMeta path="/due-diligence" />
     <PageHero
       breadcrumb={{ to: "/advisory", label: "Advisory" }}
       eyebrow="Advisory | Investors, acquirers & strategy teams"

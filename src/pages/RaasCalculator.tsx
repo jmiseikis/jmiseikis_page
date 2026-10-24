@@ -1,24 +1,7 @@
 import { useEffect, useId, useMemo, useRef, useState } from "react";
-import { Helmet } from "react-helmet-async";
 import PageMeta from "@/components/site/PageMeta";
 import { Actions, ContactCta, Eyebrow, Note, PageHero, TextLink } from "@/components/site/primitives";
 import { DEFAULT_SCENARIO, calculateScenario, type ScenarioInputs, type ScenarioResult } from "@/lib/raas";
-
-const TITLE = "RaaS ROI calculator | Dr. Justinas Mišeikis";
-const DESCRIPTION =
-  "Explore robot-as-a-service costs, cash savings, productivity assumptions and payback with an interactive robotics scenario model.";
-
-const JSON_LD = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "RaaS ROI calculator",
-  applicationCategory: "BusinessApplication",
-  operatingSystem: "Web",
-  url: "https://jmiseikis.com/raas-calculator",
-  description: DESCRIPTION,
-  isAccessibleForFree: true,
-  author: { "@type": "Person", name: "Dr. Justinas Mišeikis", url: "https://jmiseikis.com/" },
-};
 
 type Key = keyof ScenarioInputs;
 type Unit = "currency" | "%" | "years" | "";
@@ -239,17 +222,7 @@ const RaasCalculator = () => {
 
   return (
     <>
-      <PageMeta
-        path="/raas-calculator"
-        title={TITLE}
-        description={DESCRIPTION}
-        ogTitle="RaaS ROI Calculator"
-        ogSubtitle="ROBOT AS A SERVICE · SCENARIO MODEL"
-        ogImage="/og-raas-calculator.png"
-      />
-      <Helmet>
-        <script type="application/ld+json">{JSON.stringify(JSON_LD)}</script>
-      </Helmet>
+      <PageMeta path="/raas-calculator" />
 
       <PageHero
         breadcrumb={{ to: "/resources", label: "Resources" }}

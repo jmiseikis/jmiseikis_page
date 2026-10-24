@@ -58,13 +58,7 @@ const PublicationsPage = () => {
 
   return (
     <>
-      <PageMeta
-        path="/publications"
-        title="Publications & patents | Dr. Justinas Mišeikis"
-        description="Selected papers in robotics, computer vision and human-robot interaction, with links to the full publication and patent records."
-        ogTitle="Publications & patents"
-        ogSubtitle="DR. JUSTINAS MIŠEIKIS · RESEARCH"
-      />
+      <PageMeta path="/publications" />
 
       <PageHero
         eyebrow="Research & innovation"

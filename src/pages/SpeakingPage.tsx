@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import { Helmet } from "react-helmet-async";
 import PageMeta from "@/components/site/PageMeta";
 import {
   Actions,
@@ -37,49 +36,6 @@ interface YoutubeFeed {
   videos?: VideoItem[];
   techdrive?: { episodes?: VideoItem[] };
 }
-
-// Structured data kept from the previous page, with owner-confirmed roles. Wisdom House was independently organised
-// during WEF week, so it is not presented as part of the official WEF programme.
-const PERSON_JSON_LD = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Dr. Justinas Mišeikis",
-  jobTitle: ["Strategy and Partnerships Manager at Sony AI", "Founder and Host of TechDrive Zürich"],
-  worksFor: {
-    "@type": "Organization",
-    name: "Sony AI",
-    url: "https://ai.sony",
-    parentOrganization: { "@type": "Organization", name: "Sony", url: "https://www.sony.com" },
-  },
-  url: "https://jmiseikis.com/speaking",
-  sameAs: [YOUTUBE_CHANNEL_URL, PREMIUM_SPEAKERS_URL, TECHDRIVE_URL],
-  knowsAbout: ["Artificial Intelligence", "Robotics", "Computer Vision", "AI Commercialization", "AI Ethics", "Physical AI", "Deep Tech Investment"],
-  performerIn: [
-    {
-      "@type": "Event",
-      name: "Wisdom House @ Davos 2026",
-      location: "Davos, Switzerland",
-      description: "Independently organised during WEF week",
-    },
-    { "@type": "Event", name: "GenAI Zürich", location: "Zurich, Switzerland" },
-    { "@type": "Event", name: "LOGIN Conference", location: "Vilnius, Lithuania" },
-    { "@type": "Event", name: "ETH Zürich & ETH Entrepreneurship Club", location: "Zurich, Switzerland" },
-    { "@type": "Event", name: "Sony AI Conference" },
-  ],
-};
-
-const PODCAST_JSON_LD = {
-  "@context": "https://schema.org",
-  "@type": "PodcastSeries",
-  name: "TechDrive Zürich",
-  url: TECHDRIVE_URL,
-  description:
-    "Interview and podcast series hosted by Dr. Justinas Mišeikis, spotlighting founders, researchers and operators shaping Switzerland's AI, robotics and deep tech ecosystem, recorded in and around Zürich.",
-  inLanguage: "en",
-  author: { "@type": "Person", name: "Dr. Justinas Mišeikis", url: "https://jmiseikis.com/" },
-  host: { "@type": "Person", name: "Dr. Justinas Mišeikis", url: "https://jmiseikis.com/" },
-  about: ["Artificial Intelligence", "Robotics", "Deep Tech", "Swiss Startups", "Greater Zurich Area"],
-};
 
 const formatDate = (iso: string) => {
   const date = new Date(iso);
@@ -155,17 +111,7 @@ const SpeakingPage = () => {
 
   return (
     <>
-      <PageMeta
-        path="/speaking"
-        title="Speaking | Dr. Justinas Mišeikis"
-        description="Keynotes, panels and workshops on physical AI, research commercialisation and technology partnerships. Based in Switzerland, delivered in English."
-        ogTitle="Speaking"
-        ogSubtitle="DR. JUSTINAS MIŠEIKIS · SPEAKING"
-      />
-      <Helmet>
-        <script type="application/ld+json">{JSON.stringify(PERSON_JSON_LD)}</script>
-        <script type="application/ld+json">{JSON.stringify(PODCAST_JSON_LD)}</script>
-      </Helmet>
+      <PageMeta path="/speaking" />
       <PageHero
         eyebrow="Keynotes | Panels | Workshops"
         title="AI and robotics, with technical depth and business context."

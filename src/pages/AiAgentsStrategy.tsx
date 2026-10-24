@@ -83,13 +83,7 @@ const PILOT_STEPS = [
 
 const AiAgentsStrategy = () => (
   <>
-    <PageMeta
-      path="/ai-agents-strategy"
-      title="AI for internal data & workflows | Dr. Justinas Mišeikis"
-      description="Assess AI for internal knowledge, support, proposals and operations. Map company data, processes and permissions, then define a measurable pilot."
-      ogTitle="AI for internal data & workflows"
-      ogSubtitle="DR. JUSTINAS MIŠEIKIS · PRACTICAL GUIDE"
-    />
+    <PageMeta path="/ai-agents-strategy" />
     <PageHero
       breadcrumb={{ to: "/resources", label: "Resources" }}
       eyebrow="Practical guide | Enterprise AI"

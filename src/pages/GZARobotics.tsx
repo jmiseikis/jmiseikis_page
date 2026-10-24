@@ -9,8 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Separator } from "@/components/ui/separator";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Helmet } from "react-helmet-async";
-import { buildOgImageUrl } from "@/lib/ogImage";
+import PageMeta from "@/components/site/PageMeta";
 
 
 interface Company {
@@ -288,33 +287,7 @@ const GZARobotics = () => {
 
   return (
     <div className="bg-background">
-      <Helmet>
-        <title>GZA Robotics Directory | Dr. Justinas Mišeikis</title>
-        <meta name="description" content="Explore 150+ robotics companies, startups, labs, and AI innovators in Greater Zurich. Filterable directory listed with the agreement of Greater Zurich Area." />
-        <meta name="keywords" content="robotics companies Zurich, Greater Zurich Area robotics, Swiss robotics startups, autonomous systems Switzerland, robotics directory Zurich, medtech robotics Switzerland, autonomous driving Zurich, computer vision robotics, robotics research labs ETH, Swiss robotics ecosystem, GZA robotics map, Swisscom Ventures robotics" />
-        <link rel="canonical" href="https://jmiseikis.com/gza-robotics" />
-        <meta property="og:title" content="GZA Robotics Directory | Dr. Justinas Mišeikis" />
-        <meta property="og:description" content="Filterable directory of 150+ robotics companies, autonomous systems startups, and research labs in the Greater Zurich Area. Listed with the agreement of Greater Zurich Area (GZA)." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://jmiseikis.com/gza-robotics" />
-        <meta property="og:image" content={buildOgImageUrl({ title: "Robotics in the Greater Zurich Area", subtitle: "DIRECTORY · 150+ COMPANIES" })} />
-        <meta name="twitter:image" content={buildOgImageUrl({ title: "Robotics in the Greater Zurich Area", subtitle: "DIRECTORY · 150+ COMPANIES" })} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <script type="application/ld+json">{JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Dataset",
-          "name": "Robotics Companies in the Greater Zurich Area",
-          "description": "A curated directory of 150+ robotics companies, autonomous systems startups, university research labs, and technology innovators operating in the Greater Zurich Area of Switzerland. Listed with the agreement of Greater Zurich Area (GZA).",
-          "url": "https://jmiseikis.com/gza-robotics",
-          "creator": { "@type": "Organization", "name": "Greater Zurich Area", "url": "https://www.greaterzuricharea.com/en" },
-          "publisher": { "@type": "Person", "name": "Dr. Justinas Miseikis", "url": "https://jmiseikis.com" },
-          "keywords": ["robotics", "autonomous systems", "Greater Zurich Area", "GZA", "Switzerland", "startups", "research labs", "medtech robotics", "autonomous driving", "computer vision", "ETH Zurich"],
-          "spatialCoverage": { "@type": "Place", "name": "Greater Zurich Area, Switzerland" },
-          "isAccessibleForFree": true
-        })}</script>
-      </Helmet>
+      <PageMeta path="/gza-robotics" />
 
       {/* Header */}
       <header className="band-dark border-b border-border bg-background text-foreground py-16 md:py-24">

@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { useIsMobile } from "@/hooks/use-mobile";
+import PageMeta from "@/components/site/PageMeta";
 
 interface VC {
   name: string;
@@ -64,56 +65,6 @@ const SwissVCs = () => {
   const [roundFilter, setRoundFilter] = useState<string>("all");
   const [geoFilter, setGeoFilter] = useState<string>("all");
   const [audienceFilter, setAudienceFilter] = useState<string>("all");
-
-  useEffect(() => {
-    document.title = "Swiss VCs Directory | Dr. Justinas Mišeikis";
-    const setMeta = (name: string, content: string, attr = "name") => {
-      let el = document.querySelector(`meta[${attr}="${name}"]`) as HTMLMetaElement | null;
-      if (!el) { el = document.createElement("meta"); el.setAttribute(attr, name); document.head.appendChild(el); }
-      el.setAttribute("content", content);
-    };
-    setMeta("description", "Curated directory of 66+ Swiss venture capital firms investing in AI, robotics, deep tech, fintech, biotech, and climate startups.");
-    setMeta("keywords", "Swiss VCs, venture capital Switzerland, Swiss venture capital directory, VC firms Zurich, Swiss deep tech investors, AI investors Switzerland, robotics VC Europe, Series A Switzerland, pre-seed Swiss startups, fundraising Switzerland, Swiss startup ecosystem, DACH venture capital");
-    setMeta("og:title", "Swiss VCs Directory | Dr. Justinas Mišeikis", "property");
-    setMeta("og:description", "Find the right VC for your Swiss startup. 66+ firms filterable by sector, stage and geography. Curated by Dr. Justinas Mišeikis.", "property");
-    setMeta("og:url", "https://jmiseikis.com/swiss-vcs", "property");
-    setMeta("og:type", "website", "property");
-    const swissVcsOg = (() => {
-      const pid = (import.meta as unknown as { env: { VITE_SUPABASE_PROJECT_ID?: string } }).env.VITE_SUPABASE_PROJECT_ID;
-      if (!pid) return "https://jmiseikis.com/og-swiss-vcs.png";
-      const p = new URLSearchParams({
-        title: "Swiss VCs & Funds Directory",
-        subtitle: "66+ FIRMS · SORTED BY SECTOR & STAGE",
-        image: "https://jmiseikis.com/og-swiss-vcs.png",
-      });
-      return `https://${pid}.supabase.co/functions/v1/og-image?${p.toString()}`;
-    })();
-    setMeta("og:image", swissVcsOg, "property");
-    setMeta("twitter:image", swissVcsOg);
-    setMeta("og:image:width", "1200", "property");
-    setMeta("og:image:height", "630", "property");
-    setMeta("twitter:card", "summary_large_image");
-    setMeta("twitter:title", "Swiss VCs & Funds Directory 2026");
-    setMeta("twitter:description", "66+ venture capital firms investing in Swiss startups. Filter by sector, stage and geography.");
-    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-    if (!canonical) { canonical = document.createElement("link"); canonical.rel = "canonical"; document.head.appendChild(canonical); }
-    canonical.href = "https://jmiseikis.com/swiss-vcs";
-    const jsonLd = document.createElement("script");
-    jsonLd.type = "application/ld+json";
-    jsonLd.textContent = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Dataset",
-      "name": "Swiss VCs and Funds Directory",
-      "description": "Curated directory of Swiss venture capital firms and funds investing in startups across AI, robotics, deep tech, fintech, biotech, climate, SaaS, and industrial technology.",
-      "url": "https://jmiseikis.com/swiss-vcs",
-      "creator": { "@type": "Person", "name": "Dr. Justinas Mišeikis", "url": "https://jmiseikis.com" },
-      "about": ["Swiss venture capital", "startup fundraising", "AI investors", "robotics investors", "deep tech investors"],
-      "spatialCoverage": { "@type": "Country", "name": "Switzerland" },
-      "isAccessibleForFree": true
-    });
-    document.head.appendChild(jsonLd);
-    return () => { jsonLd.remove(); };
-  }, []);
 
   useEffect(() => {
     const fetchVCs = async () => {
@@ -304,6 +255,7 @@ const SwissVCs = () => {
 
   return (
     <div className="bg-background">
+      <PageMeta path="/swiss-vcs" />
       {/* Header */}
       <header className="band-dark border-b border-border bg-background text-foreground py-16 md:py-24">
         <div className="container px-4">

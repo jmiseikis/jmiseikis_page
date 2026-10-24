@@ -47,13 +47,7 @@ const COUNTRIES = ["Lithuania", "the United Kingdom", "Switzerland", "Australia"
 
 const AboutPage = () => (
   <>
-    <PageMeta
-      path="/about"
-      title="About | Dr. Justinas Mišeikis"
-      description="Background in Sony technology scouting, Sony AI strategy and partnerships, robotics leadership, research and business education."
-      ogTitle="About"
-      ogSubtitle="DR. JUSTINAS MIŠEIKIS · ABOUT"
-    />
+    <PageMeta path="/about" />
 
     <PageHero
       eyebrow="About | Research, strategy & commercialisation"

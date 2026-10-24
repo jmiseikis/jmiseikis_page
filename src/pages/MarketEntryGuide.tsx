@@ -57,13 +57,7 @@ const ENGAGEMENT = [
 
 const MarketEntryGuide = () => (
   <>
-    <PageMeta
-      path="/swiss-baltic-market-entry"
-      title="Swiss & Baltic technology market-entry guide | Dr. Justinas Mišeikis"
-      description="Plan technology market entry into Switzerland and international growth for Swiss startups, with Baltic ecosystem sources and a reusable brief."
-      ogTitle="Swiss & Baltic market-entry guide"
-      ogSubtitle="DR. JUSTINAS MIŠEIKIS · FIELD GUIDE"
-    />
+    <PageMeta path="/swiss-baltic-market-entry" />
     <PageHero
       breadcrumb={{ to: "/resources", label: "Resources" }}
       eyebrow="Field guide | Switzerland, the Baltics & beyond"

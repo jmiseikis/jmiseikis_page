@@ -1,0 +1,133 @@
+{
+  "site": "https://jmiseikis.com",
+  "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
+  "locales": { "en": "en_GB", "de": "de_CH" },
+  "alternates": { "en": "/", "de": "/de", "x-default": "/" },
+  "routes": {
+    "/": {
+      "title": "Dr. Justinas Mišeikis - AI & Robotics Advisor | TechDrive Zürich",
+      "description": "AI and robotics advisor, speaker, and Founder and Host of TechDrive Zürich. Technology scouting, due diligence and Swiss partnerships, based in Zurich.",
+      "ogTitle": "AI & robotics strategy. Swiss ecosystem expertise.",
+      "ogSubtitle": "DR. JUSTINAS MIŠEIKIS · ZURICH",
+      "type": "WebPage"
+    },
+    "/de": {
+      "title": "KI- und Robotikstrategie | Dr. Justinas Mišeikis",
+      "description": "KI- und Robotikberatung, Technologie-Scouting und Keynotes. Sitz in Zürich, internationale Zusammenarbeit auf Englisch.",
+      "ogTitle": "KI- und Robotikstrategie",
+      "ogSubtitle": "DR. JUSTINAS MIŠEIKIS · ZÜRICH",
+      "type": "WebPage",
+      "language": "de"
+    },
+    "/advisory": {
+      "title": "AI & robotics advisory | Dr. Justinas Mišeikis",
+      "description": "Technology scouting, AI and robotics diligence, Swiss partnerships and local representation for international companies and investors.",
+      "ogTitle": "AI & robotics advisory",
+      "ogSubtitle": "DR. JUSTINAS MIŠEIKIS · ADVISORY",
+      "type": "WebPage"
+    },
+    "/speaking": {
+      "title": "Speaking | Dr. Justinas Mišeikis",
+      "description": "Keynotes, panels and workshops on physical AI, research commercialisation and technology partnerships. Based in Switzerland, delivered in English.",
+      "ogTitle": "Speaking",
+      "ogSubtitle": "DR. JUSTINAS MIŠEIKIS · SPEAKING",
+      "type": "WebPage"
+    },
+    "/due-diligence": {
+      "title": "AI & robotics due diligence | Dr. Justinas Mišeikis",
+      "description": "Technical and commercial assessment of AI, robotics and deep tech opportunities for investors, acquirers and corporate strategy teams.",
+      "ogTitle": "AI & robotics due diligence",
+      "ogSubtitle": "DR. JUSTINAS MIŠEIKIS · DUE DILIGENCE",
+      "type": "WebPage"
+    },
+    "/ai-agents-strategy": {
+      "title": "AI for internal data & workflows | Dr. Justinas Mišeikis",
+      "description": "Assess AI for internal knowledge, support, proposals and operations. Map company data, processes and permissions, then define a measurable pilot.",
+      "ogTitle": "AI for internal data & workflows",
+      "ogSubtitle": "DR. JUSTINAS MIŠEIKIS · PRACTICAL GUIDE",
+      "type": "WebPage",
+      "article": true
+    },
+    "/about": {
+      "title": "About | Dr. Justinas Mišeikis",
+      "description": "Background in Sony technology scouting, Sony AI strategy and partnerships, robotics leadership, research and business education.",
+      "ogTitle": "About",
+      "ogSubtitle": "DR. JUSTINAS MIŠEIKIS · ABOUT",
+      "type": "AboutPage"
+    },
+    "/publications": {
+      "title": "Publications & patents | Dr. Justinas Mišeikis",
+      "description": "Selected papers in robotics, computer vision and human-robot interaction, with links to the full publication and patent records.",
+      "ogTitle": "Publications & patents",
+      "ogSubtitle": "DR. JUSTINAS MIŠEIKIS · RESEARCH",
+      "type": "CollectionPage"
+    },
+    "/resources": {
+      "title": "Resources for Swiss technology & AI decisions | Dr. Justinas Mišeikis",
+      "description": "Guides, directories and templates for Swiss technology scouting, market entry, AI adoption and investor due diligence.",
+      "ogTitle": "Resources",
+      "ogSubtitle": "DR. JUSTINAS MIŠEIKIS · RESOURCES",
+      "type": "CollectionPage"
+    },
+    "/swiss-ai-robotics-ecosystem": {
+      "title": "Swiss AI & robotics ecosystem guide | Dr. Justinas Mišeikis",
+      "description": "Navigate Swiss AI and robotics research, startups and scale-ups. Public sources, investor questions and a downloadable technology scouting brief.",
+      "ogTitle": "Swiss AI & robotics ecosystem guide",
+      "ogSubtitle": "DR. JUSTINAS MIŠEIKIS · FIELD GUIDE",
+      "type": "WebPage",
+      "article": true
+    },
+    "/swiss-baltic-market-entry": {
+      "title": "Swiss & Baltic technology market-entry guide | Dr. Justinas Mišeikis",
+      "description": "Plan technology market entry into Switzerland and international growth for Swiss startups, with Baltic ecosystem sources and a reusable brief.",
+      "ogTitle": "Swiss & Baltic market-entry guide",
+      "ogSubtitle": "DR. JUSTINAS MIŠEIKIS · FIELD GUIDE",
+      "type": "WebPage",
+      "article": true
+    },
+    "/gza-robotics": {
+      "title": "Robotics in the Greater Zurich Area | Dr. Justinas Mišeikis",
+      "description": "Explore robotics companies, research labs and autonomous systems organisations in the Greater Zurich Area, with data curated by GZA.",
+      "ogTitle": "Robotics in the Greater Zurich Area",
+      "ogSubtitle": "DIRECTORY · 150+ COMPANIES",
+      "type": "CollectionPage"
+    },
+    "/swiss-vcs": {
+      "title": "Swiss VCs & funds | Dr. Justinas Mišeikis",
+      "description": "Explore Swiss investors by sector, stage, geography and audience, with links to original investment-firm information.",
+      "ogTitle": "Swiss VCs & Funds Directory",
+      "ogSubtitle": "66+ FIRMS · SORTED BY SECTOR & STAGE",
+      "ogImage": "/og-swiss-vcs.png",
+      "type": "CollectionPage"
+    },
+    "/tech-events": {
+      "title": "Swiss technology events | Dr. Justinas Mišeikis",
+      "description": "Explore technology conferences, summits and ecosystem events in Switzerland, with date, topic, location and scope filters.",
+      "ogTitle": "Tech Events Switzerland 2026",
+      "ogSubtitle": "AI · ROBOTICS · DEEP TECH · STARTUPS",
+      "type": "CollectionPage"
+    },
+    "/raas-calculator": {
+      "title": "RaaS ROI calculator | Dr. Justinas Mišeikis",
+      "description": "Explore robot-as-a-service costs, cash savings, productivity assumptions and payback with an interactive robotics scenario model.",
+      "ogTitle": "RaaS ROI Calculator",
+      "ogSubtitle": "ROBOT AS A SERVICE · SCENARIO MODEL",
+      "ogImage": "/og-raas-calculator.png",
+      "type": "WebPage"
+    },
+    "/privacy": {
+      "title": "Privacy Policy | Dr. Justinas Mišeikis",
+      "description": "How jmiseikis.com handles personal data: the contact form, content loaded from third parties, service providers and your rights under Swiss and EU law.",
+      "ogTitle": "Privacy Policy",
+      "ogSubtitle": "DR. JUSTINAS MIŠEIKIS · LEGAL",
+      "type": "WebPage"
+    },
+    "/terms": {
+      "title": "Terms of Use | Dr. Justinas Mišeikis",
+      "description": "Terms for using jmiseikis.com: general information only, the RaaS ROI calculator, directories, external links, intellectual property, liability and Swiss law.",
+      "ogTitle": "Terms of Use",
+      "ogSubtitle": "DR. JUSTINAS MIŠEIKIS · LEGAL",
+      "type": "WebPage"
+    }
+  }
+}

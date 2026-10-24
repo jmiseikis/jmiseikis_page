@@ -15,6 +15,7 @@ const NotFound = () => {
   return (
     <>
       <Helmet>
+        <html lang="en" />
         <title>Page not found | Dr. Justinas Mišeikis</title>
         <meta name="description" content="Find the right page on the website of Dr. Justinas Mišeikis." />
         <meta name="robots" content="noindex, nofollow" />

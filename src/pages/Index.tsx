@@ -50,13 +50,7 @@ const RESOURCE_TEASERS = [
 
 const Index = () => (
   <>
-    <PageMeta
-      path="/"
-      title="Dr. Justinas Mišeikis - AI Advisor & TechDrive Zürich Host"
-      description="AI advisor, keynote speaker and host of the TechDrive Zürich podcast. Robotics strategy, VC due diligence and research commercialization in Zurich, DACH and Europe."
-      ogTitle="AI & robotics strategy. Swiss ecosystem expertise."
-      ogSubtitle="DR. JUSTINAS MIŠEIKIS · ZURICH"
-    />
+    <PageMeta path="/" />
 
     {/* Hero */}
     <section className="site-wrap grid grid-cols-1 items-center gap-7 py-9 md:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] md:gap-10 md:py-16 lg:gap-16">
