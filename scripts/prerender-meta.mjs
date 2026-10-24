@@ -31,11 +31,11 @@ const baseHtml = readFileSync(indexPath, "utf8");
 const routes = [
   {
     path: "/de",
-    title: "Dr. Justinas Mišeikis - KI-Keynote-Speaker & Strategieberater | Zürich, DACH",
+    title: "KI- und Robotikstrategie | Dr. Justinas Mišeikis",
     description:
-      "KI- und Robotik-Keynote-Speaker, VC Due Diligence und Forschungskommerzialisierung. Beratung für Unternehmen und Investoren in der Schweiz, Deutschland und Österreich.",
-    ogTitle: "Dr. Justinas Mišeikis",
-    ogSubtitle: "KI-KEYNOTE-SPEAKER · STRATEGIEBERATER",
+      "KI- und Robotikberatung, Technologie-Scouting und Keynotes. Sitz in Zürich, internationale Zusammenarbeit auf Englisch.",
+    ogTitle: "KI- und Robotikstrategie",
+    ogSubtitle: "DR. JUSTINAS MIŠEIKIS · ZÜRICH",
   },
   {
     path: "/advisory",
