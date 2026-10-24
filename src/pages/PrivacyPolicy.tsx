@@ -2,7 +2,7 @@ import LegalPageLayout, { LegalList, LegalSection, LegalSubsection } from "@/com
 
 // Publication date of this version. Update it whenever the policy text changes, and update the
 // policy in the same pull request whenever the site adds analytics, embeds, forms or third-party services.
-const LAST_UPDATED = { iso: "2026-10-12", label: "12 October 2026" };
+const LAST_UPDATED = { iso: "2026-10-24", label: "24 October 2026" };
 
 const providers = [
   {
@@ -109,8 +109,9 @@ const PrivacyPolicy = () => (
       <LegalSubsection title="Information stored in your browser">
         <p>
           The website does not set analytics or advertising cookies. It may store small technical preferences in your
-          browser, such as your choice of light or dark theme. These stay on your device and can be cleared in your
-          browser settings. Cloudflare Turnstile processes
+          browser, such as your choice of light or dark theme, and the answers you type into a worksheet. These stay on
+          your device, are not sent to the website and can be cleared in your browser settings or with the worksheet's
+          "Clear answers" button. Cloudflare Turnstile processes
           browser signals to tell people and bots apart when the contact form is shown.
         </p>
       </LegalSubsection>

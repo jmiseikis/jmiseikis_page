@@ -268,3 +268,37 @@
     animation: fadeIn 0.6s ease-out 0.2s backwards;
   }
 }
+
+/* Printing (the worksheets' "Print or save as PDF"): light colours, no site chrome, A4 pages. */
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm 14mm 16mm;
+  }
+  .dark {
+    color-scheme: light;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 5%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 34%;
+    --border: 0 0% 70%;
+    --input: 0 0% 55%;
+    --primary: 0 85% 46%;
+    --primary-foreground: 0 0% 100%;
+  }
+  /* The pre-paint script sets color-scheme inline, so override it for paper. */
+  html,
+  body {
+    color-scheme: light !important;
+    background: #fff !important;
+  }
+  .site-header,
+  body footer,
+  a[href="#main"] {
+    display: none !important;
+  }
+  main section.site-wrap {
+    padding-top: 0;
+    padding-bottom: 1rem;
+  }
+}

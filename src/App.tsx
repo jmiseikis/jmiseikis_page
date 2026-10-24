@@ -18,6 +18,7 @@ import DueDiligencePage from "./pages/DueDiligencePage";
 import GZARobotics from "./pages/GZARobotics";
 import AiAgentsStrategy from "./pages/AiAgentsStrategy";
 import NotFound from "./pages/NotFound";
+import WorksheetPage from "./pages/WorksheetPage";
 
 // Loaded on demand. The legal pages stay out of the main bundle so the privacy contact address ships only
 // with them; the standalone content pages are split out to keep the first load small.
@@ -56,6 +57,10 @@ const App = () => (
               <Route path="/resources" element={lazyRoute("/resources", <ResourcesPage />)} />
               <Route path="/swiss-ai-robotics-ecosystem" element={lazyRoute("/swiss-ai-robotics-ecosystem", <SwissEcosystemGuide />)} />
               <Route path="/swiss-baltic-market-entry" element={lazyRoute("/swiss-baltic-market-entry", <MarketEntryGuide />)} />
+              <Route path="/worksheets/technology-scouting-brief" element={<WorksheetPage slug="technology-scouting-brief" />} />
+              <Route path="/worksheets/market-entry-brief" element={<WorksheetPage slug="market-entry-brief" />} />
+              <Route path="/worksheets/ai-workflow-pilot-brief" element={<WorksheetPage slug="ai-workflow-pilot-brief" />} />
+              <Route path="/worksheets/technical-diligence-checklist" element={<WorksheetPage slug="technical-diligence-checklist" />} />
               <Route path="/privacy" element={lazyRoute("/privacy", <PrivacyPolicy />)} />
               <Route path="/terms" element={lazyRoute("/terms", <TermsOfUse />)} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

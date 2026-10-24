@@ -1,8 +1,15 @@
 {
   "site": "https://jmiseikis.com",
   "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
-  "locales": { "en": "en_GB", "de": "de_CH" },
-  "alternates": { "en": "/", "de": "/de", "x-default": "/" },
+  "locales": {
+    "en": "en_GB",
+    "de": "de_CH"
+  },
+  "alternates": {
+    "en": "/",
+    "de": "/de",
+    "x-default": "/"
+  },
   "routes": {
     "/": {
       "title": "Dr. Justinas Mišeikis - AI & Robotics Advisor | TechDrive Zürich",
@@ -84,6 +91,34 @@
       "ogSubtitle": "DR. JUSTINAS MIŠEIKIS · FIELD GUIDE",
       "type": "WebPage",
       "article": true
+    },
+    "/worksheets/technology-scouting-brief": {
+      "title": "Technology scouting brief | Dr. Justinas Mišeikis",
+      "description": "Fill in a technology scouting brief online or download it as a PDF: thesis, scope, evidence threshold, shortlist and outreach.",
+      "ogTitle": "Technology scouting brief",
+      "ogSubtitle": "DR. JUSTINAS MIŠEIKIS · WORKSHEET",
+      "type": "WebPage"
+    },
+    "/worksheets/market-entry-brief": {
+      "title": "Technology market-entry brief | Dr. Justinas Mišeikis",
+      "description": "Fill in a technology market-entry brief online or as a PDF: market hypothesis, entry route, shortlist, validation, pilot and decision.",
+      "ogTitle": "Technology market-entry brief",
+      "ogSubtitle": "DR. JUSTINAS MIŠEIKIS · WORKSHEET",
+      "type": "WebPage"
+    },
+    "/worksheets/ai-workflow-pilot-brief": {
+      "title": "AI workflow pilot brief | Dr. Justinas Mišeikis",
+      "description": "Plan an internal AI pilot online or on a PDF: process, baseline, data, access, human control, test set, acceptance and economics.",
+      "ogTitle": "AI workflow pilot brief",
+      "ogSubtitle": "DR. JUSTINAS MIŠEIKIS · WORKSHEET",
+      "type": "WebPage"
+    },
+    "/worksheets/technical-diligence-checklist": {
+      "title": "AI & robotics technical diligence checklist | Dr. Justinas Mišeikis",
+      "description": "Work through AI and robotics technical diligence online or on a PDF: claims and evidence, early-stage and scale-up checks, risks.",
+      "ogTitle": "AI & robotics technical diligence checklist",
+      "ogSubtitle": "DR. JUSTINAS MIŠEIKIS · WORKSHEET",
+      "type": "WebPage"
     },
     "/gza-robotics": {
       "title": "Robotics in the Greater Zurich Area | Dr. Justinas Mišeikis",

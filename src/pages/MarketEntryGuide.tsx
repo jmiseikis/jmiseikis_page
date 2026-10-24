@@ -179,8 +179,7 @@ const MarketEntryGuide = () => (
         "Direct, channel or partnership route",
         "Pilot, resources and decision criteria",
       ]}
-      file="/downloads/market-entry-brief.txt"
-      label="Download market-entry brief (TXT)"
+      slug="market-entry-brief"
     />
 
     <ContactCta

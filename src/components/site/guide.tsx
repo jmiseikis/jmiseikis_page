@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
-import { ButtonLink, Eyebrow } from "@/components/site/primitives";
+import { Actions, ButtonLink, Eyebrow } from "@/components/site/primitives";
+import { worksheetPath, worksheetPdf, type WorksheetSlug } from "@/content/worksheets";
 
 /** Visible authorship and review date for a guide. The sources on the page were checked on this date. */
 export const EditorialMeta = ({ topic }: { topic: string }) => (
@@ -40,16 +41,15 @@ export const Worksheet = ({
   title,
   intro,
   items,
-  file,
-  label,
+  slug,
   muted = true,
 }: {
   id: string;
   title: string;
   intro: ReactNode;
   items: string[];
-  file: string;
-  label: string;
+  /** The worksheet to fill in online or download as a PDF. */
+  slug: WorksheetSlug;
   muted?: boolean;
 }) => (
   <section id={id} className={muted ? "section-y bg-muted" : "section-y"} aria-labelledby={`${id}-title`}>
@@ -69,10 +69,13 @@ export const Worksheet = ({
             </li>
           ))}
         </ol>
-        <ButtonLink href={file} download variant="secondary">
-          {label}
-        </ButtonLink>
-        <p className="fine mt-4">Blank plain-text template. It does not collect or send any information.</p>
+        <Actions className="mt-0">
+          <ButtonLink href={worksheetPath(slug)}>Fill it in online</ButtonLink>
+          <ButtonLink href={worksheetPdf(slug)} download variant="secondary">
+            Download PDF
+          </ButtonLink>
+        </Actions>
+        <p className="fine mt-4">Answers you type stay in your browser; nothing is sent to the website.</p>
       </div>
     </div>
   </section>

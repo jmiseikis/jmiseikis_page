@@ -170,8 +170,7 @@ const SwissEcosystemGuide = () => (
         "Partner role or investment fit",
         "Reason to approach and next decision",
       ]}
-      file="/downloads/technology-scouting-brief.txt"
-      label="Download scouting brief (TXT)"
+      slug="technology-scouting-brief"
     />
 
     <ContactCta
