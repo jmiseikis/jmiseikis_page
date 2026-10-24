@@ -1,136 +1,160 @@
-import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { ArrowLeft, Lightbulb, TrendingUp, Users, Cog } from "lucide-react";
-import { buildOgImageUrl } from "@/lib/ogImage";
+import PageMeta from "@/components/site/PageMeta";
+import {
+  Actions,
+  ButtonLink,
+  ContactCta,
+  Note,
+  PageHero,
+  RuleBlock,
+  SectionHead,
+  ServiceRow,
+  TextLink,
+} from "@/components/site/primitives";
+import { ENGAGEMENT_FORMATS, SERVICES } from "@/content/services";
+import { contactPath } from "@/lib/site";
 
-const AdvisoryPage = () => {
-  const services = [
-    {
-      icon: Lightbulb,
-      title: "AI Commercialization",
-      description: "Transform research breakthroughs into market-ready solutions. Strategic guidance on AI product development, GTM strategy, and scaling from lab to revenue.",
-      industries: ["AI/ML", "Robotics", "Healthcare Tech", "Computer Vision"],
-    },
-    {
-      icon: TrendingUp,
-      title: "Corporate Innovation Consulting",
-      description: "Help enterprises strategically adopt AI, robotics, and automation. Bridge emerging technology and business value with actionable roadmaps.",
-      industries: ["Manufacturing", "Industrial Tech", "Enterprise", "Automotive"],
-    },
-    {
-      icon: Users,
-      title: "Startup Mentoring & Partnership Advisory",
-      description: "Guide deep-tech startups from research to revenue. Product-market fit, fundraising strategy, corporate partnership development, and team building.",
-      industries: ["Early Stage", "Deep Tech", "B2B SaaS", "Scaleups"],
-    },
-    {
-      icon: Cog,
-      title: "Technology Strategy & Roadmapping",
-      description: "Assessment and optimization of technology stacks, AI infrastructure, and product roadmaps. Align technical capabilities with business objectives.",
-      industries: ["Enterprise", "R&D Organizations", "Tech Companies"],
-    },
-  ];
+const PROCESS = [
+  { title: "Define the decision", text: "Clarify your objectives, context and the decisions you need to make." },
+  { title: "Agree the scope", text: "Set the outputs, timing, working arrangements and cash fee." },
+  { title: "Deliver and follow through", text: "Share findings, address questions and agree practical next steps." },
+];
 
-  const engagements = [
-    "Strategic advisory for AI and robotics commercialization",
-    "Product strategy and technical roadmap development",
-    "Technology stack assessment and optimization",
-    "Go-to-market planning for deep tech products",
-    "Corporate-startup partnership development",
-    "Board advisory and stakeholder management",
-    "Research-to-market transformation strategy",
-    "AI adoption strategy for enterprises",
-  ];
+const PRACTICE = [
+  {
+    title: "Commercialisation & roadmaps",
+    text: "Assess market needs, product direction and the technical work required to move research towards commercial use.",
+  },
+  {
+    title: "Corporate innovation",
+    text: "Structure AI adoption, corporate-startup collaboration and pilots around clear business questions.",
+  },
+  {
+    title: "Startup advisory",
+    text: "Focused support for deep tech founders on product direction, partnership readiness and research-to-market decisions.",
+  },
+];
 
-  return (
-    <>
-      <Helmet>
-        <title>AI Strategy Advisory | Dr. Justinas Mišeikis</title>
-        <meta name="description" content="AI strategy advisory in Zurich for commercialization, corporate innovation, startup mentoring, and technology roadmaps across DACH and Europe." />
-        <meta name="keywords" content="AI strategy advisory, AI consulting Zurich, AI commercialization consultant, corporate innovation consulting, startup mentoring AI, technology strategy DACH, robotics consulting Europe, AI roadmap consulting" />
-        <link rel="canonical" href="https://jmiseikis.com/advisory" />
-        <meta property="og:title" content="AI Strategy Advisory & Consulting | Dr. Justinas Mišeikis" />
-        <meta property="og:description" content="Expert AI strategy advisory for corporations, startups, and investors. Zurich-based, serving DACH and Europe." />
-        <meta property="og:image" content={buildOgImageUrl({ title: "AI Strategy Advisory", subtitle: "DR. JUSTINAS MIŠEIKIS · ADVISORY" })} />
-        <meta name="twitter:image" content={buildOgImageUrl({ title: "AI Strategy Advisory", subtitle: "DR. JUSTINAS MIŠEIKIS · ADVISORY" })} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Helmet>
+const ADDITIONAL_CAPABILITIES = [
+  "Product strategy and technical roadmap development",
+  "Technology stack assessment and optimisation",
+  "Go-to-market planning for deep tech products",
+  "Corporate-startup partnership development",
+  "Board advisory and stakeholder management",
+  "Research-to-market transformation and enterprise AI adoption",
+];
 
-      <div className="bg-background">
-        <section className="pt-12 md:pt-16 pb-16 px-4">
-          <div className="container mx-auto max-w-5xl">
-            <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8">
-              <ArrowLeft className="w-4 h-4" /> Back to Home
-            </Link>
-            <span className="block text-primary font-medium tracking-wider uppercase text-sm mb-4">
-              Advisory & Strategy
-            </span>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              AI Strategy Advisory & <span className="text-primary">Consulting</span>
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl leading-relaxed">
-              I help organizations navigate the complex journey from cutting-edge AI research to commercial success.
-              Whether you're a startup scaling AI products, an enterprise adopting emerging technology, or an investor
-              evaluating opportunities - I bring battle-tested strategy from Sony AI and beyond.
-            </p>
+const AdvisoryPage = () => (
+  <>
+    <PageMeta
+      path="/advisory"
+      title="AI & robotics advisory | Dr. Justinas Mišeikis"
+      description="Technology scouting, AI and robotics diligence, Swiss partnerships and local representation for international companies and investors."
+      ogTitle="AI & robotics advisory"
+      ogSubtitle="DR. JUSTINAS MIŠEIKIS · ADVISORY"
+    />
+    <PageHero
+      eyebrow="Advisory | Swiss ecosystem | International clients"
+      title="Turn technical possibilities into informed decisions."
+      lead="Market entry and Swiss partnerships for technology companies. Startup scouting and technical diligence for investors. Practical AI adoption for internal teams."
+    >
+      <Actions>
+        <ButtonLink href={contactPath("advisory")}>Discuss an engagement</ButtonLink>
+      </Actions>
+    </PageHero>
+
+    <section className="site-wrap pb-10 pt-10 md:pb-16" aria-labelledby="advisory-services-title">
+      <SectionHead id="advisory-services-title" title="Focused support for the decisions ahead." />
+      {SERVICES.map((service) => (
+        <ServiceRow key={service.id} id={service.id} number={service.number} title={service.title} fine={service.audience}>
+          <p>{service.description}</p>
+          <ul>
+            {service.outputs.map((output) => (
+              <li key={output}>{output}</li>
+            ))}
+          </ul>
+          <div className="mt-5">
+            <TextLink href={service.cta.href ?? contactPath(service.cta.intent)}>{service.cta.label}</TextLink>
           </div>
-        </section>
+        </ServiceRow>
+      ))}
 
-        <section className="py-16 bg-secondary/30 px-4">
-          <div className="container mx-auto max-w-5xl">
-            <div className="grid md:grid-cols-2 gap-8">
-              {services.map((service, index) => (
-                <div key={index} className="bg-card p-8 border-2 border-border hover:border-primary transition-all duration-300 group">
-                  <service.icon className="w-12 h-12 text-primary mb-6 group-hover:scale-110 transition-transform" />
-                  <h2 className="text-2xl font-bold mb-4">{service.title}</h2>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">{service.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {service.industries.map((industry, i) => (
-                      <span key={i} className="text-xs px-3 py-1 bg-secondary text-secondary-foreground font-medium">
-                        {industry}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+      <Note title="Research and preparation, with relevant connections.">
+        <p>
+          I have relationships with selected Swiss and international VCs. Where there is a relevant fit, I can explore
+          introductions alongside scouting, assessment and preparation. Introductions, partnership interest and investment
+          decisions depend on the parties involved.
+        </p>
+        <Actions className="mt-4">
+          <TextLink href="/swiss-ai-robotics-ecosystem">Swiss ecosystem guide</TextLink>
+          <TextLink href="/swiss-baltic-market-entry">Market-entry guide</TextLink>
+        </Actions>
+      </Note>
+    </section>
 
-        <section className="py-16 px-4">
-          <div className="container mx-auto max-w-5xl">
-            <div className="bg-secondary/50 p-8 md:p-12 border-l-4 border-primary">
-              <h2 className="text-2xl font-bold mb-8">Typical Engagements</h2>
-              <div className="grid md:grid-cols-2 gap-4">
-                {engagements.map((engagement, index) => (
-                  <div key={index} className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                    <p className="text-muted-foreground">{engagement}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-16 px-4">
-          <div className="container mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-bold mb-4">Ready to accelerate your AI strategy?</h2>
-            <p className="text-muted-foreground mb-8">
-              Let's discuss how strategic advisory can help you bridge research and commercialization.
-            </p>
-            <Link to="/#contact">
-              <Button size="lg" variant="swiss">Contact Me</Button>
-            </Link>
-          </div>
-        </section>
-
+    <section className="section-y bg-muted" aria-labelledby="formats-title">
+      <div className="site-wrap">
+        <SectionHead id="formats-title" eyebrow="Engagement formats" title="A format that fits the work." />
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10">
+          {ENGAGEMENT_FORMATS.map((format) => (
+            <RuleBlock key={format.title} title={format.title}>
+              <p>{format.description}</p>
+            </RuleBlock>
+          ))}
+        </div>
+        <p className="mt-8 max-w-[70ch] text-muted-foreground">
+          Engagements are scoped around agreed outputs, timing and cash fees. Contact me to discuss the right format.
+        </p>
+        <p className="fine mt-3 max-w-[80ch]">
+          For event representation, sponsorship, tickets, travel and production costs are agreed separately. Speaking
+          opportunities and introductions depend on the relevant participants or organisers.
+        </p>
       </div>
-    </>
-  );
-};
+    </section>
+
+    <section className="site-wrap section-y" aria-labelledby="process-title">
+      <SectionHead id="process-title" eyebrow="How we work" title="From a clear question to a practical next step." />
+      <ol className="grid list-none grid-cols-1 gap-8 p-0 md:grid-cols-3 md:gap-10">
+        {PROCESS.map((step, index) => (
+          <li key={step.title} className="min-w-0">
+            <p className="mb-3 text-xs font-semibold text-primary">0{index + 1}</p>
+            <h3 className="text-[21px] leading-tight">{step.title}</h3>
+            <p className="mt-3 text-[15px] text-muted-foreground">{step.text}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section className="site-wrap section-y border-t border-border" aria-labelledby="practice-title">
+      <SectionHead id="practice-title" eyebrow="Strategy in practice" title="From research to a usable plan." />
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10">
+        {PRACTICE.map((item) => (
+          <RuleBlock key={item.title} title={item.title}>
+            <p>{item.text}</p>
+          </RuleBlock>
+        ))}
+      </div>
+      <Actions>
+        <TextLink href="/due-diligence">Explore due diligence</TextLink>
+        <TextLink href="/ai-agents-strategy">Explore AI for internal data & workflows</TextLink>
+      </Actions>
+
+      <details className="mt-10 border-y border-border">
+        <summary className="py-5 text-[15px] font-semibold text-foreground">Additional strategy capabilities</summary>
+        <ul className="list-disc space-y-1.5 pb-7 pl-5 text-muted-foreground">
+          {ADDITIONAL_CAPABILITIES.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </details>
+    </section>
+
+    <ContactCta
+      title="What would a useful engagement resolve?"
+      lead="Share your priorities, timeframe and the decisions you need to make. We will agree the scope and cash fee."
+      intent="advisory"
+      label="Discuss a project"
+    />
+  </>
+);
 
 export default AdvisoryPage;

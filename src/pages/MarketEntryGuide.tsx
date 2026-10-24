@@ -166,6 +166,9 @@ const MarketEntryGuide = () => (
             introductions alongside the research and preparation. Introductions and investment interest depend on the people
             involved.
           </p>
+          <div className="mt-5">
+            <TextLink href="/advisory#swiss-presence">Explore Swiss event representation</TextLink>
+          </div>
         </div>
       </div>
     </section>

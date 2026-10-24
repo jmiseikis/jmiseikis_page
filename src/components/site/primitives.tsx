@@ -202,6 +202,14 @@ export const RuleBlock = ({ title, children, eyebrow }: { title: ReactNode; chil
   </article>
 );
 
+/** Highlighted aside with a red side rule, for qualifications and important context. */
+export const Note = ({ title, children, className }: { title?: ReactNode; children: ReactNode; className?: string }) => (
+  <div className={cn("mt-8 border-l-[3px] border-primary bg-muted px-5 py-5 md:px-7 md:py-6", className)}>
+    {title && <h3 className="text-lg leading-tight">{title}</h3>}
+    <div className={cn("text-sm text-muted-foreground [&>p+p]:mt-3", title && "mt-3")}>{children}</div>
+  </div>
+);
+
 /** Closing call to action used at the end of most pages. Links to the protected form on the home page. */
 export const ContactCta = ({
   title,
