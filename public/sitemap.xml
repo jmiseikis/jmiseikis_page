@@ -6,7 +6,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://jmiseikis.com/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://jmiseikis.com/de" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://jmiseikis.com/" />
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -15,61 +15,31 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://jmiseikis.com/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://jmiseikis.com/de" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://jmiseikis.com/" />
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://jmiseikis.com/advisory</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://jmiseikis.com/speaking</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://jmiseikis.com/speaking-examples</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://jmiseikis.com/due-diligence</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://jmiseikis.com/tech-events</loc>
-    <lastmod>2026-06-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://jmiseikis.com/swiss-vcs</loc>
-    <lastmod>2026-06-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://jmiseikis.com/raas-calculator</loc>
-    <lastmod>2026-06-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://jmiseikis.com/gza-robotics</loc>
-    <lastmod>2026-06-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
     <loc>https://jmiseikis.com/ai-agents-strategy</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -102,6 +72,30 @@
     <lastmod>2026-10-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jmiseikis.com/gza-robotics</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://jmiseikis.com/swiss-vcs</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://jmiseikis.com/tech-events</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jmiseikis.com/raas-calculator</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://jmiseikis.com/privacy</loc>
