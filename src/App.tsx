@@ -17,10 +17,6 @@ import SpeakingPage from "./pages/SpeakingPage";
 import DueDiligencePage from "./pages/DueDiligencePage";
 import GZARobotics from "./pages/GZARobotics";
 import AiAgentsStrategy from "./pages/AiAgentsStrategy";
-import SwissTechPulse from "./pages/SwissTechPulse";
-import SwissTechPulseAbout from "./pages/SwissTechPulseAbout";
-import SwissTechPulseDigest from "./pages/SwissTechPulseDigest";
-import SwissTechPulseReview from "./pages/SwissTechPulseReview";
 import NotFound from "./pages/NotFound";
 
 // Loaded on demand. The legal pages stay out of the main bundle so the privacy contact address ships only
@@ -62,10 +58,6 @@ const App = () => (
               <Route path="/swiss-baltic-market-entry" element={lazyRoute("/swiss-baltic-market-entry", <MarketEntryGuide />)} />
               <Route path="/privacy" element={lazyRoute("/privacy", <PrivacyPolicy />)} />
               <Route path="/terms" element={lazyRoute("/terms", <TermsOfUse />)} />
-              <Route path="/resources/swiss-tech-pulse" element={<SwissTechPulse />} />
-              <Route path="/resources/swiss-tech-pulse/about" element={<SwissTechPulseAbout />} />
-              <Route path="/resources/swiss-tech-pulse/digest/:week" element={<SwissTechPulseDigest />} />
-              <Route path="/resources/swiss-tech-pulse/review" element={<SwissTechPulseReview />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
