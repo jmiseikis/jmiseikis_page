@@ -28,9 +28,9 @@ describe("Site header", () => {
     expect(links).toEqual([
       ["Advisory", "/advisory"],
       ["Speaking", "/speaking"],
-      ["Resources", "/#resources"],
-      ["Publications", "/#publications"],
-      ["About", "/#about"],
+      ["Resources", "/resources"],
+      ["Publications", "/publications"],
+      ["About", "/about"],
       ["Discuss a project ↗", "/#contact"],
     ]);
   });
@@ -168,6 +168,11 @@ describe("Site footer", () => {
     expect(href("GZA robotics")).toBe("/gza-robotics");
     expect(href("RaaS calculator")).toBe("/raas-calculator");
     expect(href("Internal AI & workflows")).toBe("/ai-agents-strategy");
+    expect(href("Resource hub")).toBe("/resources");
+    expect(href("Publications & patents")).toBe("/publications");
+    expect(href("Swiss ecosystem guide")).toBe("/swiss-ai-robotics-ecosystem");
+    expect(href("Market-entry guide")).toBe("/swiss-baltic-market-entry");
+    expect(href("About")).toBe("/about");
     expect(href("Deutsch")).toBe("/de");
     expect(href("Privacy Policy")).toBe("/privacy");
     expect(href("Terms of Use")).toBe("/terms");

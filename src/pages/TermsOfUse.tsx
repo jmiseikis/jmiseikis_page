@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import LegalPageLayout, { LegalSection } from "@/components/LegalPageLayout";
 
 // Publication date of this version. Update it whenever the terms change.
-const LAST_UPDATED = { iso: "2026-10-11", label: "11 October 2026" };
+const LAST_UPDATED = { iso: "2026-10-24", label: "24 October 2026" };
 
 const TermsOfUse = () => (
   <LegalPageLayout
@@ -18,9 +18,9 @@ const TermsOfUse = () => (
 
     <LegalSection title="Information only">
       <p>
-        The content on this website, including guides, articles, directories and the RaaS ROI calculator, is general
-        information. It is not professional, financial, investment, legal or tax advice, and it is no substitute for
-        advice on your specific situation.
+        The content on this website, including guides, articles, directories, worksheets and the RaaS ROI calculator,
+        is general information. It is not professional, financial, investment, legal or tax advice, and it is no
+        substitute for advice on your specific situation.
       </p>
       <p>
         Advisory, due diligence, speaking and other services are provided only under a separate written agreement.
@@ -59,7 +59,7 @@ const TermsOfUse = () => (
         Third-party names, logos, data and media belong to their owners.
       </p>
       <p>
-        You may use any downloadable worksheets and templates freely within your own organisation. You may quote short
+        You may use the downloadable worksheets and templates freely within your own organisation. You may quote short
         extracts of the content with attribution and a link. Any other reproduction or redistribution needs prior
         permission.
       </p>

@@ -45,6 +45,12 @@ describe("ScrollManager", () => {
     expect(el.scrollIntoView).toHaveBeenCalledTimes(1);
   });
 
+  it("starts a new page at the top even when its hash target never appears", () => {
+    renderAt("/advisory#does-not-exist");
+    expect(window.scrollTo).toHaveBeenCalledWith(expect.objectContaining({ top: 0 }));
+    act(() => vi.advanceTimersByTime(4000));
+  });
+
   it("moves keyboard focus to the target so the next Tab continues from there", () => {
     const el = section("contact", () => 500);
     renderAt("/#contact", el);

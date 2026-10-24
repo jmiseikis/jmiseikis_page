@@ -21,10 +21,10 @@ const ScrollManager = () => {
     const samePage = previousPath.current === pathname;
     previousPath.current = pathname;
 
-    if (!hash) {
-      window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
-      return;
-    }
+    // A new page always starts at the top, so a hash that never resolves does not leave the visitor at the
+    // previous page's scroll position.
+    if (!hash || !samePage) window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+    if (!hash) return;
 
     let id: string;
     try {
