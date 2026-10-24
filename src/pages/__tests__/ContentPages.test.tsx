@@ -15,11 +15,11 @@ import AiAgentsStrategy from "../AiAgentsStrategy";
 import De from "../De";
 import RaasCalculator from "../RaasCalculator";
 import { ENQUIRY_INTENTS } from "@/lib/site";
+import seo from "@/content/seo.json";
 
 const ROOT = process.cwd();
 const appSource = readFileSync(join(ROOT, "src/App.tsx"), "utf8");
 const ROUTES = new Set([...appSource.matchAll(/path="([^"*:]+)"/g)].map((m) => m[1]));
-const prerender = readFileSync(join(ROOT, "scripts/prerender-meta.mjs"), "utf8");
 const sitemap = readFileSync(join(ROOT, "public/sitemap.xml"), "utf8");
 // The owner works and speaks in English only (the German page says so).
 const GERMAN_DELIVERY = /auf Deutsch|in German\b|German-speaking (?:advisor|speaker)|deutschsprachige[rn]? (?:Beratung|Vortr)|bilingual/i;
@@ -53,7 +53,7 @@ const PAGES = [
 describe.each(PAGES)("%s", (path, Page, heading) => {
   it("is routed, prerendered and in the sitemap", () => {
     expect(ROUTES.has(path)).toBe(true);
-    expect(prerender).toContain(`path: "${path}"`);
+    expect(seo.routes).toHaveProperty([path]);
     expect(sitemap).toContain(`<loc>https://jmiseikis.com${path}</loc>`);
   });
 
@@ -65,10 +65,8 @@ describe.each(PAGES)("%s", (path, Page, heading) => {
     await waitFor(() =>
       expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute("href", `https://jmiseikis.com${path}`),
     );
-    expect(prerender).toContain(`title: "${document.title}"`);
-    const description = document.querySelector('meta[name="description"]')?.getAttribute("content") ?? "";
-    expect(description).not.toBe("");
-    expect(prerender).toContain(description);
+    expect(document.title).toBe(seo.routes[path].title);
+    expect(document.querySelector('meta[name="description"]')).toHaveAttribute("content", seo.routes[path].description);
   });
 
   it("links only to real routes, shipped files and safe external pages", () => {

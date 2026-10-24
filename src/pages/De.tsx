@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet-async";
 import PageMeta from "@/components/site/PageMeta";
 import { Actions, ButtonLink, Eyebrow, Note, PageHero, RuleBlock, SectionHead, SmartLink, TextLink } from "@/components/site/primitives";
 import { PATENTS_URL, SCHOLAR_URL, TECHDRIVE_URL, contactPath } from "@/lib/site";
@@ -35,19 +34,7 @@ const inlineLink = "font-semibold text-foreground underline underline-offset-4 h
 
 const De = () => (
   <>
-    <PageMeta
-      path="/de"
-      title="KI- und Robotikstrategie | Dr. Justinas Mišeikis"
-      description="KI- und Robotikberatung, Technologie-Scouting und Keynotes. Sitz in Zürich, internationale Zusammenarbeit auf Englisch."
-      ogTitle="KI- und Robotikstrategie"
-      ogSubtitle="DR. JUSTINAS MIŠEIKIS · ZÜRICH"
-    />
-    <Helmet>
-      <html lang="de" />
-      <link rel="alternate" hrefLang="en" href="https://jmiseikis.com/" />
-      <link rel="alternate" hrefLang="de" href="https://jmiseikis.com/de" />
-      <meta property="og:locale" content="de_CH" />
-    </Helmet>
+    <PageMeta path="/de" />
 
     <PageHero
       eyebrow="Dr. Justinas Mišeikis | Zürich, Schweiz"

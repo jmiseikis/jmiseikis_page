@@ -45,13 +45,7 @@ const ADDITIONAL_CAPABILITIES = [
 
 const AdvisoryPage = () => (
   <>
-    <PageMeta
-      path="/advisory"
-      title="AI & robotics advisory | Dr. Justinas Mišeikis"
-      description="Technology scouting, AI and robotics diligence, Swiss partnerships and local representation for international companies and investors."
-      ogTitle="AI & robotics advisory"
-      ogSubtitle="DR. JUSTINAS MIŠEIKIS · ADVISORY"
-    />
+    <PageMeta path="/advisory" />
     <PageHero
       eyebrow="Advisory | Swiss ecosystem | International clients"
       title="Turn technical possibilities into informed decisions."

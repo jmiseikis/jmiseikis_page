@@ -76,13 +76,7 @@ const EVIDENCE = [
 
 const SwissEcosystemGuide = () => (
   <>
-    <PageMeta
-      path="/swiss-ai-robotics-ecosystem"
-      title="Swiss AI & robotics ecosystem guide | Dr. Justinas Mišeikis"
-      description="Navigate Swiss AI and robotics research, startups and scale-ups. Public sources, investor questions and a downloadable technology scouting brief."
-      ogTitle="Swiss AI & robotics ecosystem guide"
-      ogSubtitle="DR. JUSTINAS MIŠEIKIS · FIELD GUIDE"
-    />
+    <PageMeta path="/swiss-ai-robotics-ecosystem" />
     <PageHero
       breadcrumb={{ to: "/resources", label: "Resources" }}
       eyebrow="Field guide | Investors & corporate teams"

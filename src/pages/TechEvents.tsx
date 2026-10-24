@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Calendar, MapPin, Users, ExternalLink, Filter, List, LayoutGrid, Loader2, AlertCircle, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -12,6 +12,7 @@ import DateRangeFilter from "@/components/tech-events/DateRangeFilter";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useTechEvents } from "@/hooks/use-tech-events";
 import { SheetFormatError, isPastEvent, zurichToday } from "@/lib/sheets";
+import PageMeta from "@/components/site/PageMeta";
 
 // Only allow http(s) links so a compromised sheet can't inject `javascript:` URLs.
 const isSafeUrl = (url: string | undefined | null): url is string =>
@@ -66,64 +67,6 @@ const TechEvents = () => {
   const [startDateFilter, setStartDateFilter] = useState<Date | undefined>(undefined);
   const [endDateFilter, setEndDateFilter] = useState<Date | undefined>(undefined);
   const [showPastEvents, setShowPastEvents] = useState(false);
-
-  // SEO: title, description, canonical, OG/Twitter tags, JSON-LD
-  useEffect(() => {
-    const TITLE = "Tech Events Switzerland 2026 | AI and Robotics";
-    const DESC = "Curated 2026 Swiss tech events calendar for AI, robotics, deep tech, startups, and VCs. Filter by topic, city and date.";
-    const URL = "https://jmiseikis.com/tech-events";
-    const prev = document.title;
-    document.title = TITLE;
-
-    const setMeta = (name: string, content: string, attr = "name") => {
-      let el = document.querySelector(`meta[${attr}="${name}"]`) as HTMLMetaElement | null;
-      if (!el) { el = document.createElement("meta"); el.setAttribute(attr, name); document.head.appendChild(el); }
-      el.setAttribute("content", content);
-    };
-    setMeta("description", DESC);
-    setMeta("keywords", "tech events Switzerland 2026, AI conferences Switzerland, robotics events Zurich, startup events Switzerland, VC events Zurich, deep tech conferences Europe, tech calendar Switzerland, GenAI Zürich, Web Summit Europe, Davos WEF 2026, tech meetups Zurich Geneva Lausanne Basel");
-    setMeta("og:title", TITLE, "property");
-    setMeta("og:description", DESC, "property");
-    setMeta("og:url", URL, "property");
-    setMeta("og:type", "website", "property");
-    const techEventsOg = (() => {
-      const pid = (import.meta as unknown as { env: { VITE_SUPABASE_PROJECT_ID?: string } }).env.VITE_SUPABASE_PROJECT_ID;
-      if (!pid) return "https://jmiseikis.com/og-image.png";
-      const p = new URLSearchParams({
-        title: "Tech Events Switzerland 2026",
-        subtitle: "AI · ROBOTICS · DEEP TECH · STARTUPS",
-      });
-      return `https://${pid}.supabase.co/functions/v1/og-image?${p.toString()}`;
-    })();
-    setMeta("og:image", techEventsOg, "property");
-    setMeta("twitter:image", techEventsOg);
-    setMeta("og:image:width", "1200", "property");
-    setMeta("og:image:height", "630", "property");
-    setMeta("twitter:card", "summary_large_image");
-    setMeta("twitter:title", TITLE);
-    setMeta("twitter:description", DESC);
-
-    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-    if (!canonical) { canonical = document.createElement("link"); canonical.rel = "canonical"; document.head.appendChild(canonical); }
-    canonical.href = URL;
-
-    const jsonLd = {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "name": "Tech Events Switzerland 2026",
-      "url": URL,
-      "description": DESC,
-      "isPartOf": { "@type": "WebSite", "name": "Dr. Justinas Mišeikis", "url": "https://jmiseikis.com" },
-      "about": ["AI conferences", "Robotics events", "Startup events", "Venture capital events", "Deep tech"],
-      "inLanguage": "en"
-    };
-    const s = document.createElement("script");
-    s.type = "application/ld+json";
-    s.textContent = JSON.stringify(jsonLd);
-    document.head.appendChild(s);
-
-    return () => { document.title = prev; s.remove(); };
-  }, []);
 
   // Extract unique filter options
   const filterOptions = useMemo(() => {
@@ -220,6 +163,7 @@ const TechEvents = () => {
 
   return (
     <div className="bg-background">
+      <PageMeta path="/tech-events" />
       {/* Header */}
       <header className="band-dark border-b border-border bg-background text-foreground py-16 md:py-24">
         <div className="container px-4">

@@ -3,6 +3,7 @@ import path from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import { QueryClient, QueryClientProvider, onlineManager } from "@tanstack/react-query";
 import TechEvents from "../TechEvents";
 
@@ -13,11 +14,13 @@ const eventsGviz = () => {
 
 const renderPage = () =>
   render(
-    <QueryClientProvider client={new QueryClient()}>
-      <MemoryRouter>
-        <TechEvents />
-      </MemoryRouter>
-    </QueryClientProvider>,
+    <HelmetProvider>
+      <QueryClientProvider client={new QueryClient()}>
+        <MemoryRouter>
+          <TechEvents />
+        </MemoryRouter>
+      </QueryClientProvider>
+    </HelmetProvider>,
   );
 
 afterEach(() => {

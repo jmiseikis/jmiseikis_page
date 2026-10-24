@@ -1,45 +1,22 @@
 import type { ReactNode } from "react";
-import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
-import { buildOgImageUrl } from "@/lib/ogImage";
-
-const SITE = "https://jmiseikis.com";
+import PageMeta, { type RoutePath } from "@/components/site/PageMeta";
 
 interface LegalPageLayoutProps {
-  /** Visible H1, also used for the <title> and the OG image. */
+  /** Visible H1. The title, description and preview image come from src/content/seo.json. */
   heading: string;
-  /** Meta description, at most 160 characters, no email address. */
-  description: string;
   /** Route path, e.g. "/privacy". */
-  path: string;
+  path: RoutePath;
   lastUpdated: { iso: string; label: string };
   children: ReactNode;
 }
 
 // Long-form layout for /privacy and /terms inside the shared site shell (back link, eyebrow + H1 header).
-const LegalPageLayout = ({ heading, description, path, lastUpdated, children }: LegalPageLayoutProps) => {
-  const title = `${heading} | Dr. Justinas Mišeikis`;
-  const url = `${SITE}${path}`;
-  const ogImage = buildOgImageUrl({ title: heading, subtitle: "DR. JUSTINAS MIŠEIKIS · LEGAL" });
-
+const LegalPageLayout = ({ heading, path, lastUpdated, children }: LegalPageLayoutProps) => {
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <link rel="canonical" href={url} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:url" content={url} />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content={ogImage} />
-        <meta name="twitter:image" content={ogImage} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Helmet>
-
+      <PageMeta path={path} />
 
       <div className="pt-12 md:pt-16 pb-16">
         <article className="container px-4 max-w-3xl mx-auto">

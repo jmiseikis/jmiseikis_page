@@ -1,46 +1,59 @@
 import { Helmet } from "react-helmet-async";
 import { buildOgImageUrl } from "@/lib/ogImage";
+import seo from "@/content/seo.json";
 
-const SITE = "https://jmiseikis.com";
+export type RoutePath = keyof typeof seo.routes;
 
-/**
- * Title, description, canonical, Open Graph and Twitter tags for a standalone page.
- * scripts/prerender-meta.mjs writes the same values into the static HTML for each route; keep them in step.
- */
-const PageMeta = ({
-  title,
-  description,
-  path,
-  ogTitle,
-  ogSubtitle,
-  ogImage,
-}: {
+interface RouteMeta {
   title: string;
   description: string;
-  path: string;
   ogTitle: string;
   ogSubtitle: string;
-  /** Background image for the generated preview, as in the route's prerender entry. */
   ogImage?: string;
-}) => {
-  const url = `${SITE}${path}`;
-  const image = buildOgImageUrl({ title: ogTitle, subtitle: ogSubtitle, image: ogImage });
+  language?: string;
+}
+
+const ALTERNATE_PATHS: string[] = Object.values(seo.alternates);
+
+/**
+ * Title, description, robots, canonical, Open Graph, Twitter and language tags for a public page, from
+ * src/content/seo.json. scripts/prerender-meta.mjs writes the same tags (plus JSON-LD) into each route's static
+ * HTML; react-helmet-async adopts those on load, so every tag appears once.
+ */
+const PageMeta = ({ path }: { path: RoutePath }) => {
+  const route: RouteMeta = seo.routes[path];
+  const url = `${seo.site}${path}`;
+  const language = route.language ?? "en";
+  const image = buildOgImageUrl({ title: route.ogTitle, subtitle: route.ogSubtitle, image: route.ogImage });
+  const alternates = ALTERNATE_PATHS.includes(path);
+  const otherLocales = Object.entries(seo.locales)
+    .filter(([lang]) => lang !== language)
+    .map(([, locale]) => locale);
 
   return (
     <Helmet>
-      <title>{title}</title>
-      <meta name="description" content={description} />
+      <html lang={language} />
+      <title>{route.title}</title>
+      <meta name="description" content={route.description} />
+      <meta name="robots" content={seo.robots} />
       <link rel="canonical" href={url} />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:url" content={url} />
+      {alternates &&
+        Object.entries(seo.alternates).map(([hreflang, href]) => (
+          <link key={hreflang} rel="alternate" hrefLang={hreflang} href={`${seo.site}${href}`} />
+        ))}
       <meta property="og:type" content="website" />
+      <meta property="og:locale" content={seo.locales[language as keyof typeof seo.locales]} />
+      {alternates &&
+        otherLocales.map((locale) => <meta key={locale} property="og:locale:alternate" content={locale} />)}
+      <meta property="og:title" content={route.title} />
+      <meta property="og:description" content={route.description} />
+      <meta property="og:url" content={url} />
       <meta property="og:image" content={image} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
+      <meta name="twitter:title" content={route.title} />
+      <meta name="twitter:description" content={route.description} />
       <meta name="twitter:image" content={image} />
     </Helmet>
   );

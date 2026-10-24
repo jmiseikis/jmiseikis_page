@@ -20,7 +20,6 @@ const strong = (text: string) => <strong className="font-semibold text-foregroun
 const PrivacyPolicy = () => (
   <LegalPageLayout
     heading="Privacy Policy"
-    description="How jmiseikis.com handles personal data: the contact form, content loaded from third parties, service providers and your rights under Swiss and EU law."
     path="/privacy"
     lastUpdated={LAST_UPDATED}
   >

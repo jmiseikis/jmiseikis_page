@@ -89,13 +89,7 @@ const ELSEWHERE = [
 
 const ResourcesPage = () => (
   <>
-    <PageMeta
-      path="/resources"
-      title="Resources for Swiss technology & AI decisions | Dr. Justinas Mišeikis"
-      description="Guides, directories and templates for Swiss technology scouting, market entry, AI adoption and investor due diligence."
-      ogTitle="Resources"
-      ogSubtitle="DR. JUSTINAS MIŠEIKIS · RESOURCES"
-    />
+    <PageMeta path="/resources" />
 
     <PageHero
       eyebrow="Resources | Evidence for the next decision"

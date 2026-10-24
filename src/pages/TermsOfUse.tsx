@@ -7,7 +7,6 @@ const LAST_UPDATED = { iso: "2026-10-24", label: "24 October 2026" };
 const TermsOfUse = () => (
   <LegalPageLayout
     heading="Terms of Use"
-    description="Terms for using jmiseikis.com: general information only, the RaaS ROI calculator, directories, external links, intellectual property, liability and Swiss law."
     path="/terms"
     lastUpdated={LAST_UPDATED}
   >
