@@ -1,10 +1,8 @@
 import type { ReactNode } from "react";
-import { useLocation } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ScrollManager from "@/components/site/ScrollManager";
-import { isLightOnlyRoute } from "@/lib/site";
 
 // Focus lands on <main> only after the skip link is used. A permanent tabindex would make a click on any
 // page text focus the whole landmark, and the next Tab would jump back to the top of the page.
@@ -21,8 +19,6 @@ const skipToMain = () => {
  * The site starts in the light theme; the header switch stores the visitor's choice.
  */
 const SiteShell = ({ children }: { children: ReactNode }) => {
-  const { pathname } = useLocation();
-
   return (
     <ThemeProvider
       attribute="class"
@@ -30,7 +26,6 @@ const SiteShell = ({ children }: { children: ReactNode }) => {
       enableSystem={false}
       storageKey="jm-theme"
       disableTransitionOnChange
-      forcedTheme={isLightOnlyRoute(pathname) ? "light" : undefined}
     >
       <ScrollManager />
       <div className="flex min-h-screen flex-col bg-background text-foreground">

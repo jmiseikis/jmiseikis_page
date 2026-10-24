@@ -136,24 +136,16 @@ describe("Theme", () => {
     expect(localStorage.getItem("jm-theme")).toBe("dark");
   });
 
-  it("keeps pages that are not yet built for dark mode in the light theme", () => {
-    localStorage.setItem("jm-theme", "dark");
-    renderShell("/resources/swiss-tech-pulse");
-    expect(document.documentElement).not.toHaveClass("dark");
-    expect(screen.queryByRole("button", { name: "Dark theme" })).not.toBeInTheDocument();
-  });
-
-  it("matches light-only routes regardless of case, as the router does", () => {
-    localStorage.setItem("jm-theme", "dark");
-    renderShell("/Resources/Swiss-Tech-Pulse");
-    expect(document.documentElement).not.toHaveClass("dark");
-  });
-
-  it.each(["/advisory", "/raas-calculator"])("applies a stored dark preference on %s", (path) => {
-    localStorage.setItem("jm-theme", "dark");
-    renderShell(path);
-    expect(document.documentElement).toHaveClass("dark");
-  });
+  // Every page, including the 404 that retired Swiss Tech Pulse URLs now reach, follows the stored choice.
+  it.each(["/advisory", "/raas-calculator", "/resources/swiss-tech-pulse"])(
+    "applies a stored dark preference on %s, with the switch shown",
+    (path) => {
+      localStorage.setItem("jm-theme", "dark");
+      renderShell(path);
+      expect(document.documentElement).toHaveClass("dark");
+      expect(screen.getAllByRole("button", { name: "Dark theme" })[0]).toHaveAttribute("aria-pressed", "true");
+    },
+  );
 });
 
 describe("Site footer", () => {
