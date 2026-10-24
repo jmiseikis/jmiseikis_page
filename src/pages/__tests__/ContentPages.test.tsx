@@ -13,6 +13,7 @@ import AdvisoryPage from "../AdvisoryPage";
 import DueDiligencePage from "../DueDiligencePage";
 import AiAgentsStrategy from "../AiAgentsStrategy";
 import De from "../De";
+import RaasCalculator from "../RaasCalculator";
 import { ENQUIRY_INTENTS } from "@/lib/site";
 
 const ROOT = process.cwd();
@@ -46,6 +47,7 @@ const PAGES = [
   ["/due-diligence", DueDiligencePage, "AI & robotics due diligence."],
   ["/ai-agents-strategy", AiAgentsStrategy, "Make AI useful inside your business."],
   ["/de", De, "KI- und Robotikstrategie. Schweizer Ökosystem."],
+  ["/raas-calculator", RaasCalculator, "RaaS ROI calculator."],
 ] as const;
 
 describe.each(PAGES)("%s", (path, Page, heading) => {

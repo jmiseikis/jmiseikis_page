@@ -97,7 +97,7 @@ export const FOOTER_COLUMNS: { title: string; links: FooterLink[] }[] = [
 ];
 
 /** Routes whose page body is not yet built for the dark theme; they render in light until their own PR. */
-export const LIGHT_ONLY_ROUTES = ["/raas-calculator", "/resources/swiss-tech-pulse"];
+export const LIGHT_ONLY_ROUTES = ["/resources/swiss-tech-pulse"];
 
 // Routes match case-insensitively, as React Router does. index.html repeats this list in its pre-paint script.
 export const isLightOnlyRoute = (pathname: string) => {

@@ -14,7 +14,7 @@
           if (location.hash.indexOf("#/") === 0) path = location.hash.slice(1);
           else if (new URLSearchParams(location.search).get("p")) path = new URLSearchParams(location.search).get("p");
           path = path.split(/[?#]/)[0].toLowerCase();
-          var lightOnly = ["/raas-calculator", "/resources/swiss-tech-pulse"];
+          var lightOnly = ["/resources/swiss-tech-pulse"];
           for (var i = 0; i < lightOnly.length; i++) {
             if (path === lightOnly[i] || path.indexOf(lightOnly[i] + "/") === 0) return;
           }

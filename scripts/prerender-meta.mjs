@@ -80,11 +80,11 @@ const routes = [
   },
   {
     path: "/raas-calculator",
-    title: "RaaS ROI Calculator | Robotics Automation Costs",
+    title: "RaaS ROI calculator | Dr. Justinas Mišeikis",
     description:
-      "Free RaaS ROI calculator: compare upfront robot purchase vs Robotics-as-a-Service over 5 years. Charts, payback period and total cost of ownership.",
+      "Explore robot-as-a-service costs, cash savings, productivity assumptions and payback with an interactive robotics scenario model.",
     ogTitle: "RaaS ROI Calculator",
-    ogSubtitle: "ROBOT AS A SERVICE · COST ANALYSIS",
+    ogSubtitle: "ROBOT AS A SERVICE · SCENARIO MODEL",
     ogImage: `${SITE}/og-raas-calculator.png`,
   },
   {
