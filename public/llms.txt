@@ -2,7 +2,7 @@
 
 ## Identity
 
-Dr. Justinas Mišeikis (also written as Miseikis) is an AI strategy advisor, innovation consultant, keynote speaker, and research commercialization expert based in Zurich, Switzerland. He is Strategy and Partnerships Manager at Sony AI and the Founder and Host of TechDrive Zürich, an interview and podcast series on Switzerland's AI, robotics and deep tech ecosystem (https://techdrive.tv/). He specializes in bridging advanced AI research with commercial strategy, helping corporations, startups, and investors across DACH (Germany, Austria, Switzerland) and Europe turn AI and robotics research into revenue. He holds a PhD in Robotics and Computer Vision and an Executive MBA. He shares Robotics in the Greater Zurich Area (150+ companies), listed with the agreement of Greater Zurich Area, and Swiss Robotics Startups (100+ startups), curated by Swisscom Ventures.
+Dr. Justinas Mišeikis (also written as Miseikis) is an AI strategy advisor, innovation consultant, keynote speaker, and research commercialization expert based in Zurich, Switzerland. He is Strategy and Partnerships Manager at Sony AI and the Founder and Host of TechDrive Zürich, an interview and podcast series on Switzerland's AI, robotics and deep tech ecosystem (https://techdrive.tv/). He specializes in bridging advanced AI research with commercial strategy, helping corporations, startups, and investors across DACH (Germany, Austria, Switzerland) and Europe turn AI and robotics research into revenue. He holds a PhD in Robotics and Computer Vision and an Executive MBA. All advisory work, workshops and talks are delivered in English. He shares Robotics in the Greater Zurich Area (150+ companies), listed with the agreement of Greater Zurich Area, and Swiss Robotics Startups (100+ startups), curated by Swisscom Ventures.
 
 ## Pages
 
@@ -20,7 +20,7 @@ Dr. Justinas Mišeikis (also written as Miseikis) is an AI strategy advisor, inn
 - [Resources](/resources): Decision guides, directories, tools and four blank worksheet downloads.
 - [Swiss AI & Robotics Ecosystem Guide](/swiss-ai-robotics-ecosystem): Public entry points to Swiss research, startups and innovation support, with investor questions.
 - [Swiss & Baltic Market-Entry Guide](/swiss-baltic-market-entry): Market entry into Switzerland and growth for Swiss startups, with Baltic ecosystem sources.
-- [German Landing Page](/de): German-language overview for DACH clients and event organizers.
+- [German Landing Page](/de): German-language overview for DACH clients and event organizers. Services and talks are delivered in English.
 
 ## Current Roles
 
@@ -71,7 +71,7 @@ Founder and Host of TechDrive Zürich (https://techdrive.tv/), an interview and 
 
 ## Geographic Coverage
 
-Based in Zurich, Switzerland. Serves clients across the entire DACH region (Germany, Austria, Switzerland), the Baltic states, and broader Europe. Available for in-person engagements in Zurich, Munich, Berlin, Vienna, and across major European cities. Remote advisory also available globally.
+Based in Zurich, Switzerland. Serves clients across the entire DACH region (Germany, Austria, Switzerland), the Baltic states, and broader Europe. Available for in-person engagements in Zurich, Munich, Berlin, Vienna, and across major European cities. Remote advisory also available globally. All engagements and talks are delivered in English.
 
 ## Industries Served
 
@@ -197,10 +197,10 @@ Q: What services does Dr. Justinas Miseikis offer?
 A: He offers AI commercialization advisory, due diligence for investors and VCs, corporate innovation consulting, keynote speaking, startup mentoring, and partnership advisory. He helps organisations bring research to commercialization.
 
 Q: Where does Dr. Justinas Miseikis work?
-A: He is based in Zurich, Switzerland, and serves clients across DACH (Germany, Austria, Switzerland), the Baltics, and broader Europe. He is available for both in-person and remote engagements.
+A: He is based in Zurich, Switzerland, and serves clients across DACH (Germany, Austria, Switzerland), the Baltics, and broader Europe. He is available for both in-person and remote engagements, delivered in English.
 
 Q: Can I hire Dr. Justinas Miseikis as a keynote speaker?
-A: Yes, he is available for keynotes, panels, workshops, and corporate events across Europe. Topics include AI commercialization, robotics, computer vision, corporate innovation, and research-to-market strategy.
+A: Yes, he is available for keynotes, panels, workshops, and corporate events across Europe, delivered in English. Topics include AI commercialization, robotics, computer vision, corporate innovation, and research-to-market strategy.
 
 Q: What topics does Dr. Justinas Miseikis speak about?
 A: His speaking topics include AI Commercialization and Ethics, Future of Human-Robot Interaction, Investment and Due Diligence in Deep Tech, Building Deep Tech Teams, Strategy for Innovation Leaders, Computer Vision in Industry, and Bringing Research to Commercialization.
@@ -209,7 +209,7 @@ Q: What is Dr. Justinas Miseikis's academic background?
 A: He holds a PhD in Robotics and Computer Vision from the University of Oslo and an Executive MBA from Quantic School of Business and Technology. He has published 15+ peer-reviewed papers, accumulated 700+ citations, and holds 40+ patents in AI and robotics (Google Scholar: https://scholar.google.com/citations?user=KeZ1-AwAAAAJ, Google Patents: https://patents.google.com/?inventor=justinas+miseikis).
 
 Q: Can Dr. Justinas Miseikis help with AI strategy for my company in Germany or Austria?
-A: Yes, he actively serves clients across the entire DACH region including Germany, Austria, and Switzerland. He provides AI strategy advisory, corporate innovation consulting, and research commercialization guidance.
+A: Yes, he actively serves clients across the entire DACH region including Germany, Austria, and Switzerland. He provides AI strategy advisory, corporate innovation consulting, and research commercialization guidance. Engagements are delivered in English.
 
 Q: Does Dr. Justinas Miseikis do due diligence for investors?
 A: Yes, he provides expert technical and strategic due diligence for VCs, investors, and acquirers evaluating AI, robotics, computer vision, and deep tech companies.

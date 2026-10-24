@@ -20,6 +20,8 @@ const appSource = readFileSync(join(ROOT, "src/App.tsx"), "utf8");
 const ROUTES = new Set([...appSource.matchAll(/path="([^"*:]+)"/g)].map((m) => m[1]));
 const prerender = readFileSync(join(ROOT, "scripts/prerender-meta.mjs"), "utf8");
 const sitemap = readFileSync(join(ROOT, "public/sitemap.xml"), "utf8");
+// The owner works and speaks in English only (the German page says so).
+const GERMAN_DELIVERY = /auf Deutsch|in German\b|German-speaking (?:advisor|speaker)|deutschsprachige[rn]? (?:Beratung|Vortr)|bilingual/i;
 
 const renderPage = (Page: () => JSX.Element, path: string) =>
   render(
@@ -94,6 +96,15 @@ describe.each(PAGES)("%s", (path, Page, heading) => {
     const { container } = renderPage(Page, path);
     expect(container.textContent).not.toMatch(/\u2014/);
     expect(container.innerHTML).not.toMatch(/mailto:|[\w.+-]+@[\w-]+\.[a-z]{2,}/i);
+    expect(container.textContent).not.toMatch(GERMAN_DELIVERY);
+  });
+});
+
+describe("Language of delivery", () => {
+  it("never claims work or talks in German, in the static HTML or llms.txt either", () => {
+    for (const file of ["index.html", "public/llms.txt"]) {
+      expect(readFileSync(join(ROOT, file), "utf8"), file).not.toMatch(GERMAN_DELIVERY);
+    }
   });
 });
 
@@ -120,7 +131,8 @@ describe("Due diligence page", () => {
 describe("German page", () => {
   it("states English delivery and keeps the confirmed facts", () => {
     const { container } = renderPage(De, "/de");
-    expect(container.textContent).toContain("Die Zusammenarbeit und Vorträge erfolgen auf Englisch.");
+    expect(container.textContent).toContain("Beratung, Workshops und Vorträge ausschliesslich auf Englisch.");
+    expect(container.textContent).toContain("Beratung, Due Diligence, Workshops und Vorträge erfolgen ausschliesslich auf Englisch.");
     expect(container.textContent).toContain("Gründer und Host von");
     expect(screen.getByRole("link", { name: /TechDrive Zürich/ })).toHaveAttribute("href", "https://techdrive.tv/");
     expect(container.textContent).toContain("15+ begutachtete Publikationen, 700+ Zitierungen und 40+ Patente");
