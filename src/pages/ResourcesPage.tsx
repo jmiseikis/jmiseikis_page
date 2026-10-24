@@ -51,10 +51,10 @@ const TOOLS = [
     href: "/raas-calculator",
   },
   {
-    title: "AI & robotics due diligence",
-    text: "Technology, market, team and IP assessment for investors in AI and robotics companies.",
-    meta: "Assessment guide | Checklist in the templates below",
-    href: "/due-diligence",
+    title: "AI & robotics diligence checklist",
+    text: "Define the evidence to request at early stage and at scale-up stage.",
+    meta: "Assessment guide | Downloadable checklist",
+    href: "/due-diligence#stage",
   },
 ];
 

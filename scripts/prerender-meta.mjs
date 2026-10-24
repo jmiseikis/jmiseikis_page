@@ -39,10 +39,10 @@ const routes = [
   },
   {
     path: "/advisory",
-    title: "AI Strategy Advisory | Dr. Justinas Mišeikis",
+    title: "AI & robotics advisory | Dr. Justinas Mišeikis",
     description:
-      "Independent AI and robotics advisory for corporates and startups: strategy, partnerships, R&D-to-market and computer vision programs across Zurich, DACH and Europe.",
-    ogTitle: "AI Strategy Advisory",
+      "Technology scouting, AI and robotics diligence, Swiss partnerships and local representation for international companies and investors.",
+    ogTitle: "AI & robotics advisory",
     ogSubtitle: "DR. JUSTINAS MIŠEIKIS · ADVISORY",
   },
   {
@@ -55,10 +55,10 @@ const routes = [
   },
   {
     path: "/due-diligence",
-    title: "VC Due Diligence - AI & Robotics Deep Tech | Dr. Justinas Mišeikis",
+    title: "AI & robotics due diligence | Dr. Justinas Mišeikis",
     description:
-      "Independent technical due diligence for VCs and corporate investors evaluating AI, robotics, computer vision and deep tech ventures. Zurich, Switzerland.",
-    ogTitle: "AI & Robotics Due Diligence",
+      "Technical and commercial assessment of AI, robotics and deep tech opportunities for investors, acquirers and corporate strategy teams.",
+    ogTitle: "AI & robotics due diligence",
     ogSubtitle: "DR. JUSTINAS MIŠEIKIS · DUE DILIGENCE",
   },
   {
