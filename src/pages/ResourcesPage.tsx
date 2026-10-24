@@ -19,7 +19,7 @@ const GUIDES = [
   {
     eyebrow: "03 / Internal AI",
     title: "Put your data and workflows to work",
-    text: "Where AI agents create value inside a business, and a roadmap from pilot to production.",
+    text: "Explore four concrete internal use cases and take away a blank pilot brief for your team.",
     href: "/ai-agents-strategy",
   },
 ];

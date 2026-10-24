@@ -97,11 +97,11 @@ const routes = [
   },
   {
     path: "/ai-agents-strategy",
-    title: "AI Agent Development Strategy | Dr. Justinas Mišeikis",
+    title: "AI for internal data & workflows | Dr. Justinas Mišeikis",
     description:
-      "Enterprise guide to AI agent development strategy, technical viability, ROI assessment, and deployment roadmaps for production-ready systems.",
-    ogTitle: "AI Agent Development Strategy",
-    ogSubtitle: "ENTERPRISE PLAYBOOK · JMISEIKIS",
+      "Assess AI for internal knowledge, support, proposals and operations. Map company data, processes and permissions, then define a measurable pilot.",
+    ogTitle: "AI for internal data & workflows",
+    ogSubtitle: "DR. JUSTINAS MIŠEIKIS · PRACTICAL GUIDE",
   },
   {
     path: "/about",

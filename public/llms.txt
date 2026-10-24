@@ -7,14 +7,14 @@ Dr. Justinas Mišeikis (also written as Miseikis) is an AI strategy advisor, inn
 ## Pages
 
 - [Home](/): AI strategy advisor, keynote speaker, and research commercialization profile.
-- [Advisory](/advisory): AI commercialization, corporate innovation, and technology roadmap services.
+- [Advisory](/advisory): Market entry and Swiss partnerships, startup scouting and technical diligence, Swiss presence and representation, and AI for internal data and workflows.
 - [Speaking](/speaking): Keynote topics, TechDrive Zürich, videos, and event organizer information.
 - [Due Diligence](/due-diligence): Technical assessment for AI, robotics, and deep tech investments.
 - [Tech Events Switzerland](/tech-events): Filterable Swiss calendar for AI, robotics, startup, and VC events.
 - [Swiss VCs Directory](/swiss-vcs): Directory of Swiss venture capital firms and startup investors.
 - [RaaS ROI Calculator](/raas-calculator): Interactive Robot-as-a-Service cost and ROI model.
 - [GZA Robotics Directory](/gza-robotics): Robotics companies, startups, and labs in Greater Zurich.
-- [AI Agent Development Strategy](/ai-agents-strategy): Guide to enterprise AI agent viability, ROI, and deployment roadmaps.
+- [AI for Internal Data & Workflows](/ai-agents-strategy): Four illustrative internal workflows, process and data mapping, pilot criteria and a blank pilot brief.
 - [About](/about): Professional history at Sony AI, Sony and F&P Robotics, education and international background.
 - [Publications & Patents](/publications): Selected papers with links to the full Google Scholar and Google Patents records.
 - [Resources](/resources): Decision guides, directories, tools and four blank worksheet downloads.
