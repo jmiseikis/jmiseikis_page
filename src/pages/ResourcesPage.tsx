@@ -52,7 +52,7 @@ const TOOLS = [
   },
   {
     title: "AI & robotics due diligence",
-    text: "The technical and commercial evidence to assess at early stage and at scale-up stage.",
+    text: "Technology, market, team and IP assessment for investors in AI and robotics companies.",
     meta: "Assessment guide | Checklist in the templates below",
     href: "/due-diligence",
   },

@@ -1,10 +1,11 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { lazy, Suspense } from "react";
 import { fireEvent, render, screen, within } from "@testing-library/react";
-import { MemoryRouter, Route, Routes, useLocation } from "react-router-dom";
+import { Link, MemoryRouter, Route, Routes, useLocation } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import Footer from "@/components/Footer";
 import RouteErrorBoundary from "@/components/RouteErrorBoundary";
+import { lazyRoute } from "@/components/LazyRoute";
 import PrivacyPolicy from "../PrivacyPolicy";
 import TermsOfUse from "../TermsOfUse";
 
@@ -105,5 +106,24 @@ describe("Lazy legal routes", () => {
     );
     expect(await screen.findByText("This page could not be loaded.")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Reload the page" })).toBeInTheDocument();
+  });
+
+  it("do not carry one page's load failure over to the next lazy page", async () => {
+    vi.spyOn(console, "error").mockImplementation(() => {});
+    const Broken = lazy(() => Promise.reject(new Error("Failed to fetch dynamically imported module")));
+    const Working = lazy(() => Promise.resolve({ default: () => <p>Working page</p> }));
+    render(
+      <MemoryRouter initialEntries={["/broken"]}>
+        <Link to="/working">Go on</Link>
+        <Routes>
+          <Route path="/broken" element={lazyRoute("/broken", <Broken />)} />
+          <Route path="/working" element={lazyRoute("/working", <Working />)} />
+        </Routes>
+      </MemoryRouter>,
+    );
+    expect(await screen.findByText("This page could not be loaded.")).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("link", { name: "Go on" }));
+    expect(await screen.findByText("Working page")).toBeInTheDocument();
+    expect(screen.queryByText("This page could not be loaded.")).not.toBeInTheDocument();
   });
 });
