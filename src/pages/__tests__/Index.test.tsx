@@ -49,7 +49,7 @@ describe("Home page", () => {
   it("uses the confirmed TechDrive Zürich role and follows the copy rules", () => {
     const { container } = renderHome();
     expect(container.textContent).toContain("Founder and Host of TechDrive Zürich");
-    expect(container.textContent).not.toMatch(/—/);
+    expect(container.textContent).not.toMatch(/\u2014/);
     expect(container.innerHTML).not.toMatch(/mailto:|[\w.+-]+@[\w-]+\.[a-z]{2,}/i);
   });
 });
