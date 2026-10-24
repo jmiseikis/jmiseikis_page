@@ -24,7 +24,7 @@ beforeEach(() => {
 
 describe.each([
   ["Privacy Policy", PrivacyPolicy, "12 October 2026", "2026-10-12"],
-  ["Terms of Use", TermsOfUse, "11 October 2026", "2026-10-11"],
+  ["Terms of Use", TermsOfUse, "24 October 2026", "2026-10-24"],
 ])("%s page", (heading, Page, label, iso) => {
   it("renders one H1 and the publication date", () => {
     renderWithProviders(<Page />);
@@ -74,7 +74,7 @@ describe("Footer", () => {
     expect(container.textContent).not.toContain("@");
   });
 
-  it("sends quick links to the home page section when used on another page", () => {
+  it("sends the footer Contact link to the home page form when used on another page", () => {
     const Where = () => {
       const location = useLocation();
       return <span data-testid="where">{location.pathname + location.hash}</span>;
@@ -85,10 +85,10 @@ describe("Footer", () => {
       </Routes>,
       "/privacy",
     );
-    const about = screen.getByRole("link", { name: "About" });
-    expect(about).toHaveAttribute("href", "/#about");
-    fireEvent.click(about);
-    expect(screen.getByTestId("where")).toHaveTextContent("/#about");
+    const contact = screen.getByRole("link", { name: "Contact" });
+    expect(contact).toHaveAttribute("href", "/#contact");
+    fireEvent.click(contact);
+    expect(screen.getByTestId("where")).toHaveTextContent("/#contact");
   });
 });
 

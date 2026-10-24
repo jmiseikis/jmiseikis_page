@@ -182,6 +182,35 @@
     @apply text-[11px] font-semibold uppercase tracking-[0.12em] text-primary;
   }
 
+  /* Page typography shared by the standalone pages (src/components/site/primitives.tsx). */
+  .lead {
+    @apply text-base text-muted-foreground xs:text-[17px] md:text-[19px];
+    line-height: 1.6;
+    max-width: 62ch;
+  }
+
+  .fine {
+    @apply text-xs text-muted-foreground;
+    line-height: 1.6;
+  }
+
+  .h2 {
+    @apply text-[28px] xs:text-[31px] md:text-[2.4rem] lg:text-[2.8rem];
+    max-width: 22ch;
+    line-height: 1.12;
+    letter-spacing: -0.035em;
+    overflow-wrap: break-word;
+  }
+
+  .text-link {
+    @apply inline-flex items-center gap-1.5 border-b border-primary pb-1 text-[13px] font-semibold text-foreground no-underline transition-colors hover:text-primary;
+  }
+
+  /* Section rhythm: about 40-48px on phones and 80px on desktop. */
+  .section-y {
+    @apply py-10 xs:py-12 md:py-20;
+  }
+
   /* A band that stays dark in both themes, so the dark theme has no light islands. Inside it the
      usual tokens (text-foreground, text-primary, text-muted-foreground) resolve to dark-surface values:
      red is 5.4:1 on the band, muted text 9:1. */

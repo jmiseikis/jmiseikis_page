@@ -104,6 +104,46 @@ const routes = [
     ogSubtitle: "ENTERPRISE PLAYBOOK · JMISEIKIS",
   },
   {
+    path: "/about",
+    title: "About | Dr. Justinas Mišeikis",
+    description:
+      "Background in Sony technology scouting, Sony AI strategy and partnerships, robotics leadership, research and business education.",
+    ogTitle: "About",
+    ogSubtitle: "DR. JUSTINAS MIŠEIKIS · ABOUT",
+  },
+  {
+    path: "/publications",
+    title: "Publications & patents | Dr. Justinas Mišeikis",
+    description:
+      "Selected papers in robotics, computer vision and human-robot interaction, with links to the full publication and patent records.",
+    ogTitle: "Publications & patents",
+    ogSubtitle: "DR. JUSTINAS MIŠEIKIS · RESEARCH",
+  },
+  {
+    path: "/resources",
+    title: "Resources for Swiss technology & AI decisions | Dr. Justinas Mišeikis",
+    description:
+      "Guides, directories and templates for Swiss technology scouting, market entry, AI adoption and investor due diligence.",
+    ogTitle: "Resources",
+    ogSubtitle: "DR. JUSTINAS MIŠEIKIS · RESOURCES",
+  },
+  {
+    path: "/swiss-ai-robotics-ecosystem",
+    title: "Swiss AI & robotics ecosystem guide | Dr. Justinas Mišeikis",
+    description:
+      "Navigate Swiss AI and robotics research, startups and scale-ups. Public sources, investor questions and a downloadable technology scouting brief.",
+    ogTitle: "Swiss AI & robotics ecosystem guide",
+    ogSubtitle: "DR. JUSTINAS MIŠEIKIS · FIELD GUIDE",
+  },
+  {
+    path: "/swiss-baltic-market-entry",
+    title: "Swiss & Baltic technology market-entry guide | Dr. Justinas Mišeikis",
+    description:
+      "Plan technology market entry into Switzerland and international growth for Swiss startups, with Baltic ecosystem sources and a reusable brief.",
+    ogTitle: "Swiss & Baltic market-entry guide",
+    ogSubtitle: "DR. JUSTINAS MIŠEIKIS · FIELD GUIDE",
+  },
+  {
     path: "/privacy",
     title: "Privacy Policy | Dr. Justinas Mišeikis",
     description:

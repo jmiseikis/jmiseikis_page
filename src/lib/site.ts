@@ -1,11 +1,22 @@
-// Shared navigation and footer configuration.
-// Resources, Publications and About point at the home page sections until their own pages exist.
+// Shared site configuration: external records, navigation, footer and contact links.
+// Keep external URLs here so every page links to the same records.
 
 export const LINKEDIN_URL = "https://www.linkedin.com/in/justinasmiseikis/";
 export const SCHOLAR_URL = "https://scholar.google.com/citations?user=KeZ1-AwAAAAJ";
 export const PATENTS_URL = "https://patents.google.com/?inventor=justinas+miseikis,justinas+mi%C5%A1eikis";
+export const TECHDRIVE_URL = "https://techdrive.tv/";
+export const GZA_URL = "https://www.greaterzuricharea.com/en";
+export const SWISS_ROBOTICS_STARTUPS_URL = "https://www.swissroboticsstartups.com/";
+export const SWISS_HACK_EVENTS_URL = "https://www.hackevents.net/ch";
 
 export const CONTACT_PATH = "/#contact";
+
+/** Enquiry purposes a link can preselect on the contact form. No personal data goes in the URL. */
+export const ENQUIRY_INTENTS = ["advisory", "scouting", "diligence", "representation", "speaking", "other"] as const;
+export type EnquiryIntent = (typeof ENQUIRY_INTENTS)[number];
+
+/** Link to the protected contact form on the home page with a suggested purpose. */
+export const contactPath = (intent: EnquiryIntent = "advisory") => `/?enquiry=${intent}#contact`;
 
 export interface NavLinkConfig {
   label: string;
@@ -19,11 +30,20 @@ export const NAV_LINKS: NavLinkConfig[] = [
   { label: "Speaking", to: "/speaking", section: ["/speaking"] },
   {
     label: "Resources",
-    to: "/#resources",
-    section: ["/ai-agents-strategy", "/gza-robotics", "/swiss-vcs", "/tech-events", "/raas-calculator"],
+    to: "/resources",
+    section: [
+      "/resources",
+      "/swiss-ai-robotics-ecosystem",
+      "/swiss-baltic-market-entry",
+      "/ai-agents-strategy",
+      "/gza-robotics",
+      "/swiss-vcs",
+      "/tech-events",
+      "/raas-calculator",
+    ],
   },
-  { label: "Publications", to: "/#publications", section: [] },
-  { label: "About", to: "/#about", section: [] },
+  { label: "Publications", to: "/publications", section: ["/publications"] },
+  { label: "About", to: "/about", section: ["/about"] },
 ];
 
 export interface FooterLink {
@@ -39,17 +59,17 @@ export const FOOTER_COLUMNS: { title: string; links: FooterLink[] }[] = [
       { label: "Advisory", to: "/advisory" },
       { label: "Due diligence", to: "/due-diligence" },
       { label: "Speaking", to: "/speaking" },
-      { label: "About", to: "/#about" },
+      { label: "About", to: "/about" },
     ],
   },
   {
     title: "Explore",
     links: [
-      { label: "Resource hub", to: "/#resources" },
-      { label: "Publications & patents", to: "/#publications" },
+      { label: "Resource hub", to: "/resources" },
+      { label: "Publications & patents", to: "/publications" },
+      { label: "Swiss ecosystem guide", to: "/swiss-ai-robotics-ecosystem" },
+      { label: "Market-entry guide", to: "/swiss-baltic-market-entry" },
       { label: "Internal AI & workflows", to: "/ai-agents-strategy" },
-      { label: "Google Scholar", to: SCHOLAR_URL, external: true },
-      { label: "Google Patents", to: PATENTS_URL, external: true },
     ],
   },
   {

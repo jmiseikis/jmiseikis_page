@@ -74,6 +74,36 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://jmiseikis.com/about</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jmiseikis.com/publications</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://jmiseikis.com/resources</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://jmiseikis.com/swiss-ai-robotics-ecosystem</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jmiseikis.com/swiss-baltic-market-entry</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://jmiseikis.com/privacy</loc>
     <lastmod>2026-10-12</lastmod>
     <changefreq>yearly</changefreq>
@@ -81,7 +111,7 @@
   </url>
   <url>
     <loc>https://jmiseikis.com/terms</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

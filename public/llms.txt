@@ -15,6 +15,11 @@ Dr. Justinas Mišeikis (also written as Miseikis) is an AI strategy advisor, inn
 - [RaaS ROI Calculator](/raas-calculator): Interactive Robot-as-a-Service cost and ROI model.
 - [GZA Robotics Directory](/gza-robotics): Robotics companies, startups, and labs in Greater Zurich.
 - [AI Agent Development Strategy](/ai-agents-strategy): Guide to enterprise AI agent viability, ROI, and deployment roadmaps.
+- [About](/about): Professional history at Sony AI, Sony and F&P Robotics, education and international background.
+- [Publications & Patents](/publications): Selected papers with links to the full Google Scholar and Google Patents records.
+- [Resources](/resources): Decision guides, directories, tools and four blank worksheet downloads.
+- [Swiss AI & Robotics Ecosystem Guide](/swiss-ai-robotics-ecosystem): Public entry points to Swiss research, startups and innovation support, with investor questions.
+- [Swiss & Baltic Market-Entry Guide](/swiss-baltic-market-entry): Market entry into Switzerland and growth for Swiss startups, with Baltic ecosystem sources.
 - [German Landing Page](/de): German-language overview for DACH clients and event organizers.
 
 ## Current Roles
