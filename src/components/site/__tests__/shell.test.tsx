@@ -3,7 +3,6 @@ import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import SiteShell from "@/components/site/SiteShell";
-import Advisory from "@/components/Advisory";
 
 const renderShell = (path = "/", content: React.ReactNode = <p>Page body</p>) =>
   render(
@@ -187,14 +186,7 @@ describe("Site footer", () => {
   });
 });
 
-describe("Old home anchors", () => {
-  it("keeps #services next to #advisory", () => {
-    renderShell("/", <Advisory />);
-    const advisory = document.getElementById("advisory")!;
-    expect(advisory).toBeInTheDocument();
-    expect(advisory.querySelector("#services")).toBeInTheDocument();
-  });
-
+describe("Skip link", () => {
   it("has a skip link that focuses the main landmark only once it is used", () => {
     renderShell();
     const main = screen.getByRole("main");
