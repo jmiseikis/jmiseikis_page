@@ -1,167 +1,136 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Lightbulb, Mic, TrendingUp, Shield } from "lucide-react";
-import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import PageMeta from "@/components/site/PageMeta";
+import { Actions, ButtonLink, Eyebrow, Note, PageHero, RuleBlock, SectionHead, SmartLink, TextLink } from "@/components/site/primitives";
+import { PATENTS_URL, SCHOLAR_URL, TECHDRIVE_URL, contactPath } from "@/lib/site";
 
-const De = () => {
-  return (
-    <>
-      <Helmet>
-        <html lang="de" />
-        <title>Dr. Justinas Mišeikis – KI-Strategieberater, Keynote Speaker & Robotik-Experte | Zürich, DACH</title>
-        <meta name="description" content="KI-Strategieberater und Keynote Speaker in Zürich. Beratung für Unternehmen, Startups und Investoren in den Bereichen KI-Kommerzialisierung, Robotik, Computer Vision und Due Diligence in der DACH-Region und Europa." />
-        <meta name="keywords" content="KI Berater Zürich, KI Strategieberatung DACH, Robotik Berater Schweiz, KI Keynote Speaker Deutschland, Computer Vision Experte, Deep Tech Due Diligence, Forschung Kommerzialisierung, KI Beratung Österreich, Startup Beratung KI, Innovationsberatung" />
-        <link rel="canonical" href="https://jmiseikis.com/de" />
-        <link rel="alternate" hrefLang="en" href="https://jmiseikis.com/" />
-        <link rel="alternate" hrefLang="de" href="https://jmiseikis.com/de" />
-        <meta property="og:title" content="Dr. Justinas Mišeikis – KI-Strategieberater & Keynote Speaker | DACH" />
-        <meta property="og:description" content="KI-Strategieberater für Unternehmen, Startups und Investoren. Beratung, Due Diligence und Keynotes in Zürich und der DACH-Region." />
-        <meta property="og:locale" content="de_CH" />
-        <meta property="og:image" content="https://jmiseikis.com/og-image.png" />
-      </Helmet>
+// German summary of the same offering as /advisory. Delivery is in English, as stated on the page.
+const SERVICES = [
+  {
+    title: "Markteintritt & Partnerschaften in der Schweiz",
+    text: "Zielmärkte bewerten, die Positionierung schärfen und passende Schweizer Partner identifizieren. Auch für Schweizer Startups auf dem Weg in neue Märkte.",
+  },
+  {
+    title: "Startup-Scouting & technische Due Diligence",
+    text: "Für VCs und Corporate Investors: Schweizer KI- und Robotik-Startups finden und die technische Substanz von der Frühphase bis zum Scale-up prüfen.",
+  },
+  {
+    title: "KI für interne Daten & Prozesse",
+    text: "Sinnvolle interne KI-Anwendungen identifizieren, Daten und Abläufe erfassen und ein Pilotprojekt mit messbaren Kriterien definieren.",
+  },
+  {
+    title: "Keynotes & Workshops",
+    text: "Perspektiven zu physischer KI, Innovation und der Kommerzialisierung von Forschung.",
+  },
+];
 
-      <div className="bg-background">
-        {/* Hero */}
-        <section className="pt-12 md:pt-16 pb-20 px-4">
-          <div className="container mx-auto max-w-4xl">
-            <p className="mb-6">
-              <Link
-                to="/"
-                lang="en"
-                className="inline-flex min-h-11 items-center text-sm font-semibold text-muted-foreground underline underline-offset-4 hover:text-foreground"
-              >
-                English version
-              </Link>
-            </p>
-            <span className="text-primary font-medium tracking-wider uppercase text-sm">
-              KI-Strategieberater • Keynote Speaker • Robotik-Experte
-            </span>
-            <h1 className="text-5xl md:text-6xl font-bold tracking-tight mt-4 mb-6">
-              KI-Strategie &{" "}
-              <span className="text-primary">Innovation</span>
-            </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mb-8">
-              Strategieberater an der Schnittstelle von KI-Forschung und kommerzieller Umsetzung.
-              Keynote Speaker, Berater und Due-Diligence-Experte für Investoren und VCs im Bereich Deep Tech.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/#contact">
-                <Button size="lg" variant="swiss" className="group">
-                  Kontakt aufnehmen
-                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </section>
+const ENGLISH_PAGES = [
+  { label: "Advisory (Englisch)", href: "/advisory" },
+  { label: "Due Diligence (Englisch)", href: "/due-diligence" },
+  { label: "Speaking (Englisch)", href: "/speaking" },
+  { label: "Publikationen (Englisch)", href: "/publications" },
+  { label: "Ressourcen (Englisch)", href: "/resources" },
+];
 
-        {/* Services */}
-        <section className="py-20 bg-secondary/30 px-4">
-          <div className="container mx-auto max-w-5xl">
-            <h2 className="text-4xl font-bold mb-12">
-              Dienstleistungen
-            </h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              {[
-                {
-                  icon: Lightbulb,
-                  title: "KI-Kommerzialisierung",
-                  description: "Strategische Beratung zur Umsetzung von KI-Forschung in marktreife Produkte und Lösungen.",
-                  link: "/advisory",
-                },
-                {
-                  icon: TrendingUp,
-                  title: "Unternehmensberatung & Innovation",
-                  description: "Unterstützung bei der strategischen Einführung von KI und Automatisierung in Unternehmen.",
-                  link: "/advisory",
-                },
-                {
-                  icon: Mic,
-                  title: "Keynote Speaking",
-                  description: "Vorträge und Keynotes zu KI, Robotik, Computer Vision und Innovationsstrategie auf Konferenzen und Firmenevents.",
-                  link: "/speaking",
-                },
-                {
-                  icon: Shield,
-                  title: "Due Diligence für Investoren",
-                  description: "Technische und strategische Bewertung von KI- und Robotik-Unternehmen für VCs, Investoren und Käufer.",
-                  link: "/due-diligence",
-                },
-              ].map((service, index) => (
-                <Link key={index} to={service.link}>
-                  <div className="bg-card p-8 border-2 border-border hover:border-primary transition-all duration-300 group h-full">
-                    <service.icon className="w-12 h-12 text-primary mb-6 group-hover:scale-110 transition-transform" />
-                    <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">{service.description}</p>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
+const inlineLink = "font-semibold text-foreground underline underline-offset-4 hover:text-primary";
 
-        {/* Background */}
-        <section className="py-20 px-4">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-4xl font-bold mb-8">Hintergrund</h2>
-            <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
-              <p>
-                Dr. Justinas Mišeikis ist Strategy and Partnerships Manager bei Sony AI in Zürich.
-                Er leitet die Forschungskommerzialisierung für 4 F&E-Teams und verbindet dabei
-                akademische Forschung mit geschäftlicher Wertschöpfung. Ausserdem ist er Gründer und
-                Host von{" "}
-                <a
-                  href="https://techdrive.tv/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:underline"
-                >
-                  TechDrive Zürich
-                </a>
-                , einer Interview- und Podcastreihe über das Schweizer KI-, Robotik- und Deep-Tech-Ökosystem.
-              </p>
-              <p>
-                Mit einem PhD in Robotik und Computer Vision (Universität Oslo) und einem Executive MBA
-                (Quantic School of Business) bringt er eine einzigartige Kombination aus technischer
-                Tiefe und strategischem Geschäftssinn mit. Er verfügt über 15+ begutachtete Publikationen,
-                700+ Zitierungen und 40+ Patente im Bereich KI und Robotik (Nachweise:{" "}
-                <a
-                  href="https://scholar.google.com/citations?user=KeZ1-AwAAAAJ"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:underline"
-                >
-                  Google Scholar
-                </a>
-                ,{" "}
-                <a
-                  href="https://patents.google.com/?inventor=justinas+miseikis,justinas+mi%C5%A1eikis"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:underline"
-                >
-                  Google Patents
-                </a>
-                ).
-              </p>
-              <p>
-                Verfügbar für Beratung, Keynotes und Due Diligence in der gesamten DACH-Region und Europa.
-              </p>
-            </div>
-            <div className="mt-8">
-              <Link to="/#contact">
-                <Button size="lg" variant="swiss">
-                  Kontakt aufnehmen
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </section>
+const De = () => (
+  <>
+    <PageMeta
+      path="/de"
+      title="KI- und Robotikstrategie | Dr. Justinas Mišeikis"
+      description="KI- und Robotikberatung, Technologie-Scouting und Keynotes. Sitz in Zürich, internationale Zusammenarbeit auf Englisch."
+      ogTitle="KI- und Robotikstrategie"
+      ogSubtitle="DR. JUSTINAS MIŠEIKIS · ZÜRICH"
+    />
+    <Helmet>
+      <html lang="de" />
+      <link rel="alternate" hrefLang="en" href="https://jmiseikis.com/" />
+      <link rel="alternate" hrefLang="de" href="https://jmiseikis.com/de" />
+      <meta property="og:locale" content="de_CH" />
+    </Helmet>
 
-        {/* Footer */}
+    <PageHero
+      eyebrow="Dr. Justinas Mišeikis | Zürich, Schweiz"
+      title="KI- und Robotikstrategie. Schweizer Ökosystem."
+      lead="Ich unterstütze internationale Technologieunternehmen und Investoren bei der Bewertung neuer Technologien, der Suche nach Partnern in der Schweiz und Entscheidungen zur Kommerzialisierung von Forschung."
+    >
+      <Actions>
+        <ButtonLink href={contactPath("advisory")}>Kontakt aufnehmen</ButtonLink>
+        <ButtonLink href="/" variant="secondary">
+          <span lang="en">English website</span>
+        </ButtonLink>
+      </Actions>
+    </PageHero>
+
+    <section className="site-wrap pb-12 pt-10 md:pb-20" aria-labelledby="de-services-title">
+      <SectionHead id="de-services-title" eyebrow="Zusammenarbeit" title="Technische Tiefe. Geschäftlicher Kontext." />
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10">
+        {SERVICES.map((service) => (
+          <RuleBlock key={service.title} title={service.title}>
+            <p>{service.text}</p>
+          </RuleBlock>
+        ))}
       </div>
-    </>
-  );
-};
+      <Note>
+        <p>
+          Die Zusammenarbeit und Vorträge erfolgen auf Englisch. Weitere Inhalte dieser Website sind auf Englisch verfügbar.
+          Honorare werden je nach Umfang vereinbart und auf Anfrage mitgeteilt.
+        </p>
+      </Note>
+    </section>
+
+    <section className="section-y bg-muted" aria-labelledby="de-background-title">
+      <div className="site-wrap grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-20">
+        <div>
+          <Eyebrow>Hintergrund</Eyebrow>
+          <h2 id="de-background-title" className="h2">
+            Forschung und Strategie verbinden.
+          </h2>
+        </div>
+        <div className="space-y-4 text-muted-foreground">
+          <p>
+            Ich bin Strategy and Partnerships Manager bei Sony AI. Mein Hintergrund umfasst Technologie-Scouting bei Sony,
+            Strategie und Partnerschaften bei Sony AI sowie die Leitung von KI-Aktivitäten bei F&P Robotics. Ausserdem bin
+            ich Gründer und Host von{" "}
+            <SmartLink href={TECHDRIVE_URL} className={inlineLink}>
+              TechDrive Zürich
+            </SmartLink>
+            , einer Interview- und Podcastreihe über das Schweizer KI-, Robotik- und Deep-Tech-Ökosystem.
+          </p>
+          <p>
+            PhD in Robotik und Computer Vision, Universität Oslo. Executive MBA, Quantic School of Business and Technology.
+          </p>
+          <p>
+            15+ begutachtete Publikationen, 700+ Zitierungen und 40+ Patente im Bereich KI und Robotik. Nachweise:{" "}
+            <SmartLink href={SCHOLAR_URL} className={inlineLink}>
+              Google Scholar
+            </SmartLink>{" "}
+            und{" "}
+            <SmartLink href={PATENTS_URL} className={inlineLink}>
+              Google Patents
+            </SmartLink>
+            .
+          </p>
+          <div className="pt-1">
+            <TextLink href="/about">Mehr über meinen Hintergrund (Englisch)</TextLink>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="site-wrap section-y" aria-labelledby="de-more-title">
+      <h2 id="de-more-title" className="sr-only">
+        Weitere Seiten
+      </h2>
+      <Actions className="mt-0">
+        {ENGLISH_PAGES.map((page) => (
+          <TextLink key={page.href} href={page.href}>
+            {page.label}
+          </TextLink>
+        ))}
+      </Actions>
+    </section>
+  </>
+);
 
 export default De;
