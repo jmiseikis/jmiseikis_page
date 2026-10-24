@@ -1,585 +1,359 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
-import { buildOgImageUrl } from "@/lib/ogImage";
-import { Link } from "react-router-dom";
-import { ArrowLeft, ExternalLink, Play, Youtube, Mic, Video, Mail, Award, Podcast } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import PageMeta from "@/components/site/PageMeta";
+import {
+  Actions,
+  ButtonLink,
+  ContactCta,
+  Eyebrow,
+  Note,
+  PageHero,
+  RuleBlock,
+  SectionHead,
+  ServiceRow,
+  SmartLink,
+  TextLink,
+} from "@/components/site/primitives";
 import { supabase } from "@/integrations/supabase/client";
+import {
+  COLLABORATIONS,
+  FEATURED_TALK,
+  PERSONAL_FALLBACK,
+  TECHDRIVE_FALLBACK,
+  mergeVideos,
+  normaliseVideo,
+  type VideoItem,
+} from "@/content/media";
+import { PAST_ENGAGEMENTS, SIGNATURE_TOPICS, WIDER_TOPICS } from "@/content/services";
+import {
+  PREMIUM_SPEAKERS_URL,
+  TECHDRIVE_CHANNEL_URL,
+  TECHDRIVE_URL,
+  YOUTUBE_CHANNEL_URL,
+  contactPath,
+} from "@/lib/site";
 
-interface VideoItem {
-  id: string;
-  title: string;
-  description: string;
-  url: string;
-  thumbnail: string;
-  publishedAt: string;
-  isShort: boolean;
-  views: number;
+interface YoutubeFeed {
+  videos?: VideoItem[];
+  techdrive?: { episodes?: VideoItem[] };
 }
 
-const CHANNEL_URL = "https://www.youtube.com/@JustinasMiseikis";
-const PREMIUM_SPEAKERS_URL = "https://premium-speakers.com/en/speaker-presenter/justinas-miseikis/";
-const TECHDRIVE_URL = "https://techdrive.tv/";
-
-const openExternal = (url: string) => (e: React.MouseEvent) => {
-  e.preventDefault();
-  window.open(url, "_blank", "noopener,noreferrer");
+// Structured data kept from the previous page, with owner-confirmed roles. Wisdom House was independently organised
+// during WEF week, so it is not presented as part of the official WEF programme.
+const PERSON_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Dr. Justinas Mišeikis",
+  jobTitle: ["Strategy and Partnerships Manager at Sony AI", "Founder and Host of TechDrive Zürich"],
+  worksFor: {
+    "@type": "Organization",
+    name: "Sony AI",
+    url: "https://ai.sony",
+    parentOrganization: { "@type": "Organization", name: "Sony", url: "https://www.sony.com" },
+  },
+  url: "https://jmiseikis.com/speaking",
+  sameAs: [YOUTUBE_CHANNEL_URL, PREMIUM_SPEAKERS_URL, TECHDRIVE_URL],
+  knowsAbout: ["Artificial Intelligence", "Robotics", "Computer Vision", "AI Commercialization", "AI Ethics", "Physical AI", "Deep Tech Investment"],
+  performerIn: [
+    {
+      "@type": "Event",
+      name: "Wisdom House @ Davos 2026",
+      location: "Davos, Switzerland",
+      description: "Independently organised during WEF week",
+    },
+    { "@type": "Event", name: "GenAI Zürich", location: "Zurich, Switzerland" },
+    { "@type": "Event", name: "LOGIN Conference", location: "Vilnius, Lithuania" },
+    { "@type": "Event", name: "ETH Zürich & ETH Entrepreneurship Club", location: "Zurich, Switzerland" },
+    { "@type": "Event", name: "Sony AI Conference" },
+  ],
 };
 
-const formatDate = (iso: string) =>
-  new Date(iso).toLocaleDateString("en-GB", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
+const PODCAST_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "PodcastSeries",
+  name: "TechDrive Zürich",
+  url: TECHDRIVE_URL,
+  description:
+    "Interview and podcast series hosted by Dr. Justinas Mišeikis, spotlighting founders, researchers and operators shaping Switzerland's AI, robotics and deep tech ecosystem, recorded in and around Zürich.",
+  inLanguage: "en",
+  author: { "@type": "Person", name: "Dr. Justinas Mišeikis", url: "https://jmiseikis.com/" },
+  host: { "@type": "Person", name: "Dr. Justinas Mišeikis", url: "https://jmiseikis.com/" },
+  about: ["Artificial Intelligence", "Robotics", "Deep Tech", "Swiss Startups", "Greater Zurich Area"],
+};
+
+const formatDate = (iso: string) => {
+  const date = new Date(iso);
+  return Number.isNaN(date.getTime())
+    ? ""
+    : date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "Europe/Zurich" });
+};
+
+const MediaCard = ({ item, eyebrow, featured = false }: { item: VideoItem; eyebrow?: string; featured?: boolean }) => (
+  <article className="min-w-0">
+    <SmartLink href={item.url} className="group relative block overflow-hidden bg-muted no-underline">
+      <img
+        src={item.thumbnail}
+        alt=""
+        width={480}
+        height={360}
+        loading={featured ? "eager" : "lazy"}
+        decoding="async"
+        className="aspect-video h-auto w-full object-cover grayscale-[15%] transition-[filter] group-hover:grayscale-0"
+      />
+      <span aria-hidden="true" className="absolute bottom-4 left-4 bg-primary px-4 py-2 text-sm text-primary-foreground">
+        ▶
+      </span>
+      <span className="sr-only">Watch {item.title}</span>
+    </SmartLink>
+    {!featured && (
+      <>
+        <p className="eyebrow mb-2 mt-4 text-[9px] md:text-[10px]">{eyebrow ?? formatDate(item.publishedAt)}</p>
+        <h3 className="max-w-[38ch] text-[17px] leading-snug tracking-[-0.02em] md:text-lg">{item.title}</h3>
+        <div className="mt-4">
+          <TextLink href={item.url} className="text-xs">
+            Watch on YouTube
+          </TextLink>
+        </div>
+      </>
+    )}
+  </article>
+);
+
+const MediaGrid = ({ items }: { items: VideoItem[] }) => (
+  <div className="mt-8 grid grid-cols-1 gap-x-5 gap-y-8 min-[451px]:grid-cols-2 lg:grid-cols-3 lg:gap-x-6 lg:gap-y-9">
+    {items.map((item) => (
+      <MediaCard key={item.id} item={item} />
+    ))}
+  </div>
+);
+
+const useYoutubeFeed = () =>
+  useQuery({
+    queryKey: ["youtube-videos"],
+    queryFn: async () => {
+      const { data, error } = await supabase.functions.invoke("youtube-videos");
+      if (error) throw error;
+      return (data ?? {}) as YoutubeFeed;
+    },
   });
 
-const topics = [
-  {
-    title: "Startup and Corporation Collaboration",
-    description: "What are the pitfalls, and how to avoid them? Practical lessons on partnerships, pilots, and joint value creation.",
-    audiences: ["Corporate Innovation", "Startup Forums", "Open Innovation"],
-  },
-  {
-    title: "AI Commercialization & Ethics",
-    description: "From research lab to market leadership: strategies for turning AI breakthroughs into business value while addressing ethical considerations.",
-    audiences: ["Tech Conferences", "Corporate Events", "Startup Forums"],
-  },
-  {
-    title: "Scaling AI from Pilots to Real Business Impact",
-    description: "How to move beyond proof-of-concepts and embed AI into core operations to deliver measurable ROI.",
-    audiences: ["Enterprise Leadership", "Digital Transformation", "C-Suite Forums"],
-  },
-  {
-    title: "Physical AI and Robotics",
-    description: "The next wave of innovation: how embodied AI and robotics are reshaping industries from manufacturing to healthcare.",
-    audiences: ["Industry Events", "Robotics Summits", "Innovation Forums"],
-  },
-  {
-    title: "Strategic Use of AI for Sustainable Value Creation",
-    description: "Long-term AI strategy that aligns business goals with sustainability, governance, and stakeholder value.",
-    audiences: ["Executive Events", "ESG Forums", "Strategy Conferences"],
-  },
-  {
-    title: "Bringing Research to Commercialization",
-    description: "Balancing cutting-edge research with commercial realities: lessons from Sony AI and beyond.",
-    audiences: ["Executive Events", "MBA Programs", "Corporate Strategy"],
-  },
-  {
-    title: "Investment & Due Diligence in Deep Tech",
-    description: "Evaluating AI and robotics ventures: what investors need to know beyond the hype.",
-    audiences: ["VC Forums", "Investment Conferences", "Corporate Investors"],
-  },
-  {
-    title: "Future of Human-Robot Interaction",
-    description: "How robots are becoming collaborative partners across industries, from healthcare to manufacturing.",
-    audiences: ["Industry Events", "Academic Conferences", "Innovation Summits"],
-  },
-];
-
-const pastEvents = [
-  "Wisdom House @ Davos 2026 (during WEF)",
-  "GenAI Zürich",
-  "LOGIN Conference (biggest tech event in Baltics)",
-  "Innovation Roundtable",
-  "ETH Zürich & ETH Entrepreneurship Club",
-  "Sony AI Conference",
-  "VentureLab Engineering Ecosystem Event",
-];
-
-// Manually curated collaborations - videos hosted on other channels where Justinas appears.
-// The YouTube RSS feed only exposes uploads from his own channel, so cross-channel features
-// (e.g. fireside chats, podcasts) are added here.
-const collaborations: { id: string; title: string; channel: string; url: string; thumbnail: string; publishedAt: string }[] = [
-  {
-    id: "8Vnh4vA--d0",
-    title: "Keeping AIs debiased: a conversation with Dr. Justinas Mišeikis",
-    channel: "Deep Tech Experts",
-    url: "https://www.youtube.com/watch?v=8Vnh4vA--d0",
-    thumbnail: "https://i.ytimg.com/vi/8Vnh4vA--d0/hqdefault.jpg",
-    publishedAt: "2026-01-22",
-  },
-];
-
-const TECHDRIVE_CHANNEL_URL = "https://www.youtube.com/@TechDriveZurich";
-
-// Fallback episode list used if the live feed is unavailable.
-const techdriveFallback: VideoItem[] = [
-  {
-    id: "uvoba2PyXEQ",
-    title: "Physical AI Is Ready. Your Building Isn't. | Kateryna Portmann on TechDrive Zurich",
-    description: "",
-    url: "https://www.youtube.com/watch?v=uvoba2PyXEQ",
-    thumbnail: "https://i.ytimg.com/vi/uvoba2PyXEQ/hqdefault.jpg",
-    publishedAt: "2026-09-02",
-    isShort: false,
-    views: 0,
-  },
-  {
-    id: "mS4hiMQVwpk",
-    title: "Switzerland's AI Movement is About to Start! | Swiss {ai} Weeks Team on TechDrive Zürich",
-    description: "",
-    url: "https://www.youtube.com/watch?v=mS4hiMQVwpk",
-    thumbnail: "https://i.ytimg.com/vi/mS4hiMQVwpk/hqdefault.jpg",
-    publishedAt: "2026-08-26",
-    isShort: false,
-    views: 0,
-  },
-  {
-    id: "pxH66TFgfu8",
-    title: "5 Years to Teach a Robot Table Tennis | Mireille El Geche on TechDrive Zürich",
-    description: "",
-    url: "https://www.youtube.com/watch?v=pxH66TFgfu8",
-    thumbnail: "https://i.ytimg.com/vi/pxH66TFgfu8/hqdefault.jpg",
-    publishedAt: "2026-08-19",
-    isShort: false,
-    views: 0,
-  },
-  {
-    id: "6S3xZYJgf84",
-    title: "DARE Campus: Where Robots Get to Run Wild | Stefan Zimmer on TechDrive Zürich",
-    description: "",
-    url: "https://www.youtube.com/watch?v=6S3xZYJgf84",
-    thumbnail: "https://i.ytimg.com/vi/6S3xZYJgf84/hqdefault.jpg",
-    publishedAt: "2026-08-05",
-    isShort: false,
-    views: 0,
-  },
-  {
-    id: "X6pt5X9Z0-M",
-    title: "Building World Class Startups at VentureLab | Raffael Kellner on TechDrive Zürich",
-    description: "",
-    url: "https://www.youtube.com/watch?v=X6pt5X9Z0-M",
-    thumbnail: "https://i.ytimg.com/vi/X6pt5X9Z0-M/hqdefault.jpg",
-    publishedAt: "2026-07-22",
-    isShort: false,
-    views: 0,
-  },
-];
-
 const SpeakingPage = () => {
-  const [videos, setVideos] = useState<VideoItem[]>([]);
-  const [techdrive, setTechdrive] = useState<VideoItem[]>(techdriveFallback);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const { data, isLoading, isError } = useYoutubeFeed();
 
-
-  useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      try {
-        const { data, error: fnError } = await supabase.functions.invoke("youtube-videos");
-        if (fnError) throw fnError;
-        if (!cancelled) {
-          setVideos((data?.videos ?? []) as VideoItem[]);
-          const eps = (data?.techdrive?.episodes ?? []) as VideoItem[];
-          if (eps.length > 0) {
-            // The RSS feed only exposes the most recent uploads, so merge with the
-            // curated fallback list to keep the full episode back catalogue visible.
-            const merged = [...eps];
-            for (const f of techdriveFallback) {
-              if (!merged.some((v) => v.id === f.id)) merged.push(f);
-            }
-            merged.sort((a, b) => +new Date(b.publishedAt) - +new Date(a.publishedAt));
-            setTechdrive(merged);
-          }
-        }
-      } catch (err) {
-        if (!cancelled) setError(err instanceof Error ? err.message : "Failed to load videos");
-      } finally {
-        if (!cancelled) setLoading(false);
-      }
-    })();
-    return () => { cancelled = true; };
-  }, []);
-
-  const longForm = videos.filter((v) => !v.isShort);
-  const shorts = videos.filter((v) => v.isShort);
+  const liveVideos = (data?.videos ?? []).map(normaliseVideo);
+  const usingFallback = !isLoading && (isError || liveVideos.length === 0);
+  const personal = usingFallback ? PERSONAL_FALLBACK : liveVideos;
+  const talks = personal.filter((v) => !v.isShort);
+  const shorts = personal.filter((v) => v.isShort);
+  const techdrive = mergeVideos(data?.techdrive?.episodes ?? [], TECHDRIVE_FALLBACK);
+  const latestEpisodes = techdrive.slice(0, 6);
+  const olderEpisodes = techdrive.slice(6);
 
   return (
-    <div className="min-h-screen">
+    <>
+      <PageMeta
+        path="/speaking"
+        title="Speaking | Dr. Justinas Mišeikis"
+        description="Keynotes, panels and workshops on physical AI, research commercialisation and technology partnerships. Based in Switzerland, delivered in English."
+        ogTitle="Speaking"
+        ogSubtitle="DR. JUSTINAS MIŠEIKIS · SPEAKING"
+      />
       <Helmet>
-        <title>AI Keynote Speaker & TechDrive Zürich Host | Dr. Justinas Mišeikis</title>
-        <meta name="description" content="Dr. Justinas Mišeikis: AI & robotics keynote speaker and host of TechDrive Zürich, the interview and podcast series on Switzerland's AI, robotics and deep tech scene. Featured at Wisdom House @ Davos 2026 (WEF), GenAI Zürich, LOGIN Conference, ETH Zürich and Sony AI. Available across DACH and Europe." />
-        <meta name="keywords" content="AI keynote speaker, TechDrive Zürich, TechDrive Zurich podcast, Swiss AI podcast, robotics podcast Switzerland, deep tech interview series Zurich, robotics speaker Europe, AI conference speaker Zurich, Davos 2026 speaker, WEF speaker, Wisdom House Davos, GenAI Zürich speaker, technology keynote DACH, innovation speaker, computer vision speaker, deep tech speaker, AI ethics speaker, physical AI speaker, Greater Zurich Area, Swisscom Ventures, Premium Speakers Agency" />
-        <link rel="canonical" href="https://jmiseikis.com/speaking" />
-        <meta property="og:title" content="AI Keynote Speaker & TechDrive Zürich Host | Dr. Justinas Mišeikis" />
-        <meta property="og:description" content="Keynote speaker on AI and robotics, and host of TechDrive Zürich - the interview series on Switzerland's deep tech ecosystem. Featured at Wisdom House @ Davos 2026 (WEF), GenAI Zürich, ETH Zürich and Sony AI." />
-        <meta property="og:url" content="https://jmiseikis.com/speaking" />
-        <meta property="og:image" content={buildOgImageUrl({ title: "AI Keynote Speaker & TechDrive Zürich Host", subtitle: "DR. JUSTINAS MIŠEIKIS · SPEAKING" })} />
-        <meta name="twitter:image" content={buildOgImageUrl({ title: "AI Keynote Speaker & TechDrive Zürich Host", subtitle: "DR. JUSTINAS MIŠEIKIS · SPEAKING" })} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:type" content="video.other" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Dr. Justinas Mišeikis",
-            "jobTitle": ["Strategy and Partnerships Manager at Sony AI", "Founder and Host of TechDrive Zürich"],
-            "worksFor": {
-              "@type": "Organization",
-              "name": "Sony AI",
-              "url": "https://ai.sony",
-              "parentOrganization": { "@type": "Organization", "name": "Sony", "url": "https://www.sony.com" }
-            },
-            "url": "https://jmiseikis.com/speaking",
-            "sameAs": [
-              "https://www.youtube.com/@JustinasMiseikis",
-              "https://premium-speakers.com/en/speaker-presenter/justinas-miseikis/",
-              "https://techdrive.tv/"
-            ],
-            "knowsAbout": ["Artificial Intelligence", "Robotics", "Computer Vision", "AI Commercialization", "AI Ethics", "Physical AI", "Deep Tech Investment"],
-            "performerIn": [
-              { "@type": "Event", "name": "Wisdom House @ Davos 2026", "location": "Davos, Switzerland", "superEvent": { "@type": "Event", "name": "World Economic Forum (WEF) 2026" } },
-              { "@type": "Event", "name": "GenAI Zürich", "location": "Zurich, Switzerland" },
-              { "@type": "Event", "name": "LOGIN Conference", "location": "Vilnius, Lithuania" },
-              { "@type": "Event", "name": "ETH Zürich & ETH Entrepreneurship Club", "location": "Zurich, Switzerland" },
-              { "@type": "Event", "name": "Sony AI Conference" }
-            ]
-          })}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "PodcastSeries",
-            "name": "TechDrive Zürich",
-            "url": "https://techdrive.tv/",
-            "description": "Interview and podcast series hosted by Dr. Justinas Mišeikis, spotlighting founders, researchers and operators shaping Switzerland's AI, robotics and deep tech ecosystem, recorded in and around Zürich.",
-            "inLanguage": "en",
-            "author": { "@type": "Person", "name": "Dr. Justinas Mišeikis", "url": "https://jmiseikis.com/" },
-            "host": { "@type": "Person", "name": "Dr. Justinas Mišeikis", "url": "https://jmiseikis.com/" },
-            "about": ["Artificial Intelligence", "Robotics", "Deep Tech", "Swiss Startups", "Greater Zurich Area"]
-          })}
-        </script>
+        <script type="application/ld+json">{JSON.stringify(PERSON_JSON_LD)}</script>
+        <script type="application/ld+json">{JSON.stringify(PODCAST_JSON_LD)}</script>
       </Helmet>
+      <PageHero
+        eyebrow="Keynotes | Panels | Workshops"
+        title="AI and robotics, with technical depth and business context."
+        lead="Practical perspectives for audiences making decisions about physical AI, innovation and research commercialisation."
+      >
+        <Actions>
+          <ButtonLink href={contactPath("speaking")}>Enquire about speaking</ButtonLink>
+          <ButtonLink href="#recordings" variant="secondary">
+            Watch a talk
+          </ButtonLink>
+        </Actions>
+      </PageHero>
 
+      <section
+        id="recordings"
+        className="site-wrap grid grid-cols-1 items-center gap-7 pb-7 pt-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] md:gap-12"
+        aria-labelledby="featured-talk-title"
+      >
+        <MediaCard item={FEATURED_TALK} featured />
+        <div>
+          <Eyebrow>Featured stage recording | CAIRO Forum, Zürich</Eyebrow>
+          <h2 id="featured-talk-title" className="h2">
+            Physical AI goes corporate.
+          </h2>
+          <p className="mt-4 max-w-[50ch] text-muted-foreground">
+            Watch a recorded talk to get a sense of the ideas, depth and delivery.
+          </p>
+          <Actions>
+            <ButtonLink href={FEATURED_TALK.url} variant="secondary">
+              Watch the talk
+            </ButtonLink>
+          </Actions>
+        </div>
+      </section>
 
-      <div className="pt-12 md:pt-16 pb-16">
-        <div className="container px-4 max-w-6xl mx-auto">
-          <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8">
-            <ArrowLeft className="w-4 h-4" /> Back to Home
-          </Link>
+      <section className="site-wrap section-y" aria-labelledby="topics-title">
+        <SectionHead id="topics-title" eyebrow="Signature topics" title="Designed around your audience." />
+        <div data-testid="signature-topics">
+          {SIGNATURE_TOPICS.map((topic, index) => (
+            <ServiceRow key={topic.title} number={`0${index + 1}`} title={topic.title} fine={topic.audience}>
+              <p>{topic.description}</p>
+              <ul>
+                {topic.points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+            </ServiceRow>
+          ))}
+        </div>
+        <details className="mt-9 border-y border-border">
+          <summary className="py-5 text-[15px] font-semibold text-foreground">Explore the wider topic catalogue</summary>
+          <div className="grid grid-cols-1 gap-7 pb-8 pt-2 sm:grid-cols-2 sm:gap-8">
+            {WIDER_TOPICS.map((topic) => (
+              <article key={topic.title} className="min-w-0">
+                <h3 className="text-lg leading-tight">{topic.title}</h3>
+                <p className="mt-2 text-[15px] text-muted-foreground">{topic.description}</p>
+              </article>
+            ))}
+          </div>
+        </details>
+      </section>
 
-          {/* Header */}
-          <div className="mb-12">
-            <span className="text-primary font-medium tracking-wider uppercase text-sm">
-              Keynote Speaking & Public Speaking
-            </span>
-            <h1 className="text-4xl md:text-5xl font-bold mt-4 mb-6">
-              Insights That <span className="text-primary">Inspire Action</span>
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-3xl mb-8 leading-relaxed">
-              Engaging keynotes and talks on AI strategy, robotics, computer vision, and innovation.
-              Available for conferences, corporate events, panels, and workshops across Europe.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Button asChild variant="swiss">
-                <Link to="/#contact">
-                  <Mail className="w-4 h-4" />
-                  Book Directly
-                </Link>
-              </Button>
-              <Button asChild variant="outline">
-                <a href={PREMIUM_SPEAKERS_URL} target="_blank" rel="noopener noreferrer" onClick={openExternal(PREMIUM_SPEAKERS_URL)}>
-                  <Award className="w-4 h-4" />
-                  Book at Premium Speakers Agency
-                  <ExternalLink className="w-4 h-4" />
-                </a>
-              </Button>
-              <Button asChild variant="outline">
-                <a href={CHANNEL_URL} target="_blank" rel="noopener noreferrer" onClick={openExternal(CHANNEL_URL)}>
-                  <Youtube className="w-4 h-4" />
-                  YouTube Channel
-                </a>
-              </Button>
+      <section className="section-y bg-muted" aria-labelledby="engagements-title">
+        <div className="site-wrap">
+          <SectionHead id="engagements-title" eyebrow="Selected past engagements" title="Conversations across technology and business." />
+          <ul className="grid list-none grid-cols-1 gap-x-10 p-0 md:grid-cols-2">
+            {PAST_ENGAGEMENTS.map((event) => (
+              <li key={event} className="border-b border-border py-4 text-sm text-foreground">
+                {event}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="site-wrap section-y" aria-labelledby="talks-title">
+        <SectionHead id="talks-title" eyebrow="Talks & interviews" title="Watch the work." />
+        {isLoading ? (
+          <p role="status" className="text-muted-foreground">
+            Loading the latest recordings…
+          </p>
+        ) : (
+          <>
+            {usingFallback && (
+              <p className="fine" role="status">
+                The live video feed is unavailable right now, so recordings captured on 6 October 2026 are shown. Browse the{" "}
+                <SmartLink href={YOUTUBE_CHANNEL_URL} className="underline underline-offset-4">
+                  YouTube channel
+                </SmartLink>{" "}
+                for the latest uploads.
+              </p>
+            )}
+            {talks.length > 0 ? (
+              <MediaGrid items={talks} />
+            ) : (
+              <p className="text-muted-foreground">No talks are available right now. The channel has the latest uploads.</p>
+            )}
+            {shorts.length > 0 && (
+              <details className="mt-10 border-y border-border">
+                <summary className="py-5 text-[15px] font-semibold text-foreground">
+                  Shorts & quick insights ({shorts.length})
+                </summary>
+                <div className="pb-8">
+                  <MediaGrid items={shorts} />
+                </div>
+              </details>
+            )}
+          </>
+        )}
+
+        <div className="mt-10 max-w-[500px]">
+          <Eyebrow>Featured collaboration</Eyebrow>
+          {COLLABORATIONS.map((item) => (
+            <MediaCard key={item.id} item={item} eyebrow={item.channel} />
+          ))}
+        </div>
+      </section>
+
+      <section id="techdrive" className="section-y bg-muted" aria-labelledby="techdrive-title">
+        <div className="site-wrap">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-20">
+            <div>
+              <Eyebrow>Interviews & media</Eyebrow>
+              <h2 id="techdrive-title" className="h2">
+                TechDrive Zürich
+              </h2>
+            </div>
+            <div>
+              <p className="max-w-[50ch] text-muted-foreground">
+                As Founder and Host of TechDrive Zürich, I speak with founders, researchers and operators across the Swiss AI
+                and robotics ecosystem.
+              </p>
+              <Actions>
+                <TextLink href={TECHDRIVE_URL}>Visit TechDrive Zürich</TextLink>
+                <TextLink href={TECHDRIVE_CHANNEL_URL}>YouTube channel</TextLink>
+              </Actions>
             </div>
           </div>
-
-          {/* TechDrive Zürich - Host highlight */}
-          <section className="mb-16">
-            <div className="bg-card p-8 border-2 border-primary">
-              <div className="flex items-start gap-4">
-                <Podcast className="w-7 h-7 text-primary flex-shrink-0 mt-1" />
-                <div className="flex-1">
-                  <div className="text-primary font-medium tracking-wider uppercase text-xs mb-2">
-                    Founder and Host · Interview & Podcast Series
-                  </div>
-                  <h2 className="text-2xl md:text-3xl font-bold mb-3">TechDrive Zürich</h2>
-                  <p className="text-muted-foreground leading-relaxed mb-6 max-w-3xl">
-                    I host <strong>TechDrive Zürich</strong>, an interview and podcast series
-                    spotlighting the founders, researchers and operators shaping Switzerland's
-                    AI, robotics and deep tech ecosystem. Recorded in and around Zürich with
-                    leaders from across the Greater Zurich Area, ETH Zurich, EPFL and the wider
-                    Swiss deep tech scene.
-                  </p>
-                  <div className="flex flex-wrap gap-3">
-                    <Button asChild variant="outline">
-                      <a
-                        href={TECHDRIVE_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={openExternal(TECHDRIVE_URL)}
-                      >
-                        Visit TechDrive Zürich
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
-                    </Button>
-                    <Button asChild variant="outline">
-                      <a
-                        href={TECHDRIVE_CHANNEL_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={openExternal(TECHDRIVE_CHANNEL_URL)}
-                      >
-                        <Youtube className="w-4 h-4" />
-                        Watch on YouTube
-                      </a>
-                    </Button>
-                  </div>
-                </div>
+          <MediaGrid items={latestEpisodes} />
+          {olderEpisodes.length > 0 && (
+            <details className="mt-10 border-y border-border">
+              <summary className="py-5 text-[15px] font-semibold text-foreground">
+                More episodes ({olderEpisodes.length})
+              </summary>
+              <div className="pb-8">
+                <MediaGrid items={olderEpisodes} />
               </div>
-
-              {techdrive.length > 0 && (
-                <div className="mt-8 pt-8 border-t border-border">
-                  <h3 className="text-lg font-bold mb-4">Latest Episodes</h3>
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {techdrive.slice(0, 6).map((v) => (
-                      <VideoCard key={v.id} video={v} aspect="aspect-video" />
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          </section>
-
-
-          {/* Videos: Talks & Interviews */}
-          <section className="mb-16">
-            <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3">
-              <span className="w-1 h-7 bg-primary" />
-              Talks & Interviews
-            </h2>
-
-            {loading && (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {Array.from({ length: 6 }).map((_, i) => (
-                  <div key={i} className="border-2 border-border bg-card animate-pulse">
-                    <div className="aspect-video bg-muted" />
-                    <div className="p-4 space-y-2">
-                      <div className="h-4 bg-muted w-3/4" />
-                      <div className="h-3 bg-muted w-1/3" />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {error && !loading && (
-              <div className="border-2 border-destructive bg-card p-8 text-center">
-                <p className="text-muted-foreground mb-4">
-                  Couldn't load the latest videos. You can still browse them directly on YouTube.
-                </p>
-                <Button asChild variant="outline">
-                  <a href={CHANNEL_URL} target="_blank" rel="noopener noreferrer" onClick={openExternal(CHANNEL_URL)}>
-                    <Youtube className="w-4 h-4" /> Open YouTube Channel
-                  </a>
-                </Button>
-              </div>
-            )}
-
-            {!loading && !error && longForm.length > 0 && (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {longForm.map((v) => (
-                  <VideoCard key={v.id} video={v} aspect="aspect-video" />
-                ))}
-              </div>
-            )}
-
-            {!loading && !error && longForm.length === 0 && (
-              <p className="text-muted-foreground">No talks available right now - check the channel for the latest uploads.</p>
-            )}
-          </section>
-
-          {/* Shorts */}
-          {!loading && !error && shorts.length > 0 && (
-            <section className="mb-16">
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3">
-                <span className="w-1 h-7 bg-primary" />
-                Shorts & Quick Insights
-              </h2>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {shorts.map((v) => (
-                  <VideoCard key={v.id} video={v} aspect="aspect-[9/16]" />
-                ))}
-              </div>
-            </section>
+            </details>
           )}
-
-          {/* Featured Collaborations (cross-channel features) */}
-          {collaborations.length > 0 && (
-            <section className="mb-16">
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3">
-                <span className="w-1 h-7 bg-primary" />
-                Featured Collaborations
-              </h2>
-              <p className="text-muted-foreground mb-6 max-w-3xl">
-                Selected appearances on other channels - fireside chats, podcasts, and panel discussions.
-              </p>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {collaborations.map((c) => (
-                  <a
-                    key={c.id}
-                    href={c.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={openExternal(c.url)}
-                    className="group border-2 border-border bg-card hover:border-primary transition-all duration-300 flex flex-col"
-                  >
-                    <div className="relative aspect-video overflow-hidden bg-muted">
-                      <img
-                        src={c.thumbnail}
-                        alt={c.title}
-                        loading="lazy"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/30 transition-colors flex items-center justify-center">
-                        <div className="w-14 h-14 bg-primary/95 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                          <Play className="w-6 h-6 text-primary-foreground fill-primary-foreground ml-1" />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="p-4 flex-1 flex flex-col">
-                      <h3 className="font-semibold leading-snug mb-2 group-hover:text-primary transition-colors line-clamp-2">
-                        {c.title}
-                      </h3>
-                      <div className="mt-auto flex items-center justify-between text-xs text-muted-foreground pt-2">
-                        <span>{c.channel}</span>
-                        <ExternalLink className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </div>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </section>
-          )}
-
-          {/* Speaking Topics */}
-          <section className="mb-16">
-            <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3">
-              <span className="w-1 h-7 bg-primary" />
-              Speaking Topics
-            </h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              {topics.map((topic, index) => (
-                <div
-                  key={index}
-                  className={`bg-card p-6 border-2 border-border hover:border-primary transition-all duration-300 group ${
-                    index === topics.length - 1 && topics.length % 2 === 1
-                      ? "md:col-span-2 md:max-w-xl md:mx-auto md:w-full"
-                      : ""
-                  }`}
-                >
-                  <div className="flex items-start gap-4 mb-4">
-                    <Mic className="w-6 h-6 text-primary flex-shrink-0 mt-1 group-hover:scale-110 transition-transform" />
-                    <div>
-                      <h3 className="text-lg font-bold mb-2">{topic.title}</h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed">{topic.description}</p>
-                    </div>
-                  </div>
-                  <div className="flex flex-wrap gap-2 ml-10">
-                    {topic.audiences.map((audience, i) => (
-                      <span key={i} className="text-xs px-2 py-1 bg-secondary text-secondary-foreground">{audience}</span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Past Events */}
-          <section className="mb-16">
-            <div className="bg-card p-8 border-2 border-border">
-              <h2 className="text-xl font-bold mb-6 flex items-center gap-3">
-                <Video className="w-6 h-6 text-primary" />
-                Past Speaking Engagements
-              </h2>
-              <div className="space-y-3">
-                {pastEvents.map((event, index) => (
-                  <div key={index} className="flex items-center gap-3 text-muted-foreground">
-                    <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                    <span>{event}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* CTA */}
-          <section>
-            <div className="bg-primary text-primary-foreground p-8 md:p-12 text-center">
-              <h2 className="text-3xl font-bold mb-4">Looking for a speaker who bridges tech and business?</h2>
-              <p className="text-primary-foreground mb-8 text-lg max-w-2xl mx-auto">
-                Available for keynotes, panels, workshops, and corporate events across Europe.
-              </p>
-              <div className="flex flex-wrap gap-3 justify-center">
-                <Button asChild size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-                  <Link to="/#contact">
-                    <Mail className="w-4 h-4" />
-                    Book Directly
-                  </Link>
-                </Button>
-                <Button asChild size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-                  <a href={PREMIUM_SPEAKERS_URL} target="_blank" rel="noopener noreferrer" onClick={openExternal(PREMIUM_SPEAKERS_URL)}>
-                    <Award className="w-4 h-4" />
-                    Premium Speakers Agency
-                  </a>
-                </Button>
-              </div>
-            </div>
-          </section>
         </div>
-      </div>
+      </section>
 
-    </div>
+      <section className="site-wrap section-y" aria-labelledby="formats-title">
+        <SectionHead id="formats-title" eyebrow="Formats & booking" title="A format that fits the room." />
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10">
+          <RuleBlock title="Keynotes">
+            <p>A focused perspective shaped around your audience and event brief.</p>
+          </RuleBlock>
+          <RuleBlock title="Panels and moderation">
+            <p>Technical fluency and clear discussion across research, business and investment.</p>
+          </RuleBlock>
+          <RuleBlock title="Executive workshops">
+            <p>An interactive session built around your organisation's questions and decisions.</p>
+          </RuleBlock>
+        </div>
+        <p className="mt-8 text-muted-foreground">
+          Delivered in English. Based in Switzerland; format and location agreed for each engagement.
+        </p>
+        <Actions>
+          <TextLink href={PREMIUM_SPEAKERS_URL}>Book via Premium Speakers</TextLink>
+          <TextLink href={YOUTUBE_CHANNEL_URL}>Personal YouTube channel</TextLink>
+        </Actions>
+        <Note title="Company representation at Swiss events">
+          <p>
+            Looking for local presence on behalf of your company? A separate advisory brief can cover event preparation,
+            agreed representation, technical messaging and follow-up. Event access, sponsorship and speaking slots are agreed
+            with organisers.
+          </p>
+          <div className="mt-4">
+            <TextLink href="/advisory#swiss-presence">Explore Swiss representation</TextLink>
+          </div>
+        </Note>
+      </section>
+
+      <ContactCta
+        title="What should your audience take away?"
+        lead="Tell me about your audience, event, date and the ideas you want to explore."
+        intent="speaking"
+        label="Enquire about speaking"
+      />
+    </>
   );
 };
-
-const VideoCard = ({ video, aspect }: { video: VideoItem; aspect: string }) => (
-  <a
-    href={video.url}
-    target="_blank"
-    rel="noopener noreferrer"
-    onClick={openExternal(video.url)}
-    className="group border-2 border-border bg-card hover:border-primary transition-all duration-300 flex flex-col"
-  >
-    <div className={`relative ${aspect} overflow-hidden bg-muted`}>
-      <img
-        src={video.thumbnail}
-        alt={video.title}
-        loading="lazy"
-        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-      />
-      <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/30 transition-colors flex items-center justify-center">
-        <div className="w-14 h-14 bg-primary/95 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-          <Play className="w-6 h-6 text-primary-foreground fill-primary-foreground ml-1" />
-        </div>
-      </div>
-      {video.isShort && (
-        <span className="absolute top-2 left-2 text-xs font-medium px-2 py-1 bg-primary text-primary-foreground">
-          Short
-        </span>
-      )}
-    </div>
-    <div className="p-4 flex-1 flex flex-col">
-      <h3 className="font-semibold leading-snug mb-2 group-hover:text-primary transition-colors line-clamp-2">
-        {video.title}
-      </h3>
-      <div className="mt-auto flex items-center justify-between text-xs text-muted-foreground pt-2">
-        <span>{formatDate(video.publishedAt)}</span>
-        <ExternalLink className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
-      </div>
-    </div>
-  </a>
-);
 
 export default SpeakingPage;

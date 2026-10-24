@@ -47,10 +47,10 @@ const routes = [
   },
   {
     path: "/speaking",
-    title: "AI Keynote Speaker & TechDrive Zürich Host | Dr. Justinas Mišeikis",
+    title: "Speaking | Dr. Justinas Mišeikis",
     description:
-      "Book Dr. Justinas Mišeikis as an AI and robotics keynote speaker, and host of TechDrive Zürich. Featured at Davos 2026, GenAI Zürich and Sony AI.",
-    ogTitle: "AI Keynote Speaker & TechDrive Zürich Host",
+      "Keynotes, panels and workshops on physical AI, research commercialisation and technology partnerships. Based in Switzerland, delivered in English.",
+    ogTitle: "Speaking",
     ogSubtitle: "DR. JUSTINAS MIŠEIKIS · SPEAKING",
   },
   {
