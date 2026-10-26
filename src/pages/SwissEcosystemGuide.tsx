@@ -1,5 +1,5 @@
 import PageMeta from "@/components/site/PageMeta";
-import { EditorialMeta, Worksheet } from "@/components/site/guide";
+import { EditorialMeta, GuideContents, Worksheet } from "@/components/site/guide";
 import { Actions, ButtonLink, ContactCta, Eyebrow, PageHero, SectionHead, TextLink } from "@/components/site/primitives";
 
 // Selective, source-linked starting points checked on 6 October 2026. Not a ranking,
@@ -91,6 +91,14 @@ const SwissEcosystemGuide = () => (
       </Actions>
     </PageHero>
     <EditorialMeta topic="Sources linked throughout" />
+    <GuideContents
+      sections={[
+        { id: "map-title", label: "Who helps with what" },
+        { id: "shortlist-title", label: "Building a shortlist" },
+        { id: "evidence-title", label: "Evidence by stage" },
+        { id: "scouting-brief", label: "Scouting brief worksheet" },
+      ]}
+    />
 
     <section className="site-wrap section-y" aria-labelledby="map-title">
       <SectionHead

@@ -9,6 +9,25 @@ export const EditorialMeta = ({ topic }: { topic: string }) => (
   </p>
 );
 
+/** "On this page" links for a long guide, shown under its date line. */
+export const GuideContents = ({ sections }: { sections: { id: string; label: string }[] }) => (
+  <nav aria-label="On this page" className="site-wrap mt-6">
+    <p className="eyebrow mb-2">On this page</p>
+    <ol className="flex list-none flex-col gap-x-6 gap-y-1 p-0 md:flex-row md:flex-wrap">
+      {sections.map((section) => (
+        <li key={section.id}>
+          <a
+            href={`#${section.id}`}
+            className="inline-flex min-h-11 items-center text-sm text-foreground underline decoration-border underline-offset-4 hover:text-primary hover:decoration-primary"
+          >
+            {section.label}
+          </a>
+        </li>
+      ))}
+    </ol>
+  </nav>
+);
+
 export const StepList = ({
   steps,
   className,
