@@ -1,5 +1,5 @@
 import PageMeta from "@/components/site/PageMeta";
-import { EditorialMeta, StepList, Worksheet } from "@/components/site/guide";
+import { EditorialMeta, GuideContents, StepList, Worksheet } from "@/components/site/guide";
 import { Actions, ButtonLink, ContactCta, Eyebrow, PageHero, RuleBlock, SectionHead, TextLink } from "@/components/site/primitives";
 import { contactPath } from "@/lib/site";
 
@@ -72,6 +72,15 @@ const MarketEntryGuide = () => (
       </Actions>
     </PageHero>
     <EditorialMeta topic="Sources linked throughout" />
+    <GuideContents
+      sections={[
+        { id: "directions-title", label: "First market and use case" },
+        { id: "baltic-title", label: "Baltic starting points" },
+        { id: "ninety-title", label: "The first 90 days" },
+        { id: "help-title", label: "How I can help" },
+        { id: "market-brief", label: "Market-entry brief worksheet" },
+      ]}
+    />
 
     <section className="site-wrap section-y" aria-labelledby="directions-title">
       <SectionHead

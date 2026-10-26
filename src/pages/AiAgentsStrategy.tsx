@@ -1,5 +1,5 @@
 import PageMeta from "@/components/site/PageMeta";
-import { EditorialMeta, StepList, Worksheet } from "@/components/site/guide";
+import { EditorialMeta, GuideContents, StepList, Worksheet } from "@/components/site/guide";
 import {
   Actions,
   ButtonLink,
@@ -98,6 +98,16 @@ const AiAgentsStrategy = () => (
       </Actions>
     </PageHero>
     <EditorialMeta topic="Internal data & process design" />
+    <GuideContents
+      sections={[
+        { id: "bottleneck-title", label: "Where work gets stuck" },
+        { id: "workflows-title", label: "Example workflows" },
+        { id: "data-title", label: "Process and data" },
+        { id: "pilot-title", label: "Running a pilot" },
+        { id: "deliverables-title", label: "What you get" },
+        { id: "pilot-brief", label: "Pilot brief worksheet" },
+      ]}
+    />
 
     <section className="site-wrap section-y" aria-labelledby="bottleneck-title">
       <SectionHead
