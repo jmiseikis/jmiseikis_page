@@ -9,8 +9,8 @@ export const SEO_END = "<!-- seo:end -->";
 const escapeHtml = (s) => String(s).replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[c]);
 const escapeAttr = (s) =>
   String(s).replace(/["&<>]/g, (c) => ({ '"': "&quot;", "&": "&amp;", "<": "&lt;", ">": "&gt;" })[c]);
-// JSON inside <script>: stop "</script>" or "<!--" in a string from ending the element early.
-const scriptJson = (value) => JSON.stringify(value).replace(/</g, "\\u003c");
+/** JSON inside <script>: stop "</script>" or "<!--" in a string from ending the element early. */
+export const scriptJson = (value) => JSON.stringify(value).replace(/</g, "\\u003c");
 
 /** Same URL as src/lib/ogImage.ts builds: the og-image edge function, or the static image without a project id. */
 export function ogImageUrl({ site, projectId, title, subtitle, image }) {
@@ -69,7 +69,8 @@ export function routeHead(seo, path, { projectId, jsonLd = true, indent = "    "
     return `<${name} ${attributes} data-rh="true" />`;
   });
   const lines = [`<title>${escapeHtml(seo.routes[path].title)}</title>`, ...tags];
-  if (jsonLd) lines.push(`<script type="application/ld+json">${scriptJson(structuredData(seo, path))}</script>`);
+  // data-rh lets PageMeta adopt this graph on load and swap it on navigation, like the other tags.
+  if (jsonLd) lines.push(`<script type="application/ld+json" data-rh="true">${scriptJson(structuredData(seo, path))}</script>`);
   return [SEO_START, ...lines, SEO_END].map((line) => indent + line).join("\n");
 }
 
