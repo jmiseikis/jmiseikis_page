@@ -1,0 +1,46 @@
+.roi-term {
+  display:inline;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  color:inherit;
+  font:inherit;
+  letter-spacing:inherit;
+  text-align:inherit;
+  text-decoration-line:underline;
+  text-decoration-style:dashed;
+  text-decoration-thickness:1px;
+  text-underline-offset:.2em;
+  cursor:help;
+}
+.roi-term:focus-visible {
+  outline:2px solid currentColor;
+  outline-offset:4px;
+}
+.roi-term-tooltip {
+  position:fixed;
+  z-index:1000;
+  box-sizing:border-box;
+  max-width:calc(100vw - 24px);
+  max-height:calc(100vh - 24px);
+  overflow:auto;
+  padding:1rem;
+  border:1px solid hsl(var(--border));
+  border-top:2px solid hsl(var(--primary));
+  background:hsl(var(--background));
+  color:hsl(var(--foreground));
+  box-shadow:0 8px 28px rgb(0 0 0 / .16);
+  font-family:inherit;
+  font-size:.8rem;
+  line-height:1.55;
+  text-align:left;
+  white-space:normal;
+  overflow-wrap:anywhere;
+}
+.roi-term-tooltip strong { display:block; font-weight:700; margin-bottom:.35rem; }
+.roi-term-tooltip p { margin:0; }
+@media print {
+  .roi-term { text-decoration:none; }
+  .roi-term-tooltip { display:none; }
+}

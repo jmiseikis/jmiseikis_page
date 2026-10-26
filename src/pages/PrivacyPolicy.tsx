@@ -114,6 +114,12 @@ const PrivacyPolicy = () => (
           "Clear answers" button. Cloudflare Turnstile processes
           browser signals to tell people and bots apart when the contact form is shown.
         </p>
+        <p>
+          The robotics calculator processes your financial assumptions in your browser. It does not submit them to a
+          server. Selecting "Save in this browser" stores your scenario on that device until you remove the saved copy
+          or clear browser storage. JSON and CSV exports contain the assumptions and results you choose to download;
+          consider their contents before sharing them.
+        </p>
       </LegalSubsection>
 
       <LegalSubsection title="Swiss Tech Pulse (discontinued)">

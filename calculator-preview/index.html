@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" data-rh="true" />
+    <meta name="description" content="A working preview of the quote-based robotics cost calculator: compare manual operation, buying a system and RaaS using one monthly cash-flow model." data-rh="true" />
+    <link rel="canonical" href="https://jmiseikis.com/raas-calculator" data-rh="true" />
+    <title>Robotics Cost and ROI Calculator | Working preview</title>
+    <style>
+      .preview-header{border-bottom:1px solid hsl(var(--border));background:hsl(var(--background));padding:1rem 0}
+      .preview-header-inner{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+      .preview-brand{font-size:.85rem;font-weight:800;letter-spacing:.06em;text-decoration:none}
+      .preview-status{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:hsl(var(--muted-foreground))}
+      .preview-note{font-size:.75rem;line-height:1.6;color:hsl(var(--muted-foreground));padding:1rem 0}
+      .preview-skip{position:absolute;left:1rem;top:-6rem;background:white;color:#111;padding:1rem;z-index:100}
+      .preview-skip:focus{top:1rem}
+      @media print{.preview-header,.preview-note,.preview-skip{display:none}}
+    </style>
+  </head>
+  <body>
+    <div id="root"><!-- CALCULATOR_PREVIEW_MARKUP --></div>
+    <script type="module" src="/src/calculator-preview.tsx"></script>
+  </body>
+</html>
