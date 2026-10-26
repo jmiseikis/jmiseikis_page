@@ -2,6 +2,7 @@ import { useEffect, useId, useState } from "react";
 import PageMeta, { type RoutePath } from "@/components/site/PageMeta";
 import { Actions, ButtonLink, PageHero, TextLink } from "@/components/site/primitives";
 import { WORKSHEETS, worksheetPath, worksheetPdf, type WorksheetField, type WorksheetSlug } from "@/content/worksheets";
+import { contactPath } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 type Row = Record<string, string>;
@@ -274,7 +275,7 @@ const WorksheetPage = ({ slug }: { slug: WorksheetSlug }) => {
               Print or save as PDF
             </button>
             <ButtonLink href={worksheetPdf(slug)} download variant="secondary">
-              Download blank PDF
+              Download printable PDF
             </ButtonLink>
           </Actions>
           <p className="fine mt-5 max-w-[70ch]" role="status">
@@ -331,6 +332,17 @@ const WorksheetPage = ({ slug }: { slug: WorksheetSlug }) => {
             Clear answers
           </button>
           <TextLink href={sheet.guide.href}>Back to the {sheet.guide.label}</TextLink>
+        </div>
+
+        <div className="border-l-[3px] border-primary bg-muted px-5 py-5 md:px-7 print:hidden">
+          <h2 className="text-lg leading-tight">Discuss this brief</h2>
+          <p className="mt-2 max-w-[65ch] text-sm text-muted-foreground">
+            In the contact form, describe the decision, your main uncertainty and your timing. Your answers on this page
+            are not copied into the form or sent anywhere.
+          </p>
+          <ButtonLink href={contactPath(sheet.intent)} className="mt-4">
+            Discuss this brief
+          </ButtonLink>
         </div>
       </form>
     </>
