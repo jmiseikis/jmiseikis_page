@@ -50,6 +50,7 @@ const typeColors: Record<string, string> = {
 
 const GZARobotics = () => {
   const [companies, setCompanies] = useState<Company[]>([]);
+  const [showMap, setShowMap] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
@@ -335,34 +336,39 @@ const GZARobotics = () => {
               <span>Open PDF</span>
             </a>
           </div>
-          <div className="w-full border border-border rounded-lg overflow-hidden bg-muted" style={{ height: "80vh", minHeight: "600px" }}>
-            <object
-              data="/gza-robotics-map.pdf#view=FitH"
-              type="application/pdf"
-              className="w-full h-full"
-            >
+          {/* The map is a 2.3 MB PDF, so it only loads when a visitor asks for the preview. */}
+          {showMap ? (
+            <div className="w-full border border-border rounded-lg overflow-hidden bg-muted" style={{ height: "80vh", minHeight: "600px" }}>
               <iframe
                 src="/gza-robotics-map.pdf#view=FitH"
                 title="Robotics & Autonomous Systems in the Greater Zurich Area"
                 className="w-full h-full"
                 style={{ border: "none" }}
               />
-              <div className="flex flex-col items-center justify-center h-full p-8 text-center">
-                <p className="text-muted-foreground mb-4">
-                  Your browser doesn't support inline PDF viewing.
-                </p>
+            </div>
+          ) : (
+            <div className="flex flex-col items-start gap-4 border border-border bg-muted p-6 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-sm text-muted-foreground">
+                A one-page map of the Greater Zurich Area robotics and autonomous systems ecosystem (PDF, 2.3 MB).
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <button
+                  type="button"
+                  onClick={() => setShowMap(true)}
+                  className="inline-flex min-h-11 items-center bg-primary px-5 text-sm font-semibold text-primary-foreground hover:opacity-90"
+                >
+                  Show the map here
+                </button>
                 <a
                   href="/gza-robotics-map.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-primary hover:underline"
+                  download
+                  className="inline-flex min-h-11 items-center border border-foreground px-5 text-sm font-semibold text-foreground hover:border-primary hover:text-primary"
                 >
-                  <ExternalLink className="w-4 h-4" />
-                  <span>Open the PDF in a new tab</span>
+                  Download PDF
                 </a>
               </div>
-            </object>
-          </div>
+            </div>
+          )}
         </div>
       </section>
 
