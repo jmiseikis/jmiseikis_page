@@ -6,6 +6,7 @@ import { MemoryRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import WorksheetPage from "../WorksheetPage";
 import { WORKSHEET_LIST, worksheetPdf, type WorksheetSlug } from "@/content/worksheets";
+import { contactPath } from "@/lib/site";
 
 const renderSheet = (slug: WorksheetSlug) =>
   render(
@@ -27,10 +28,18 @@ describe("Worksheet pages", () => {
   it.each(WORKSHEET_LIST.map((s) => s.slug))("%s has its blank PDF and every section", (slug) => {
     expect(existsSync(join(process.cwd(), "public", worksheetPdf(slug)))).toBe(true);
     renderSheet(slug);
-    expect(screen.getByRole("link", { name: "Download blank PDF" })).toHaveAttribute("href", worksheetPdf(slug));
+    expect(screen.getByRole("link", { name: "Download printable PDF" })).toHaveAttribute("href", worksheetPdf(slug));
     for (const field of WORKSHEET_LIST.find((s) => s.slug === slug)!.fields) {
       expect(screen.getAllByText(field.label).length).toBeGreaterThan(0);
     }
+  });
+
+  it("offers a contextual enquiry that never carries the answers", () => {
+    renderSheet("technical-diligence-checklist");
+    fireEvent.change(screen.getByRole("textbox", { name: "Material risks" }), { target: { value: "Confidential note" } });
+    const link = screen.getByRole("link", { name: "Discuss this brief" });
+    expect(link).toHaveAttribute("href", contactPath("diligence"));
+    expect(link.getAttribute("href")).not.toMatch(/Confidential/);
   });
 
   it("saves answers in this browser only and restores them", () => {

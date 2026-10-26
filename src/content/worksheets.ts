@@ -1,3 +1,5 @@
+import type { EnquiryIntent } from "@/lib/site";
+
 // The four working templates, shown as fillable pages at /worksheets/<slug> and printed to /downloads/<slug>.pdf
 // (scripts/build-worksheet-pdfs.mjs). The wording follows the original plain-text templates of 6 October 2026.
 
@@ -22,6 +24,8 @@ export interface WorksheetDef {
   lead: string;
   /** The guide this worksheet belongs to. */
   guide: { href: string; label: string };
+  /** Enquiry type preselected by "Discuss this brief". */
+  intent: EnquiryIntent;
   fields: WorksheetField[];
   /** Closing qualification, printed on the template too. */
   note: string;
@@ -38,6 +42,7 @@ const RELATIONSHIP = ["Public lead", "Existing relationship", "Introduction cons
 export const WORKSHEETS: Record<WorksheetSlug, WorksheetDef> = {
   "technology-scouting-brief": {
     slug: "technology-scouting-brief",
+    intent: "scouting",
     title: "Technology scouting brief",
     lead: "Set the thesis, scope, evidence threshold and shortlist fields before collecting names.",
     guide: { href: "/swiss-ai-robotics-ecosystem", label: "Swiss AI & robotics ecosystem guide" },
@@ -105,6 +110,7 @@ export const WORKSHEETS: Record<WorksheetSlug, WorksheetDef> = {
 
   "market-entry-brief": {
     slug: "market-entry-brief",
+    intent: "scouting",
     title: "Technology market-entry brief",
     lead: "Write down the market hypothesis, entry route, validation questions and pilot.",
     guide: { href: "/swiss-baltic-market-entry", label: "Swiss & Baltic market-entry guide" },
@@ -173,6 +179,7 @@ export const WORKSHEETS: Record<WorksheetSlug, WorksheetDef> = {
 
   "ai-workflow-pilot-brief": {
     slug: "ai-workflow-pilot-brief",
+    intent: "advisory",
     title: "AI workflow pilot brief",
     lead: "Describe the process, data, access, human control and acceptance criteria for an internal AI pilot.",
     guide: { href: "/ai-agents-strategy", label: "AI for internal data & workflows guide" },
@@ -250,6 +257,7 @@ export const WORKSHEETS: Record<WorksheetSlug, WorksheetDef> = {
 
   "technical-diligence-checklist": {
     slug: "technical-diligence-checklist",
+    intent: "diligence",
     title: "AI & robotics technical diligence checklist",
     lead: "The evidence to request from early-stage and scale-up companies, claim by claim.",
     guide: { href: "/due-diligence", label: "AI & robotics due diligence" },
