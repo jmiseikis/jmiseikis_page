@@ -47,7 +47,7 @@ const PAGES = [
   ["/due-diligence", DueDiligencePage, "AI & robotics due diligence."],
   ["/ai-agents-strategy", AiAgentsStrategy, "Make AI useful inside your business."],
   ["/de", De, "KI- und Robotikstrategie. Schweizer Ökosystem."],
-  ["/raas-calculator", RaasCalculator, "RaaS ROI calculator."],
+  ["/raas-calculator", RaasCalculator, "Robotics cost & ROI calculator."],
 ] as const;
 
 describe.each(PAGES)("%s", (path, Page, heading) => {

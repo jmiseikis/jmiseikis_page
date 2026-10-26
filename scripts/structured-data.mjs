@@ -127,7 +127,7 @@ const EXTRAS = {
     {
       "@type": "SoftwareApplication",
       "@id": `${url}#calculator`,
-      name: "RaaS ROI calculator",
+      name: "Robotics cost & ROI calculator",
       applicationCategory: "BusinessApplication",
       operatingSystem: "Web",
       url,

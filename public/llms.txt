@@ -12,7 +12,7 @@ Dr. Justinas Mišeikis (also written as Miseikis) is an AI strategy advisor, inn
 - [Due Diligence](/due-diligence): Technical assessment for AI, robotics, and deep tech investments.
 - [Tech Events Switzerland](/tech-events): Filterable Swiss calendar for AI, robotics, startup, and VC events.
 - [Swiss VCs Directory](/swiss-vcs): Directory of Swiss venture capital firms and startup investors.
-- [RaaS ROI Calculator](/raas-calculator): Interactive Robot-as-a-Service cost and ROI model.
+- [Robotics cost & ROI calculator](/raas-calculator): Compare manual work, buying a robot system and RaaS: cash flow, NPV and payback.
 - [GZA Robotics Directory](/gza-robotics): Robotics companies, startups, and labs in Greater Zurich.
 - [AI for Internal Data & Workflows](/ai-agents-strategy): Four illustrative internal workflows, process and data mapping, pilot criteria and a blank pilot brief.
 - [About](/about): Professional history at Sony AI, Sony and F&P Robotics, education and international background.
@@ -121,34 +121,26 @@ Dr. Miseikis shares robotics ecosystem resources listed with mutual agreement:
 
 - Tech Events Switzerland 2026: A comprehensive directory of technology conferences, summits, and meetups in Switzerland. URL: https://jmiseikis.com/tech-events
 - Swiss VCs and Funds: A directory of 66+ venture capital firms investing in Swiss startups. URL: https://jmiseikis.com/swiss-vcs
-- RaaS ROI Calculator: Free interactive Robot-as-a-Service ROI calculator for modelling automation economics. URL: https://jmiseikis.com/raas-calculator
+- Robotics cost & ROI calculator: Free guided calculator comparing manual work, buying a robot system and RaaS. URL: https://jmiseikis.com/raas-calculator
 - Robotics in the Greater Zurich Area: A curated directory of 150+ robotics companies, autonomous systems startups, university research labs, and technology innovators in the Greater Zurich Area. Covers categories including Robotics & Autonomous Systems, Software & Components, Medtech Robotics, Autonomous Driving, Autonomous Flying & Diving, Computer Vision for Robotics, Universities & Academic Research, and Networks & Regulators. Listed with the agreement of Greater Zurich Area. Includes an embedded PDF map of the robotics ecosystem. URL: https://jmiseikis.com/gza-robotics
 - Swiss Robotics Startups: A curated list of 100+ robotics startups shaping Switzerland's innovation ecosystem. Curated by Swisscom Ventures. URL: https://www.swissroboticsstartups.com/
 
-## RaaS ROI Calculator - Robot-as-a-Service Scenario Model
+## Robotics cost & ROI calculator - Manual vs buying vs RaaS (model 2.0.0)
 
-Dr. Justinas Mišeikis built this free, interactive Robot-as-a-Service (RaaS) scenario model to help robotics startups, scaleups, VCs and enterprises frame the financial questions behind a robotic automation deployment. Results are illustrative, not a forecast or a recommendation.
+Dr. Justinas Mišeikis built this free calculator to compare three ways of doing the same task: keep it manual, buy a complete robotic system, or subscribe to the same system as robots-as-a-service (RaaS). Every starting value is illustrative, not a market benchmark, supplier quote or recommendation.
 
-### What the Calculator Does
+### How it works
 
-The tool compares a robot subscription with the labour, quality and incident costs it is expected to change. It keeps cash effects separate from estimated productivity value and shows four results: monthly cash benefit, cash payback, cash ROI over the contract and contract net cash gain, with a month-by-month chart and a first-month breakdown.
+A guided four-step form: (1) today's work: monthly staff hours, avoidable cost per paid hour and other current costs; (2) robot and people: how much of the work the robot takes over, the support staff time it still needs, and how many freed hours actually reduce paid costs (keep, reduce some, or reduce all); (3) supplier offers: subscription fee, setup and running costs, with an optional purchase comparison including resale and exit costs; (4) timing and results: the comparison period (separate from the contract term), installation delay, ramp-up, contract renewal and payment dates.
 
-### Key Input Parameters
+Results include monthly cash flow, cumulative cash, net cash benefit, net present value (NPV) and cash payback for each option, plus 0%, entered and 100% staffing-savings cases. Freed time only counts as a cash saving to the extent it reduces paid costs. Remaining committed subscription payments after the study period are disclosed separately.
 
-- Current workforce: workers per shift, hourly wage, shifts per day, working days, benefits and overhead, annual staff turnover, and the share of labour cost that is actually removed or avoided
-- Robot subscription: robots deployed, monthly subscription per robot, setup and integration cost, contract length (1-5 years) and additional monthly operating costs
-- Productivity: uptime, additional productivity versus manual work, and the share of that extra output recognised as value (0% by default, and never added to cash results)
-- Quality and incidents: monthly rework or error cost, monthly incident or liability cost, and the cashable reduction of each
-- Annual labour cost inflation (2% by default, applied after the first month)
+### Model assumptions and limits
 
-### Model Assumptions
-
-- Workers are counted per shift: base pay = workers x hourly wage x shifts x 8 hours x working days x 4.33 weeks per month
-- Turnover replacement cost is assumed to be 75% of annual base pay
-- Payback is the first whole month in which the cumulative cash position, starting at minus the setup cost, reaches zero
-- Cash ROI = contract net cash gain / (setup cost + all modelled operating costs)
-- The currency selector (USD, CHF, EUR) changes labels only; it does not convert amounts
-- Not modelled: capacity matching, ramp-up, financing, discounting, tax or residual value
+- Hours are monthly task hours across all shifts, not people or FTEs. Robot capacity is the manual-equivalent work the quoted system can do after availability losses; the calculator does not establish that capacity.
+- One monthly ledger drives every output. NPV discounts monthly cash flows at an entered annual rate. Payback is the first whole month that recovers a cash deficit.
+- Pre-tax and unfinanced: no VAT, depreciation tax effects, loans, leases, uncertain demand or detailed fleet capacity.
+- The currency selector (USD, CHF, EUR) changes labels only. Assumptions stay in the browser; scenarios can be saved locally or exported as JSON (assumptions) and CSV (monthly rows). Nothing is sent to a server.
 
 ### Who This Tool Is For
 

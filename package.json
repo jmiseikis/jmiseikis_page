@@ -8,7 +8,10 @@
     "build": "vite build && node scripts/prerender-meta.mjs",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p tsconfig.app.json",
+    "preview:calculator": "node scripts/build-calculator-preview.mjs"
   },
   "dependencies": {
     "@fontsource/anton": "^5.2.7",

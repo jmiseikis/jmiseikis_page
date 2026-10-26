@@ -46,8 +46,8 @@ const TOOLS = [
     href: "/tech-events",
   },
   {
-    title: "RaaS ROI calculator",
-    text: "Explore the economics of robots offered as a subscription service.",
+    title: "Robotics cost & ROI calculator",
+    text: "Compare manual work, buying a robot system and robots-as-a-service: cash flow, NPV and payback.",
     meta: "Interactive tool | Illustrative scenarios",
     href: "/raas-calculator",
   },
