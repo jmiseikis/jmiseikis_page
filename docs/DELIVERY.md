@@ -80,3 +80,12 @@ Local production build, served by `vite preview`, Chromium at 390px, bytes downl
 "Before" is the published `main` at `67e6b80` (old calculator); "after" includes the guided calculator. The GZA
 robotics map (2.3 MB PDF) used to be embedded on page load; it now loads only when a visitor asks for the preview,
 with a download link beside it.
+
+## TechDrive move (prepared, disabled)
+
+`docs/techdrive-migration.json` holds the planned exact-page moves of `/swiss-vcs` and `/tech-events` to
+`zurich.techdrive.tv`, with `enabled: false`. Both destinations returned 404 on 25 October and could not be
+rechecked on 26 October from the build environment. Keep the current pages until the destinations have the full
+tools, their own canonicals, attribution and maintained data; then release the redirects, internal links,
+sitemaps, structured data and `llms.txt` entries together. `/resources`, the two guides and `/raas-calculator`
+stay on jmiseikis.com. No whole-domain change of address.
