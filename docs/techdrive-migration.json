@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "mode": "plan_only",
+  "enabled": false,
+  "last_destination_http_observation": "2026-10-25",
+  "note": "Both destinations returned 404 in the baseline audit. Recheck before cutover. This file itself configures no host.",
+  "mappings": [
+    {
+      "from": "/swiss-vcs",
+      "also_match": "/swiss-vcs/",
+      "to": "https://zurich.techdrive.tv/swiss-vcs",
+      "enabled": false
+    },
+    {
+      "from": "/tech-events",
+      "also_match": "/tech-events/",
+      "to": "https://zurich.techdrive.tv/tech-events",
+      "enabled": false
+    }
+  ],
+  "readiness": [
+    "Final destination returns 200 with the complete useful tool and appropriate canonical/indexing.",
+    "Rendered search/AI content, filters, mobile/keyboard use, provenance and maintenance verified.",
+    "Actual hosting supports an exact permanent redirect; check one hop and no loops.",
+    "Internal links, both sitemap ownerships, schema, llms/tool descriptions and attribution updated together.",
+    "Personal guides, resource hub and calculator retained; no competing complete directory copy.",
+    "Existing query/filter parameters preserved only where destination semantics match."
+  ],
+  "personal_site_pages_to_retain": [
+    "/resources",
+    "/swiss-ai-robotics-ecosystem",
+    "/swiss-baltic-market-entry",
+    "/raas-calculator"
+  ],
+  "domain_wide_change_of_address": false
+}
