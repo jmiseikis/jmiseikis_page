@@ -8,6 +8,8 @@ import { mcpPlugin } from "@lovable.dev/mcp-js/stacks/supabase/vite";
 export default defineConfig(({ mode }) => {
   return {
     base: "/",
+    // The manifest lets scripts/prerender-meta.mjs link each route's stylesheet into its static HTML.
+    build: { manifest: true },
     server: {
       host: "::",
       port: 8080,

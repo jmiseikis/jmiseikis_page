@@ -25,3 +25,6 @@ dist-ssr
 
 # Generated standalone calculator preview
 dist-calculator
+
+# Build-time server bundle used by scripts/prerender-meta.mjs
+.ssr
