@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import PageMeta from "@/components/site/PageMeta";
+import OrganiserKit from "@/components/site/OrganiserKit";
 import {
   Actions,
   ButtonLink,
@@ -295,6 +296,8 @@ const SpeakingPage = () => {
           </div>
         </Note>
       </section>
+
+      <OrganiserKit />
 
       <ContactCta
         title="What should your audience take away?"
