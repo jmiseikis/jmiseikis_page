@@ -1,4 +1,5 @@
 import PageMeta from "@/components/site/PageMeta";
+import WorkExamples from "@/components/site/WorkExamples";
 import {
   Actions,
   ButtonLink,
@@ -85,6 +86,8 @@ const AdvisoryPage = () => (
       </Note>
     </section>
 
+    <WorkExamples />
+
     <section className="section-y bg-muted" aria-labelledby="formats-title">
       <div className="site-wrap">
         <SectionHead id="formats-title" eyebrow="Engagement formats" title="A format that fits the work." />
@@ -116,6 +119,10 @@ const AdvisoryPage = () => (
           </li>
         ))}
       </ol>
+      <p className="mt-8 max-w-[70ch] text-muted-foreground">
+        To start, use the contact form: describe the decision, your timing and the main uncertainty. I reply by email
+        to say whether and how the work could be scoped; fees are agreed per engagement.
+      </p>
     </section>
 
     <section className="site-wrap section-y border-t border-border" aria-labelledby="practice-title">
