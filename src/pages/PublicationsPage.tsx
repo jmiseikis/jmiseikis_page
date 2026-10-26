@@ -11,6 +11,8 @@ const PAPERS = [
     type: "Journal article",
     title: "Lio-a personal robot assistant for human-robot interaction and care applications",
     venue: "IEEE Robotics and Automation Letters",
+    summary: "Describes Lio, a personal robot assistant that combines a mobile base, a robot arm and sensing for interaction with people in care settings.",
+    relevance: "Useful when judging assistive and service robots: safety around people, autonomy and acceptance matter as much as the demo.",
     url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=KeZ1-AwAAAAJ&citation_for_view=KeZ1-AwAAAAJ:WF5omc3nYNoC",
   },
   {
@@ -18,6 +20,8 @@ const PAPERS = [
     type: "Preprint",
     title: "3D vision guided robotic charging station for electric and plug-in hybrid vehicles",
     venue: "arXiv:1703.05381",
+    summary: "A robotic charging station that uses 3D vision to locate a vehicle's charging port and plug in the connector automatically.",
+    relevance: "A compact example of perception-guided manipulation under real-world variation, a recurring question when assessing automation claims.",
     url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=KeZ1-AwAAAAJ&citation_for_view=KeZ1-AwAAAAJ:IjCSPb-OGe4C",
   },
   {
@@ -25,6 +29,8 @@ const PAPERS = [
     type: "Conference paper",
     title: "Automatic calibration of a robot manipulator and multi 3d camera system",
     venue: "IEEE/SICE International Symposium on System Integration",
+    summary: "A method to calibrate a robot arm and several 3D cameras automatically, so they share one coordinate frame without manual measurement.",
+    relevance: "Calibration is a hidden cost in multi-sensor robot cells; automating it affects deployment time and maintenance.",
     url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=KeZ1-AwAAAAJ&citation_for_view=KeZ1-AwAAAAJ:qjMakFHDy7sC",
   },
 ];
@@ -144,6 +150,11 @@ const PublicationsPage = () => {
                   <Eyebrow className="mb-3 text-[10px]">{paper.type}</Eyebrow>
                   <h3 className="max-w-[38ch] text-[21px] leading-tight md:text-[25px]">{paper.title}</h3>
                   <p className="my-3 text-sm text-muted-foreground">{paper.venue}</p>
+                  <p className="max-w-[65ch] text-[15px] text-foreground">{paper.summary}</p>
+                  <p className="mb-4 mt-2 max-w-[65ch] text-sm text-muted-foreground">
+                    <span className="font-semibold text-foreground">Why it matters: </span>
+                    {paper.relevance}
+                  </p>
                   <TextLink href={paper.url}>
                     View publication record<span className="sr-only">: {paper.title}</span>
                   </TextLink>
