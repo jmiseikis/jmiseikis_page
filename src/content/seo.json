@@ -53,7 +53,8 @@
       "ogTitle": "AI for internal data & workflows",
       "ogSubtitle": "DR. JUSTINAS MIŠEIKIS · PRACTICAL GUIDE",
       "type": "WebPage",
-      "article": true
+      "article": true,
+      "updated": "2026-10-06"
     },
     "/about": {
       "title": "About | Dr. Justinas Mišeikis",
@@ -82,7 +83,8 @@
       "ogTitle": "Swiss AI & robotics ecosystem guide",
       "ogSubtitle": "DR. JUSTINAS MIŠEIKIS · FIELD GUIDE",
       "type": "WebPage",
-      "article": true
+      "article": true,
+      "updated": "2026-10-06"
     },
     "/swiss-baltic-market-entry": {
       "title": "Swiss & Baltic technology market-entry guide | Dr. Justinas Mišeikis",
@@ -90,7 +92,8 @@
       "ogTitle": "Swiss & Baltic market-entry guide",
       "ogSubtitle": "DR. JUSTINAS MIŠEIKIS · FIELD GUIDE",
       "type": "WebPage",
-      "article": true
+      "article": true,
+      "updated": "2026-10-06"
     },
     "/worksheets/technology-scouting-brief": {
       "title": "Technology scouting brief | Dr. Justinas Mišeikis",

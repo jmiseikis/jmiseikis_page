@@ -165,6 +165,38 @@ const EXTRAS = {
   ],
 };
 
+/** Where each page sits in the site, for its breadcrumb trail. Pages not listed sit directly under the home page. */
+const PARENTS = {
+  "/due-diligence": "/advisory",
+  "/ai-agents-strategy": "/resources",
+  "/swiss-ai-robotics-ecosystem": "/resources",
+  "/swiss-baltic-market-entry": "/resources",
+  "/gza-robotics": "/resources",
+  "/swiss-vcs": "/resources",
+  "/tech-events": "/resources",
+  "/raas-calculator": "/resources",
+  "/worksheets/technology-scouting-brief": "/resources",
+  "/worksheets/market-entry-brief": "/resources",
+  "/worksheets/ai-workflow-pilot-brief": "/resources",
+  "/worksheets/technical-diligence-checklist": "/resources",
+};
+
+const breadcrumbs = (seo, path) => {
+  const trail = [];
+  for (let current = path; current && current !== "/"; current = PARENTS[current] ?? "/") trail.unshift(current);
+  const items = [{ name: "Home", path: "/" }, ...trail.map((p) => ({ name: seo.routes[p].ogTitle, path: p }))];
+  return {
+    "@type": "BreadcrumbList",
+    "@id": `${seo.site}${path}#breadcrumb`,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: `${seo.site}${item.path}`,
+    })),
+  };
+};
+
 /** The JSON-LD object for one route of src/content/seo.json. */
 export function structuredData(seo, path) {
   const route = seo.routes[path];
@@ -184,6 +216,7 @@ export function structuredData(seo, path) {
     isPartOf: { "@id": ids.website },
     author: { "@id": ids.person },
     ...(["/", "/de", "/about"].includes(path) && { mainEntity: { "@id": ids.person } }),
+    ...(path !== "/" && { breadcrumb: { "@id": `${url}#breadcrumb` } }),
   };
   const graph = [
     {
@@ -207,8 +240,11 @@ export function structuredData(seo, path) {
       author: { "@id": ids.person },
       publisher: { "@id": ids.person },
       mainEntityOfPage: { "@id": ids.page },
+      // The review date shown on the page; a rebuild is not a new review.
+      ...(route.updated && { dateModified: route.updated }),
     });
   }
+  if (path !== "/") graph.push(breadcrumbs(seo, path));
   graph.push(...(EXTRAS[path]?.({ ids, url, route }) ?? []));
   return { "@context": "https://schema.org", "@graph": graph };
 }

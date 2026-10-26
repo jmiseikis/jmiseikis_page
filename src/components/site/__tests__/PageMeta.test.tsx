@@ -25,13 +25,13 @@ const MANAGED = [
   'meta[name="twitter:title"]',
   'meta[name="twitter:description"]',
   'meta[name="twitter:image"]',
+  'script[type="application/ld+json"]',
 ];
 
 /** Put a route's prerendered tags into <head>, as the static HTML would on first load. */
 const loadStaticHead = (path: RoutePath) => {
   document.head.innerHTML = routeHead(seo, path, {
     projectId: import.meta.env.VITE_SUPABASE_PROJECT_ID,
-    jsonLd: false,
   }).replace(/<!--[^>]*-->/g, "");
   document.documentElement.lang = seo.routes[path]["language" as never] ?? "en";
   // A placeholder title, so the tests can tell when react-helmet-async has applied its update.
@@ -85,6 +85,33 @@ describe("PageMeta", () => {
     expect(document.head.querySelectorAll('meta[property="og:locale:alternate"]')).toHaveLength(0);
     expect(document.documentElement.lang).toBe("en");
     expect(document.head.querySelectorAll('link[rel="canonical"]')).toHaveLength(1);
+  });
+
+  it("swaps the structured data on client navigation instead of keeping the previous page's graph", async () => {
+    // The 25 October audit found the home page's WebPage and PodcastSeries graph surviving a move to /advisory.
+    loadStaticHead("/");
+    const graph = () => {
+      const scripts = document.head.querySelectorAll('script[type="application/ld+json"]');
+      expect(scripts).toHaveLength(1);
+      return JSON.parse(scripts[0].textContent ?? "")["@graph"] as { "@type": string; "@id"?: string }[];
+    };
+    expect(graph().map((n) => n["@type"])).toContain("PodcastSeries");
+    const { rerender } = renderMeta(<PageMeta path="/" />);
+    await waitFor(() => expect(document.title).toBe(seo.routes["/"].title));
+
+    rerender(
+      <HelmetProvider>
+        <MemoryRouter>
+          <PageMeta path="/advisory" />
+        </MemoryRouter>
+      </HelmetProvider>,
+    );
+    await waitFor(() => expect(document.title).toBe(seo.routes["/advisory"].title));
+    await settle();
+    const types = graph().map((n) => n["@type"]);
+    expect(types).not.toContain("PodcastSeries");
+    expect(types).toContain("Service");
+    expect(graph().find((n) => n["@id"] === "https://jmiseikis.com/advisory#webpage")).toBeTruthy();
   });
 
   it("leaves the 404 page with one noindex robots tag and no canonical", async () => {

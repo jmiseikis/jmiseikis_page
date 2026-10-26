@@ -143,6 +143,24 @@ describe("Structured data", () => {
     expect(services.map((s) => s.url)).toEqual(SERVICES.map((s) => `https://jmiseikis.com/advisory#${s.id}`));
   });
 
+  it("gives nested pages a breadcrumb trail and guides the review date they show", () => {
+    expect(byType(graphOf("/"), "BreadcrumbList")).toHaveLength(0);
+    const trail = (path: string) =>
+      (byType(graphOf(path), "BreadcrumbList")[0].itemListElement as { name: string; item: string }[]).map((i) => i.item);
+    expect(trail("/due-diligence")).toEqual(["https://jmiseikis.com/", "https://jmiseikis.com/advisory", "https://jmiseikis.com/due-diligence"]);
+    expect(trail("/worksheets/market-entry-brief")).toEqual([
+      "https://jmiseikis.com/",
+      "https://jmiseikis.com/resources",
+      "https://jmiseikis.com/worksheets/market-entry-brief",
+    ]);
+    // Matches the visible "Updated 6 October 2026" on the guides (EditorialMeta); a rebuild is not a review.
+    expect(read("src/components/site/guide.tsx")).toContain('dateTime="2026-10-06"');
+    for (const path of ["/ai-agents-strategy", "/swiss-ai-robotics-ecosystem", "/swiss-baltic-market-entry"]) {
+      expect(byType(graphOf(path), "Article")[0]).toMatchObject({ dateModified: "2026-10-06" });
+      expect(byType(graphOf(path), "Article")[0]).not.toHaveProperty("datePublished");
+    }
+  });
+
   it("adds page-specific nodes only where they belong", () => {
     expect(byType(graphOf("/raas-calculator"), "SoftwareApplication")).toHaveLength(1);
     expect(byType(graphOf("/gza-robotics"), "Dataset")[0]).toMatchObject({ creator: { url: GZA_URL } });
