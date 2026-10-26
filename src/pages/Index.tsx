@@ -12,6 +12,14 @@ const PROOF = [
   { org: "PhD + EMBA", label: "Technical and business perspective" },
 ];
 
+// Shortcuts for the most common reasons to visit, each to the page that already answers it.
+const TASKS = [
+  { label: "Assess an AI or robotics opportunity", href: "/due-diligence" },
+  { label: "Find Swiss partners or startups", href: "/swiss-ai-robotics-ecosystem" },
+  { label: "Plan an internal AI pilot", href: "/ai-agents-strategy" },
+  { label: "Book a speaker", href: "/speaking" },
+];
+
 const EXPERIENCE = [
   {
     org: "Sony",
@@ -94,6 +102,21 @@ const Index = () => (
         </div>
       ))}
     </div>
+
+    <nav aria-labelledby="home-tasks-title" className="site-wrap pt-8 md:pt-10">
+      <h2 id="home-tasks-title" className="eyebrow mb-3">
+        Start with your task
+      </h2>
+      <ul className="grid list-none grid-cols-1 gap-x-8 gap-y-1 p-0 sm:grid-cols-2 lg:grid-cols-4">
+        {TASKS.map((task) => (
+          <li key={task.href} className="min-w-0 border-b border-border">
+            <TextLink href={task.href} className="flex min-h-11 items-center py-2 text-[15px]">
+              {task.label}
+            </TextLink>
+          </li>
+        ))}
+      </ul>
+    </nav>
 
     {/* Old links to /#advisory and /#services both land on the advisory section. */}
     <span id="advisory" className="block" aria-hidden="true" />
