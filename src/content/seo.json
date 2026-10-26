@@ -108,10 +108,10 @@
       "type": "CollectionPage"
     },
     "/raas-calculator": {
-      "title": "RaaS ROI calculator | Dr. Justinas Mišeikis",
-      "description": "Explore robot-as-a-service costs, cash savings, productivity assumptions and payback with an interactive robotics scenario model.",
-      "ogTitle": "RaaS ROI Calculator",
-      "ogSubtitle": "ROBOT AS A SERVICE · SCENARIO MODEL",
+      "title": "Robotics ROI Calculator: Buy vs RaaS | Justinas Mišeikis",
+      "description": "Compare manual work, buying a robot system and RaaS. Model paid hours avoided, deployment ramp, cash flow, NPV and payback with editable assumptions.",
+      "ogTitle": "Robotics cost & ROI calculator",
+      "ogSubtitle": "MANUAL · BUY · RAAS",
       "ogImage": "/og-raas-calculator.png",
       "type": "WebPage"
     },

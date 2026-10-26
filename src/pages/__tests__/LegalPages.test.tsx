@@ -24,7 +24,7 @@ beforeEach(() => {
 });
 
 describe.each([
-  ["Privacy Policy", PrivacyPolicy, "12 October 2026", "2026-10-12"],
+  ["Privacy Policy", PrivacyPolicy, "24 October 2026", "2026-10-24"],
   ["Terms of Use", TermsOfUse, "24 October 2026", "2026-10-24"],
 ])("%s page", (heading, Page, label, iso) => {
   it("renders one H1 and the publication date", () => {
