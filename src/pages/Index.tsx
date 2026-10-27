@@ -109,8 +109,8 @@ const Index = () => (
       </h2>
       <ul className="grid list-none grid-cols-1 gap-x-8 gap-y-1 p-0 sm:grid-cols-2 lg:grid-cols-4">
         {TASKS.map((task) => (
-          <li key={task.href} className="min-w-0 border-b border-border">
-            <TextLink href={task.href} className="flex min-h-11 items-center py-2 text-[15px]">
+          <li key={task.href} className="flex min-w-0">
+            <TextLink href={task.href} className="flex min-h-11 w-full items-start justify-between gap-3 py-3 text-[15px]">
               {task.label}
             </TextLink>
           </li>
