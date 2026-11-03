@@ -26,6 +26,7 @@ const MarketEntryGuide = lazy(() => import("./pages/MarketEntryGuide"));
 const WorksheetPage = lazy(() => import("./pages/WorksheetPage"));
 const RaasCalculator = lazy(() => import("./pages/RaasCalculator"));
 const TechEvents = lazy(() => import("./pages/TechEvents"));
+const Davos2027 = lazy(() => import("./pages/Davos2027"));
 const SwissVCs = lazy(() => import("./pages/SwissVCs"));
 const GZARobotics = lazy(() => import("./pages/GZARobotics"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
@@ -44,6 +45,7 @@ export const SiteApplication = () => (
       <Route path="/speaking-examples" element={<Navigate to="/speaking" replace />} />
       <Route path="/due-diligence" element={lazyRoute("/due-diligence", <DueDiligencePage />)} />
       <Route path="/tech-events" element={lazyRoute("/tech-events", <TechEvents />)} />
+      <Route path="/davos-2027" element={lazyRoute("/davos-2027", <Davos2027 />)} />
       <Route path="/swiss-vcs" element={lazyRoute("/swiss-vcs", <SwissVCs />)} />
       <Route path="/raas-calculator" element={lazyRoute("/raas-calculator", <RaasCalculator />)} />
       <Route path="/gza-robotics" element={lazyRoute("/gza-robotics", <GZARobotics />)} />

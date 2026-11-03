@@ -13,6 +13,8 @@ interface RouteMeta {
   ogSubtitle: string;
   ogImage?: string;
   language?: string;
+  /** Overrides the site-wide robots value, e.g. for a page kept out of search until release. */
+  robots?: string;
 }
 
 const ALTERNATE_PATHS: string[] = Object.values(seo.alternates);
@@ -37,7 +39,7 @@ const PageMeta = ({ path }: { path: RoutePath }) => {
       <html lang={language} />
       <title>{route.title}</title>
       <meta name="description" content={route.description} />
-      <meta name="robots" content={seo.robots} />
+      <meta name="robots" content={route.robots ?? seo.robots} />
       <link rel="canonical" href={url} />
       {alternates &&
         Object.entries(seo.alternates).map(([hreflang, href]) => (

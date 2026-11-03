@@ -145,6 +145,14 @@
       "ogSubtitle": "AI · ROBOTICS · DEEP TECH · STARTUPS",
       "type": "CollectionPage"
     },
+    "/davos-2027": {
+      "title": "Davos Events During WEF 2027 | Audience, Cost & Access | Justinas Mišeikis",
+      "description": "Attendee applications in Davos during WEF 2027: audience requirements, cost and badge status, and official registration links, from a live public sheet.",
+      "ogTitle": "Davos Events During WEF 2027",
+      "ogSubtitle": "AUDIENCE · COST · ACCESS",
+      "type": "CollectionPage",
+      "robots": "noindex, nofollow"
+    },
     "/raas-calculator": {
       "title": "Robotics ROI Calculator: Buy vs RaaS | Justinas Mišeikis",
       "description": "Compare manual work, buying a robot system and RaaS. Model paid hours avoided, deployment ramp, cash flow, NPV and payback with editable assumptions.",

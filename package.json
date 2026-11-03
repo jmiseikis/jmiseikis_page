@@ -12,7 +12,9 @@
     "test": "vitest run",
     "typecheck": "tsc --noEmit -p tsconfig.app.json",
     "preview:calculator": "node scripts/build-calculator-preview.mjs",
-    "verify:static": "node scripts/verify-static.mjs"
+    "verify:static": "node scripts/verify-static.mjs",
+    "test:davos": "node --test tests/davos/*.test.mjs",
+    "check:sheet": "node scripts/check-davos-sheet.mjs"
   },
   "dependencies": {
     "@fontsource/anton": "^5.2.7",

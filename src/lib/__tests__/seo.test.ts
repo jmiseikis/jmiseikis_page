@@ -13,6 +13,9 @@ const ROOT = process.cwd();
 const read = (file: string) => readFileSync(join(ROOT, file), "utf8");
 const indexHtml = read("index.html");
 const PATHS = Object.keys(seo.routes) as (keyof typeof seo.routes)[];
+const robotsFor = (path: string) => (seo.routes[path as keyof typeof seo.routes] as { robots?: string }).robots ?? seo.robots;
+// Pages kept out of search until release: noindex, and left out of the sitemap.
+const INDEXED = PATHS.filter((p) => !/noindex/.test(robotsFor(p)));
 const PROJECT_ID = "uwdastthzqjbiyrxucci";
 const ALTERNATES = ["/", "/de"];
 
@@ -75,7 +78,8 @@ describe.each(PATHS)("Prerendered head for %s", (path) => {
     }
     expect(doc.head.querySelector('link[rel="canonical"]')?.getAttribute("href")).toBe(url);
     expect(content(doc, 'meta[property="og:url"]')).toBe(url);
-    expect(content(doc, 'meta[name="robots"]')).toMatch(/^index, follow/);
+    expect(content(doc, 'meta[name="robots"]')).toBe(robotsFor(path));
+    if (INDEXED.includes(path)) expect(content(doc, 'meta[name="robots"]')).toMatch(/^index, follow/);
     expect(content(doc, 'meta[name="description"]')).toBe(route.description);
     expect(content(doc, 'meta[property="og:title"]')).toBe(route.title);
     expect(content(doc, 'meta[name="twitter:title"]')).toBe(route.title);
@@ -179,7 +183,8 @@ describe("Sitemap and robots.txt", () => {
 
   it("lists exactly the public pages, with language alternates only for / and /de", () => {
     const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-    expect(locs).toEqual(PATHS.map((p) => `${seo.site}${p}`));
+    expect(locs).toEqual(INDEXED.map((p) => `${seo.site}${p}`));
+    expect(INDEXED).not.toContain("/davos-2027");
     for (const block of sitemap.split("<url>").slice(1)) {
       const loc = block.match(/<loc>([^<]+)<\/loc>/)![1];
       const alternates = (block.match(/xhtml:link/g) ?? []).length;

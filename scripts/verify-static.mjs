@@ -37,6 +37,7 @@ for (const path of Object.keys(seo.routes)) {
   ]) {
     if (count(head, pattern) !== 1) fail(path, `expected one ${label}, found ${count(head, pattern)}`);
   }
+  if (!head.includes(`<meta name="robots" content="${route.robots ?? seo.robots}"`)) fail(path, "robots is not this page's value");
   if (!head.includes(`<link rel="canonical" href="${seo.site}${path}"`)) fail(path, "canonical is not this page");
   const hreflang = count(head, /hreflang=/g);
   if (hreflang !== (Object.values(seo.alternates).includes(path) ? 3 : 0)) fail(path, `unexpected hreflang count ${hreflang}`);
@@ -64,7 +65,10 @@ if (!existsSync(alias) || !readFileSync(alias, "utf8").includes(`rel="canonical"
 }
 const sitemap = readFileSync(join(dist, "sitemap.xml"), "utf8");
 const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-const expected = Object.keys(seo.routes).map((path) => `${seo.site}${path}`);
+// Routes kept out of search (robots "noindex") must not be in the sitemap either.
+const expected = Object.entries(seo.routes)
+  .filter(([, route]) => !/noindex/.test(route.robots ?? seo.robots))
+  .map(([path]) => `${seo.site}${path}`);
 if (JSON.stringify(locs) !== JSON.stringify(expected)) fail("sitemap.xml", "does not list exactly the public routes");
 if (existsSync(join(dist, ".vite"))) fail("dist/.vite", "build manifest would be published");
 
