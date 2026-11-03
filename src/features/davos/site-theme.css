@@ -1,0 +1,56 @@
+/* Site overrides for the Davos directory (directory.css stays as delivered). Maps the --dd-* tokens to the site's
+   colour tokens, so light and dark mode follow the theme toggle, and uses the site's square corners, page width and
+   minimum text sizes. `.davos-page .dd-root` outranks the package's `.dark .dd-root` by source order. */
+.davos-page .dd-root {
+  --dd-bg: hsl(var(--background));
+  --dd-surface: hsl(var(--muted));
+  --dd-text: hsl(var(--foreground));
+  --dd-muted: hsl(var(--muted-foreground));
+  --dd-border: hsl(var(--border));
+  --dd-accent: hsl(var(--primary));
+  --dd-accent-soft: hsl(var(--primary) / 0.08);
+  --dd-warning: hsl(38 90% 95%);
+  --dd-warning-text: hsl(32 70% 26%);
+  --dd-radius: 0;
+  max-width: none;
+  padding: 0;
+  box-shadow: none;
+}
+
+.dark .davos-page .dd-root {
+  --dd-accent-soft: hsl(var(--primary) / 0.14);
+  --dd-warning: hsl(36 30% 14%);
+  --dd-warning-text: hsl(38 65% 74%);
+}
+
+.davos-page .dd-root :is(.dd-search, .dd-button, .dd-field select, .dd-message, .dd-tag, .dd-status-pill, .dd-apply, .dd-empty) {
+  border-radius: 0;
+}
+
+/* Form controls need 3:1 against the page, like the site's inputs. */
+.davos-page .dd-root :is(.dd-search, .dd-field select) {
+  border-color: hsl(var(--input));
+}
+
+.davos-page .dd-root .dd-card {
+  box-shadow: none;
+}
+
+.davos-page .dd-root .dd-button[aria-pressed="true"] {
+  color: hsl(var(--primary));
+}
+
+/* Nothing below 12px, except the compact tags and status pill at 11px. */
+.davos-page .dd-root :is(.dd-guide, .dd-check, .dd-text-button, .dd-freshness, .dd-message, .dd-date-block span,
+  .dd-date-block small, .dd-audience, .dd-venue, .dd-badge, .dd-save, .dd-details summary, .dd-source-links a,
+  .dd-organiser, .dd-apply, .dd-footer, .dd-field, .dd-search-label) {
+  font-size: 12px !important;
+}
+
+.davos-page .dd-root :is(.dd-tag, .dd-status-pill) {
+  font-size: 11px;
+}
+
+.davos-page .dd-root :is(.dd-description, .dd-detail-block p, .dd-eligibility) {
+  font-size: 13px;
+}

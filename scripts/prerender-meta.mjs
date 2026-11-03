@@ -36,6 +36,7 @@ const PAGE_MODULES = {
   "/swiss-baltic-market-entry": "MarketEntryGuide",
   "/raas-calculator": "RaasCalculator",
   "/tech-events": "TechEvents",
+  "/davos-2027": "Davos2027",
   "/swiss-vcs": "SwissVCs",
   "/gza-robotics": "GZARobotics",
   "/privacy": "PrivacyPolicy",

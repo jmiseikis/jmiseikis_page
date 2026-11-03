@@ -39,7 +39,7 @@ export function routeTags(seo, path, { projectId } = {}) {
 
   return [
     ["meta", { name: "description", content: route.description }],
-    ["meta", { name: "robots", content: seo.robots }],
+    ["meta", { name: "robots", content: route.robots ?? seo.robots }],
     ["link", { rel: "canonical", href: url }],
     ...(alternates
       ? Object.entries(seo.alternates).map(([hreflang, href]) => ["link", { rel: "alternate", hreflang, href: `${seo.site}${href}` }])
